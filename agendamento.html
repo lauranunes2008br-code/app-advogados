@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Agendamento | Josiane Nunes Advocacia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --vinho: #54131b;
+            --vinho-escuro: #2b080d;
+            --dourado: #b58a48;
+            --dourado-claro: #d7b976;
+            --creme: #f8f5f0;
+            --texto: #2d1719;
+            --cinza: #6b6060;
+            --borda: #e5ddd3;
+            --branco: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--creme);
+            color: var(--texto);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+
+        /* NAVBAR */
+
+        nav {
+            height: 88px;
+
+            padding: 0 6%;
+
+            background: rgba(255,255,255,0.97);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow:
+                0 5px 25px rgba(0,0,0,0.06);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: var(--texto);
+        }
+
+        .logo-monogram {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            font-weight: 600;
+
+            color: var(--vinho);
+        }
+
+        .logo-divider {
+            width: 1px;
+
+            height: 42px;
+
+            background: var(--dourado);
+        }
+
+        .logo-name {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 22px;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            display: block;
+
+            margin-top: 2px;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
+
+            color: var(--dourado);
+        }
+
+        .back-link {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            text-decoration: none;
+
+            color: var(--vinho);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--dourado);
+        }
+
+        .back-link i {
+            width: 16px;
+            height: 16px;
+        }
+
+
+        /* CABEÇALHO */
+
+        .page-header {
+            text-align: center;
+
+            padding: 75px 20px 45px;
+        }
+
+        .section-label {
+            color: var(--dourado);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 13px;
+        }
+
+        .page-header h1 {
+            font-size: 58px;
+
+            line-height: 1;
+
+            margin-bottom: 18px;
+        }
+
+        .page-header p {
+            max-width: 600px;
+
+            margin: auto;
+
+            color: var(--cinza);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* CONTAINER */
+
+        .agendamento-container {
+            max-width: 1000px;
+
+            margin: 0 auto 90px;
+
+            padding: 0 22px;
+        }
+
+
+        /* CARD */
+
+        .form-card {
+            background: white;
+
+            border: 1px solid var(--borda);
+
+            box-shadow:
+                0 20px 55px rgba(84,19,27,0.08);
+
+            padding: 50px;
+        }
+
+        .form-top {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 35px;
+
+            margin-bottom: 35px;
+
+            padding-bottom: 30px;
+
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .info-box {
+            display: flex;
+
+            gap: 15px;
+
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 48px;
+
+            height: 48px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: rgba(181,138,72,0.1);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .info-icon i {
+            width: 22px;
+
+            height: 22px;
+
+            color: var(--dourado);
+        }
+
+        .info-box h3 {
+            font-size: 23px;
+
+            margin-bottom: 5px;
+        }
+
+        .info-box p {
+            color: var(--cinza);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* FORMULÁRIO */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 11px;
+
+            font-weight: 700;
+
+            color: var(--texto);
+
+            letter-spacing: 0.5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            border: 1px solid var(--borda);
+
+            background: #fffdfa;
+
+            color: var(--texto);
+
+            border-radius: 3px;
+
+            padding: 14px 15px;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 12px;
+
+            outline: none;
+
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--dourado);
+
+            box-shadow:
+                0 0 0 3px rgba(181,138,72,0.08);
+        }
+
+        textarea {
+            min-height: 125px;
+
+            resize: vertical;
+        }
+
+        .required {
+            color: var(--dourado);
+        }
+
+
+        /* AVISO */
+
+        .privacy-box {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 25px;
+
+            padding: 17px;
+
+            background: var(--creme);
+
+            border-left: 3px solid var(--dourado);
+        }
+
+        .privacy-box i {
+            width: 18px;
+
+            height: 18px;
+
+            color: var(--dourado);
+
+            flex-shrink: 0;
+        }
+
+        .privacy-box p {
+            color: var(--cinza);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        /* BOTÃO */
+
+        .submit-area {
+            text-align: center;
+
+            margin-top: 32px;
+        }
+
+        .submit-button {
+            min-height: 54px;
+
+            padding: 0 35px;
+
+            border: none;
+
+            border-radius: 3px;
+
+            background: var(--vinho);
+
+            color: white;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            transition: 0.35s;
+        }
+
+        .submit-button:hover {
+            background: var(--vinho-escuro);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px rgba(84,19,27,0.22);
+        }
+
+        .submit-button i {
+            width: 18px;
+
+            height: 18px;
+        }
+
+
+        /* RODAPÉ */
+
+        footer {
+            background: #210609;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 45px 20px;
+        }
+
+        .footer-name {
+            font-family: 'Cormorant Garamond', serif;
+
+            font-size: 30px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-subtitle {
+            color: var(--dourado-claro);
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 18px;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.68);
+
+            font-size: 10px;
+
+            line-height: 1.8;
+        }
+
+
+        /* MODAL DE CONFIRMAÇÃO */
+
+        .success-message {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(43,8,13,0.75);
+
+            z-index: 100;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+
+        .success-card {
+            background: white;
+
+            max-width: 500px;
+
+            width: 100%;
+
+            padding: 45px 35px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.25);
+        }
+
+        .success-icon {
+            width: 70px;
+
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: rgba(181,138,72,0.1);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .success-icon i {
+            width: 35px;
+
+            height: 35px;
+
+            color: var(--dourado);
+        }
+
+        .success-card h2 {
+            font-size: 38px;
+
+            margin-bottom: 12px;
+        }
+
+        .success-card p {
+            color: var(--cinza);
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        .close-button {
+            border: none;
+
+            background: var(--vinho);
+
+            color: white;
+
+            padding: 13px 25px;
+
+            cursor: pointer;
+
+            border-radius: 3px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        /* RESPONSIVO */
+
+        @media (max-width: 700px) {
+
+            nav {
+                height: 76px;
+
+                padding: 0 20px;
+            }
+
+            .logo-monogram {
+                font-size: 34px;
+            }
+
+            .logo-divider {
+                height: 35px;
+            }
+
+            .logo-name {
+                font-size: 18px;
+            }
+
+            .logo-subtitle {
+                font-size: 6px;
+
+                letter-spacing: 2px;
+            }
+
+            .back-link {
+                font-size: 0;
+            }
+
+            .back-link i {
+                width: 22px;
+                height: 22px;
+            }
+
+            .page-header {
+                padding: 55px 20px 35px;
+            }
+
+            .page-header h1 {
+                font-size: 45px;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+            }
+
+            .form-top {
+                grid-template-columns: 1fr;
+
+                gap: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .submit-button {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-monogram">
+                JN
+            </div>
+
+            <div class="logo-divider"></div>
+
+            <div>
+
+                <div class="logo-name">
+                    JOSIANE NUNES
+                </div>
+
+                <span class="logo-subtitle">
+                    ADVOCACIA
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a
+            href="index.html"
+            class="back-link"
+        >
+
+            <i data-lucide="arrow-left"></i>
+
+            Voltar para o início
+
+        </a>
+
+    </nav>
+
+
+    <!-- CABEÇALHO -->
+
+    <header class="page-header">
+
+        <div class="section-label">
+            AGENDAMENTO
+        </div>
+
+        <h1>
+            Agende seu atendimento
+        </h1>
+
+        <p>
+            Preencha as informações abaixo para solicitar
+            um atendimento jurídico. Após o envio, os dados
+            serão encaminhados para confirmação.
+        </p>
+
+    </header>
+
+
+    <!-- FORMULÁRIO -->
+
+    <main class="agendamento-container">
+
+        <form
+            class="form-card"
+            id="appointmentForm"
+        >
+
+
+            <div class="form-top">
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        <i data-lucide="calendar-days"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Escolha seu atendimento
+                        </h3>
+
+                        <p>
+                            Informe a modalidade, área jurídica,
+                            data e horário de sua preferência.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Atendimento profissional
+                        </h3>
+
+                        <p>
+                            Suas informações serão utilizadas
+                            para organizar o contato e o atendimento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+                <!-- NOME -->
+
+                <div class="form-group">
+
+                    <label for="nome">
+                        Nome completo <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome completo"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TELEFONE -->
+
+                <div class="form-group">
+
+                    <label for="telefone">
+                        Telefone / WhatsApp <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="(87) 99999-9999"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seuemail@email.com"
+                    >
+
+                </div>
+
+
+                <!-- ÁREA -->
+
+                <div class="form-group">
+
+                    <label for="area">
+                        Área jurídica <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="area"
+                        name="area"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="Direito Criminal">
+                            Direito Criminal
+                        </option>
+
+                        <option value="Direito Trabalhista">
+                            Direito Trabalhista
+                        </option>
+
+                        <option value="Outra questão jurídica">
+                            Outra questão jurídica
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MODALIDADE -->
+
+                <div class="form-group">
+
+                    <label for="modalidade">
+                        Modalidade <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="modalidade"
+                        name="modalidade"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="Atendimento presencial">
+                            Atendimento presencial
+                        </option>
+
+                        <option value="Atendimento online">
+                            Atendimento online
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <div class="form-group">
+
+                    <label for="data">
+                        Data de preferência <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="date"
+                        id="data"
+                        name="data"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- HORÁRIO -->
+
+                <div class="form-group">
+
+                    <label for="horario">
+                        Horário de preferência <span class="required">*</span>
+                    </label>
+
+                    <select
+                        id="horario"
+                        name="horario"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione um horário
+                        </option>
+
+                        <option value="08:00">
+                            08:00
+                        </option>
+
+                        <option value="09:00">
+                            09:00
+                        </option>
+
+                        <option value="10:00">
+                            10:00
+                        </option>
+
+                        <option value="11:00">
+                            11:00
+                        </option>
+
+                        <option value="14:00">
+                            14:00
+                        </option>
+
+                        <option value="15:00">
+                            15:00
+                        </option>
+
+                        <option value="16:00">
+                            16:00
+                        </option>
+
+                        <option value="17:00">
+                            17:00
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ASSUNTO -->
+
+                <div class="form-group full">
+
+                    <label for="assunto">
+                        Conte brevemente sobre o motivo do contato
+                    </label>
+
+                    <textarea
+                        id="assunto"
+                        name="assunto"
+                        placeholder="Escreva brevemente como podemos ajudar..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="privacy-box">
+
+                <i data-lucide="lock-keyhole"></i>
+
+                <p>
+                    Evite inserir informações extremamente pessoais
+                    ou documentos neste campo. O primeiro contato
+                    servirá para compreender sua necessidade e
+                    orientar sobre os próximos passos.
+                </p>
+
+            </div>
+
+
+            <div class="submit-area">
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+
+                    <i data-lucide="calendar-check"></i>
+
+                    Solicitar atendimento
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-name">
+            JOSIANE NUNES
+        </div>
+
+        <div class="footer-subtitle">
+            ADVOCACIA
+        </div>
+
+        <p>
+            Advocacia com ética, compromisso,
+            estratégia e responsabilidade.
+        </p>
+
+        <br>
+
+        <p>
+            ©️ 2026 Josiane Nunes Advocacia.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+    <!-- MENSAGEM -->
+
+    <div
+        class="success-message"
+        id="successMessage"
+    >
+
+        <div class="success-card">
+
+            <div class="success-icon">
+
+                <i data-lucide="check"></i>
+
+            </div>
+
+            <h2>
+                Solicitação preparada!
+            </h2>
+
+            <p>
+                Seus dados foram organizados.
+                Ao confirmar, você poderá encaminhar
+                a solicitação pelo WhatsApp profissional
+                para que o atendimento seja confirmado.
+            </p>
+
+            <button
+                class="close-button"
+                id="closeButton"
+            >
+                Voltar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        lucide.createIcons();
+
+
+        /* =====================================================
+           DATA MÍNIMA
+        ===================================================== */
+
+        const dataInput =
+            document.getElementById("data");
+
+        const hoje =
+            new Date();
+
+        const ano =
+            hoje.getFullYear();
+
+        const mes =
+            String(
+                hoje.getMonth() + 1
+            ).padStart(2, "0");
+
+        const dia =
+            String(
+                hoje.getDate()
+            ).padStart(2, "0");
+
+        dataInput.min =
+            `${ano}-${mes}-${dia}`;
+
+
+        /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+        const numeroWhatsApp =
+            "COLOQUE_O_NUMERO_AQUI";
+
+
+        /* =====================================================
+           FORMULÁRIO
+        ===================================================== */
+
+        const form =
+            document.getElementById("appointmentForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+        const closeButton =
+            document.getElementById("closeButton");
+
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const nome =
+                    document.getElementById("nome").value;
+
+                const telefone =
+                    document.getElementById("telefone").value;
+
+                const email =
+                    document.getElementById("email").value;
+
+                const area =
+                    document.getElementById("area").value;
+
+                const modalidade =
+                    document.getElementById("modalidade").value;
+
+                const data =
+                    document.getElementById("data").value;
+
+                const horario =
+                    document.getElementById("horario").value;
+
+                const assunto =
+                    document.getElementById("assunto").value;
+
+
+                const dataFormatada =
+                    data.split("-").reverse().join("/");
+
+
+                const mensagem =
+                    "Olá, gostaria de solicitar um atendimento jurídico.%0A%0A" +
+
+                    "Nome: " +
+                    encodeURIComponent(nome) +
+
+                    "%0ATelefone: " +
+                    encodeURIComponent(telefone) +
+
+                    "%0AE-mail: " +
+                    encodeURIComponent(email || "Não informado") +
+
+                    "%0AÁrea: " +
+                    encodeURIComponent(area) +
+
+                    "%0AModalidade: " +
+                    encodeURIComponent(modalidade) +
+
+                    "%0AData desejada: " +
+                    encodeURIComponent(dataFormatada) +
+
+                    "%0AHorário desejado: " +
+                    encodeURIComponent(horario) +
+
+                    "%0A%0AMotivo do contato:%0A" +
+                    encodeURIComponent(
+                        assunto || "Não informado"
+                    );
+
+
+                if (
+                    numeroWhatsApp ===
+                    "COLOQUE_O_NUMERO_AQUI"
+                ) {
+
+                    successMessage.classList.add("show");
+
+                    return;
+
+                }
+
+
+                const url =
+                    "https://wa.me/" +
+                    numeroWhatsApp +
+                    "?text=" +
+                    mensagem;
+
+
+                window.open(
+                    url,
+                    "_blank"
+                );
+
+            }
+        );
+
+
+        closeButton.addEventListener(
+            "click",
+            function() {
+
+                successMessage.classList.remove("show");
+
+            }
+        );
+
+
+        successMessage.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    successMessage
+                ) {
+
+                    successMessage.classList.remove("show");
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
