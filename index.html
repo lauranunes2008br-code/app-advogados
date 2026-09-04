@@ -261,35 +261,8 @@
             background: #f8f5f0;
         }
 
-        /*
-           IMPORTANTE:
-           O fundo agora é sólido.
-           Não existe degradê cobrindo a foto.
-        */
-
         .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            right: 6%;
-            top: 8%;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(181, 138, 72, 0.13),
-                    transparent 70%
-                );
-
-            z-index: 0;
-
-            pointer-events: none;
+            display: none;
         }
 
         .hero-content {
@@ -449,13 +422,8 @@
             display: block;
         }
 
-        /*
-           SEM DEGRADÊ.
-           A foto não recebe nenhuma camada por cima.
-        */
-
         .hero-photo::after {
-            content: none;
+            display: none;
         }
 
 
@@ -1117,7 +1085,7 @@
             }
 
             .hero-photo::after {
-                content: none;
+                display: none;
             }
 
             .section {
@@ -1344,7 +1312,7 @@
             <a href="#contato">Contato</a>
 
             <a
-                href="agendamento.html"
+                href="./agendamento.html"
                 class="nav-button"
             >
 
@@ -1398,7 +1366,7 @@
 
 
                 <a
-                    href="agendamento.html"
+                    href="./agendamento.html"
                     class="button button-secondary"
                 >
 
@@ -1680,7 +1648,7 @@
 
 
             <a
-                href="agendamento.html"
+                href="./agendamento.html"
                 class="button button-secondary"
             >
 
