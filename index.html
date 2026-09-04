@@ -12,7 +12,6 @@
         content="Josiane Nunes Advocacia — atuação jurídica com ética, estratégia, compromisso e atendimento personalizado."
     >
 
-    <!-- FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -21,15 +20,9 @@
         rel="stylesheet"
     >
 
-    <!-- ÍCONES -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-
     <style>
-
-        /* =====================================================
-           RESET
-        ===================================================== */
 
         * {
             margin: 0;
@@ -57,11 +50,6 @@
             font-family: inherit;
         }
 
-
-        /* =====================================================
-           CORES
-        ===================================================== */
-
         :root {
             --vinho: #54131b;
             --vinho-escuro: #2b080d;
@@ -80,11 +68,6 @@
 
             --borda: #e5ddd3;
         }
-
-
-        /* =====================================================
-           TIPOGRAFIA
-        ===================================================== */
 
         h1,
         h2,
@@ -156,9 +139,6 @@
             backdrop-filter: blur(10px);
         }
 
-
-        /* LOGO */
-
         .logo {
             display: flex;
             align-items: center;
@@ -200,9 +180,6 @@
             color: var(--dourado);
         }
 
-
-        /* LINKS */
-
         .nav-links {
             display: flex;
             align-items: center;
@@ -222,9 +199,6 @@
         .nav-links a:not(.nav-button):hover {
             color: var(--dourado);
         }
-
-
-        /* BOTÃO NAV */
 
         .nav-button {
             background: var(--vinho) !important;
@@ -250,9 +224,6 @@
             width: 15px;
             height: 15px;
         }
-
-
-        /* MENU MOBILE */
 
         .menu-button {
             display: none;
@@ -290,8 +261,11 @@
             background: #f8f5f0;
         }
 
-
-        /* DETALHE DECORATIVO */
+        /*
+           IMPORTANTE:
+           O fundo agora é sólido.
+           Não existe degradê cobrindo a foto.
+        */
 
         .hero::before {
             content: "";
@@ -312,10 +286,11 @@
                     rgba(181, 138, 72, 0.13),
                     transparent 70%
                 );
+
+            z-index: 0;
+
+            pointer-events: none;
         }
-
-
-        /* CONTEÚDO */
 
         .hero-content {
             width: 55%;
@@ -372,7 +347,7 @@
 
 
         /* =====================================================
-           BOTÕES HERO
+           BOTÕES
         ===================================================== */
 
         .hero-buttons {
@@ -458,7 +433,7 @@
             width: 54%;
             height: 100%;
 
-            z-index: 1;
+            z-index: 2;
 
             overflow: hidden;
         }
@@ -470,17 +445,17 @@
             object-fit: cover;
 
             object-position: center top;
+
+            display: block;
         }
 
+        /*
+           SEM DEGRADÊ.
+           A foto não recebe nenhuma camada por cima.
+        */
+
         .hero-photo::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background: transparent;
-
-            pointer-events: none;
+            content: none;
         }
 
 
@@ -655,11 +630,6 @@
         .area-card:hover::after {
             width: 100%;
         }
-
-
-        /* =====================================================
-           ÍCONES ANIMADOS
-        ===================================================== */
 
         .icon-circle {
             width: 72px;
@@ -922,7 +892,7 @@
 
 
         /* =====================================================
-           WHATSAPP FLUTUANTE
+           WHATSAPP
         ===================================================== */
 
         .whatsapp {
@@ -1024,7 +994,7 @@
 
 
         /* =====================================================
-           ANIMAÇÕES AO ROLAR
+           ANIMAÇÕES
         ===================================================== */
 
         .reveal {
@@ -1102,9 +1072,6 @@
                 justify-content: center;
             }
 
-
-            /* HERO */
-
             .hero {
                 min-height: auto;
 
@@ -1145,14 +1112,13 @@
                 height: 410px;
 
                 margin-top: 40px;
+
+                z-index: 2;
             }
 
             .hero-photo::after {
-                background: transparent;
+                content: none;
             }
-
-
-            /* SOBRE */
 
             .section {
                 padding: 75px 22px;
@@ -1168,9 +1134,6 @@
                 font-size: 45px;
             }
 
-
-            /* ÁREAS */
-
             .section-heading h2 {
                 font-size: 45px;
             }
@@ -1178,9 +1141,6 @@
             .area-grid {
                 grid-template-columns: 1fr 1fr;
             }
-
-
-            /* DIFERENCIAIS */
 
             .diferenciais {
                 padding: 65px 22px;
@@ -1203,9 +1163,6 @@
             .diferencial:nth-child(4) {
                 border-bottom: none;
             }
-
-
-            /* CONTATO */
 
             .contato {
                 padding: 75px 22px;
@@ -1311,9 +1268,7 @@
 <body>
 
 
-    <!-- =====================================================
-         BARRA SUPERIOR
-    ===================================================== -->
+    <!-- BARRA SUPERIOR -->
 
     <div class="top-bar">
 
@@ -1338,9 +1293,7 @@
     </div>
 
 
-    <!-- =====================================================
-         MENU
-    ===================================================== -->
+    <!-- MENU -->
 
     <nav>
 
@@ -1353,6 +1306,7 @@
             <div class="logo-divider"></div>
 
             <div>
+
                 <div class="logo-name">
                     JOSIANE NUNES
                 </div>
@@ -1360,6 +1314,7 @@
                 <span class="logo-subtitle">
                     ADVOCACIA
                 </span>
+
             </div>
 
         </a>
@@ -1370,7 +1325,9 @@
             id="menuButton"
             aria-label="Abrir menu"
         >
+
             <i data-lucide="menu"></i>
+
         </button>
 
 
@@ -1386,7 +1343,10 @@
 
             <a href="#contato">Contato</a>
 
-            <a href="#contato" class="nav-button">
+            <a
+                href="agendamento.html"
+                class="nav-button"
+            >
 
                 <i data-lucide="calendar-days"></i>
 
@@ -1399,9 +1359,7 @@
     </nav>
 
 
-    <!-- =====================================================
-         HERO
-    ===================================================== -->
+    <!-- HERO -->
 
     <section class="hero" id="inicio">
 
@@ -1427,8 +1385,6 @@
 
             <div class="hero-buttons">
 
-                <!-- PRIMEIRO: FALE CONOSCO -->
-
                 <a
                     href="#contato"
                     class="button button-primary"
@@ -1441,10 +1397,8 @@
                 </a>
 
 
-                <!-- SEGUNDO: AGENDAR -->
-
                 <a
-                    href="#contato"
+                    href="agendamento.html"
                     class="button button-secondary"
                 >
 
@@ -1459,8 +1413,6 @@
         </div>
 
 
-        <!-- FOTO -->
-
         <div class="hero-photo">
 
             <img
@@ -1473,14 +1425,11 @@
     </section>
 
 
-    <!-- =====================================================
-         SOBRE
-    ===================================================== -->
+    <!-- SOBRE -->
 
     <section class="section sobre reveal" id="sobre">
 
         <div class="sobre-container">
-
 
             <div class="sobre-photo">
 
@@ -1543,9 +1492,7 @@
     </section>
 
 
-    <!-- =====================================================
-         ÁREAS DE ATUAÇÃO
-    ===================================================== -->
+    <!-- ÁREAS -->
 
     <section class="section areas reveal" id="areas">
 
@@ -1569,15 +1516,10 @@
 
         <div class="area-grid">
 
-
-            <!-- CRIMINAL -->
-
             <article class="area-card">
 
                 <div class="icon-circle">
-
                     <i data-lucide="scale"></i>
-
                 </div>
 
                 <h3>
@@ -1593,14 +1535,10 @@
             </article>
 
 
-            <!-- TRABALHISTA -->
-
             <article class="area-card">
 
                 <div class="icon-circle">
-
                     <i data-lucide="briefcase-business"></i>
-
                 </div>
 
                 <h3>
@@ -1620,9 +1558,7 @@
     </section>
 
 
-    <!-- =====================================================
-         DIFERENCIAIS
-    ===================================================== -->
+    <!-- DIFERENCIAIS -->
 
     <section
         class="diferenciais reveal"
@@ -1630,7 +1566,6 @@
     >
 
         <div class="diferenciais-grid">
-
 
             <div class="diferencial">
 
@@ -1708,9 +1643,7 @@
     </section>
 
 
-    <!-- =====================================================
-         CONTATO
-    ===================================================== -->
+    <!-- CONTATO -->
 
     <section
         class="contato reveal"
@@ -1733,9 +1666,6 @@
 
         <div class="contact-buttons">
 
-
-            <!-- FALE CONOSCO -->
-
             <a
                 href="#"
                 class="button button-primary"
@@ -1749,12 +1679,9 @@
             </a>
 
 
-            <!-- AGENDAR -->
-
             <a
-                href="#"
+                href="agendamento.html"
                 class="button button-secondary"
-                id="scheduleButton"
             >
 
                 <i data-lucide="calendar-days"></i>
@@ -1768,9 +1695,7 @@
     </section>
 
 
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -1797,9 +1722,7 @@
     </footer>
 
 
-    <!-- =====================================================
-         WHATSAPP FLUTUANTE
-    ===================================================== -->
+    <!-- WHATSAPP -->
 
     <a
         href="#"
@@ -1813,9 +1736,7 @@
     </a>
 
 
-    <!-- =====================================================
-         VOLTAR AO TOPO
-    ===================================================== -->
+    <!-- VOLTAR AO TOPO -->
 
     <a
         href="#inicio"
@@ -1829,24 +1750,12 @@
     </a>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-         TUDO DENTRO DO INDEX
-    ===================================================== -->
-
     <script>
-
-
-        /* =====================================================
-           ATIVAR ÍCONES
-        ===================================================== */
 
         lucide.createIcons();
 
 
-        /* =====================================================
-           MENU MOBILE
-        ===================================================== */
+        /* MENU */
 
         const menuButton =
             document.getElementById("menuButton");
@@ -1854,17 +1763,12 @@
         const navLinks =
             document.getElementById("navLinks");
 
-
         menuButton.addEventListener("click", function () {
 
             navLinks.classList.toggle("open");
 
         });
 
-
-        /* =====================================================
-           FECHAR MENU AO CLICAR
-        ===================================================== */
 
         document
             .querySelectorAll(".nav-links a")
@@ -1879,13 +1783,10 @@
             });
 
 
-        /* =====================================================
-           ANIMAÇÕES DAS SEÇÕES
-        ===================================================== */
+        /* ANIMAÇÕES */
 
         const revealElements =
             document.querySelectorAll(".reveal");
-
 
         const revealObserver =
             new IntersectionObserver(
@@ -1918,13 +1819,10 @@
         });
 
 
-        /* =====================================================
-           BOTÃO VOLTAR AO TOPO
-        ===================================================== */
+        /* VOLTAR AO TOPO */
 
         const backTop =
             document.getElementById("backTop");
-
 
         window.addEventListener("scroll", function () {
 
@@ -1941,23 +1839,18 @@
         });
 
 
-        /* =====================================================
-           CONFIGURAÇÃO DO WHATSAPP
-           
-           IMPORTANTE:
-           COLOQUE O NÚMERO OFICIAL AQUI QUANDO FOR DEFINIR
-           O WHATSAPP PROFISSIONAL.
-           
-           Formato:
-           5587999999999
-        ===================================================== */
+        /* WHATSAPP */
 
-        const numeroWhatsApp = "COLOQUE_O_NUMERO_AQUI";
+        const numeroWhatsApp =
+            "COLOQUE_O_NUMERO_AQUI";
 
 
         function abrirWhatsApp() {
 
-            if (numeroWhatsApp === "COLOQUE_O_NUMERO_AQUI") {
+            if (
+                numeroWhatsApp ===
+                "COLOQUE_O_NUMERO_AQUI"
+            ) {
 
                 alert(
                     "O WhatsApp profissional ainda será configurado."
@@ -1983,10 +1876,6 @@
 
         }
 
-
-        /* =====================================================
-           BOTÕES DO WHATSAPP
-        ===================================================== */
 
         document
             .getElementById("whatsappButton")
@@ -2015,52 +1904,7 @@
                 }
             );
 
-
-        /* =====================================================
-           AGENDAMENTO
-        ===================================================== */
-
-        document
-            .getElementById("scheduleButton")
-            .addEventListener(
-                "click",
-                function (event) {
-
-                    event.preventDefault();
-
-                    if (
-                        numeroWhatsApp ===
-                        "COLOQUE_O_NUMERO_AQUI"
-                    ) {
-
-                        alert(
-                            "O sistema de agendamento será configurado aqui."
-                        );
-
-                        return;
-
-                    }
-
-
-                    const mensagem =
-                        "Olá, gostaria de agendar um atendimento jurídico.";
-
-
-                    const url =
-                        "https://wa.me/" +
-                        numeroWhatsApp +
-                        "?text=" +
-                        encodeURIComponent(mensagem);
-
-
-                    window.open(url, "_blank");
-
-                }
-            );
-
-
     </script>
-
 
 </body>
 
