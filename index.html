@@ -5,31 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Josiane Nunes | Advocacia</title>
 <meta name="description" content="Josiane Nunes Advocacia — atuação jurídica com ética, estratégia, compromisso e atendimento personalizado.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
+
 html{
     scroll-behavior:smooth;
 }
+
 body{
     font-family:'Montserrat',sans-serif;
     background:#f8f5f0;
     color:#2d1719;
     overflow-x:hidden;
 }
+
 img{
     max-width:100%;
 }
+
 button,a{
     font-family:inherit;
 }
+
 :root{
     --vinho:#54131b;
     --vinho-escuro:#2b080d;
@@ -43,14 +51,13 @@ button,a{
     --cinza:#6b6060;
     --borda:#e5ddd3;
 }
-h1,
-h2,
-h3,
-.logo-monogram,
-.logo-name{
+
+h1,h2,h3,.logo-monogram,.logo-name{
     font-family:'Cormorant Garamond',serif;
 }
+
 /* TOPO */
+
 .top-bar{
     background:var(--vinho);
     color:white;
@@ -61,20 +68,25 @@ h3,
     justify-content:space-between;
     font-size:11px;
 }
+
 .top-left{
     display:flex;
     gap:25px;
 }
+
 .top-item{
     display:flex;
     align-items:center;
     gap:7px;
 }
+
 .top-item i{
     width:14px;
     height:14px;
 }
+
 /* NAV */
+
 nav{
     position:sticky;
     top:0;
@@ -88,6 +100,7 @@ nav{
     box-shadow:0 5px 25px rgba(0,0,0,.06);
     backdrop-filter:blur(10px);
 }
+
 .logo{
     display:flex;
     align-items:center;
@@ -95,22 +108,26 @@ nav{
     text-decoration:none;
     color:var(--texto);
 }
+
 .logo-monogram{
     font-size:42px;
     line-height:1;
     font-weight:600;
     color:var(--vinho);
 }
+
 .logo-divider{
     width:1px;
     height:42px;
     background:var(--dourado);
 }
+
 .logo-name{
     font-size:22px;
     font-weight:600;
     letter-spacing:1px;
 }
+
 .logo-subtitle{
     display:block;
     margin-top:2px;
@@ -119,11 +136,13 @@ nav{
     letter-spacing:3px;
     color:var(--dourado);
 }
+
 .nav-links{
     display:flex;
     align-items:center;
     gap:27px;
 }
+
 .nav-links a{
     color:var(--texto);
     text-decoration:none;
@@ -131,9 +150,11 @@ nav{
     font-weight:500;
     transition:.3s;
 }
+
 .nav-links a:not(.nav-button):hover{
     color:var(--dourado);
 }
+
 .nav-button{
     background:var(--vinho)!important;
     color:white!important;
@@ -144,14 +165,17 @@ nav{
     gap:8px;
     transition:.3s;
 }
+
 .nav-button:hover{
     background:var(--vinho-escuro)!important;
     transform:translateY(-2px);
 }
+
 .nav-button i{
     width:15px;
     height:15px;
 }
+
 .menu-button{
     display:none;
     border:none;
@@ -159,11 +183,14 @@ nav{
     color:var(--vinho);
     cursor:pointer;
 }
+
 .menu-button i{
     width:27px;
     height:27px;
 }
+
 /* HERO */
+
 .hero{
     position:relative;
     min-height:650px;
@@ -173,14 +200,17 @@ nav{
     overflow:hidden;
     background:#f8f5f0;
 }
+
 .hero::before{
     display:none;
 }
+
 .hero-content{
     width:55%;
     position:relative;
     z-index:3;
 }
+
 .hero-label{
     color:var(--dourado);
     font-size:12px;
@@ -188,21 +218,25 @@ nav{
     letter-spacing:3px;
     margin-bottom:20px;
 }
+
 .hero h1{
     font-size:clamp(50px,5.5vw,78px);
     line-height:.93;
     font-weight:600;
     margin-bottom:25px;
 }
+
 .hero h1 span{
     color:var(--vinho);
 }
+
 .gold-line{
     width:75px;
     height:3px;
     background:var(--dourado);
     margin-bottom:25px;
 }
+
 .hero-description{
     max-width:520px;
     color:var(--cinza);
@@ -210,12 +244,14 @@ nav{
     line-height:1.85;
     margin-bottom:30px;
 }
+
 .hero-buttons{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
     gap:12px;
 }
+
 .button{
     display:inline-flex;
     align-items:center;
@@ -230,30 +266,36 @@ nav{
     cursor:pointer;
     transition:.35s;
 }
+
 .button i{
     width:17px;
     height:17px;
 }
+
 .button-primary{
     background:var(--vinho);
     color:white;
     border:1px solid var(--vinho);
 }
+
 .button-primary:hover{
     background:var(--vinho-escuro);
     transform:translateY(-3px);
     box-shadow:0 12px 30px rgba(84,19,27,.22);
 }
+
 .button-secondary{
     background:transparent;
     color:var(--vinho);
     border:1px solid var(--dourado);
 }
+
 .button-secondary:hover{
     background:var(--dourado);
     color:white;
     transform:translateY(-3px);
 }
+
 .hero-photo{
     position:absolute;
     right:0;
@@ -263,6 +305,7 @@ nav{
     z-index:2;
     overflow:hidden;
 }
+
 .hero-photo img{
     width:100%;
     height:100%;
@@ -270,16 +313,21 @@ nav{
     object-position:center top;
     display:block;
 }
+
 .hero-photo::after{
     display:none;
 }
+
 /* SEÇÕES */
+
 .section{
     padding:100px 6%;
 }
+
 .sobre{
     background:white;
 }
+
 .sobre-container{
     max-width:1150px;
     margin:auto;
@@ -288,9 +336,11 @@ nav{
     gap:80px;
     align-items:center;
 }
+
 .sobre-photo{
     position:relative;
 }
+
 .sobre-photo::before{
     content:"";
     position:absolute;
@@ -300,56 +350,67 @@ nav{
     height:100%;
     border:1px solid var(--dourado);
 }
+
 .sobre-photo img{
     position:relative;
     z-index:1;
     display:block;
     width:100%;
 }
+
 .section-label{
     color:var(--dourado);
     font-size:11px;
     font-weight:700;
     letter-spacing:3px;
 }
+
 .sobre h2{
     font-size:53px;
     line-height:1;
     margin:14px 0 23px;
 }
+
 .sobre p{
     color:var(--cinza);
     font-size:13px;
     line-height:1.9;
     margin-bottom:17px;
 }
+
 /* ÁREAS */
+
 .areas{
     background:#fffdfa;
 }
+
 .section-heading{
     text-align:center;
     max-width:700px;
     margin:0 auto 55px;
 }
+
 .section-heading h2{
     font-size:52px;
     line-height:1;
     margin-top:12px;
 }
+
 .section-heading p{
     color:var(--cinza);
     font-size:13px;
     line-height:1.8;
     margin-top:17px;
 }
+
 .area-grid{
     max-width:1150px;
     margin:auto;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
+
 .area-card{
     position:relative;
     background:white;
@@ -359,6 +420,7 @@ nav{
     overflow:hidden;
     transition:.4s;
 }
+
 .area-card::after{
     content:"";
     position:absolute;
@@ -369,14 +431,17 @@ nav{
     background:var(--dourado);
     transition:.4s;
 }
+
 .area-card:hover{
     transform:translateY(-8px);
     border-color:#d6c3a5;
     box-shadow:0 20px 45px rgba(84,19,27,.09);
 }
+
 .area-card:hover::after{
     width:100%;
 }
+
 .icon-circle{
     width:72px;
     height:72px;
@@ -387,58 +452,75 @@ nav{
     background:rgba(181,138,72,.1);
     margin-bottom:24px;
 }
+
 .icon-circle i{
     width:35px;
     height:35px;
     color:var(--dourado);
     animation:iconFloat 3s ease-in-out infinite;
 }
+
 .area-card:nth-child(2) .icon-circle i{
     animation-delay:.7s;
 }
+
+.area-card:nth-child(3) .icon-circle i{
+    animation-delay:1.4s;
+}
+
 .area-card:hover .icon-circle i{
     animation:iconAttention .8s ease-in-out;
 }
+
 @keyframes iconFloat{
     0%{transform:translateY(0)}
     50%{transform:translateY(-7px)}
     100%{transform:translateY(0)}
 }
+
 @keyframes iconAttention{
     0%{transform:scale(1) rotate(0)}
     35%{transform:scale(1.15) rotate(-7deg)}
     65%{transform:scale(1.15) rotate(7deg)}
     100%{transform:scale(1) rotate(0)}
 }
+
 .area-card h3{
     font-size:29px;
     margin-bottom:14px;
 }
+
 .area-card p{
     color:var(--cinza);
     font-size:12px;
     line-height:1.8;
 }
+
 /* DIFERENCIAIS */
+
 .diferenciais{
     background:var(--vinho-escuro);
     color:white;
     padding:85px 6%;
 }
+
 .diferenciais-grid{
     max-width:1150px;
     margin:auto;
     display:grid;
     grid-template-columns:repeat(4,1fr);
 }
+
 .diferencial{
     text-align:center;
     padding:20px 25px;
     border-right:1px solid rgba(255,255,255,.15);
 }
+
 .diferencial:last-child{
     border-right:none;
 }
+
 .diferencial-icon{
     height:65px;
     display:flex;
@@ -446,21 +528,26 @@ nav{
     justify-content:center;
     margin-bottom:15px;
 }
+
 .diferencial-icon i{
     width:39px;
     height:39px;
     color:var(--dourado-claro);
     animation:differentialFloat 3s ease-in-out infinite;
 }
+
 .diferencial:nth-child(2) i{
     animation-delay:.5s
 }
+
 .diferencial:nth-child(3) i{
     animation-delay:1s
 }
+
 .diferencial:nth-child(4) i{
     animation-delay:1.5s
 }
+
 @keyframes differentialFloat{
     0%,100%{
         transform:translateY(0)
@@ -469,26 +556,32 @@ nav{
         transform:translateY(-6px) scale(1.08)
     }
 }
+
 .diferencial h3{
     font-size:25px;
     margin-bottom:10px;
 }
+
 .diferencial p{
     font-size:11px;
     line-height:1.7;
     opacity:.8;
 }
+
 /* CONTATO */
+
 .contato{
     background:var(--creme);
     text-align:center;
     padding:100px 6%;
 }
+
 .contato h2{
     font-size:55px;
     line-height:1;
     margin:13px 0 18px;
 }
+
 .contato-description{
     max-width:600px;
     margin:auto auto 30px;
@@ -496,37 +589,45 @@ nav{
     font-size:13px;
     line-height:1.8;
 }
+
 .contact-buttons{
     display:flex;
     justify-content:center;
     gap:12px;
     flex-wrap:wrap;
 }
+
 /* RODAPÉ */
+
 footer{
     background:#210609;
     color:white;
     text-align:center;
     padding:48px 6%;
 }
+
 .footer-name{
     font-family:'Cormorant Garamond',serif;
     font-size:30px;
     letter-spacing:1px;
     margin-bottom:8px;
 }
+
 .footer-subtitle{
     color:var(--dourado-claro);
     font-size:9px;
     letter-spacing:3px;
     margin-bottom:18px;
 }
+
 footer p{
     color:rgba(255,255,255,.68);
     font-size:10px;
     line-height:1.8;
 }
+
 /* WHATSAPP */
+
 .whatsapp{
     position:fixed;
     right:25px;
@@ -544,10 +645,12 @@ footer p{
     box-shadow:0 8px 25px rgba(0,0,0,.2);
     animation:whatsappPulse 2.5s infinite;
 }
+
 .whatsapp i{
     width:29px;
     height:29px;
 }
+
 @keyframes whatsappPulse{
     0%{
         box-shadow:0 0 0 0 rgba(37,211,102,.5)
@@ -559,7 +662,9 @@ footer p{
         box-shadow:0 0 0 0 rgba(37,211,102,0)
     }
 }
+
 /* VOLTAR AO TOPO */
+
 .back-top{
     position:fixed;
     right:34px;
@@ -578,36 +683,47 @@ footer p{
     transition:.3s;
     z-index:998;
 }
+
 .back-top.visible{
     opacity:1;
     pointer-events:auto;
 }
+
 .back-top i{
     width:18px;
     height:18px;
 }
+
 /* ANIMAÇÃO */
+
 .reveal{
     opacity:0;
     transform:translateY(35px);
     transition:opacity .8s ease,transform .8s ease;
 }
+
 .reveal.active{
     opacity:1;
     transform:translateY(0);
 }
+
 /* TABLET */
+
 @media(max-width:950px){
+
     .top-bar{
         display:none;
     }
+
     nav{
         height:76px;
         padding:0 22px;
     }
+
     .menu-button{
         display:block;
     }
+
     .nav-links{
         position:absolute;
         top:76px;
@@ -623,36 +739,46 @@ footer p{
         transition:.4s;
         box-shadow:0 15px 30px rgba(0,0,0,.1);
     }
+
     .nav-links.open{
         transform:translateY(0);
     }
+
     .nav-links a{
         font-size:13px;
     }
+
     .nav-button{
         justify-content:center;
     }
+
     .hero{
         min-height:auto;
         display:block;
         padding:55px 22px 0;
         background:#f8f5f0;
     }
+
     .hero-content{
         width:100%;
     }
+
     .hero h1{
         font-size:52px;
     }
+
     .hero-description{
         font-size:13px;
     }
+
     .hero-buttons{
         width:100%;
     }
+
     .hero-buttons .button{
         width:100%;
     }
+
     .hero-photo{
         position:relative;
         width:calc(100% + 44px);
@@ -661,107 +787,134 @@ footer p{
         margin-top:40px;
         z-index:2;
     }
-    .hero-photo::after{
-        display:none;
-    }
+
     .section{
         padding:75px 22px;
     }
+
     .sobre-container{
         grid-template-columns:1fr;
         gap:55px;
     }
+
     .sobre h2{
         font-size:45px;
     }
+
     .section-heading h2{
         font-size:45px;
     }
+
     .area-grid{
         grid-template-columns:1fr 1fr;
     }
+
     .diferenciais{
         padding:65px 22px;
     }
+
     .diferenciais-grid{
         grid-template-columns:1fr 1fr;
     }
+
     .diferencial{
         border-right:none;
         border-bottom:1px solid rgba(255,255,255,.15);
         padding:25px 15px;
     }
+
     .diferencial:nth-child(3),
     .diferencial:nth-child(4){
         border-bottom:none;
     }
+
     .contato{
         padding:75px 22px;
     }
+
     .contato h2{
         font-size:45px;
     }
 }
+
 /* CELULAR */
+
 @media(max-width:550px){
+
     .logo-monogram{
         font-size:34px;
     }
+
     .logo-divider{
         height:35px;
     }
+
     .logo-name{
         font-size:18px;
     }
+
     .logo-subtitle{
         font-size:6px;
         letter-spacing:2px;
     }
+
     .hero{
         padding-left:20px;
         padding-right:20px;
     }
+
     .hero h1{
         font-size:44px;
     }
+
     .hero-photo{
         width:calc(100% + 40px);
         margin-left:-20px;
         height:350px;
     }
+
     .section-heading h2,
     .sobre h2,
     .contato h2{
         font-size:39px;
     }
+
     .area-grid{
         grid-template-columns:1fr;
     }
+
     .area-card{
         min-height:auto;
         padding:30px 25px;
     }
+
     .diferenciais-grid{
         grid-template-columns:1fr 1fr;
     }
+
     .diferencial h3{
         font-size:21px;
     }
+
     .diferencial p{
         font-size:10px;
     }
+
     .contact-buttons{
         flex-direction:column;
     }
+
     .contact-buttons .button{
         width:100%;
     }
+
     .whatsapp{
         width:55px;
         height:55px;
         right:18px;
         bottom:18px;
     }
+
     .back-top{
         right:20px;
         bottom:85px;
@@ -769,39 +922,49 @@ footer p{
 }
 </style>
 </head>
+
 <body>
-<!-- TOPO -->
+
 <div class="top-bar">
     <div class="top-left">
         <div class="top-item">
             <i data-lucide="shield-check"></i>
             Atendimento jurídico profissional
         </div>
+
         <div class="top-item">
             <i data-lucide="clock-3"></i>
             Atendimento com hora marcada
         </div>
     </div>
+
     <div>
         Josiane Nunes Advocacia
     </div>
 </div>
-<!-- MENU -->
+
 <nav>
+
     <a href="#inicio" class="logo">
+
         <div class="logo-monogram">
             JN
         </div>
+
         <div class="logo-divider"></div>
+
         <div>
             <div class="logo-name">
                 JOSIANE NUNES
             </div>
+
             <span class="logo-subtitle">
                 ADVOCACIA
             </span>
         </div>
+
     </a>
+
     <button
         class="menu-button"
         id="menuButton"
@@ -809,22 +972,19 @@ footer p{
     >
         <i data-lucide="menu"></i>
     </button>
+
     <div class="nav-links" id="navLinks">
-        <a href="#inicio">
-            Início
-        </a>
-        <a href="#sobre">
-            Sobre
-        </a>
-        <a href="#areas">
-            Áreas de Atuação
-        </a>
-        <a href="#diferenciais">
-            Diferenciais
-        </a>
-        <a href="#contato">
-            Contato
-        </a>
+
+        <a href="#inicio">Início</a>
+
+        <a href="#sobre">Sobre</a>
+
+        <a href="#areas">Áreas de Atuação</a>
+
+        <a href="#diferenciais">Diferenciais</a>
+
+        <a href="#contato">Contato</a>
+
         <a
             href="./agendamento.html"
             class="nav-button"
@@ -832,26 +992,34 @@ footer p{
             <i data-lucide="calendar-days"></i>
             Agendar Atendimento
         </a>
+
     </div>
+
 </nav>
-<!-- HERO -->
+
 <section class="hero" id="inicio">
+
     <div class="hero-content">
+
         <div class="hero-label">
             ADVOCACIA COM PROPÓSITO
         </div>
+
         <h1>
             Defendendo seus direitos,
             <span>buscando justiça.</span>
         </h1>
+
         <div class="gold-line"></div>
+
         <p class="hero-description">
             Atendimento jurídico pautado pela ética,
             responsabilidade e dedicação, com análise
             individualizada de cada situação.
         </p>
+
         <div class="hero-buttons">
-            <!-- WHATSAPP DIRETO -->
+
             <a
                 href="https://wa.me/5587991699046?text=Ol%C3%A1%2C%20Dra.%20Josiane%21%20Gostaria%20de%20obter%20informa%C3%A7%C3%B5es%20sobre%20um%20atendimento%20jur%C3%ADdico."
                 class="button button-primary"
@@ -859,6 +1027,7 @@ footer p{
                 <i data-lucide="message-circle"></i>
                 Fale Conosco
             </a>
+
             <a
                 href="./agendamento.html"
                 class="button button-secondary"
@@ -866,49 +1035,67 @@ footer p{
                 <i data-lucide="calendar-days"></i>
                 Agendar Atendimento
             </a>
+
         </div>
+
     </div>
+
     <div class="hero-photo">
+
         <img
             src="Josiane-principal.JPG"
             alt="Josiane Nunes - Advogada"
         >
+
     </div>
+
 </section>
-<!-- SOBRE -->
+
 <section
     class="section sobre reveal"
     id="sobre"
 >
+
     <div class="sobre-container">
+
         <div class="sobre-photo">
+
             <img
                 src="Josiane.JPG"
                 alt="Josiane Nunes"
             >
+
         </div>
+
         <div>
+
             <div class="section-label">
                 SOBRE A PROFISSIONAL
             </div>
+
             <h2>
                 Uma advocacia feita para pessoas.
             </h2>
+
             <p>
                 A atuação jurídica é construída com responsabilidade,
                 ética e atenção às particularidades de cada caso.
             </p>
+
             <p>
                 Com formação e especialização voltadas à área jurídica,
                 o trabalho busca oferecer orientação clara e estratégias
                 adequadas para cada situação apresentada.
             </p>
+
             <p>
                 O compromisso é proporcionar um atendimento profissional,
                 transparente e humanizado, buscando sempre a melhor
                 condução possível para cada demanda.
             </p>
+
             <br>
+
             <a
                 href="https://wa.me/5587991699046?text=Ol%C3%A1%2C%20Dra.%20Josiane%21%20Gostaria%20de%20obter%20informa%C3%A7%C3%B5es%20sobre%20um%20atendimento%20jur%C3%ADdico."
                 class="button button-primary"
@@ -916,123 +1103,189 @@ footer p{
                 Quero falar com a advogada
                 <i data-lucide="arrow-right"></i>
             </a>
+
         </div>
+
     </div>
+
 </section>
-<!-- ÁREAS -->
+
 <section
     class="section areas reveal"
     id="areas"
 >
+
     <div class="section-heading">
+
         <div class="section-label">
             ÁREAS DE ATUAÇÃO
         </div>
+
         <h2>
             Conheça as áreas de atuação
         </h2>
+
         <p>
             Orientação e acompanhamento jurídico de acordo
             com as necessidades de cada cliente.
         </p>
+
     </div>
+
     <div class="area-grid">
+
         <article class="area-card">
+
             <div class="icon-circle">
                 <i data-lucide="scale"></i>
             </div>
+
             <h3>
                 Direito Criminal
             </h3>
+
             <p>
                 Atuação e orientação jurídica em questões relacionadas
                 ao Direito Penal e ao processo penal, sempre com análise
                 cuidadosa de cada caso.
             </p>
+
         </article>
+
         <article class="area-card">
+
+            <div class="icon-circle">
+                <i data-lucide="landmark"></i>
+            </div>
+
+            <h3>
+                Direito Previdenciário
+            </h3>
+
+            <p>
+                Orientação jurídica em questões relacionadas aos benefícios
+                previdenciários, direitos perante o INSS e demais demandas
+                relacionadas à Previdência Social.
+            </p>
+
+        </article>
+
+        <article class="area-card">
+
             <div class="icon-circle">
                 <i data-lucide="briefcase-business"></i>
             </div>
+
             <h3>
                 Direito Trabalhista
             </h3>
+
             <p>
                 Orientação em demandas relacionadas às relações de trabalho,
                 direitos trabalhistas e demais questões jurídicas dessa área.
             </p>
+
         </article>
+
     </div>
+
 </section>
-<!-- DIFERENCIAIS -->
+
 <section
     class="diferenciais reveal"
     id="diferenciais"
 >
+
     <div class="diferenciais-grid">
+
         <div class="diferencial">
+
             <div class="diferencial-icon">
                 <i data-lucide="shield-check"></i>
             </div>
+
             <h3>
                 Ética
             </h3>
+
             <p>
                 Atuação pautada pela ética e responsabilidade profissional.
             </p>
+
         </div>
+
         <div class="diferencial">
+
             <div class="diferencial-icon">
                 <i data-lucide="user-round"></i>
             </div>
+
             <h3>
                 Personalização
             </h3>
+
             <p>
                 Cada atendimento considera as particularidades do caso.
             </p>
+
         </div>
+
         <div class="diferencial">
+
             <div class="diferencial-icon">
                 <i data-lucide="target"></i>
             </div>
+
             <h3>
                 Estratégia
             </h3>
+
             <p>
                 Busca por soluções jurídicas adequadas a cada situação.
             </p>
+
         </div>
+
         <div class="diferencial">
+
             <div class="diferencial-icon">
                 <i data-lucide="message-square"></i>
             </div>
+
             <h3>
                 Transparência
             </h3>
+
             <p>
                 Comunicação clara e atendimento próximo durante o processo.
             </p>
+
         </div>
+
     </div>
+
 </section>
-<!-- CONTATO -->
+
 <section
     class="contato reveal"
     id="contato"
 >
+
     <div class="section-label">
         ENTRE EM CONTATO
     </div>
+
     <h2>
         Vamos conversar?
     </h2>
+
     <p class="contato-description">
         Entre em contato para conhecer o atendimento e verificar
         a possibilidade de agendar uma consulta.
     </p>
+
     <div class="contact-buttons">
-        <!-- WHATSAPP DIRETO -->
+
         <a
             href="https://wa.me/5587991699046?text=Ol%C3%A1%2C%20Dra.%20Josiane%21%20Gostaria%20de%20obter%20informa%C3%A7%C3%B5es%20sobre%20um%20atendimento%20jur%C3%ADdico."
             class="button button-primary"
@@ -1040,6 +1293,7 @@ footer p{
             <i data-lucide="message-circle"></i>
             Falar pelo WhatsApp
         </a>
+
         <a
             href="./agendamento.html"
             class="button button-secondary"
@@ -1047,25 +1301,33 @@ footer p{
             <i data-lucide="calendar-days"></i>
             Agendar Atendimento
         </a>
+
     </div>
+
 </section>
-<!-- RODAPÉ -->
+
 <footer>
+
     <div class="footer-name">
         JOSIANE NUNES
     </div>
+
     <div class="footer-subtitle">
         ADVOCACIA
     </div>
+
     <p>
         Advocacia com ética, compromisso, estratégia e responsabilidade.
     </p>
+
     <br>
+
     <p>
         © 2026 Josiane Nunes Advocacia. Todos os direitos reservados.
     </p>
+
 </footer>
-<!-- BOTÃO WHATSAPP FLUTUANTE -->
+
 <a
     href="https://wa.me/5587991699046?text=Ol%C3%A1%2C%20Dra.%20Josiane%21%20Gostaria%20de%20obter%20informa%C3%A7%C3%B5es%20sobre%20um%20atendimento%20jur%C3%ADdico."
     class="whatsapp"
@@ -1073,7 +1335,7 @@ footer p{
 >
     <i data-lucide="message-circle"></i>
 </a>
-<!-- BOTÃO VOLTAR AO TOPO -->
+
 <a
     href="#inicio"
     class="back-top"
@@ -1082,49 +1344,68 @@ footer p{
 >
     <i data-lucide="arrow-up"></i>
 </a>
+
 <script>
-/* ÍCONES */
+
 lucide.createIcons();
-/* MENU DO CELULAR */
-const menuButton = document.getElementById("menuButton");
-const navLinks = document.getElementById("navLinks");
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const navLinks =
+    document.getElementById("navLinks");
+
 menuButton.addEventListener("click", function(){
     navLinks.classList.toggle("open");
 });
+
 document.querySelectorAll(".nav-links a").forEach(function(link){
+
     link.addEventListener("click", function(){
         navLinks.classList.remove("open");
     });
+
 });
-/* ANIMAÇÃO DAS SEÇÕES */
+
 const revealElements =
     document.querySelectorAll(".reveal");
+
 const revealObserver =
     new IntersectionObserver(
         function(entries){
+
             entries.forEach(function(entry){
+
                 if(entry.isIntersecting){
                     entry.target.classList.add("active");
                 }
+
             });
+
         },
         {
             threshold:0.12
         }
     );
+
 revealElements.forEach(function(element){
     revealObserver.observe(element);
 });
-/* BOTÃO VOLTAR AO TOPO */
+
 const backTop =
     document.getElementById("backTop");
+
 window.addEventListener("scroll", function(){
+
     if(window.scrollY > 500){
         backTop.classList.add("visible");
     }else{
         backTop.classList.remove("visible");
     }
+
 });
+
 </script>
+
 </body>
 </html>
