@@ -23,7 +23,6 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
-
     <style>
 
         * {
@@ -32,285 +31,159 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --vinho: #54131b;
-            --vinho-escuro: #2b080d;
-            --dourado: #b58a48;
-            --dourado-claro: #d7b976;
-            --creme: #f8f5f0;
-            --texto: #2d1719;
-            --cinza: #6b6060;
-            --borda: #e5ddd3;
-            --branco: #ffffff;
-        }
-
         html {
             scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--creme);
-            color: var(--texto);
+            background: #f8f5f0;
+            color: #2d1719;
+            min-height: 100vh;
+        }
+
+        :root {
+            --vinho: #54131b;
+            --vinho-escuro: #2b080d;
+            --dourado: #b58a48;
+            --dourado-claro: #d7b976;
+            --creme: #f8f5f0;
+            --branco: #ffffff;
+            --texto: #2d1719;
+            --cinza: #6b6060;
+            --borda: #e5ddd3;
         }
 
         h1,
         h2,
-        h3 {
+        h3,
+        .logo-monogram,
+        .logo-name {
             font-family: 'Cormorant Garamond', serif;
         }
 
-
-        /* NAVBAR */
-
-        nav {
+        header {
+            background: white;
             height: 88px;
-
             padding: 0 6%;
-
-            background: rgba(255,255,255,0.97);
-
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
-            box-shadow:
-                0 5px 25px rgba(0,0,0,0.06);
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 10;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
         }
 
         .logo {
             display: flex;
-
             align-items: center;
-
             gap: 12px;
-
             text-decoration: none;
-
             color: var(--texto);
         }
 
         .logo-monogram {
-            font-family: 'Cormorant Garamond', serif;
-
             font-size: 42px;
-
             line-height: 1;
-
             font-weight: 600;
-
             color: var(--vinho);
         }
 
         .logo-divider {
             width: 1px;
-
             height: 42px;
-
             background: var(--dourado);
         }
 
         .logo-name {
-            font-family: 'Cormorant Garamond', serif;
-
             font-size: 22px;
-
             font-weight: 600;
-
             letter-spacing: 1px;
         }
 
         .logo-subtitle {
             display: block;
-
             margin-top: 2px;
-
+            font-family: 'Montserrat', sans-serif;
             font-size: 8px;
-
             letter-spacing: 3px;
-
             color: var(--dourado);
         }
 
-        .back-link {
-            display: flex;
-
+        .back-site {
+            display: inline-flex;
             align-items: center;
-
             gap: 8px;
-
             text-decoration: none;
-
             color: var(--vinho);
-
             font-size: 12px;
-
             font-weight: 600;
-
+            border: 1px solid var(--dourado);
+            padding: 12px 18px;
+            border-radius: 3px;
             transition: 0.3s;
         }
 
-        .back-link:hover {
-            color: var(--dourado);
+        .back-site:hover {
+            background: var(--dourado);
+            color: white;
         }
 
-        .back-link i {
+        .back-site i {
             width: 16px;
             height: 16px;
         }
 
+        .page {
+            width: 100%;
+            padding: 75px 20px;
+        }
 
-        /* CABEÇALHO */
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
 
-        .page-header {
+        .heading {
             text-align: center;
-
-            padding: 75px 20px 45px;
+            margin-bottom: 45px;
         }
 
         .section-label {
             color: var(--dourado);
-
             font-size: 11px;
-
             font-weight: 700;
-
             letter-spacing: 3px;
-
-            margin-bottom: 13px;
         }
 
-        .page-header h1 {
-            font-size: 58px;
-
+        .heading h1 {
+            font-size: 56px;
             line-height: 1;
-
-            margin-bottom: 18px;
+            margin: 14px 0 18px;
         }
 
-        .page-header p {
+        .heading p {
             max-width: 600px;
-
             margin: auto;
-
             color: var(--cinza);
-
             font-size: 13px;
-
             line-height: 1.8;
         }
 
-
-        /* CONTAINER */
-
-        .agendamento-container {
-            max-width: 1000px;
-
-            margin: 0 auto 90px;
-
-            padding: 0 22px;
-        }
-
-
-        /* CARD */
-
         .form-card {
             background: white;
-
             border: 1px solid var(--borda);
-
-            box-shadow:
-                0 20px 55px rgba(84,19,27,0.08);
-
-            padding: 50px;
+            padding: 45px;
+            box-shadow: 0 20px 50px rgba(84,19,27,0.07);
         }
-
-        .form-top {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 35px;
-
-            margin-bottom: 35px;
-
-            padding-bottom: 30px;
-
-            border-bottom: 1px solid var(--borda);
-        }
-
-        .info-box {
-            display: flex;
-
-            gap: 15px;
-
-            align-items: flex-start;
-        }
-
-        .info-icon {
-            width: 48px;
-
-            height: 48px;
-
-            flex-shrink: 0;
-
-            border-radius: 50%;
-
-            background: rgba(181,138,72,0.1);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-        }
-
-        .info-icon i {
-            width: 22px;
-
-            height: 22px;
-
-            color: var(--dourado);
-        }
-
-        .info-box h3 {
-            font-size: 23px;
-
-            margin-bottom: 5px;
-        }
-
-        .info-box p {
-            color: var(--cinza);
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-
-        /* FORMULÁRIO */
 
         .form-grid {
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             gap: 22px;
         }
 
         .form-group {
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
         }
 
@@ -320,35 +193,23 @@
 
         label {
             font-size: 11px;
-
             font-weight: 700;
-
             color: var(--texto);
-
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         input,
         select,
         textarea {
             width: 100%;
-
             border: 1px solid var(--borda);
-
             background: #fffdfa;
-
-            color: var(--texto);
-
-            border-radius: 3px;
-
             padding: 14px 15px;
-
             font-family: 'Montserrat', sans-serif;
-
             font-size: 12px;
-
+            color: var(--texto);
             outline: none;
-
+            border-radius: 2px;
             transition: 0.3s;
         }
 
@@ -356,261 +217,218 @@
         select:focus,
         textarea:focus {
             border-color: var(--dourado);
-
-            box-shadow:
-                0 0 0 3px rgba(181,138,72,0.08);
+            box-shadow: 0 0 0 3px rgba(181,138,72,0.08);
         }
 
         textarea {
-            min-height: 125px;
-
+            min-height: 120px;
             resize: vertical;
         }
 
-        .required {
-            color: var(--dourado);
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
+        .radio-option {
+            position: relative;
+        }
 
-        /* AVISO */
+        .radio-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
 
-        .privacy-box {
+        .radio-option label {
+            min-height: 50px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--borda);
+            background: #fffdfa;
+            color: var(--texto);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-            gap: 10px;
+        .radio-option input:checked + label {
+            background: var(--vinho);
+            color: white;
+            border-color: var(--vinho);
+        }
 
-            margin-top: 25px;
-
-            padding: 17px;
-
-            background: var(--creme);
-
+        .notice {
+            background: #fff8ed;
             border-left: 3px solid var(--dourado);
-        }
-
-        .privacy-box i {
-            width: 18px;
-
-            height: 18px;
-
-            color: var(--dourado);
-
-            flex-shrink: 0;
-        }
-
-        .privacy-box p {
+            padding: 15px;
+            margin-top: 25px;
             color: var(--cinza);
-
-            font-size: 10px;
-
+            font-size: 11px;
             line-height: 1.7;
         }
 
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 25px;
+        }
 
-        /* BOTÃO */
+        .checkbox-group input {
+            width: 16px;
+            height: 16px;
+            margin-top: 1px;
+            accent-color: var(--vinho);
+        }
 
-        .submit-area {
-            text-align: center;
-
-            margin-top: 32px;
+        .checkbox-group label {
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 1.6;
+            color: var(--cinza);
         }
 
         .submit-button {
+            width: 100%;
             min-height: 54px;
-
-            padding: 0 35px;
-
+            margin-top: 28px;
             border: none;
-
-            border-radius: 3px;
-
             background: var(--vinho);
-
             color: white;
-
             font-family: 'Montserrat', sans-serif;
-
             font-size: 12px;
-
-            font-weight: 600;
-
+            font-weight: 700;
             cursor: pointer;
-
-            display: inline-flex;
-
+            border-radius: 3px;
+            transition: 0.3s;
+            display: flex;
             align-items: center;
-
             justify-content: center;
-
-            gap: 10px;
-
-            transition: 0.35s;
+            gap: 9px;
         }
 
         .submit-button:hover {
             background: var(--vinho-escuro);
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 12px 30px rgba(84,19,27,0.22);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(84,19,27,0.2);
         }
 
         .submit-button i {
             width: 18px;
-
             height: 18px;
         }
 
+        .success {
+            display: none;
+            text-align: center;
+            padding: 25px 10px;
+        }
 
-        /* RODAPÉ */
+        .success-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: rgba(181,138,72,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .success-icon i {
+            width: 38px;
+            height: 38px;
+            color: var(--dourado);
+        }
+
+        .success h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .success p {
+            color: var(--cinza);
+            font-size: 12px;
+            line-height: 1.8;
+            max-width: 550px;
+            margin: auto;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 52px;
+            padding: 0 25px;
+            margin-top: 25px;
+            background: var(--vinho);
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            background: var(--vinho-escuro);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-button i {
+            width: 18px;
+            height: 18px;
+        }
 
         footer {
             background: #210609;
-
             color: white;
-
             text-align: center;
-
             padding: 45px 20px;
         }
 
         .footer-name {
             font-family: 'Cormorant Garamond', serif;
-
             font-size: 30px;
-
-            letter-spacing: 1px;
-
             margin-bottom: 8px;
         }
 
         .footer-subtitle {
             color: var(--dourado-claro);
-
             font-size: 9px;
-
             letter-spacing: 3px;
-
             margin-bottom: 18px;
         }
 
         footer p {
             color: rgba(255,255,255,0.68);
-
             font-size: 10px;
-
             line-height: 1.8;
         }
 
-
-        /* MODAL DE CONFIRMAÇÃO */
-
-        .success-message {
+        .error-message {
             display: none;
-
-            position: fixed;
-
-            inset: 0;
-
-            background: rgba(43,8,13,0.75);
-
-            z-index: 100;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
+            color: #a12626;
+            font-size: 10px;
+            margin-top: 5px;
         }
 
-        .success-message.show {
-            display: flex;
+        .domingo-aviso {
+            display: none;
+            color: #a12626;
+            font-size: 10px;
+            margin-top: 6px;
         }
-
-        .success-card {
-            background: white;
-
-            max-width: 500px;
-
-            width: 100%;
-
-            padding: 45px 35px;
-
-            text-align: center;
-
-            box-shadow:
-                0 25px 70px rgba(0,0,0,0.25);
-        }
-
-        .success-icon {
-            width: 70px;
-
-            height: 70px;
-
-            margin: 0 auto 20px;
-
-            border-radius: 50%;
-
-            background: rgba(181,138,72,0.1);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-        }
-
-        .success-icon i {
-            width: 35px;
-
-            height: 35px;
-
-            color: var(--dourado);
-        }
-
-        .success-card h2 {
-            font-size: 38px;
-
-            margin-bottom: 12px;
-        }
-
-        .success-card p {
-            color: var(--cinza);
-
-            font-size: 12px;
-
-            line-height: 1.8;
-
-            margin-bottom: 25px;
-        }
-
-        .close-button {
-            border: none;
-
-            background: var(--vinho);
-
-            color: white;
-
-            padding: 13px 25px;
-
-            cursor: pointer;
-
-            border-radius: 3px;
-
-            font-size: 11px;
-
-            font-weight: 600;
-        }
-
-
-        /* RESPONSIVO */
 
         @media (max-width: 700px) {
 
-            nav {
+            header {
                 height: 76px;
-
                 padding: 0 20px;
             }
 
@@ -628,35 +446,24 @@
 
             .logo-subtitle {
                 font-size: 6px;
-
                 letter-spacing: 2px;
             }
 
-            .back-link {
-                font-size: 0;
+            .back-site {
+                padding: 10px 12px;
+                font-size: 10px;
             }
 
-            .back-link i {
-                width: 22px;
-                height: 22px;
+            .page {
+                padding: 55px 18px;
             }
 
-            .page-header {
-                padding: 55px 20px 35px;
-            }
-
-            .page-header h1 {
+            .heading h1 {
                 font-size: 45px;
             }
 
             .form-card {
-                padding: 30px 20px;
-            }
-
-            .form-top {
-                grid-template-columns: 1fr;
-
-                gap: 25px;
+                padding: 28px 20px;
             }
 
             .form-grid {
@@ -667,8 +474,8 @@
                 grid-column: auto;
             }
 
-            .submit-button {
-                width: 100%;
+            .radio-group {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -676,15 +483,11 @@
 
 </head>
 
-
 <body>
 
+    <header>
 
-    <!-- NAVBAR -->
-
-    <nav>
-
-        <a href="index.html" class="logo">
+        <a href="./index.html" class="logo">
 
             <div class="logo-monogram">
                 JN
@@ -706,352 +509,373 @@
 
         </a>
 
-
-        <a
-            href="index.html"
-            class="back-link"
-        >
+        <a href="./index.html" class="back-site">
 
             <i data-lucide="arrow-left"></i>
 
-            Voltar para o início
+            Voltar ao site
 
         </a>
-
-    </nav>
-
-
-    <!-- CABEÇALHO -->
-
-    <header class="page-header">
-
-        <div class="section-label">
-            AGENDAMENTO
-        </div>
-
-        <h1>
-            Agende seu atendimento
-        </h1>
-
-        <p>
-            Preencha as informações abaixo para solicitar
-            um atendimento jurídico. Após o envio, os dados
-            serão encaminhados para confirmação.
-        </p>
 
     </header>
 
 
-    <!-- FORMULÁRIO -->
+    <main class="page">
 
-    <main class="agendamento-container">
+        <div class="container">
 
-        <form
-            class="form-card"
-            id="appointmentForm"
-        >
+            <div class="heading">
 
-
-            <div class="form-top">
-
-                <div class="info-box">
-
-                    <div class="info-icon">
-                        <i data-lucide="calendar-days"></i>
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Escolha seu atendimento
-                        </h3>
-
-                        <p>
-                            Informe a modalidade, área jurídica,
-                            data e horário de sua preferência.
-                        </p>
-
-                    </div>
-
+                <div class="section-label">
+                    AGENDAMENTO
                 </div>
 
-
-                <div class="info-box">
-
-                    <div class="info-icon">
-                        <i data-lucide="shield-check"></i>
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Atendimento profissional
-                        </h3>
-
-                        <p>
-                            Suas informações serão utilizadas
-                            para organizar o contato e o atendimento.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-
-                <!-- NOME -->
-
-                <div class="form-group">
-
-                    <label for="nome">
-                        Nome completo <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        placeholder="Digite seu nome completo"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- TELEFONE -->
-
-                <div class="form-group">
-
-                    <label for="telefone">
-                        Telefone / WhatsApp <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="telefone"
-                        name="telefone"
-                        placeholder="(87) 99999-9999"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- EMAIL -->
-
-                <div class="form-group">
-
-                    <label for="email">
-                        E-mail
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="seuemail@email.com"
-                    >
-
-                </div>
-
-
-                <!-- ÁREA -->
-
-                <div class="form-group">
-
-                    <label for="area">
-                        Área jurídica <span class="required">*</span>
-                    </label>
-
-                    <select
-                        id="area"
-                        name="area"
-                        required
-                    >
-
-                        <option value="">
-                            Selecione uma opção
-                        </option>
-
-                        <option value="Direito Criminal">
-                            Direito Criminal
-                        </option>
-
-                        <option value="Direito Trabalhista">
-                            Direito Trabalhista
-                        </option>
-
-                        <option value="Outra questão jurídica">
-                            Outra questão jurídica
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- MODALIDADE -->
-
-                <div class="form-group">
-
-                    <label for="modalidade">
-                        Modalidade <span class="required">*</span>
-                    </label>
-
-                    <select
-                        id="modalidade"
-                        name="modalidade"
-                        required
-                    >
-
-                        <option value="">
-                            Selecione uma opção
-                        </option>
-
-                        <option value="Atendimento presencial">
-                            Atendimento presencial
-                        </option>
-
-                        <option value="Atendimento online">
-                            Atendimento online
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- DATA -->
-
-                <div class="form-group">
-
-                    <label for="data">
-                        Data de preferência <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="date"
-                        id="data"
-                        name="data"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- HORÁRIO -->
-
-                <div class="form-group">
-
-                    <label for="horario">
-                        Horário de preferência <span class="required">*</span>
-                    </label>
-
-                    <select
-                        id="horario"
-                        name="horario"
-                        required
-                    >
-
-                        <option value="">
-                            Selecione um horário
-                        </option>
-
-                        <option value="08:00">
-                            08:00
-                        </option>
-
-                        <option value="09:00">
-                            09:00
-                        </option>
-
-                        <option value="10:00">
-                            10:00
-                        </option>
-
-                        <option value="11:00">
-                            11:00
-                        </option>
-
-                        <option value="14:00">
-                            14:00
-                        </option>
-
-                        <option value="15:00">
-                            15:00
-                        </option>
-
-                        <option value="16:00">
-                            16:00
-                        </option>
-
-                        <option value="17:00">
-                            17:00
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- ASSUNTO -->
-
-                <div class="form-group full">
-
-                    <label for="assunto">
-                        Conte brevemente sobre o motivo do contato
-                    </label>
-
-                    <textarea
-                        id="assunto"
-                        name="assunto"
-                        placeholder="Escreva brevemente como podemos ajudar..."
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="privacy-box">
-
-                <i data-lucide="lock-keyhole"></i>
+                <h1>
+                    Agende seu atendimento
+                </h1>
 
                 <p>
-                    Evite inserir informações extremamente pessoais
-                    ou documentos neste campo. O primeiro contato
-                    servirá para compreender sua necessidade e
-                    orientar sobre os próximos passos.
+                    Preencha as informações abaixo para
+                    solicitar um atendimento jurídico.
+                    Após o envio, entraremos em contato
+                    pelo WhatsApp para confirmar o horário.
                 </p>
 
             </div>
 
 
-            <div class="submit-area">
+            <div class="form-card">
 
-                <button
-                    type="submit"
-                    class="submit-button"
+                <form id="agendamentoForm">
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group full">
+
+                            <label for="nome">
+                                Nome completo *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Digite seu nome completo"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="telefone">
+                                WhatsApp / Telefone *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                placeholder="(87) 99999-9999"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                E-mail *
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="seuemail@email.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>
+                                Tipo de atendimento *
+                            </label>
+
+                            <div class="radio-group">
+
+                                <div class="radio-option">
+
+                                    <input
+                                        type="radio"
+                                        id="presencial"
+                                        name="tipo"
+                                        value="Presencial"
+                                        required
+                                    >
+
+                                    <label for="presencial">
+                                        Atendimento Presencial
+                                    </label>
+
+                                </div>
+
+
+                                <div class="radio-option">
+
+                                    <input
+                                        type="radio"
+                                        id="online"
+                                        name="tipo"
+                                        value="Online"
+                                    >
+
+                                    <label for="online">
+                                        Atendimento Online
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="area">
+                                Área de atendimento *
+                            </label>
+
+                            <select
+                                id="area"
+                                name="area"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione uma opção
+                                </option>
+
+                                <option value="Direito Criminal">
+                                    Direito Criminal
+                                </option>
+
+                                <option value="Direito Trabalhista">
+                                    Direito Trabalhista
+                                </option>
+
+                                <option value="Outra questão jurídica">
+                                    Outra questão jurídica
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="data">
+                                Data desejada *
+                            </label>
+
+                            <input
+                                type="date"
+                                id="data"
+                                name="data"
+                                required
+                            >
+
+                            <div
+                                class="domingo-aviso"
+                                id="domingoAviso"
+                            >
+                                Aos domingos não há atendimento.
+                                Escolha de segunda a sábado.
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="horario">
+                                Horário desejado *
+                            </label>
+
+                            <select
+                                id="horario"
+                                name="horario"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione o horário
+                                </option>
+
+                                <option value="08:00">
+                                    08:00
+                                </option>
+
+                                <option value="09:00">
+                                    09:00
+                                </option>
+
+                                <option value="10:00">
+                                    10:00
+                                </option>
+
+                                <option value="11:00">
+                                    11:00
+                                </option>
+
+                                <option value="12:00">
+                                    12:00
+                                </option>
+
+                                <option value="13:00">
+                                    13:00
+                                </option>
+
+                                <option value="14:00">
+                                    14:00
+                                </option>
+
+                                <option value="15:00">
+                                    15:00
+                                </option>
+
+                                <option value="16:00">
+                                    16:00
+                                </option>
+
+                                <option value="17:00">
+                                    17:00
+                                </option>
+
+                                <option value="18:00">
+                                    18:00
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="assunto">
+                                Como podemos ajudar?
+                            </label>
+
+                            <textarea
+                                id="assunto"
+                                name="assunto"
+                                placeholder="Conte brevemente o motivo do contato."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notice">
+
+                        <strong>
+                            Importante:
+                        </strong>
+
+                        o preenchimento deste formulário
+                        representa apenas uma solicitação
+                        de atendimento. O horário será
+                        confirmado posteriormente pelo WhatsApp.
+
+                    </div>
+
+
+                    <div class="checkbox-group">
+
+                        <input
+                            type="checkbox"
+                            id="confirmacao"
+                            required
+                        >
+
+                        <label for="confirmacao">
+
+                            Confirmo que as informações
+                            preenchidas estão corretas e
+                            estou ciente de que o agendamento
+                            depende de confirmação.
+
+                        </label>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+
+                        <i data-lucide="calendar-check"></i>
+
+                        Solicitar Atendimento
+
+                    </button>
+
+                </form>
+
+
+                <div
+                    class="success"
+                    id="success"
                 >
 
-                    <i data-lucide="calendar-check"></i>
+                    <div class="success-icon">
 
-                    Solicitar atendimento
+                        <i data-lucide="check"></i>
 
-                </button>
+                    </div>
+
+                    <h2>
+                        Solicitação preparada!
+                    </h2>
+
+                    <p>
+                        Agora você será direcionado ao
+                        WhatsApp para enviar sua solicitação
+                        à advogada. O atendimento será
+                        confirmado posteriormente.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="whatsapp-button"
+                        id="enviarWhatsApp"
+                    >
+
+                        <i data-lucide="message-circle"></i>
+
+                        Enviar pelo WhatsApp
+
+                    </a>
+
+                </div>
 
             </div>
 
-        </form>
+        </div>
 
     </main>
 
-
-    <!-- FOOTER -->
 
     <footer>
 
@@ -1078,52 +902,21 @@
     </footer>
 
 
-    <!-- MENSAGEM -->
-
-    <div
-        class="success-message"
-        id="successMessage"
-    >
-
-        <div class="success-card">
-
-            <div class="success-icon">
-
-                <i data-lucide="check"></i>
-
-            </div>
-
-            <h2>
-                Solicitação preparada!
-            </h2>
-
-            <p>
-                Seus dados foram organizados.
-                Ao confirmar, você poderá encaminhar
-                a solicitação pelo WhatsApp profissional
-                para que o atendimento seja confirmado.
-            </p>
-
-            <button
-                class="close-button"
-                id="closeButton"
-            >
-                Voltar
-            </button>
-
-        </div>
-
-    </div>
-
-
     <script>
 
         lucide.createIcons();
 
 
-        /* =====================================================
+        /* =========================================
+           WHATSAPP DA ADVOGADA
+        ========================================= */
+
+        const numeroWhatsApp = "5587991699046";
+
+
+        /* =========================================
            DATA MÍNIMA
-        ===================================================== */
+        ========================================= */
 
         const dataInput =
             document.getElementById("data");
@@ -1135,46 +928,118 @@
             hoje.getFullYear();
 
         const mes =
-            String(
-                hoje.getMonth() + 1
-            ).padStart(2, "0");
+            String(hoje.getMonth() + 1)
+                .padStart(2, "0");
 
         const dia =
-            String(
-                hoje.getDate()
-            ).padStart(2, "0");
+            String(hoje.getDate())
+                .padStart(2, "0");
 
-        dataInput.min =
+        const dataHoje =
             `${ano}-${mes}-${dia}`;
 
-
-        /* =====================================================
-           WHATSAPP
-        ===================================================== */
-
-        const numeroWhatsApp =
-            "COLOQUE_O_NUMERO_AQUI";
+        dataInput.min = dataHoje;
 
 
-        /* =====================================================
+        /* =========================================
+           IMPEDIR DOMINGO
+        ========================================= */
+
+        const domingoAviso =
+            document.getElementById("domingoAviso");
+
+        dataInput.addEventListener(
+            "change",
+            function () {
+
+                if (!this.value) {
+                    domingoAviso.style.display = "none";
+                    return;
+                }
+
+                const dataSelecionada =
+                    new Date(
+                        this.value + "T12:00:00"
+                    );
+
+                const diaSemana =
+                    dataSelecionada.getDay();
+
+                /*
+                    0 = domingo
+                    1 = segunda
+                    2 = terça
+                    3 = quarta
+                    4 = quinta
+                    5 = sexta
+                    6 = sábado
+                */
+
+                if (diaSemana === 0) {
+
+                    domingoAviso.style.display = "block";
+
+                    alert(
+                        "Aos domingos não há atendimento. Escolha uma data de segunda a sábado."
+                    );
+
+                    this.value = "";
+
+                } else {
+
+                    domingoAviso.style.display = "none";
+
+                }
+
+            }
+        );
+
+
+        /* =========================================
            FORMULÁRIO
-        ===================================================== */
+        ========================================= */
 
         const form =
-            document.getElementById("appointmentForm");
+            document.getElementById("agendamentoForm");
 
-        const successMessage =
-            document.getElementById("successMessage");
+        const success =
+            document.getElementById("success");
 
-        const closeButton =
-            document.getElementById("closeButton");
+        const enviarWhatsApp =
+            document.getElementById("enviarWhatsApp");
+
+
+        let mensagemWhatsApp = "";
 
 
         form.addEventListener(
             "submit",
-            function(event) {
+            function (event) {
 
                 event.preventDefault();
+
+
+                /* Verificação extra contra domingo */
+
+                if (dataInput.value) {
+
+                    const dataSelecionada =
+                        new Date(
+                            dataInput.value + "T12:00:00"
+                        );
+
+                    if (
+                        dataSelecionada.getDay() === 0
+                    ) {
+
+                        alert(
+                            "Aos domingos não há atendimento. Escolha uma data de segunda a sábado."
+                        );
+
+                        return;
+                    }
+
+                }
 
 
                 const nome =
@@ -1186,11 +1051,13 @@
                 const email =
                     document.getElementById("email").value;
 
+                const tipo =
+                    document.querySelector(
+                        'input[name="tipo"]:checked'
+                    ).value;
+
                 const area =
                     document.getElementById("area").value;
-
-                const modalidade =
-                    document.getElementById("modalidade").value;
 
                 const data =
                     document.getElementById("data").value;
@@ -1206,86 +1073,66 @@
                     data.split("-").reverse().join("/");
 
 
-                const mensagem =
-                    "Olá, gostaria de solicitar um atendimento jurídico.%0A%0A" +
+                mensagemWhatsApp =
+                    "Olá, Dra. Josiane! Gostaria de solicitar um atendimento jurídico.%0A%0A" +
 
-                    "Nome: " +
+                    "*Nome:* " +
                     encodeURIComponent(nome) +
 
-                    "%0ATelefone: " +
+                    "%0A*WhatsApp/Telefone:* " +
                     encodeURIComponent(telefone) +
 
-                    "%0AE-mail: " +
-                    encodeURIComponent(email || "Não informado") +
+                    "%0A*E-mail:* " +
+                    encodeURIComponent(email) +
 
-                    "%0AÁrea: " +
+                    "%0A*Tipo de atendimento:* " +
+                    encodeURIComponent(tipo) +
+
+                    "%0A*Área:* " +
                     encodeURIComponent(area) +
 
-                    "%0AModalidade: " +
-                    encodeURIComponent(modalidade) +
-
-                    "%0AData desejada: " +
+                    "%0A*Data desejada:* " +
                     encodeURIComponent(dataFormatada) +
 
-                    "%0AHorário desejado: " +
+                    "%0A*Horário desejado:* " +
                     encodeURIComponent(horario) +
 
-                    "%0A%0AMotivo do contato:%0A" +
+                    "%0A*Assunto:* " +
                     encodeURIComponent(
                         assunto || "Não informado"
                     );
 
 
-                if (
-                    numeroWhatsApp ===
-                    "COLOQUE_O_NUMERO_AQUI"
-                ) {
+                form.style.display = "none";
 
-                    successMessage.classList.add("show");
+                success.style.display = "block";
 
-                    return;
+                lucide.createIcons();
 
-                }
+            }
+        );
 
+
+        /* =========================================
+           ENVIAR PARA O WHATSAPP
+        ========================================= */
+
+        enviarWhatsApp.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
 
                 const url =
                     "https://wa.me/" +
                     numeroWhatsApp +
                     "?text=" +
-                    mensagem;
-
+                    mensagemWhatsApp;
 
                 window.open(
                     url,
                     "_blank"
                 );
-
-            }
-        );
-
-
-        closeButton.addEventListener(
-            "click",
-            function() {
-
-                successMessage.classList.remove("show");
-
-            }
-        );
-
-
-        successMessage.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    event.target ===
-                    successMessage
-                ) {
-
-                    successMessage.classList.remove("show");
-
-                }
 
             }
         );
