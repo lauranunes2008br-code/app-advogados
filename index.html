@@ -2,8 +2,13 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Josiane Nunes | Advocacia</title>
 
@@ -13,7 +18,12 @@
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
@@ -21,6 +31,7 @@
     >
 
     <script src="https://unpkg.com/lucide@latest"></script>
+
 
     <style>
 
@@ -69,6 +80,7 @@
             --borda: #e5ddd3;
         }
 
+
         h1,
         h2,
         h3,
@@ -78,22 +90,18 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            BARRA SUPERIOR
-        ===================================================== */
+        ========================= */
 
         .top-bar {
             background: var(--vinho);
             color: white;
-
             min-height: 38px;
-
             padding: 8px 6%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             font-size: 11px;
         }
 
@@ -114,28 +122,22 @@
         }
 
 
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
+        /* =========================
+           NAV
+        ========================= */
 
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
-
             height: 88px;
-
             padding: 0 6%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             background: rgba(255, 255, 255, 0.97);
-
             box-shadow:
                 0 5px 25px rgba(0, 0, 0, 0.06);
-
             backdrop-filter: blur(10px);
         }
 
@@ -143,7 +145,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-
             text-decoration: none;
             color: var(--texto);
         }
@@ -169,14 +170,10 @@
 
         .logo-subtitle {
             display: block;
-
             margin-top: 2px;
-
             font-family: 'Montserrat', sans-serif;
-
             font-size: 8px;
             letter-spacing: 3px;
-
             color: var(--dourado);
         }
 
@@ -189,10 +186,8 @@
         .nav-links a {
             color: var(--texto);
             text-decoration: none;
-
             font-size: 12px;
             font-weight: 500;
-
             transition: 0.3s;
         }
 
@@ -203,15 +198,11 @@
         .nav-button {
             background: var(--vinho) !important;
             color: white !important;
-
             padding: 13px 20px;
-
             border-radius: 3px;
-
             display: flex;
             align-items: center;
             gap: 8px;
-
             transition: 0.3s;
         }
 
@@ -227,12 +218,9 @@
 
         .menu-button {
             display: none;
-
             border: none;
             background: transparent;
-
             color: var(--vinho);
-
             cursor: pointer;
         }
 
@@ -242,22 +230,17 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            HERO
-        ===================================================== */
+        ========================= */
 
         .hero {
             position: relative;
-
             min-height: 650px;
-
             display: flex;
             align-items: center;
-
             padding: 80px 6%;
-
             overflow: hidden;
-
             background: #f8f5f0;
         }
 
@@ -267,29 +250,22 @@
 
         .hero-content {
             width: 55%;
-
             position: relative;
             z-index: 3;
         }
 
         .hero-label {
             color: var(--dourado);
-
             font-size: 12px;
             font-weight: 700;
-
             letter-spacing: 3px;
-
             margin-bottom: 20px;
         }
 
         .hero h1 {
             font-size: clamp(50px, 5.5vw, 78px);
-
             line-height: 0.93;
-
             font-weight: 600;
-
             margin-bottom: 25px;
         }
 
@@ -300,59 +276,37 @@
         .gold-line {
             width: 75px;
             height: 3px;
-
             background: var(--dourado);
-
             margin-bottom: 25px;
         }
 
         .hero-description {
             max-width: 520px;
-
             color: var(--cinza);
-
             font-size: 14px;
-
             line-height: 1.85;
-
             margin-bottom: 30px;
         }
-
-
-        /* =====================================================
-           BOTÕES
-        ===================================================== */
 
         .hero-buttons {
             display: flex;
             flex-direction: column;
-
             align-items: flex-start;
-
             gap: 12px;
         }
 
         .button {
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             gap: 9px;
-
             min-height: 50px;
-
             padding: 0 24px;
-
             border-radius: 3px;
-
             text-decoration: none;
-
             font-size: 12px;
             font-weight: 600;
-
             cursor: pointer;
-
             transition: 0.35s;
         }
 
@@ -369,56 +323,38 @@
 
         .button-primary:hover {
             background: var(--vinho-escuro);
-
             transform: translateY(-3px);
-
             box-shadow:
                 0 12px 30px rgba(84, 19, 27, 0.22);
         }
 
         .button-secondary {
             background: transparent;
-
             color: var(--vinho);
-
             border: 1px solid var(--dourado);
         }
 
         .button-secondary:hover {
             background: var(--dourado);
-
             color: white;
-
             transform: translateY(-3px);
         }
 
-
-        /* =====================================================
-           FOTO HERO
-        ===================================================== */
-
         .hero-photo {
             position: absolute;
-
             right: 0;
             bottom: 0;
-
             width: 54%;
             height: 100%;
-
             z-index: 2;
-
             overflow: hidden;
         }
 
         .hero-photo img {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             object-position: center top;
-
             display: block;
         }
 
@@ -427,9 +363,9 @@
         }
 
 
-        /* =====================================================
-           SOBRE
-        ===================================================== */
+        /* =========================
+           SEÇÕES
+        ========================= */
 
         .section {
             padding: 100px 6%;
@@ -441,15 +377,10 @@
 
         .sobre-container {
             max-width: 1150px;
-
             margin: auto;
-
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             gap: 80px;
-
             align-items: center;
         }
 
@@ -459,58 +390,40 @@
 
         .sobre-photo::before {
             content: "";
-
             position: absolute;
-
             top: 16px;
             left: 16px;
-
             width: 100%;
             height: 100%;
-
             border: 1px solid var(--dourado);
         }
 
         .sobre-photo img {
             position: relative;
             z-index: 1;
-
             display: block;
-
             width: 100%;
         }
 
         .section-label {
             color: var(--dourado);
-
             font-size: 11px;
             font-weight: 700;
-
             letter-spacing: 3px;
         }
 
         .sobre h2 {
             font-size: 53px;
-
             line-height: 1;
-
             margin: 14px 0 23px;
         }
 
         .sobre p {
             color: var(--cinza);
-
             font-size: 13px;
-
             line-height: 1.9;
-
             margin-bottom: 17px;
         }
-
-
-        /* =====================================================
-           ÁREAS
-        ===================================================== */
 
         .areas {
             background: #fffdfa;
@@ -518,79 +431,60 @@
 
         .section-heading {
             text-align: center;
-
             max-width: 700px;
-
             margin: 0 auto 55px;
         }
 
         .section-heading h2 {
             font-size: 52px;
-
             line-height: 1;
-
             margin-top: 12px;
         }
 
         .section-heading p {
             color: var(--cinza);
-
             font-size: 13px;
-
             line-height: 1.8;
-
             margin-top: 17px;
         }
 
+
+        /* =========================
+           CARDS
+        ========================= */
+
         .area-grid {
             max-width: 1150px;
-
             margin: auto;
-
             display: grid;
-
             grid-template-columns: repeat(2, 1fr);
-
             gap: 20px;
         }
 
         .area-card {
             position: relative;
-
             background: white;
-
             border: 1px solid var(--borda);
-
             padding: 38px 32px;
-
             min-height: 300px;
-
             overflow: hidden;
-
             transition: 0.4s;
         }
 
         .area-card::after {
             content: "";
-
             position: absolute;
-
             left: 0;
             bottom: 0;
-
             width: 0;
             height: 3px;
-
             background: var(--dourado);
-
             transition: 0.4s;
         }
 
         .area-card:hover {
             transform: translateY(-8px);
-
             border-color: #d6c3a5;
-
             box-shadow:
                 0 20px 45px rgba(84, 19, 27, 0.09);
         }
@@ -602,24 +496,18 @@
         .icon-circle {
             width: 72px;
             height: 72px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border-radius: 50%;
-
             background: rgba(181, 138, 72, 0.1);
-
             margin-bottom: 24px;
         }
 
         .icon-circle i {
             width: 35px;
             height: 35px;
-
             color: var(--dourado);
-
             animation: iconFloat 3s ease-in-out infinite;
         }
 
@@ -644,6 +532,7 @@
             100% {
                 transform: translateY(0);
             }
+
         }
 
         @keyframes iconAttention {
@@ -663,50 +552,41 @@
             100% {
                 transform: scale(1) rotate(0);
             }
+
         }
 
         .area-card h3 {
             font-size: 29px;
-
             margin-bottom: 14px;
         }
 
         .area-card p {
             color: var(--cinza);
-
             font-size: 12px;
-
             line-height: 1.8;
         }
 
 
-        /* =====================================================
+        /* =========================
            DIFERENCIAIS
-        ===================================================== */
+        ========================= */
 
         .diferenciais {
             background: var(--vinho-escuro);
-
             color: white;
-
             padding: 85px 6%;
         }
 
         .diferenciais-grid {
             max-width: 1150px;
-
             margin: auto;
-
             display: grid;
-
             grid-template-columns: repeat(4, 1fr);
         }
 
         .diferencial {
             text-align: center;
-
             padding: 20px 25px;
-
             border-right:
                 1px solid rgba(255,255,255,0.15);
         }
@@ -717,20 +597,16 @@
 
         .diferencial-icon {
             height: 65px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             margin-bottom: 15px;
         }
 
         .diferencial-icon i {
             width: 39px;
             height: 39px;
-
             color: var(--dourado-claro);
-
             animation: differentialFloat 3s ease-in-out infinite;
         }
 
@@ -756,139 +632,105 @@
             50% {
                 transform: translateY(-6px) scale(1.08);
             }
+
         }
 
         .diferencial h3 {
             font-size: 25px;
-
             margin-bottom: 10px;
         }
 
         .diferencial p {
             font-size: 11px;
-
             line-height: 1.7;
-
             opacity: 0.8;
         }
 
 
-        /* =====================================================
+        /* =========================
            CONTATO
-        ===================================================== */
+        ========================= */
 
         .contato {
             background: var(--creme);
-
             text-align: center;
-
             padding: 100px 6%;
         }
 
         .contato h2 {
             font-size: 55px;
-
             line-height: 1;
-
             margin: 13px 0 18px;
         }
 
         .contato-description {
             max-width: 600px;
-
             margin: auto auto 30px;
-
             color: var(--cinza);
-
             font-size: 13px;
-
             line-height: 1.8;
         }
 
         .contact-buttons {
             display: flex;
-
             justify-content: center;
-
             gap: 12px;
-
             flex-wrap: wrap;
         }
 
 
-        /* =====================================================
+        /* =========================
            FOOTER
-        ===================================================== */
+        ========================= */
 
         footer {
             background: #210609;
-
             color: white;
-
             text-align: center;
-
             padding: 48px 6%;
         }
 
         .footer-name {
             font-family: 'Cormorant Garamond', serif;
-
             font-size: 30px;
-
             letter-spacing: 1px;
-
             margin-bottom: 8px;
         }
 
         .footer-subtitle {
             color: var(--dourado-claro);
-
             font-size: 9px;
-
             letter-spacing: 3px;
-
             margin-bottom: 18px;
         }
 
         footer p {
             color: rgba(255,255,255,0.68);
-
             font-size: 10px;
-
             line-height: 1.8;
         }
 
 
-        /* =====================================================
-           WHATSAPP
-        ===================================================== */
+        /* =========================
+           WHATSAPP FLUTUANTE
+        ========================= */
 
         .whatsapp {
             position: fixed;
-
             right: 25px;
             bottom: 25px;
-
             width: 60px;
             height: 60px;
-
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: #25D366;
-
             color: white;
-
             text-decoration: none;
-
             z-index: 999;
-
             box-shadow:
                 0 8px 25px rgba(0,0,0,0.2);
-
             animation: whatsappPulse 2.5s infinite;
         }
 
@@ -913,40 +755,30 @@
                 box-shadow:
                     0 0 0 0 rgba(37,211,102,0);
             }
+
         }
 
 
-        /* =====================================================
+        /* =========================
            VOLTAR AO TOPO
-        ===================================================== */
+        ========================= */
 
         .back-top {
             position: fixed;
-
             right: 34px;
             bottom: 100px;
-
             width: 40px;
             height: 40px;
-
             border-radius: 50%;
-
             background: var(--vinho);
-
             color: white;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-decoration: none;
-
             opacity: 0;
-
             pointer-events: none;
-
             transition: 0.3s;
-
             z-index: 998;
         }
 
@@ -961,15 +793,13 @@
         }
 
 
-        /* =====================================================
+        /* =========================
            ANIMAÇÕES
-        ===================================================== */
+        ========================= */
 
         .reveal {
             opacity: 0;
-
             transform: translateY(35px);
-
             transition:
                 opacity 0.8s ease,
                 transform 0.8s ease;
@@ -977,14 +807,13 @@
 
         .reveal.active {
             opacity: 1;
-
             transform: translateY(0);
         }
 
 
-        /* =====================================================
-           RESPONSIVIDADE
-        ===================================================== */
+        /* =========================
+           TABLET
+        ========================= */
 
         @media (max-width: 950px) {
 
@@ -994,7 +823,6 @@
 
             nav {
                 height: 76px;
-
                 padding: 0 22px;
             }
 
@@ -1004,26 +832,17 @@
 
             .nav-links {
                 position: absolute;
-
                 top: 76px;
                 left: 0;
-
                 width: 100%;
-
                 background: white;
-
                 padding: 25px;
-
                 display: flex;
                 flex-direction: column;
                 align-items: stretch;
-
                 gap: 18px;
-
                 transform: translateY(-150%);
-
                 transition: 0.4s;
-
                 box-shadow:
                     0 15px 30px rgba(0,0,0,0.1);
             }
@@ -1042,11 +861,8 @@
 
             .hero {
                 min-height: auto;
-
                 display: block;
-
                 padding: 55px 22px 0;
-
                 background: #f8f5f0;
             }
 
@@ -1072,15 +888,10 @@
 
             .hero-photo {
                 position: relative;
-
                 width: calc(100% + 44px);
-
                 margin-left: -22px;
-
                 height: 410px;
-
                 margin-top: 40px;
-
                 z-index: 2;
             }
 
@@ -1094,7 +905,6 @@
 
             .sobre-container {
                 grid-template-columns: 1fr;
-
                 gap: 55px;
             }
 
@@ -1120,10 +930,8 @@
 
             .diferencial {
                 border-right: none;
-
                 border-bottom:
                     1px solid rgba(255,255,255,0.15);
-
                 padding: 25px 15px;
             }
 
@@ -1139,8 +947,13 @@
             .contato h2 {
                 font-size: 45px;
             }
+
         }
 
+
+        /* =========================
+           CELULAR
+        ========================= */
 
         @media (max-width: 550px) {
 
@@ -1172,9 +985,7 @@
 
             .hero-photo {
                 width: calc(100% + 40px);
-
                 margin-left: -20px;
-
                 height: 350px;
             }
 
@@ -1190,7 +1001,6 @@
 
             .area-card {
                 min-height: auto;
-
                 padding: 30px 25px;
             }
 
@@ -1217,7 +1027,6 @@
             .whatsapp {
                 width: 55px;
                 height: 55px;
-
                 right: 18px;
                 bottom: 18px;
             }
@@ -1226,6 +1035,7 @@
                 right: 20px;
                 bottom: 85px;
             }
+
         }
 
     </style>
@@ -1236,23 +1046,33 @@
 <body>
 
 
-    <!-- BARRA SUPERIOR -->
+    <!-- =========================
+         BARRA SUPERIOR
+    ========================== -->
 
     <div class="top-bar">
 
         <div class="top-left">
 
             <div class="top-item">
+
                 <i data-lucide="shield-check"></i>
+
                 Atendimento jurídico profissional
+
             </div>
 
+
             <div class="top-item">
+
                 <i data-lucide="clock-3"></i>
+
                 Atendimento com hora marcada
+
             </div>
 
         </div>
+
 
         <div>
             Josiane Nunes Advocacia
@@ -1261,17 +1081,24 @@
     </div>
 
 
-    <!-- MENU -->
+    <!-- =========================
+         NAV
+    ========================== -->
 
     <nav>
 
-        <a href="#inicio" class="logo">
+        <a
+            href="#inicio"
+            class="logo"
+        >
 
             <div class="logo-monogram">
                 JN
             </div>
 
+
             <div class="logo-divider"></div>
+
 
             <div>
 
@@ -1299,17 +1126,31 @@
         </button>
 
 
-        <div class="nav-links" id="navLinks">
+        <div
+            class="nav-links"
+            id="navLinks"
+        >
 
-            <a href="#inicio">Início</a>
+            <a href="#inicio">
+                Início
+            </a>
 
-            <a href="#sobre">Sobre</a>
+            <a href="#sobre">
+                Sobre
+            </a>
 
-            <a href="#areas">Áreas de Atuação</a>
+            <a href="#areas">
+                Áreas de Atuação
+            </a>
 
-            <a href="#diferenciais">Diferenciais</a>
+            <a href="#diferenciais">
+                Diferenciais
+            </a>
 
-            <a href="#contato">Contato</a>
+            <a href="#contato">
+                Contato
+            </a>
+
 
             <a
                 href="./agendamento.html"
@@ -1327,35 +1168,55 @@
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
-    <section class="hero" id="inicio">
+    <section
+        class="hero"
+        id="inicio"
+    >
 
         <div class="hero-content">
+
 
             <div class="hero-label">
                 ADVOCACIA COM PROPÓSITO
             </div>
 
+
             <h1>
+
                 Defendendo seus direitos,
-                <span>buscando justiça.</span>
+
+                <span>
+                    buscando justiça.
+                </span>
+
             </h1>
+
 
             <div class="gold-line"></div>
 
+
             <p class="hero-description">
+
                 Atendimento jurídico pautado pela ética,
                 responsabilidade e dedicação, com análise
                 individualizada de cada situação.
+
             </p>
 
 
             <div class="hero-buttons">
 
+
+                <!-- Fale Conosco AGORA ABRE WHATSAPP -->
+
                 <a
-                    href="#contato"
+                    href="#"
                     class="button button-primary"
+                    id="faleConoscoButton"
                 >
 
                     <i data-lucide="message-circle"></i>
@@ -1376,6 +1237,7 @@
 
                 </a>
 
+
             </div>
 
         </div>
@@ -1393,11 +1255,17 @@
     </section>
 
 
-    <!-- SOBRE -->
+    <!-- =========================
+         SOBRE
+    ========================== -->
 
-    <section class="section sobre reveal" id="sobre">
+    <section
+        class="section sobre reveal"
+        id="sobre"
+    >
 
         <div class="sobre-container">
+
 
             <div class="sobre-photo">
 
@@ -1411,36 +1279,51 @@
 
             <div>
 
+
                 <div class="section-label">
                     SOBRE A PROFISSIONAL
                 </div>
 
+
                 <h2>
+
                     Uma advocacia
                     feita para pessoas.
+
                 </h2>
 
+
                 <p>
+
                     A atuação jurídica é construída com
                     responsabilidade, ética e atenção às
                     particularidades de cada caso.
+
                 </p>
 
+
                 <p>
+
                     Com formação e especialização voltadas
                     à área jurídica, o trabalho busca oferecer
                     orientação clara e estratégias adequadas
                     para cada situação apresentada.
+
                 </p>
 
+
                 <p>
+
                     O compromisso é proporcionar um atendimento
                     profissional, transparente e humanizado,
                     buscando sempre a melhor condução possível
                     para cada demanda.
+
                 </p>
 
+
                 <br>
+
 
                 <a
                     href="#contato"
@@ -1453,6 +1336,7 @@
 
                 </a>
 
+
             </div>
 
         </div>
@@ -1460,23 +1344,34 @@
     </section>
 
 
-    <!-- ÁREAS -->
+    <!-- =========================
+         ÁREAS
+    ========================== -->
 
-    <section class="section areas reveal" id="areas">
+    <section
+        class="section areas reveal"
+        id="areas"
+    >
+
 
         <div class="section-heading">
+
 
             <div class="section-label">
                 ÁREAS DE ATUAÇÃO
             </div>
 
+
             <h2>
                 Conheça as áreas de atuação
             </h2>
 
+
             <p>
+
                 Orientação e acompanhamento jurídico
                 de acordo com as necessidades de cada cliente.
+
             </p>
 
         </div>
@@ -1484,155 +1379,220 @@
 
         <div class="area-grid">
 
+
             <article class="area-card">
 
+
                 <div class="icon-circle">
+
                     <i data-lucide="scale"></i>
+
                 </div>
+
 
                 <h3>
                     Direito Criminal
                 </h3>
 
+
                 <p>
+
                     Atuação e orientação jurídica em questões
                     relacionadas ao Direito Penal e ao processo
                     penal, sempre com análise cuidadosa de cada caso.
+
                 </p>
+
 
             </article>
 
 
             <article class="area-card">
 
+
                 <div class="icon-circle">
+
                     <i data-lucide="briefcase-business"></i>
+
                 </div>
+
 
                 <h3>
                     Direito Trabalhista
                 </h3>
 
+
                 <p>
+
                     Orientação em demandas relacionadas às
                     relações de trabalho, direitos trabalhistas
                     e demais questões jurídicas dessa área.
+
                 </p>
 
+
             </article>
+
 
         </div>
 
     </section>
 
 
-    <!-- DIFERENCIAIS -->
+    <!-- =========================
+         DIFERENCIAIS
+    ========================== -->
 
     <section
         class="diferenciais reveal"
         id="diferenciais"
     >
 
+
         <div class="diferenciais-grid">
+
 
             <div class="diferencial">
 
+
                 <div class="diferencial-icon">
+
                     <i data-lucide="shield-check"></i>
+
                 </div>
+
 
                 <h3>
                     Ética
                 </h3>
 
+
                 <p>
+
                     Atuação pautada pela ética
                     e responsabilidade profissional.
+
                 </p>
+
 
             </div>
 
 
             <div class="diferencial">
 
+
                 <div class="diferencial-icon">
+
                     <i data-lucide="user-round"></i>
+
                 </div>
+
 
                 <h3>
                     Personalização
                 </h3>
 
+
                 <p>
+
                     Cada atendimento considera
                     as particularidades do caso.
+
                 </p>
+
 
             </div>
 
 
             <div class="diferencial">
 
+
                 <div class="diferencial-icon">
+
                     <i data-lucide="target"></i>
+
                 </div>
+
 
                 <h3>
                     Estratégia
                 </h3>
 
+
                 <p>
+
                     Busca por soluções jurídicas
                     adequadas a cada situação.
+
                 </p>
+
 
             </div>
 
 
             <div class="diferencial">
 
+
                 <div class="diferencial-icon">
+
                     <i data-lucide="message-square"></i>
+
                 </div>
+
 
                 <h3>
                     Transparência
                 </h3>
 
+
                 <p>
+
                     Comunicação clara e atendimento
                     próximo durante o processo.
+
                 </p>
 
+
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- CONTATO -->
+    <!-- =========================
+         CONTATO
+    ========================== -->
 
     <section
         class="contato reveal"
         id="contato"
     >
 
+
         <div class="section-label">
             ENTRE EM CONTATO
         </div>
+
 
         <h2>
             Vamos conversar?
         </h2>
 
+
         <p class="contato-description">
+
             Entre em contato para conhecer o atendimento
             e verificar a possibilidade de agendar uma consulta.
+
         </p>
 
 
         <div class="contact-buttons">
+
+
+            <!-- WHATSAPP -->
 
             <a
                 href="#"
@@ -1658,39 +1618,54 @@
 
             </a>
 
+
         </div>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
+
 
         <div class="footer-name">
             JOSIANE NUNES
         </div>
 
+
         <div class="footer-subtitle">
             ADVOCACIA
         </div>
 
+
         <p>
+
             Advocacia com ética, compromisso,
             estratégia e responsabilidade.
+
         </p>
+
 
         <br>
 
+
         <p>
+
             ©️ 2026 Josiane Nunes Advocacia.
             Todos os direitos reservados.
+
         </p>
+
 
     </footer>
 
 
-    <!-- WHATSAPP -->
+    <!-- =========================
+         WHATSAPP FLUTUANTE
+    ========================== -->
 
     <a
         href="#"
@@ -1704,7 +1679,9 @@
     </a>
 
 
-    <!-- VOLTAR AO TOPO -->
+    <!-- =========================
+         VOLTAR AO TOPO
+    ========================== -->
 
     <a
         href="#inicio"
@@ -1718,135 +1695,185 @@
     </a>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script>
+
 
         lucide.createIcons();
 
 
-        /* MENU */
+        /* =========================
+           MENU MOBILE
+        ========================== */
 
         const menuButton =
-            document.getElementById("menuButton");
-
-        const navLinks =
-            document.getElementById("navLinks");
-
-        menuButton.addEventListener("click", function () {
-
-            navLinks.classList.toggle("open");
-
-        });
-
-
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(function (link) {
-
-                link.addEventListener("click", function () {
-
-                    navLinks.classList.remove("open");
-
-                });
-
-            });
-
-
-        /* ANIMAÇÕES */
-
-        const revealElements =
-            document.querySelectorAll(".reveal");
-
-        const revealObserver =
-            new IntersectionObserver(
-
-                function (entries) {
-
-                    entries.forEach(function (entry) {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add("active");
-
-                        }
-
-                    });
-
-                },
-
-                {
-                    threshold: 0.12
-                }
-
+            document.getElementById(
+                "menuButton"
             );
 
 
-        revealElements.forEach(function (element) {
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
 
-            revealObserver.observe(element);
 
-        });
+        menuButton.addEventListener(
+            "click",
+            function () {
 
-
-        /* VOLTAR AO TOPO */
-
-        const backTop =
-            document.getElementById("backTop");
-
-        window.addEventListener("scroll", function () {
-
-            if (window.scrollY > 500) {
-
-                backTop.classList.add("visible");
-
-            } else {
-
-                backTop.classList.remove("visible");
+                navLinks.classList.toggle(
+                    "open"
+                );
 
             }
+        );
 
-        });
+
+        document
+            .querySelectorAll(
+                ".nav-links a"
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            navLinks.classList.remove(
+                                "open"
+                            );
+
+                        }
+                    );
+
+                }
+            );
 
 
-        /* WHATSAPP */
+        /* =========================
+           ANIMAÇÕES
+        ========================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "active"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(
+            function (element) {
+
+                revealObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+
+        /* =========================
+           VOLTAR AO TOPO
+        ========================== */
+
+        const backTop =
+            document.getElementById(
+                "backTop"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (
+                    window.scrollY > 500
+                ) {
+
+                    backTop.classList.add(
+                        "visible"
+                    );
+
+                } else {
+
+                    backTop.classList.remove(
+                        "visible"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           WHATSAPP
+        ========================== */
 
         const numeroWhatsApp =
-            "COLOQUE_O_NUMERO_AQUI";
+            "5587991699046";
 
 
         function abrirWhatsApp() {
 
-            if (
-                numeroWhatsApp ===
-                "COLOQUE_O_NUMERO_AQUI"
-            ) {
-
-                alert(
-                    "O WhatsApp profissional ainda será configurado."
-                );
-
-                return;
-
-            }
-
-
             const mensagem =
-                "Olá, gostaria de obter informações sobre um atendimento jurídico.";
+                "Olá, Dra. Josiane! Gostaria de obter informações sobre um atendimento jurídico.";
 
 
             const url =
                 "https://wa.me/" +
                 numeroWhatsApp +
                 "?text=" +
-                encodeURIComponent(mensagem);
+                encodeURIComponent(
+                    mensagem
+                );
 
 
-            window.open(url, "_blank");
+            window.location.href =
+                url;
 
         }
 
 
+        /* =========================
+           FALE CONOSCO
+        ========================== */
+
         document
-            .getElementById("whatsappButton")
+            .getElementById(
+                "faleConoscoButton"
+            )
             .addEventListener(
                 "click",
                 function (event) {
@@ -1859,8 +1886,14 @@
             );
 
 
+        /* =========================
+           BOTÃO WHATSAPP DE BAIXO
+        ========================== */
+
         document
-            .getElementById("floatingWhatsapp")
+            .getElementById(
+                "whatsappButton"
+            )
             .addEventListener(
                 "click",
                 function (event) {
@@ -1871,8 +1904,30 @@
 
                 }
             );
+
+
+        /* =========================
+           WHATSAPP FLUTUANTE
+        ========================== */
+
+        document
+            .getElementById(
+                "floatingWhatsapp"
+            )
+            .addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    abrirWhatsApp();
+
+                }
+            );
+
 
     </script>
+
 
 </body>
 
