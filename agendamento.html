@@ -14,7 +14,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
@@ -195,7 +199,6 @@
             font-size: 11px;
             font-weight: 700;
             color: var(--texto);
-            letter-spacing: 0.3px;
         }
 
         input,
@@ -248,10 +251,7 @@
             justify-content: center;
             border: 1px solid var(--borda);
             background: #fffdfa;
-            color: var(--texto);
             cursor: pointer;
-            font-size: 11px;
-            font-weight: 600;
             transition: 0.3s;
         }
 
@@ -314,7 +314,6 @@
         .submit-button:hover {
             background: var(--vinho-escuro);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(84,19,27,0.2);
         }
 
         .submit-button i {
@@ -411,18 +410,11 @@
             line-height: 1.8;
         }
 
-        .error-message {
-            display: none;
-            color: #a12626;
-            font-size: 10px;
-            margin-top: 5px;
-        }
-
         .domingo-aviso {
             display: none;
             color: #a12626;
             font-size: 10px;
-            margin-top: 6px;
+            line-height: 1.5;
         }
 
         @media (max-width: 700px) {
@@ -485,659 +477,759 @@
 
 <body>
 
-    <header>
 
-        <a href="./index.html" class="logo">
+<header>
 
-            <div class="logo-monogram">
-                JN
+    <a href="./index.html" class="logo">
+
+        <div class="logo-monogram">
+            JN
+        </div>
+
+        <div class="logo-divider"></div>
+
+        <div>
+
+            <div class="logo-name">
+                JOSIANE NUNES
             </div>
 
-            <div class="logo-divider"></div>
+            <span class="logo-subtitle">
+                ADVOCACIA
+            </span>
 
-            <div>
+        </div>
 
-                <div class="logo-name">
-                    JOSIANE NUNES
-                </div>
+    </a>
 
-                <span class="logo-subtitle">
-                    ADVOCACIA
-                </span>
 
+    <a href="./index.html" class="back-site">
+
+        <i data-lucide="arrow-left"></i>
+
+        Voltar ao site
+
+    </a>
+
+</header>
+
+
+<main class="page">
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <div class="section-label">
+                AGENDAMENTO
             </div>
 
-        </a>
+            <h1>
+                Agende seu atendimento
+            </h1>
 
-        <a href="./index.html" class="back-site">
+            <p>
+                Preencha as informações abaixo para
+                solicitar um atendimento jurídico.
+                Após o envio, entraremos em contato
+                pelo WhatsApp para confirmar o horário.
+            </p>
 
-            <i data-lucide="arrow-left"></i>
+        </div>
 
-            Voltar ao site
 
-        </a>
+        <div class="form-card">
 
-    </header>
 
+            <form id="agendamentoForm">
 
-    <main class="page">
 
-        <div class="container">
+                <div class="form-grid">
 
-            <div class="heading">
 
-                <div class="section-label">
-                    AGENDAMENTO
-                </div>
+                    <div class="form-group full">
 
-                <h1>
-                    Agende seu atendimento
-                </h1>
-
-                <p>
-                    Preencha as informações abaixo para
-                    solicitar um atendimento jurídico.
-                    Após o envio, entraremos em contato
-                    pelo WhatsApp para confirmar o horário.
-                </p>
-
-            </div>
-
-
-            <div class="form-card">
-
-                <form id="agendamentoForm">
-
-                    <div class="form-grid">
-
-
-                        <div class="form-group full">
-
-                            <label for="nome">
-                                Nome completo *
-                            </label>
-
-                            <input
-                                type="text"
-                                id="nome"
-                                name="nome"
-                                placeholder="Digite seu nome completo"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="telefone">
-                                WhatsApp / Telefone *
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="telefone"
-                                name="telefone"
-                                placeholder="(87) 99999-9999"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="email">
-                                E-mail *
-                            </label>
-
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="seuemail@email.com"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group full">
-
-                            <label>
-                                Tipo de atendimento *
-                            </label>
-
-                            <div class="radio-group">
-
-                                <div class="radio-option">
-
-                                    <input
-                                        type="radio"
-                                        id="presencial"
-                                        name="tipo"
-                                        value="Presencial"
-                                        required
-                                    >
-
-                                    <label for="presencial">
-                                        Atendimento Presencial
-                                    </label>
-
-                                </div>
-
-
-                                <div class="radio-option">
-
-                                    <input
-                                        type="radio"
-                                        id="online"
-                                        name="tipo"
-                                        value="Online"
-                                    >
-
-                                    <label for="online">
-                                        Atendimento Online
-                                    </label>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group full">
-
-                            <label for="area">
-                                Área de atendimento *
-                            </label>
-
-                            <select
-                                id="area"
-                                name="area"
-                                required
-                            >
-
-                                <option value="">
-                                    Selecione uma opção
-                                </option>
-
-                                <option value="Direito Criminal">
-                                    Direito Criminal
-                                </option>
-
-                                <option value="Direito Trabalhista">
-                                    Direito Trabalhista
-                                </option>
-
-                                <option value="Outra questão jurídica">
-                                    Outra questão jurídica
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="data">
-                                Data desejada *
-                            </label>
-
-                            <input
-                                type="date"
-                                id="data"
-                                name="data"
-                                required
-                            >
-
-                            <div
-                                class="domingo-aviso"
-                                id="domingoAviso"
-                            >
-                                Aos domingos não há atendimento.
-                                Escolha de segunda a sábado.
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="horario">
-                                Horário desejado *
-                            </label>
-
-                            <select
-                                id="horario"
-                                name="horario"
-                                required
-                            >
-
-                                <option value="">
-                                    Selecione o horário
-                                </option>
-
-                                <option value="08:00">
-                                    08:00
-                                </option>
-
-                                <option value="09:00">
-                                    09:00
-                                </option>
-
-                                <option value="10:00">
-                                    10:00
-                                </option>
-
-                                <option value="11:00">
-                                    11:00
-                                </option>
-
-                                <option value="12:00">
-                                    12:00
-                                </option>
-
-                                <option value="13:00">
-                                    13:00
-                                </option>
-
-                                <option value="14:00">
-                                    14:00
-                                </option>
-
-                                <option value="15:00">
-                                    15:00
-                                </option>
-
-                                <option value="16:00">
-                                    16:00
-                                </option>
-
-                                <option value="17:00">
-                                    17:00
-                                </option>
-
-                                <option value="18:00">
-                                    18:00
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group full">
-
-                            <label for="assunto">
-                                Como podemos ajudar?
-                            </label>
-
-                            <textarea
-                                id="assunto"
-                                name="assunto"
-                                placeholder="Conte brevemente o motivo do contato."
-                            ></textarea>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="notice">
-
-                        <strong>
-                            Importante:
-                        </strong>
-
-                        o preenchimento deste formulário
-                        representa apenas uma solicitação
-                        de atendimento. O horário será
-                        confirmado posteriormente pelo WhatsApp.
-
-                    </div>
-
-
-                    <div class="checkbox-group">
+                        <label for="nome">
+                            Nome completo *
+                        </label>
 
                         <input
-                            type="checkbox"
-                            id="confirmacao"
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite seu nome completo"
                             required
                         >
 
-                        <label for="confirmacao">
+                    </div>
 
-                            Confirmo que as informações
-                            preenchidas estão corretas e
-                            estou ciente de que o agendamento
-                            depende de confirmação.
 
+                    <div class="form-group">
+
+                        <label for="telefone">
+                            WhatsApp / Telefone *
                         </label>
 
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="submit-button"
-                    >
-
-                        <i data-lucide="calendar-check"></i>
-
-                        Solicitar Atendimento
-
-                    </button>
-
-                </form>
-
-
-                <div
-                    class="success"
-                    id="success"
-                >
-
-                    <div class="success-icon">
-
-                        <i data-lucide="check"></i>
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(87) 99999-9999"
+                            required
+                        >
 
                     </div>
 
-                    <h2>
-                        Solicitação preparada!
-                    </h2>
 
-                    <p>
-                        Agora você será direcionado ao
-                        WhatsApp para enviar sua solicitação
-                        à advogada. O atendimento será
-                        confirmado posteriormente.
-                    </p>
+                    <div class="form-group">
 
-                    <a
-                        href="#"
-                        class="whatsapp-button"
-                        id="enviarWhatsApp"
-                    >
+                        <label for="email">
+                            E-mail *
+                        </label>
 
-                        <i data-lucide="message-circle"></i>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seuemail@email.com"
+                            required
+                        >
 
-                        Enviar pelo WhatsApp
+                    </div>
 
-                    </a>
+
+                    <div class="form-group full">
+
+                        <label>
+                            Tipo de atendimento *
+                        </label>
+
+                        <div class="radio-group">
+
+
+                            <div class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    id="presencial"
+                                    name="tipo"
+                                    value="Presencial"
+                                    required
+                                >
+
+                                <label for="presencial">
+                                    Atendimento Presencial
+                                </label>
+
+                            </div>
+
+
+                            <div class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    id="online"
+                                    name="tipo"
+                                    value="Online"
+                                >
+
+                                <label for="online">
+                                    Atendimento Online
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="area">
+                            Área de atendimento *
+                        </label>
+
+                        <select
+                            id="area"
+                            name="area"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione uma opção
+                            </option>
+
+                            <option value="Direito Criminal">
+                                Direito Criminal
+                            </option>
+
+                            <option value="Direito Trabalhista">
+                                Direito Trabalhista
+                            </option>
+
+                            <option value="Outra questão jurídica">
+                                Outra questão jurídica
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="data">
+                            Data desejada *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="data"
+                            name="data"
+                            required
+                        >
+
+                        <div
+                            class="domingo-aviso"
+                            id="domingoAviso"
+                        >
+                            Domingo não possui atendimento.
+                            Escolha uma data de segunda a sábado.
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="horario">
+                            Horário desejado *
+                        </label>
+
+                        <select
+                            id="horario"
+                            name="horario"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione o horário
+                            </option>
+
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="assunto">
+                            Como podemos ajudar?
+                        </label>
+
+                        <textarea
+                            id="assunto"
+                            name="assunto"
+                            placeholder="Conte brevemente o motivo do contato."
+                        ></textarea>
+
+                    </div>
+
 
                 </div>
 
+
+                <div class="notice">
+
+                    <strong>
+                        Importante:
+                    </strong>
+
+                    o preenchimento deste formulário
+                    representa apenas uma solicitação
+                    de atendimento. O horário será
+                    confirmado posteriormente pelo WhatsApp.
+
+                </div>
+
+
+                <div class="checkbox-group">
+
+                    <input
+                        type="checkbox"
+                        id="confirmacao"
+                        required
+                    >
+
+                    <label for="confirmacao">
+
+                        Confirmo que as informações
+                        preenchidas estão corretas e
+                        estou ciente de que o agendamento
+                        depende de confirmação.
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+
+                    <i data-lucide="calendar-check"></i>
+
+                    Solicitar Atendimento
+
+                </button>
+
+
+            </form>
+
+
+            <div
+                class="success"
+                id="success"
+            >
+
+                <div class="success-icon">
+
+                    <i data-lucide="check"></i>
+
+                </div>
+
+                <h2>
+                    Solicitação preparada!
+                </h2>
+
+                <p>
+                    Agora você será direcionado ao
+                    WhatsApp para enviar sua solicitação
+                    à advogada.
+                </p>
+
+
+                <a
+                    href="#"
+                    class="whatsapp-button"
+                    id="enviarWhatsApp"
+                >
+
+                    <i data-lucide="message-circle"></i>
+
+                    Enviar pelo WhatsApp
+
+                </a>
+
             </div>
 
+
         </div>
 
-    </main>
+    </div>
+
+</main>
 
 
-    <footer>
+<footer>
 
-        <div class="footer-name">
-            JOSIANE NUNES
-        </div>
+    <div class="footer-name">
+        JOSIANE NUNES
+    </div>
 
-        <div class="footer-subtitle">
-            ADVOCACIA
-        </div>
+    <div class="footer-subtitle">
+        ADVOCACIA
+    </div>
 
-        <p>
-            Advocacia com ética, compromisso,
-            estratégia e responsabilidade.
-        </p>
+    <p>
+        Advocacia com ética, compromisso,
+        estratégia e responsabilidade.
+    </p>
 
-        <br>
+    <br>
 
-        <p>
-            ©️ 2026 Josiane Nunes Advocacia.
-            Todos os direitos reservados.
-        </p>
+    <p>
+        ©️ 2026 Josiane Nunes Advocacia.
+        Todos os direitos reservados.
+    </p>
 
-    </footer>
-
-
-    <script>
-
-        lucide.createIcons();
+</footer>
 
 
-        /* =========================================
-           WHATSAPP DA ADVOGADA
-        ========================================= */
+<script>
 
-        const numeroWhatsApp = "5587991699046";
+    lucide.createIcons();
 
 
-        /* =========================================
-           DATA MÍNIMA
-        ========================================= */
+    /* =========================================
+       WHATSAPP DA DRA. JOSIANE
+    ========================================= */
 
-        const dataInput =
-            document.getElementById("data");
-
-        const hoje =
-            new Date();
-
-        const ano =
-            hoje.getFullYear();
-
-        const mes =
-            String(hoje.getMonth() + 1)
-                .padStart(2, "0");
-
-        const dia =
-            String(hoje.getDate())
-                .padStart(2, "0");
-
-        const dataHoje =
-            `${ano}-${mes}-${dia}`;
-
-        dataInput.min = dataHoje;
+    const numeroWhatsApp = "5587991699046";
 
 
-        /* =========================================
-           IMPEDIR DOMINGO
-        ========================================= */
+    /* =========================================
+       FUNÇÃO PARA ABRIR O WHATSAPP
+       FUNCIONA MESMO SEM PREENCHER O FORMULÁRIO
+    ========================================= */
 
-        const domingoAviso =
-            document.getElementById("domingoAviso");
+    function abrirWhatsApp() {
 
-        dataInput.addEventListener(
-            "change",
-            function () {
+        const mensagem =
+            "Olá, Dra. Josiane! Gostaria de obter informações sobre um atendimento jurídico.";
 
-                if (!this.value) {
-                    domingoAviso.style.display = "none";
-                    return;
-                }
+        const url =
+            "https://wa.me/" +
+            numeroWhatsApp +
+            "?text=" +
+            encodeURIComponent(mensagem);
+
+        window.location.href = url;
+
+    }
+
+
+    /* =========================================
+       DATA MÍNIMA = HOJE
+    ========================================= */
+
+    const dataInput =
+        document.getElementById("data");
+
+    const hoje =
+        new Date();
+
+    const ano =
+        hoje.getFullYear();
+
+    const mes =
+        String(
+            hoje.getMonth() + 1
+        ).padStart(2, "0");
+
+    const dia =
+        String(
+            hoje.getDate()
+        ).padStart(2, "0");
+
+    dataInput.min =
+        `${ano}-${mes}-${dia}`;
+
+
+    /* =========================================
+       BLOQUEAR DOMINGO
+    ========================================= */
+
+    const domingoAviso =
+        document.getElementById("domingoAviso");
+
+
+    dataInput.addEventListener(
+        "input",
+        function () {
+
+            if (!this.value) {
+
+                domingoAviso.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            const dataSelecionada =
+                new Date(
+                    this.value + "T12:00:00"
+                );
+
+
+            const diaSemana =
+                dataSelecionada.getDay();
+
+
+            if (diaSemana === 0) {
+
+                this.setCustomValidity(
+                    "Domingo não possui atendimento."
+                );
+
+                domingoAviso.style.display =
+                    "block";
+
+                this.value = "";
+
+            } else {
+
+                this.setCustomValidity("");
+
+                domingoAviso.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    dataInput.addEventListener(
+        "change",
+        function () {
+
+            if (!this.value) return;
+
+
+            const dataSelecionada =
+                new Date(
+                    this.value + "T12:00:00"
+                );
+
+
+            if (
+                dataSelecionada.getDay() === 0
+            ) {
+
+                this.value = "";
+
+                this.setCustomValidity(
+                    "Domingo não possui atendimento."
+                );
+
+                domingoAviso.style.display =
+                    "block";
+
+                alert(
+                    "Aos domingos não há atendimento. Escolha uma data de segunda a sábado."
+                );
+
+            } else {
+
+                this.setCustomValidity("");
+
+                domingoAviso.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       BOTÃO DO WHATSAPP
+       SEM PRECISAR PREENCHER DADOS
+    ========================================= */
+
+    const enviarWhatsApp =
+        document.getElementById(
+            "enviarWhatsApp"
+        );
+
+
+    enviarWhatsApp.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            abrirWhatsApp();
+
+        }
+    );
+
+
+    /* =========================================
+       FORMULÁRIO
+    ========================================= */
+
+    const form =
+        document.getElementById(
+            "agendamentoForm"
+        );
+
+
+    const success =
+        document.getElementById(
+            "success"
+        );
+
+
+    let mensagemAgendamento = "";
+
+
+    form.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            /* Impede domingo */
+
+            if (dataInput.value) {
 
                 const dataSelecionada =
                     new Date(
-                        this.value + "T12:00:00"
+                        dataInput.value +
+                        "T12:00:00"
                     );
 
-                const diaSemana =
-                    dataSelecionada.getDay();
 
-                /*
-                    0 = domingo
-                    1 = segunda
-                    2 = terça
-                    3 = quarta
-                    4 = quinta
-                    5 = sexta
-                    6 = sábado
-                */
-
-                if (diaSemana === 0) {
-
-                    domingoAviso.style.display = "block";
+                if (
+                    dataSelecionada.getDay() === 0
+                ) {
 
                     alert(
-                        "Aos domingos não há atendimento. Escolha uma data de segunda a sábado."
+                        "Aos domingos não há atendimento."
                     );
 
-                    this.value = "";
-
-                } else {
-
-                    domingoAviso.style.display = "none";
+                    return;
 
                 }
 
             }
-        );
 
 
-        /* =========================================
-           FORMULÁRIO
-        ========================================= */
+            const nome =
+                document.getElementById(
+                    "nome"
+                ).value;
 
-        const form =
-            document.getElementById("agendamentoForm");
+            const telefone =
+                document.getElementById(
+                    "telefone"
+                ).value;
 
-        const success =
-            document.getElementById("success");
+            const email =
+                document.getElementById(
+                    "email"
+                ).value;
 
-        const enviarWhatsApp =
-            document.getElementById("enviarWhatsApp");
+            const tipo =
+                document.querySelector(
+                    'input[name="tipo"]:checked'
+                ).value;
 
+            const area =
+                document.getElementById(
+                    "area"
+                ).value;
 
-        let mensagemWhatsApp = "";
+            const data =
+                document.getElementById(
+                    "data"
+                ).value;
 
+            const horario =
+                document.getElementById(
+                    "horario"
+                ).value;
 
-        form.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                /* Verificação extra contra domingo */
-
-                if (dataInput.value) {
-
-                    const dataSelecionada =
-                        new Date(
-                            dataInput.value + "T12:00:00"
-                        );
-
-                    if (
-                        dataSelecionada.getDay() === 0
-                    ) {
-
-                        alert(
-                            "Aos domingos não há atendimento. Escolha uma data de segunda a sábado."
-                        );
-
-                        return;
-                    }
-
-                }
+            const assunto =
+                document.getElementById(
+                    "assunto"
+                ).value;
 
 
-                const nome =
-                    document.getElementById("nome").value;
-
-                const telefone =
-                    document.getElementById("telefone").value;
-
-                const email =
-                    document.getElementById("email").value;
-
-                const tipo =
-                    document.querySelector(
-                        'input[name="tipo"]:checked'
-                    ).value;
-
-                const area =
-                    document.getElementById("area").value;
-
-                const data =
-                    document.getElementById("data").value;
-
-                const horario =
-                    document.getElementById("horario").value;
-
-                const assunto =
-                    document.getElementById("assunto").value;
+            const dataFormatada =
+                data
+                    .split("-")
+                    .reverse()
+                    .join("/");
 
 
-                const dataFormatada =
-                    data.split("-").reverse().join("/");
+            const mensagem =
+                "Olá, Dra. Josiane! Gostaria de solicitar um atendimento jurídico.\n\n" +
 
+                "Nome: " +
+                nome +
 
-                mensagemWhatsApp =
-                    "Olá, Dra. Josiane! Gostaria de solicitar um atendimento jurídico.%0A%0A" +
+                "\nWhatsApp/Telefone: " +
+                telefone +
 
-                    "*Nome:* " +
-                    encodeURIComponent(nome) +
+                "\nE-mail: " +
+                email +
 
-                    "%0A*WhatsApp/Telefone:* " +
-                    encodeURIComponent(telefone) +
+                "\nTipo de atendimento: " +
+                tipo +
 
-                    "%0A*E-mail:* " +
-                    encodeURIComponent(email) +
+                "\nÁrea: " +
+                area +
 
-                    "%0A*Tipo de atendimento:* " +
-                    encodeURIComponent(tipo) +
+                "\nData desejada: " +
+                dataFormatada +
 
-                    "%0A*Área:* " +
-                    encodeURIComponent(area) +
+                "\nHorário desejado: " +
+                horario +
 
-                    "%0A*Data desejada:* " +
-                    encodeURIComponent(dataFormatada) +
-
-                    "%0A*Horário desejado:* " +
-                    encodeURIComponent(horario) +
-
-                    "%0A*Assunto:* " +
-                    encodeURIComponent(
-                        assunto || "Não informado"
-                    );
-
-
-                form.style.display = "none";
-
-                success.style.display = "block";
-
-                lucide.createIcons();
-
-            }
-        );
-
-
-        /* =========================================
-           ENVIAR PARA O WHATSAPP
-        ========================================= */
-
-        enviarWhatsApp.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-
-                const url =
-                    "https://wa.me/" +
-                    numeroWhatsApp +
-                    "?text=" +
-                    mensagemWhatsApp;
-
-                window.open(
-                    url,
-                    "_blank"
+                "\nAssunto: " +
+                (
+                    assunto ||
+                    "Não informado"
                 );
 
-            }
-        );
 
-    </script>
+            mensagemAgendamento =
+                mensagem;
+
+
+            form.style.display =
+                "none";
+
+            success.style.display =
+                "block";
+
+
+            lucide.createIcons();
+
+        }
+    );
+
+
+    /* =========================================
+       ENVIA O AGENDAMENTO PELO WHATSAPP
+    ========================================= */
+
+    enviarWhatsApp.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const url =
+                "https://wa.me/" +
+                numeroWhatsApp +
+                "?text=" +
+                encodeURIComponent(
+                    mensagemAgendamento
+                );
+
+
+            window.location.href =
+                url;
+
+        }
+    );
+
+
+</script>
 
 </body>
 
