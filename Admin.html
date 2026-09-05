@@ -5,17 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Área Administrativa | Josiane Nunes</title>
+    <title>Área Profissional | Josiane Nunes</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -63,9 +60,9 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* ================================
-           TELA DE ESCOLHA
-        ================================= */
+        /* =========================
+           TELA INICIAL
+        ========================= */
 
         #telaEscolha {
             min-height: 100vh;
@@ -73,8 +70,13 @@
             align-items: center;
             justify-content: center;
             padding: 30px 20px;
+
             background:
-                radial-gradient(circle at top right, rgba(181, 138, 72, 0.10), transparent 30%),
+                radial-gradient(
+                    circle at top right,
+                    rgba(181, 138, 72, .10),
+                    transparent 30%
+                ),
                 #f8f5f0;
         }
 
@@ -117,7 +119,6 @@
         }
 
         .escolha-titulo {
-            font-family: 'Cormorant Garamond', serif;
             font-size: 42px;
             color: var(--vinho-escuro);
             margin-bottom: 10px;
@@ -160,9 +161,11 @@
             border-radius: 50%;
             background: var(--vinho);
             color: white;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             margin: 0 auto 18px;
         }
 
@@ -179,7 +182,7 @@
 
         .adicionar-card {
             border: 1px dashed var(--dourado);
-            background: rgba(255,255,255,.45);
+            background: rgba(255, 255, 255, .45);
         }
 
         .adicionar-card .advogado-icone {
@@ -188,9 +191,9 @@
             color: var(--dourado);
         }
 
-        /* ================================
+        /* =========================
            LOGIN
-        ================================= */
+        ========================= */
 
         #telaLogin {
             display: none;
@@ -211,9 +214,11 @@
             border: none;
             color: var(--vinho);
             cursor: pointer;
+
             display: flex;
             align-items: center;
             gap: 7px;
+
             font-size: 12px;
             margin-bottom: 25px;
         }
@@ -223,6 +228,7 @@
             border: 1px solid var(--borda);
             padding: 42px 38px;
             border-radius: 8px;
+
             box-shadow: 0 20px 50px rgba(43, 8, 13, .08);
         }
 
@@ -269,21 +275,26 @@
             position: relative;
         }
 
-        .campo-input i {
+        .campo-input > i {
             position: absolute;
             left: 13px;
             top: 50%;
             transform: translateY(-50%);
+
             color: var(--dourado);
             width: 17px;
+            pointer-events: none;
         }
 
         .campo input {
             width: 100%;
             height: 48px;
+
             border: 1px solid var(--borda);
             border-radius: 5px;
-            padding: 0 14px 0 42px;
+
+            padding: 0 45px 0 42px;
+
             outline: none;
             color: var(--texto);
             background: #fff;
@@ -293,37 +304,170 @@
             border-color: var(--dourado);
         }
 
+        .olho-senha {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            border: none;
+            background: transparent;
+
+            color: var(--cinza);
+            cursor: pointer;
+
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .olho-senha:hover {
+            color: var(--vinho);
+        }
+
+        .esqueci-senha {
+            display: block;
+
+            text-align: right;
+
+            color: var(--vinho);
+            font-size: 10px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            margin-top: -8px;
+            margin-bottom: 20px;
+
+            cursor: pointer;
+        }
+
+        .esqueci-senha:hover {
+            color: var(--dourado);
+        }
+
         .btn-entrar {
             width: 100%;
             height: 49px;
+
             border: none;
             border-radius: 5px;
+
             background: var(--vinho);
             color: white;
+
             font-weight: 600;
             cursor: pointer;
+
             transition: .25s;
-            margin-top: 5px;
         }
 
         .btn-entrar:hover {
             background: var(--vinho-escuro);
         }
 
-        .erro-login {
+        .btn-entrar:disabled {
+            opacity: .7;
+            cursor: wait;
+        }
+
+        .mensagem-login {
             display: none;
+
             margin-top: 15px;
             padding: 11px;
+
             border-radius: 5px;
-            background: #f8e8e8;
-            color: #8b2020;
-            font-size: 11px;
+
+            font-size: 10px;
             text-align: center;
         }
 
-        /* ================================
+        .mensagem-login.erro {
+            background: #f8e8e8;
+            color: #8b2020;
+        }
+
+        .mensagem-login.sucesso {
+            background: #e8f4ea;
+            color: #32633b;
+        }
+
+        /* =========================
+           RECUPERAÇÃO DE SENHA
+        ========================= */
+
+        #telaRecuperacao {
+            display: none;
+
+            min-height: 100vh;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            background: var(--creme);
+        }
+
+        .recuperacao-container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .recuperacao-box {
+            background: white;
+
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+
+            padding: 42px 38px;
+
+            box-shadow: 0 20px 50px rgba(43, 8, 13, .08);
+        }
+
+        .recuperacao-box h1 {
+            text-align: center;
+            color: var(--vinho);
+
+            font-size: 31px;
+
+            margin-bottom: 10px;
+        }
+
+        .recuperacao-box p {
+            text-align: center;
+
+            color: var(--cinza);
+
+            font-size: 11px;
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+        .btn-recuperar {
+            width: 100%;
+            height: 48px;
+
+            border: none;
+            border-radius: 5px;
+
+            background: var(--vinho);
+            color: white;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        /* =========================
            PAINEL
-        ================================= */
+        ========================= */
 
         #painel {
             display: none;
@@ -331,12 +475,17 @@
 
         .topbar {
             min-height: 38px;
+
             background: var(--vinho);
             color: white;
+
             padding: 8px 6%;
+
             font-size: 10px;
+
             display: flex;
             justify-content: space-between;
+
             gap: 15px;
         }
 
@@ -348,11 +497,15 @@
 
         .navbar {
             min-height: 88px;
+
             background: rgba(255,255,255,.95);
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 15px 6%;
+
             border-bottom: 1px solid var(--borda);
         }
 
@@ -385,12 +538,19 @@
             display: flex;
             align-items: center;
             gap: 7px;
+
             border: 1px solid var(--vinho);
+
             background: transparent;
+
             color: var(--vinho);
+
             padding: 10px 16px;
+
             border-radius: 4px;
+
             cursor: pointer;
+
             font-size: 11px;
             font-weight: 600;
         }
@@ -402,20 +562,26 @@
 
         .painel-hero {
             background: var(--creme);
+
             padding: 65px 6% 55px;
         }
 
         .painel-hero small {
             color: var(--dourado);
+
             text-transform: uppercase;
+
             letter-spacing: 3px;
+
             font-size: 9px;
             font-weight: 700;
         }
 
         .painel-hero h1 {
             font-size: 52px;
+
             color: var(--vinho-escuro);
+
             margin: 8px 0 10px;
         }
 
@@ -430,15 +596,21 @@
 
         .cards-resumo {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 18px;
+
             margin-bottom: 35px;
         }
 
         .resumo-card {
             background: white;
+
             border: 1px solid var(--borda);
+
             padding: 25px;
+
             border-radius: 6px;
         }
 
@@ -449,30 +621,42 @@
 
         .resumo-card span {
             display: block;
+
             color: var(--cinza);
+
             font-size: 10px;
+
             margin-bottom: 6px;
         }
 
         .resumo-card strong {
             color: var(--vinho);
+
             font-family: 'Cormorant Garamond', serif;
+
             font-size: 35px;
         }
 
         .secao {
             background: white;
+
             border: 1px solid var(--borda);
+
             border-radius: 6px;
+
             margin-bottom: 25px;
+
             padding: 30px;
         }
 
         .secao-titulo {
             display: flex;
+
             justify-content: space-between;
             align-items: center;
+
             gap: 15px;
+
             margin-bottom: 25px;
         }
 
@@ -483,38 +667,55 @@
 
         .form-horario {
             display: grid;
+
             grid-template-columns: 1fr 1fr auto;
+
             gap: 14px;
+
             align-items: end;
         }
 
         .form-horario label {
             display: block;
+
             font-size: 10px;
             font-weight: 600;
+
             margin-bottom: 7px;
         }
 
-        .form-horario input,
-        .form-horario select {
+        .form-horario input {
             width: 100%;
             height: 45px;
+
             border: 1px solid var(--borda);
+
             border-radius: 4px;
+
             padding: 0 12px;
+
             background: white;
+
             outline: none;
         }
 
         .btn-principal {
             height: 45px;
+
             border: none;
+
             background: var(--vinho);
+
             color: white;
+
             padding: 0 20px;
+
             border-radius: 4px;
+
             cursor: pointer;
+
             font-size: 11px;
+
             font-weight: 600;
         }
 
@@ -524,45 +725,66 @@
 
         .horarios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(210px, 1fr));
+
             gap: 14px;
         }
 
         .horario-card {
             border: 1px solid var(--borda);
+
             padding: 18px;
+
             border-radius: 5px;
+
             background: var(--creme);
         }
 
         .horario-card .data {
             color: var(--vinho);
+
             font-weight: 700;
+
             font-size: 12px;
+
             margin-bottom: 7px;
         }
 
         .horario-card .hora {
             font-family: 'Cormorant Garamond', serif;
+
             color: var(--dourado);
+
             font-size: 28px;
+
             font-weight: 700;
         }
 
         .horario-status {
             font-size: 9px;
+
             margin-top: 8px;
+
             color: #387044;
         }
 
         .btn-remover {
             margin-top: 13px;
+
             background: transparent;
+
             border: 1px solid #c9a7a7;
+
             color: #8b3030;
+
             padding: 7px 10px;
+
             border-radius: 4px;
+
             cursor: pointer;
+
             font-size: 9px;
         }
 
@@ -572,39 +794,57 @@
 
         table {
             width: 100%;
+
             border-collapse: collapse;
+
             min-width: 650px;
         }
 
         th {
             text-align: left;
+
             font-size: 9px;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
+
             color: var(--dourado);
+
             border-bottom: 1px solid var(--borda);
+
             padding: 12px 8px;
         }
 
         td {
             padding: 14px 8px;
+
             border-bottom: 1px solid var(--borda);
+
             font-size: 10px;
+
             color: var(--texto);
         }
 
         .vazio {
             color: var(--cinza);
+
             font-size: 11px;
+
             text-align: center;
+
             padding: 25px 10px;
         }
 
         .mensagem {
             display: none;
+
             margin-bottom: 20px;
+
             padding: 12px;
+
             border-radius: 4px;
+
             font-size: 10px;
         }
 
@@ -619,6 +859,7 @@
         }
 
         @media(max-width: 800px) {
+
             .cards-resumo {
                 grid-template-columns: 1fr;
             }
@@ -647,7 +888,9 @@
         }
 
         @media(max-width: 500px) {
-            .login-box {
+
+            .login-box,
+            .recuperacao-box {
                 padding: 32px 22px;
             }
 
@@ -668,8 +911,9 @@
 
 <body>
 
+
     <!-- =====================================================
-         TELA 1 — ESCOLHA DO ADVOGADO
+         TELA 1 — ESCOLHA DO PROFISSIONAL
     ====================================================== -->
 
     <section id="telaEscolha">
@@ -677,45 +921,95 @@
         <div class="escolha-container">
 
             <div class="logo-area">
-                <div class="logo-monogram">JN</div>
+
+                <div class="logo-monogram">
+                    JN
+                </div>
+
                 <div class="logo-line"></div>
-                <div class="logo-name">JOSIANE NUNES</div>
-                <div class="logo-subtitle">ADVOCACIA</div>
+
+                <div class="logo-name">
+                    JOSIANE NUNES
+                </div>
+
+                <div class="logo-subtitle">
+                    ADVOCACIA
+                </div>
+
             </div>
 
-            <h1 class="escolha-titulo">Área profissional</h1>
+
+            <h1 class="escolha-titulo">
+                Área profissional
+            </h1>
+
 
             <p class="escolha-subtitulo">
                 Selecione o profissional para acessar sua área administrativa.
             </p>
 
+
             <div class="advogados">
 
-                <div class="advogado-card" onclick="abrirLogin()">
+
+                <!-- DRA. JOSIANE -->
+
+                <div
+                    class="advogado-card"
+                    onclick="abrirLogin()"
+                >
+
                     <div class="advogado-icone">
+
                         <i data-lucide="scale"></i>
+
                     </div>
 
-                    <h2>Dra. Josiane</h2>
 
-                    <p>Área administrativa</p>
+                    <h2>
+                        Dra. Josiane
+                    </h2>
+
+
+                    <p>
+                        Área administrativa
+                    </p>
+
                 </div>
 
-                <div class="advogado-card adicionar-card" onclick="adicionarAdvogado()">
+
+                <!-- FUTURO ADVOGADO -->
+
+                <div
+                    class="advogado-card adicionar-card"
+                    onclick="adicionarAdvogado()"
+                >
+
                     <div class="advogado-icone">
+
                         <i data-lucide="plus"></i>
+
                     </div>
 
-                    <h2>Adicionar advogado</h2>
 
-                    <p>Adicionar futuramente</p>
+                    <h2>
+                        Adicionar advogado
+                    </h2>
+
+
+                    <p>
+                        Adicionar futuramente
+                    </p>
+
                 </div>
+
 
             </div>
 
         </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -726,27 +1020,55 @@
 
         <div class="login-container">
 
-            <button class="voltar" onclick="voltarEscolha()">
+
+            <button
+                class="voltar"
+                onclick="voltarEscolha()"
+            >
+
                 <i data-lucide="arrow-left"></i>
+
                 Voltar
+
             </button>
+
 
             <div class="login-box">
 
+
                 <div class="login-logo">
-                    <div class="logo-monogram">JN</div>
+
+                    <div class="logo-monogram">
+                        JN
+                    </div>
+
                     <div class="logo-line"></div>
-                    <div class="logo-name">JOSIANE NUNES</div>
-                    <div class="logo-subtitle">ADVOCACIA</div>
+
+                    <div class="logo-name">
+                        JOSIANE NUNES
+                    </div>
+
+                    <div class="logo-subtitle">
+                        ADVOCACIA
+                    </div>
+
                 </div>
 
-                <h1>Dra. Josiane</h1>
+
+                <h1>
+                    Dra. Josiane
+                </h1>
+
 
                 <p class="login-descricao">
                     Acesso exclusivo à área administrativa
                 </p>
 
+
                 <form id="loginForm">
+
+
+                    <!-- EMAIL -->
 
                     <div class="campo">
 
@@ -754,8 +1076,11 @@
                             Nome de usuário
                         </label>
 
+
                         <div class="campo-input">
+
                             <i data-lucide="user"></i>
+
 
                             <input
                                 type="email"
@@ -764,9 +1089,13 @@
                                 autocomplete="username"
                                 required
                             >
+
                         </div>
 
                     </div>
+
+
+                    <!-- SENHA -->
 
                     <div class="campo">
 
@@ -774,8 +1103,11 @@
                             Senha
                         </label>
 
+
                         <div class="campo-input">
+
                             <i data-lucide="lock"></i>
+
 
                             <input
                                 type="password"
@@ -784,15 +1116,51 @@
                                 autocomplete="current-password"
                                 required
                             >
+
+
+                            <button
+                                type="button"
+                                class="olho-senha"
+                                onclick="mostrarSenha()"
+                                aria-label="Mostrar senha"
+                            >
+
+                                <i data-lucide="eye" id="iconeOlho"></i>
+
+                            </button>
+
                         </div>
 
                     </div>
 
-                    <button class="btn-entrar" type="submit" id="btnEntrar">
+
+                    <!-- ESQUECI SENHA -->
+
+                    <a
+                        href="#"
+                        class="esqueci-senha"
+                        onclick="abrirRecuperacao(event)"
+                    >
+                        Esqueci minha senha
+                    </a>
+
+
+                    <!-- ENTRAR -->
+
+                    <button
+                        type="submit"
+                        class="btn-entrar"
+                        id="btnEntrar"
+                    >
                         Entrar
                     </button>
 
-                    <div class="erro-login" id="erroLogin"></div>
+
+                    <div
+                        class="mensagem-login"
+                        id="mensagemLogin"
+                    ></div>
+
 
                 </form>
 
@@ -803,28 +1171,140 @@
     </section>
 
 
+
     <!-- =====================================================
-         TELA 3 — PAINEL ADMINISTRATIVO
+         TELA 3 — RECUPERAÇÃO DE SENHA
+    ====================================================== -->
+
+    <section id="telaRecuperacao">
+
+        <div class="recuperacao-container">
+
+
+            <button
+                class="voltar"
+                onclick="voltarLogin()"
+            >
+
+                <i data-lucide="arrow-left"></i>
+
+                Voltar para o login
+
+            </button>
+
+
+            <div class="recuperacao-box">
+
+
+                <div class="login-logo">
+
+                    <div class="logo-monogram">
+                        JN
+                    </div>
+
+                    <div class="logo-line"></div>
+
+                    <div class="logo-name">
+                        JOSIANE NUNES
+                    </div>
+
+                    <div class="logo-subtitle">
+                        ADVOCACIA
+                    </div>
+
+                </div>
+
+
+                <h1>
+                    Recuperar senha
+                </h1>
+
+
+                <p>
+                    Digite o e-mail cadastrado.
+                    Enviaremos para ele as instruções
+                    para criar uma nova senha.
+                </p>
+
+
+                <div class="campo">
+
+                    <label for="emailRecuperacao">
+                        E-mail
+                    </label>
+
+
+                    <div class="campo-input">
+
+                        <i data-lucide="mail"></i>
+
+
+                        <input
+                            type="email"
+                            id="emailRecuperacao"
+                            placeholder="Digite seu e-mail"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="btn-recuperar"
+                    onclick="recuperarSenha()"
+                    id="btnRecuperar"
+                >
+                    Enviar recuperação
+                </button>
+
+
+                <div
+                    class="mensagem-login"
+                    id="mensagemRecuperacao"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PAINEL ADMINISTRATIVO
     ====================================================== -->
 
     <section id="painel">
 
+
         <div class="topbar">
 
             <div class="topbar-item">
+
                 <i data-lucide="shield-check"></i>
+
                 Área administrativa protegida
+
             </div>
 
+
             <div class="topbar-item">
+
                 <i data-lucide="clock-3"></i>
+
                 Gestão de atendimento
+
             </div>
 
         </div>
 
 
+
         <nav class="navbar">
+
 
             <div class="nav-logo">
 
@@ -832,7 +1312,9 @@
                     JN
                 </div>
 
+
                 <div class="nav-divider"></div>
+
 
                 <div class="nav-logo-text">
 
@@ -848,19 +1330,33 @@
 
             </div>
 
-            <button class="btn-sair" onclick="sair()">
+
+            <button
+                class="btn-sair"
+                onclick="sair()"
+            >
+
                 <i data-lucide="log-out"></i>
+
                 Sair
+
             </button>
 
         </nav>
 
 
+
         <div class="painel-hero">
 
-            <small>Área exclusiva</small>
+            <small>
+                Área exclusiva
+            </small>
 
-            <h1>Gestão da agenda</h1>
+
+            <h1>
+                Gestão da agenda
+            </h1>
+
 
             <p>
                 Organize os horários disponíveis e acompanhe os agendamentos.
@@ -869,12 +1365,20 @@
         </div>
 
 
+
         <main class="conteudo">
 
-            <div class="mensagem" id="mensagem"></div>
 
+            <div
+                class="mensagem"
+                id="mensagem"
+            ></div>
+
+
+            <!-- RESUMO -->
 
             <div class="cards-resumo">
+
 
                 <div class="resumo-card">
 
@@ -882,9 +1386,13 @@
                         <i data-lucide="calendar-days"></i>
                     </div>
 
-                    <span>Horários cadastrados</span>
+                    <span>
+                        Horários cadastrados
+                    </span>
 
-                    <strong id="totalHorarios">0</strong>
+                    <strong id="totalHorarios">
+                        0
+                    </strong>
 
                 </div>
 
@@ -895,9 +1403,13 @@
                         <i data-lucide="calendar-check"></i>
                     </div>
 
-                    <span>Horários disponíveis</span>
+                    <span>
+                        Horários disponíveis
+                    </span>
 
-                    <strong id="horariosDisponiveis">0</strong>
+                    <strong id="horariosDisponiveis">
+                        0
+                    </strong>
 
                 </div>
 
@@ -908,26 +1420,36 @@
                         <i data-lucide="users"></i>
                     </div>
 
-                    <span>Agendamentos</span>
+                    <span>
+                        Agendamentos
+                    </span>
 
-                    <strong id="totalAgendamentos">0</strong>
+                    <strong id="totalAgendamentos">
+                        0
+                    </strong>
 
                 </div>
 
             </div>
 
 
+
             <!-- ADICIONAR HORÁRIO -->
 
             <section class="secao">
 
+
                 <div class="secao-titulo">
 
-                    <h2>Adicionar horário</h2>
+                    <h2>
+                        Adicionar horário
+                    </h2>
 
                 </div>
 
+
                 <div class="form-horario">
+
 
                     <div>
 
@@ -969,15 +1491,20 @@
             </section>
 
 
+
             <!-- HORÁRIOS -->
 
             <section class="secao">
 
+
                 <div class="secao-titulo">
 
-                    <h2>Horários cadastrados</h2>
+                    <h2>
+                        Horários cadastrados
+                    </h2>
 
                 </div>
+
 
                 <div
                     class="horarios-grid"
@@ -987,15 +1514,20 @@
             </section>
 
 
+
             <!-- AGENDAMENTOS -->
 
             <section class="secao">
 
+
                 <div class="secao-titulo">
 
-                    <h2>Agendamentos</h2>
+                    <h2>
+                        Agendamentos
+                    </h2>
 
                 </div>
+
 
                 <div class="tabela-wrapper">
 
@@ -1004,15 +1536,35 @@
                         <thead>
 
                             <tr>
-                                <th>Cliente</th>
-                                <th>Telefone</th>
-                                <th>E-mail</th>
-                                <th>Atendimento</th>
-                                <th>Data</th>
-                                <th>Horário</th>
+
+                                <th>
+                                    Cliente
+                                </th>
+
+                                <th>
+                                    Telefone
+                                </th>
+
+                                <th>
+                                    E-mail
+                                </th>
+
+                                <th>
+                                    Atendimento
+                                </th>
+
+                                <th>
+                                    Data
+                                </th>
+
+                                <th>
+                                    Horário
+                                </th>
+
                             </tr>
 
                         </thead>
+
 
                         <tbody id="listaAgendamentos"></tbody>
 
@@ -1022,26 +1574,30 @@
 
             </section>
 
+
         </main>
 
     </section>
 
 
+
     <script>
 
         /* =====================================================
-           SUPABASE
+           CONFIGURAÇÃO SUPABASE
         ====================================================== */
 
-        const SUPABASE_URL = "https://ovogpczsnxwqmefpbydi.supabase.co/rest/v1/";
+        const SUPABASE_URL = "COLE_AQUI_A_SUPABASE_URL";
 
-        const SUPABASE_KEY = "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+        const SUPABASE_KEY = "COLE_AQUI_A_PUBLISHABLE_KEY";
+
 
         const supabaseClient =
             window.supabase.createClient(
                 SUPABASE_URL,
                 SUPABASE_KEY
             );
+
 
 
         /* =====================================================
@@ -1054,6 +1610,9 @@
         const telaLogin =
             document.getElementById("telaLogin");
 
+        const telaRecuperacao =
+            document.getElementById("telaRecuperacao");
+
         const painel =
             document.getElementById("painel");
 
@@ -1061,11 +1620,12 @@
             document.getElementById("loginForm");
 
         const erroLogin =
-            document.getElementById("erroLogin");
+            document.getElementById("mensagemLogin");
+
 
 
         /* =====================================================
-           INICIALIZAÇÃO
+           INICIAR
         ====================================================== */
 
         lucide.createIcons();
@@ -1073,8 +1633,9 @@
         verificarSessao();
 
 
+
         /* =====================================================
-           VERIFICAR SE JÁ ESTÁ LOGADO
+           VERIFICAR SESSÃO
         ====================================================== */
 
         async function verificarSessao() {
@@ -1083,7 +1644,9 @@
                 data: {
                     session
                 }
-            } = await supabaseClient.auth.getSession();
+            } =
+                await supabaseClient.auth.getSession();
+
 
             if (session) {
 
@@ -1098,101 +1661,373 @@
         }
 
 
+
         /* =====================================================
-           TELA DE ESCOLHA
+           MOSTRAR ESCOLHA
         ====================================================== */
 
         function mostrarEscolha() {
 
             telaEscolha.style.display = "flex";
+
             telaLogin.style.display = "none";
+
+            telaRecuperacao.style.display = "none";
+
             painel.style.display = "none";
 
         }
 
-
-        /* =====================================================
-           ABRIR LOGIN
-        ====================================================== */
-
-        function abrirLogin() {
-
-            telaEscolha.style.display = "none";
-            telaLogin.style.display = "flex";
-            painel.style.display = "none";
-
-            document.getElementById("email").focus();
-
-        }
-
-
-        /* =====================================================
-           VOLTAR
-        ====================================================== */
-
-        function voltarEscolha() {
-
-            erroLogin.style.display = "none";
-
-            telaLogin.style.display = "none";
-            telaEscolha.style.display = "flex";
-
-        }
 
 
         /* =====================================================
            LOGIN
         ====================================================== */
 
-        loginForm.addEventListener("submit", async function(event) {
+        function abrirLogin() {
 
-            event.preventDefault();
+            telaEscolha.style.display = "none";
 
-            const email =
-                document.getElementById("email").value.trim();
+            telaLogin.style.display = "flex";
 
-            const senha =
-                document.getElementById("senha").value;
+            telaRecuperacao.style.display = "none";
 
-            const btn =
-                document.getElementById("btnEntrar");
+            painel.style.display = "none";
 
             erroLogin.style.display = "none";
 
-            btn.disabled = true;
-            btn.textContent = "Entrando...";
+            setTimeout(() => {
+
+                document
+                    .getElementById("email")
+                    .focus();
+
+            }, 100);
+
+        }
 
 
-            const {
-                data,
-                error
-            } = await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: senha
-            });
+
+        /* =====================================================
+           VOLTAR PARA ESCOLHA
+        ====================================================== */
+
+        function voltarEscolha() {
+
+            telaLogin.style.display = "none";
+
+            telaEscolha.style.display = "flex";
+
+            erroLogin.style.display = "none";
+
+        }
 
 
-            if (error) {
 
-                erroLogin.textContent =
-                    "Usuário ou senha incorretos.";
+        /* =====================================================
+           MOSTRAR / OCULTAR SENHA
+        ====================================================== */
 
-                erroLogin.style.display = "block";
+        function mostrarSenha() {
+
+            const campo =
+                document.getElementById("senha");
+
+            const icone =
+                document.getElementById("iconeOlho");
+
+
+            if (campo.type === "password") {
+
+                campo.type = "text";
+
+                icone.setAttribute(
+                    "data-lucide",
+                    "eye-off"
+                );
+
+            } else {
+
+                campo.type = "password";
+
+                icone.setAttribute(
+                    "data-lucide",
+                    "eye"
+                );
+
+            }
+
+
+            icone.outerHTML =
+                `<i data-lucide="${
+                    campo.type === "password"
+                        ? "eye"
+                        : "eye-off"
+                }" id="iconeOlho"></i>`;
+
+
+            lucide.createIcons();
+
+        }
+
+
+
+        /* =====================================================
+           LOGIN COM SUPABASE
+        ====================================================== */
+
+        loginForm.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const senha =
+                    document
+                        .getElementById("senha")
+                        .value;
+
+
+                const btn =
+                    document
+                        .getElementById("btnEntrar");
+
+
+                erroLogin.style.display =
+                    "none";
+
+
+                btn.disabled = true;
+
+                btn.textContent =
+                    "Entrando...";
+
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth
+                        .signInWithPassword({
+                            email: email,
+                            password: senha
+                        });
+
+
+                if (error) {
+
+                    erroLogin.textContent =
+                        "E-mail ou senha incorretos.";
+
+                    erroLogin.className =
+                        "mensagem-login erro";
+
+                    erroLogin.style.display =
+                        "block";
+
+
+                    btn.disabled = false;
+
+                    btn.textContent =
+                        "Entrar";
+
+                    return;
+
+                }
+
 
                 btn.disabled = false;
-                btn.textContent = "Entrar";
+
+                btn.textContent =
+                    "Entrar";
+
+
+                mostrarPainel();
+
+            }
+        );
+
+
+
+        /* =====================================================
+           RECUPERAÇÃO
+        ====================================================== */
+
+        function abrirRecuperacao(event) {
+
+            event.preventDefault();
+
+
+            telaLogin.style.display = "none";
+
+            telaEscolha.style.display = "none";
+
+            painel.style.display = "none";
+
+            telaRecuperacao.style.display = "flex";
+
+
+            const emailLogin =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            if (emailLogin) {
+
+                document
+                    .getElementById(
+                        "emailRecuperacao"
+                    )
+                    .value = emailLogin;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           VOLTAR PARA LOGIN
+        ====================================================== */
+
+        function voltarLogin() {
+
+            telaRecuperacao.style.display =
+                "none";
+
+            telaLogin.style.display =
+                "flex";
+
+            document
+                .getElementById(
+                    "mensagemRecuperacao"
+                )
+                .style.display = "none";
+
+        }
+
+
+
+        /* =====================================================
+           ENVIAR RECUPERAÇÃO
+        ====================================================== */
+
+        async function recuperarSenha() {
+
+            const email =
+                document
+                    .getElementById(
+                        "emailRecuperacao"
+                    )
+                    .value
+                    .trim();
+
+
+            const mensagem =
+                document
+                    .getElementById(
+                        "mensagemRecuperacao"
+                    );
+
+
+            const btn =
+                document
+                    .getElementById(
+                        "btnRecuperar"
+                    );
+
+
+            if (!email) {
+
+                mensagem.textContent =
+                    "Digite seu e-mail.";
+
+                mensagem.className =
+                    "mensagem-login erro";
+
+                mensagem.style.display =
+                    "block";
 
                 return;
 
             }
 
 
+            btn.disabled = true;
+
+            btn.textContent =
+                "Enviando...";
+
+
+            const redirectUrl =
+                window.location.origin +
+                window.location.pathname;
+
+
+            const {
+                error
+            } =
+                await supabaseClient.auth
+                    .resetPasswordForEmail(
+                        email,
+                        {
+                            redirectTo:
+                                redirectUrl
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(error);
+
+                mensagem.textContent =
+                    "Não foi possível enviar a recuperação. Verifique o e-mail.";
+
+                mensagem.className =
+                    "mensagem-login erro";
+
+                mensagem.style.display =
+                    "block";
+
+
+                btn.disabled = false;
+
+                btn.textContent =
+                    "Enviar recuperação";
+
+                return;
+
+            }
+
+
+            mensagem.textContent =
+                "Enviamos as instruções de recuperação para o seu e-mail.";
+
+            mensagem.className =
+                "mensagem-login sucesso";
+
+            mensagem.style.display =
+                "block";
+
+
             btn.disabled = false;
-            btn.textContent = "Entrar";
 
-            mostrarPainel();
+            btn.textContent =
+                "Enviar recuperação";
 
-        });
+        }
+
 
 
         /* =====================================================
@@ -1201,15 +2036,26 @@
 
         function mostrarPainel() {
 
-            telaEscolha.style.display = "none";
-            telaLogin.style.display = "none";
-            painel.style.display = "block";
+            telaEscolha.style.display =
+                "none";
+
+            telaLogin.style.display =
+                "none";
+
+            telaRecuperacao.style.display =
+                "none";
+
+            painel.style.display =
+                "block";
+
 
             carregarTudo();
+
 
             lucide.createIcons();
 
         }
+
 
 
         /* =====================================================
@@ -1220,50 +2066,73 @@
 
             await supabaseClient.auth.signOut();
 
-            document.getElementById("email").value = "";
-            document.getElementById("senha").value = "";
+
+            document
+                .getElementById("email")
+                .value = "";
+
+
+            document
+                .getElementById("senha")
+                .value = "";
+
 
             mostrarEscolha();
 
         }
 
 
+
         /* =====================================================
-           ADICIONAR FUTURO ADVOGADO
+           ADICIONAR ADVOGADO
         ====================================================== */
 
         function adicionarAdvogado() {
 
             alert(
-                "Essa função ficará disponível quando houver outro advogado cadastrado."
+                "Essa função será configurada quando houver outro advogado cadastrado."
             );
 
         }
 
 
+
         /* =====================================================
-           MENSAGEM
+           MENSAGEM DO PAINEL
         ====================================================== */
 
-        function mostrarMensagem(texto, tipo = "sucesso") {
+        function mostrarMensagem(
+            texto,
+            tipo = "sucesso"
+        ) {
 
             const elemento =
-                document.getElementById("mensagem");
+                document.getElementById(
+                    "mensagem"
+                );
 
-            elemento.textContent = texto;
+
+            elemento.textContent =
+                texto;
+
 
             elemento.className =
                 "mensagem " + tipo;
 
-            elemento.style.display = "block";
+
+            elemento.style.display =
+                "block";
+
 
             setTimeout(() => {
 
-                elemento.style.display = "none";
+                elemento.style.display =
+                    "none";
 
             }, 4000);
 
         }
+
 
 
         /* =====================================================
@@ -1279,8 +2148,9 @@
         }
 
 
+
         /* =====================================================
-           HORÁRIOS
+           CARREGAR HORÁRIOS
         ====================================================== */
 
         async function carregarHorarios() {
@@ -1288,15 +2158,22 @@
             const {
                 data,
                 error
-            } = await supabaseClient
-                .from("horarios")
-                .select("*")
-                .order("data", {
-                    ascending: true
-                })
-                .order("horario", {
-                    ascending: true
-                });
+            } =
+                await supabaseClient
+                    .from("horarios")
+                    .select("*")
+                    .order(
+                        "data",
+                        {
+                            ascending: true
+                        }
+                    )
+                    .order(
+                        "horario",
+                        {
+                            ascending: true
+                        }
+                    );
 
 
             if (error) {
@@ -1314,23 +2191,35 @@
 
 
             const lista =
-                document.getElementById("listaHorarios");
+                document.getElementById(
+                    "listaHorarios"
+                );
+
 
             lista.innerHTML = "";
 
 
             const disponiveis =
                 data.filter(
-                    horario => horario.disponivel === true
+                    horario =>
+                        horario.disponivel === true
                 );
 
 
-            document.getElementById("totalHorarios")
-                .textContent = data.length;
+            document
+                .getElementById(
+                    "totalHorarios"
+                )
+                .textContent =
+                data.length;
 
 
-            document.getElementById("horariosDisponiveis")
-                .textContent = disponiveis.length;
+            document
+                .getElementById(
+                    "horariosDisponiveis"
+                )
+                .textContent =
+                disponiveis.length;
 
 
             if (!data.length) {
@@ -1346,18 +2235,25 @@
             data.forEach(horario => {
 
                 const card =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
-                card.className = "horario-card";
+
+                card.className =
+                    "horario-card";
 
 
                 const dataFormatada =
-                    formatarData(horario.data);
+                    formatarData(
+                        horario.data
+                    );
 
 
                 const horaFormatada =
                     horario.horario
-                        ? horario.horario.substring(0, 5)
+                        ? horario.horario
+                            .substring(0, 5)
                         : "--";
 
 
@@ -1372,9 +2268,11 @@
                     </div>
 
                     <div class="horario-status">
-                        ${horario.disponivel
-                            ? "● Disponível"
-                            : "● Indisponível"}
+                        ${
+                            horario.disponivel
+                                ? "● Disponível"
+                                : "● Indisponível"
+                        }
                     </div>
 
                     <button
@@ -1394,6 +2292,7 @@
         }
 
 
+
         /* =====================================================
            ADICIONAR HORÁRIO
         ====================================================== */
@@ -1401,10 +2300,19 @@
         async function adicionarHorario() {
 
             const data =
-                document.getElementById("dataHorario").value;
+                document
+                    .getElementById(
+                        "dataHorario"
+                    )
+                    .value;
+
 
             const horario =
-                document.getElementById("horaHorario").value;
+                document
+                    .getElementById(
+                        "horaHorario"
+                    )
+                    .value;
 
 
             if (!data || !horario) {
@@ -1421,15 +2329,16 @@
 
             const {
                 error
-            } = await supabaseClient
-                .from("horarios")
-                .insert([
-                    {
-                        data: data,
-                        horario: horario,
-                        disponivel: true
-                    }
-                ]);
+            } =
+                await supabaseClient
+                    .from("horarios")
+                    .insert([
+                        {
+                            data: data,
+                            horario: horario,
+                            disponivel: true
+                        }
+                    ]);
 
 
             if (error) {
@@ -1446,8 +2355,18 @@
             }
 
 
-            document.getElementById("dataHorario").value = "";
-            document.getElementById("horaHorario").value = "";
+            document
+                .getElementById(
+                    "dataHorario"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "horaHorario"
+                )
+                .value = "";
 
 
             mostrarMensagem(
@@ -1460,6 +2379,7 @@
         }
 
 
+
         /* =====================================================
            REMOVER HORÁRIO
         ====================================================== */
@@ -1467,7 +2387,9 @@
         async function removerHorario(id) {
 
             const confirmar =
-                confirm("Deseja realmente remover este horário?");
+                confirm(
+                    "Deseja realmente remover este horário?"
+                );
 
 
             if (!confirmar) return;
@@ -1475,10 +2397,11 @@
 
             const {
                 error
-            } = await supabaseClient
-                .from("horarios")
-                .delete()
-                .eq("id", id);
+            } =
+                await supabaseClient
+                    .from("horarios")
+                    .delete()
+                    .eq("id", id);
 
 
             if (error) {
@@ -1505,6 +2428,7 @@
         }
 
 
+
         /* =====================================================
            AGENDAMENTOS
         ====================================================== */
@@ -1514,15 +2438,22 @@
             const {
                 data,
                 error
-            } = await supabaseClient
-                .from("agendamentos")
-                .select("*")
-                .order("data", {
-                    ascending: true
-                })
-                .order("horario", {
-                    ascending: true
-                });
+            } =
+                await supabaseClient
+                    .from("agendamentos")
+                    .select("*")
+                    .order(
+                        "data",
+                        {
+                            ascending: true
+                        }
+                    )
+                    .order(
+                        "horario",
+                        {
+                            ascending: true
+                        }
+                    );
 
 
             if (error) {
@@ -1540,23 +2471,37 @@
 
 
             const tbody =
-                document.getElementById("listaAgendamentos");
+                document.getElementById(
+                    "listaAgendamentos"
+                );
+
 
             tbody.innerHTML = "";
 
 
-            document.getElementById("totalAgendamentos")
-                .textContent = data.length;
+            document
+                .getElementById(
+                    "totalAgendamentos"
+                )
+                .textContent =
+                data.length;
 
 
             if (!data.length) {
 
                 tbody.innerHTML = `
+
                     <tr>
-                        <td colspan="6" class="vazio">
+
+                        <td
+                            colspan="6"
+                            class="vazio"
+                        >
                             Nenhum agendamento realizado.
                         </td>
+
                     </tr>
+
                 `;
 
                 return;
@@ -1567,47 +2512,69 @@
             data.forEach(agendamento => {
 
                 const tr =
-                    document.createElement("tr");
+                    document.createElement(
+                        "tr"
+                    );
 
 
                 const nome =
                     agendamento.nome || "-";
 
+
                 const telefone =
                     agendamento.telefone || "-";
 
+
                 const email =
                     agendamento.email || "-";
+
 
                 const tipo =
                     agendamento.tipo_atendimento ||
                     agendamento.tipo ||
                     "-";
 
+
                 const data =
                     agendamento.data
-                        ? formatarData(agendamento.data)
+                        ? formatarData(
+                            agendamento.data
+                        )
                         : "-";
+
 
                 const horario =
                     agendamento.horario
-                        ? agendamento.horario.substring(0, 5)
+                        ? agendamento.horario
+                            .substring(0, 5)
                         : "-";
 
 
                 tr.innerHTML = `
 
-                    <td>${escaparHTML(nome)}</td>
+                    <td>
+                        ${escaparHTML(nome)}
+                    </td>
 
-                    <td>${escaparHTML(telefone)}</td>
+                    <td>
+                        ${escaparHTML(telefone)}
+                    </td>
 
-                    <td>${escaparHTML(email)}</td>
+                    <td>
+                        ${escaparHTML(email)}
+                    </td>
 
-                    <td>${escaparHTML(tipo)}</td>
+                    <td>
+                        ${escaparHTML(tipo)}
+                    </td>
 
-                    <td>${escaparHTML(data)}</td>
+                    <td>
+                        ${escaparHTML(data)}
+                    </td>
 
-                    <td>${escaparHTML(horario)}</td>
+                    <td>
+                        ${escaparHTML(horario)}
+                    </td>
 
                 `;
 
@@ -1617,6 +2584,7 @@
             });
 
         }
+
 
 
         /* =====================================================
@@ -1633,7 +2601,9 @@
 
 
             if (partes.length !== 3) {
+
                 return data;
+
             }
 
 
@@ -1642,18 +2612,39 @@
         }
 
 
+
         /* =====================================================
-           PROTEÇÃO CONTRA HTML
+           SEGURANÇA DE TEXTO
         ====================================================== */
 
         function escaparHTML(valor) {
 
             return String(valor)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
 
         }
 
