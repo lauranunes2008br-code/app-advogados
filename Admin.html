@@ -1,1328 +1,938 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Área Profissional | Josiane Nunes</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f8f5f0;
-            color: #2d1719;
-            min-height: 100vh;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        :root {
-            --vinho: #54131b;
-            --vinho-escuro: #2b080d;
-            --vinho-medio: #6b2029;
-            --dourado: #b58a48;
-            --dourado-claro: #d7b976;
-            --creme: #f8f5f0;
-            --creme-escuro: #eee7dd;
-            --branco: #fff;
-            --texto: #2d1719;
-            --cinza: #6b6060;
-            --borda: #e5ddd3;
-        }
-
-        h1,
-        h2,
-        h3,
-        .logo-monogram,
-        .logo-name {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        /* =========================
-           TELA INICIAL
-        ========================= */
-
-        #telaEscolha {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
-
-            background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(181, 138, 72, .10),
-                    transparent 30%
-                ),
-                #f8f5f0;
-        }
-
-        .escolha-container {
-            width: 100%;
-            max-width: 850px;
-            text-align: center;
-        }
-
-        .logo-area {
-            margin-bottom: 55px;
-        }
-
-        .logo-monogram {
-            font-size: 62px;
-            font-weight: 600;
-            color: var(--vinho);
-            line-height: .8;
-        }
-
-        .logo-line {
-            width: 60px;
-            height: 2px;
-            background: var(--dourado);
-            margin: 16px auto;
-        }
-
-        .logo-name {
-            font-size: 25px;
-            letter-spacing: 2px;
-            color: var(--vinho);
-        }
-
-        .logo-subtitle {
-            font-size: 10px;
-            letter-spacing: 4px;
-            color: var(--dourado);
-            margin-top: 7px;
-            font-weight: 600;
-        }
-
-        .escolha-titulo {
-            font-size: 42px;
-            color: var(--vinho-escuro);
-            margin-bottom: 10px;
-        }
-
-        .escolha-subtitulo {
-            color: var(--cinza);
-            font-size: 13px;
-            margin-bottom: 38px;
-        }
-
-        .advogados {
-            display: flex;
-            justify-content: center;
-            gap: 22px;
-            flex-wrap: wrap;
-        }
-
-        .advogado-card {
-            width: 260px;
-            min-height: 190px;
-            background: white;
-            border: 1px solid var(--borda);
-            border-radius: 8px;
-            padding: 30px 20px;
-            cursor: pointer;
-            transition: .3s;
-            box-shadow: 0 10px 30px rgba(43, 8, 13, .05);
-        }
-
-        .advogado-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--dourado);
-            box-shadow: 0 18px 40px rgba(43, 8, 13, .10);
-        }
-
-        .advogado-icone {
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: var(--vinho);
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin: 0 auto 18px;
-        }
-
-        .advogado-card h2 {
-            color: var(--vinho);
-            font-size: 27px;
-            margin-bottom: 7px;
-        }
-
-        .advogado-card p {
-            color: var(--cinza);
-            font-size: 11px;
-        }
-
-        .adicionar-card {
-            border: 1px dashed var(--dourado);
-            background: rgba(255, 255, 255, .45);
-        }
-
-        .adicionar-card .advogado-icone {
-            background: transparent;
-            border: 1px solid var(--dourado);
-            color: var(--dourado);
-        }
-
-        /* =========================
-           LOGIN
-        ========================= */
-
-        #telaLogin {
-            display: none;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
-            background: var(--creme);
-        }
-
-        .login-container {
-            width: 100%;
-            max-width: 430px;
-        }
-
-        .voltar {
-            background: none;
-            border: none;
-            color: var(--vinho);
-            cursor: pointer;
-
-            display: flex;
-            align-items: center;
-            gap: 7px;
-
-            font-size: 12px;
-            margin-bottom: 25px;
-        }
-
-        .login-box {
-            background: white;
-            border: 1px solid var(--borda);
-            padding: 42px 38px;
-            border-radius: 8px;
-
-            box-shadow: 0 20px 50px rgba(43, 8, 13, .08);
-        }
-
-        .login-logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .login-logo .logo-monogram {
-            font-size: 48px;
-        }
-
-        .login-logo .logo-name {
-            font-size: 21px;
-        }
-
-        .login-box h1 {
-            text-align: center;
-            color: var(--vinho);
-            font-size: 31px;
-            margin-bottom: 8px;
-        }
-
-        .login-descricao {
-            text-align: center;
-            color: var(--cinza);
-            font-size: 11px;
-            margin-bottom: 28px;
-        }
-
-        .campo {
-            margin-bottom: 18px;
-        }
-
-        .campo label {
-            display: block;
-            color: var(--texto);
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 7px;
-        }
-
-        .campo-input {
-            position: relative;
-        }
-
-        .campo-input > i {
-            position: absolute;
-            left: 13px;
-            top: 50%;
-            transform: translateY(-50%);
-
-            color: var(--dourado);
-            width: 17px;
-            pointer-events: none;
-        }
-
-        .campo input {
-            width: 100%;
-            height: 48px;
-
-            border: 1px solid var(--borda);
-            border-radius: 5px;
-
-            padding: 0 45px 0 42px;
-
-            outline: none;
-            color: var(--texto);
-            background: #fff;
-        }
-
-        .campo input:focus {
-            border-color: var(--dourado);
-        }
-
-        .olho-senha {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-
-            border: none;
-            background: transparent;
-
-            color: var(--cinza);
-            cursor: pointer;
-
-            width: 25px;
-            height: 25px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .olho-senha:hover {
-            color: var(--vinho);
-        }
-
-        .esqueci-senha {
-            display: block;
-
-            text-align: right;
-
-            color: var(--vinho);
-            font-size: 10px;
-            font-weight: 600;
-
-            text-decoration: none;
-
-            margin-top: -8px;
-            margin-bottom: 20px;
-
-            cursor: pointer;
-        }
-
-        .esqueci-senha:hover {
-            color: var(--dourado);
-        }
-
-        .btn-entrar {
-            width: 100%;
-            height: 49px;
-
-            border: none;
-            border-radius: 5px;
-
-            background: var(--vinho);
-            color: white;
-
-            font-weight: 600;
-            cursor: pointer;
-
-            transition: .25s;
-        }
-
-        .btn-entrar:hover {
-            background: var(--vinho-escuro);
-        }
-
-        .btn-entrar:disabled {
-            opacity: .7;
-            cursor: wait;
-        }
-
-        .mensagem-login {
-            display: none;
-
-            margin-top: 15px;
-            padding: 11px;
-
-            border-radius: 5px;
-
-            font-size: 10px;
-            text-align: center;
-        }
-
-        .mensagem-login.erro {
-            background: #f8e8e8;
-            color: #8b2020;
-        }
-
-        .mensagem-login.sucesso {
-            background: #e8f4ea;
-            color: #32633b;
-        }
-
-        /* =========================
-           RECUPERAÇÃO DE SENHA
-        ========================= */
-
-        #telaRecuperacao {
-            display: none;
-
-            min-height: 100vh;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 25px;
-
-            background: var(--creme);
-        }
-
-        .recuperacao-container {
-            width: 100%;
-            max-width: 430px;
-        }
-
-        .recuperacao-box {
-            background: white;
-
-            border: 1px solid var(--borda);
-            border-radius: 8px;
-
-            padding: 42px 38px;
-
-            box-shadow: 0 20px 50px rgba(43, 8, 13, .08);
-        }
-
-        .recuperacao-box h1 {
-            text-align: center;
-            color: var(--vinho);
-
-            font-size: 31px;
-
-            margin-bottom: 10px;
-        }
-
-        .recuperacao-box p {
-            text-align: center;
-
-            color: var(--cinza);
-
-            font-size: 11px;
-            line-height: 1.7;
-
-            margin-bottom: 25px;
-        }
-
-        .btn-recuperar {
-            width: 100%;
-            height: 48px;
-
-            border: none;
-            border-radius: 5px;
-
-            background: var(--vinho);
-            color: white;
-
-            font-size: 11px;
-            font-weight: 600;
-
-            cursor: pointer;
-        }
-
-        /* =========================
-           PAINEL
-        ========================= */
-
-        #painel {
-            display: none;
-        }
-
-        .topbar {
-            min-height: 38px;
-
-            background: var(--vinho);
-            color: white;
-
-            padding: 8px 6%;
-
-            font-size: 10px;
-
-            display: flex;
-            justify-content: space-between;
-
-            gap: 15px;
-        }
-
-        .topbar-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .navbar {
-            min-height: 88px;
-
-            background: rgba(255,255,255,.95);
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 15px 6%;
-
-            border-bottom: 1px solid var(--borda);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .nav-logo .logo-monogram {
-            font-size: 39px;
-        }
-
-        .nav-divider {
-            width: 1px;
-            height: 42px;
-            background: var(--dourado);
-        }
-
-        .nav-logo-text .logo-name {
-            font-size: 20px;
-        }
-
-        .nav-logo-text .logo-subtitle {
-            font-size: 8px;
-            letter-spacing: 3px;
-        }
-
-        .btn-sair {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-
-            border: 1px solid var(--vinho);
-
-            background: transparent;
-
-            color: var(--vinho);
-
-            padding: 10px 16px;
-
-            border-radius: 4px;
-
-            cursor: pointer;
-
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .btn-sair:hover {
-            background: var(--vinho);
-            color: white;
-        }
-
-        .painel-hero {
-            background: var(--creme);
-
-            padding: 65px 6% 55px;
-        }
-
-        .painel-hero small {
-            color: var(--dourado);
-
-            text-transform: uppercase;
-
-            letter-spacing: 3px;
-
-            font-size: 9px;
-            font-weight: 700;
-        }
-
-        .painel-hero h1 {
-            font-size: 52px;
-
-            color: var(--vinho-escuro);
-
-            margin: 8px 0 10px;
-        }
-
-        .painel-hero p {
-            color: var(--cinza);
-            font-size: 12px;
-        }
-
-        .conteudo {
-            padding: 40px 6% 70px;
-        }
-
-        .cards-resumo {
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 35px;
-        }
-
-        .resumo-card {
-            background: white;
-
-            border: 1px solid var(--borda);
-
-            padding: 25px;
-
-            border-radius: 6px;
-        }
-
-        .resumo-card .icone {
-            color: var(--dourado);
-            margin-bottom: 15px;
-        }
-
-        .resumo-card span {
-            display: block;
-
-            color: var(--cinza);
-
-            font-size: 10px;
-
-            margin-bottom: 6px;
-        }
-
-        .resumo-card strong {
-            color: var(--vinho);
-
-            font-family: 'Cormorant Garamond', serif;
-
-            font-size: 35px;
-        }
-
-        .secao {
-            background: white;
-
-            border: 1px solid var(--borda);
-
-            border-radius: 6px;
-
-            margin-bottom: 25px;
-
-            padding: 30px;
-        }
-
-        .secao-titulo {
-            display: flex;
-
-            justify-content: space-between;
-            align-items: center;
-
-            gap: 15px;
-
-            margin-bottom: 25px;
-        }
-
-        .secao-titulo h2 {
-            color: var(--vinho);
-            font-size: 28px;
-        }
-
-        .form-horario {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr auto;
-
-            gap: 14px;
-
-            align-items: end;
-        }
-
-        .form-horario label {
-            display: block;
-
-            font-size: 10px;
-            font-weight: 600;
-
-            margin-bottom: 7px;
-        }
-
-        .form-horario input {
-            width: 100%;
-            height: 45px;
-
-            border: 1px solid var(--borda);
-
-            border-radius: 4px;
-
-            padding: 0 12px;
-
-            background: white;
-
-            outline: none;
-        }
-
-        .btn-principal {
-            height: 45px;
-
-            border: none;
-
-            background: var(--vinho);
-
-            color: white;
-
-            padding: 0 20px;
-
-            border-radius: 4px;
-
-            cursor: pointer;
-
-            font-size: 11px;
-
-            font-weight: 600;
-        }
-
-        .btn-principal:hover {
-            background: var(--vinho-escuro);
-        }
-
-        .horarios-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fill, minmax(210px, 1fr));
-
-            gap: 14px;
-        }
-
-        .horario-card {
-            border: 1px solid var(--borda);
-
-            padding: 18px;
-
-            border-radius: 5px;
-
-            background: var(--creme);
-        }
-
-        .horario-card .data {
-            color: var(--vinho);
-
-            font-weight: 700;
-
-            font-size: 12px;
-
-            margin-bottom: 7px;
-        }
-
-        .horario-card .hora {
-            font-family: 'Cormorant Garamond', serif;
-
-            color: var(--dourado);
-
-            font-size: 28px;
-
-            font-weight: 700;
-        }
-
-        .horario-status {
-            font-size: 9px;
-
-            margin-top: 8px;
-
-            color: #387044;
-        }
-
-        .btn-remover {
-            margin-top: 13px;
-
-            background: transparent;
-
-            border: 1px solid #c9a7a7;
-
-            color: #8b3030;
-
-            padding: 7px 10px;
-
-            border-radius: 4px;
-
-            cursor: pointer;
-
-            font-size: 9px;
-        }
-
-        .tabela-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-
-            border-collapse: collapse;
-
-            min-width: 650px;
-        }
-
-        th {
-            text-align: left;
-
-            font-size: 9px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: var(--dourado);
-
-            border-bottom: 1px solid var(--borda);
-
-            padding: 12px 8px;
-        }
-
-        td {
-            padding: 14px 8px;
-
-            border-bottom: 1px solid var(--borda);
-
-            font-size: 10px;
-
-            color: var(--texto);
-        }
-
-        .vazio {
-            color: var(--cinza);
-
-            font-size: 11px;
-
-            text-align: center;
-
-            padding: 25px 10px;
-        }
-
-        .mensagem {
-            display: none;
-
-            margin-bottom: 20px;
-
-            padding: 12px;
-
-            border-radius: 4px;
-
-            font-size: 10px;
-        }
-
-        .mensagem.sucesso {
-            background: #e8f4ea;
-            color: #32633b;
-        }
-
-        .mensagem.erro {
-            background: #f8e8e8;
-            color: #8b2020;
-        }
-
-        @media(max-width: 800px) {
-
-            .cards-resumo {
-                grid-template-columns: 1fr;
-            }
-
-            .form-horario {
-                grid-template-columns: 1fr;
-            }
-
-            .topbar {
-                flex-direction: column;
-            }
-
-            .painel-hero h1 {
-                font-size: 40px;
-            }
-
-            .navbar {
-                padding: 15px 4%;
-            }
-
-            .conteudo,
-            .painel-hero {
-                padding-left: 4%;
-                padding-right: 4%;
-            }
-        }
-
-        @media(max-width: 500px) {
-
-            .login-box,
-            .recuperacao-box {
-                padding: 32px 22px;
-            }
-
-            .escolha-titulo {
-                font-size: 34px;
-            }
-
-            .nav-logo-text {
-                display: none;
-            }
-
-            .nav-divider {
-                display: none;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Área Restrita | JN Advocacia</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    background:#f8f5f0;
+    color:#2d1719;
+    font-family:'Montserrat',sans-serif;
+}
+
+button,
+input{
+    font-family:'Montserrat',sans-serif;
+}
+
+.tela{
+    min-height:100vh;
+    display:none;
+}
+
+.tela.ativa{
+    display:flex;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+}
+
+.login-box{
+    width:100%;
+    max-width:430px;
+    background:white;
+    border:1px solid #e5ddd3;
+    padding:45px 35px;
+    box-shadow:0 15px 45px rgba(43,8,13,.10);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.logo-jn{
+    font-family:'Cormorant Garamond',serif;
+    font-size:54px;
+    font-weight:700;
+    color:#54131b;
+    line-height:.8;
+}
+
+.logo-nome{
+    margin-top:14px;
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:600;
+    color:#54131b;
+}
+
+.logo-sub{
+    margin-top:5px;
+    font-size:9px;
+    letter-spacing:4px;
+    color:#b58a48;
+}
+
+.login-titulo{
+    text-align:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:31px;
+    color:#54131b;
+    margin-bottom:8px;
+}
+
+.login-subtitulo{
+    text-align:center;
+    font-size:12px;
+    color:#6b6060;
+    margin-bottom:28px;
+}
+
+.campo{
+    margin-bottom:18px;
+}
+
+.campo label{
+    display:block;
+    font-size:11px;
+    font-weight:600;
+    color:#54131b;
+    margin-bottom:7px;
+}
+
+.input-senha{
+    position:relative;
+}
+
+.campo input{
+    width:100%;
+    height:48px;
+    border:1px solid #e5ddd3;
+    padding:0 14px;
+    outline:none;
+    color:#2d1719;
+    background:#fff;
+    font-size:13px;
+}
+
+.input-senha input{
+    padding-right:48px;
+}
+
+.campo input:focus{
+    border-color:#b58a48;
+}
+
+.olho{
+    position:absolute;
+    right:0;
+    top:0;
+    width:48px;
+    height:48px;
+    border:0;
+    background:transparent;
+    color:#6b6060;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.btn-principal{
+    width:100%;
+    height:50px;
+    border:0;
+    background:#54131b;
+    color:white;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-top:5px;
+}
+
+.btn-principal:hover{
+    background:#2b080d;
+}
+
+.link{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#6b2029;
+    font-size:11px;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.erro{
+    display:none;
+    background:#f8e9e9;
+    color:#8b222c;
+    padding:11px;
+    margin-bottom:15px;
+    font-size:11px;
+    text-align:center;
+}
+
+.sucesso{
+    display:none;
+    background:#edf5ec;
+    color:#376336;
+    padding:11px;
+    margin-bottom:15px;
+    font-size:11px;
+    text-align:center;
+}
+
+/* =========================
+   ÁREA INTERNA
+========================= */
+
+.interno{
+    width:100%;
+    min-height:100vh;
+    padding:35px;
+}
+
+.topo{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.marca-topo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.marca-topo .mini-jn{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    font-weight:700;
+    color:#54131b;
+}
+
+.marca-topo .mini-texto{
+    border-left:1px solid #d7b976;
+    padding-left:15px;
+}
+
+.mini-nome{
+    font-size:12px;
+    letter-spacing:2px;
+    color:#54131b;
+    font-weight:600;
+}
+
+.mini-adv{
+    font-size:9px;
+    letter-spacing:3px;
+    color:#b58a48;
+    margin-top:4px;
+}
+
+.btn-sair{
+    background:transparent;
+    border:1px solid #b58a48;
+    color:#54131b;
+    padding:11px 18px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.conteudo{
+    max-width:1200px;
+    margin:auto;
+}
+
+.titulo-pagina{
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px;
+    color:#54131b;
+    margin-bottom:5px;
+}
+
+.descricao{
+    font-size:12px;
+    color:#6b6060;
+    margin-bottom:30px;
+}
+
+/* =========================
+   PRESENÇA
+========================= */
+
+.presenca{
+    background:#54131b;
+    color:white;
+    padding:20px 25px;
+    margin-bottom:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.presenca-numero{
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px;
+    font-weight:700;
+}
+
+.presenca-texto{
+    font-size:12px;
+    line-height:1.6;
+}
+
+.presenca-status{
+    font-size:10px;
+    color:#d7b976;
+    margin-top:3px;
+}
+
+/* =========================
+   ADVOGADOS
+========================= */
+
+.secao-titulo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    color:#54131b;
+    margin-bottom:15px;
+}
+
+.advogados-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:16px;
+}
+
+.advogado-card{
+    background:white;
+    border:1px solid #e5ddd3;
+    padding:22px;
+    cursor:pointer;
+    transition:.2s;
+    position:relative;
+}
+
+.advogado-card:hover{
+    border-color:#b58a48;
+    transform:translateY(-2px);
+}
+
+.advogado-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#f1e8e5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#54131b;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.advogado-nome{
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    color:#54131b;
+}
+
+.advogado-email{
+    font-size:10px;
+    color:#6b6060;
+    margin-top:5px;
+    word-break:break-word;
+}
+
+.presente{
+    margin-top:13px;
+    font-size:9px;
+    color:#3f713b;
+    font-weight:600;
+}
+
+.ausente{
+    margin-top:13px;
+    font-size:9px;
+    color:#8a7d7d;
+}
+
+.btn-adicionar{
+    min-height:170px;
+    background:#fff;
+    border:1px dashed #b58a48;
+    color:#54131b;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+.btn-adicionar .mais{
+    font-size:35px;
+    font-weight:300;
+}
+
+.btn-adicionar span:last-child{
+    font-size:10px;
+    letter-spacing:1px;
+    font-weight:600;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+    display:none;
+}
+
+.dashboard.ativo{
+    display:block;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:white;
+    border:1px solid #e5ddd3;
+    padding:22px;
+}
+
+.card-titulo{
+    font-size:10px;
+    color:#6b6060;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.card-numero{
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px;
+    color:#54131b;
+    margin-top:5px;
+}
+
+.painel-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.caixa{
+    background:white;
+    border:1px solid #e5ddd3;
+    padding:25px;
+    margin-bottom:20px;
+}
+
+.caixa h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    color:#54131b;
+    margin-bottom:18px;
+}
+
+.form-linha{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-group label{
+    display:block;
+    font-size:10px;
+    font-weight:600;
+    color:#54131b;
+    margin-bottom:6px;
+}
+
+.form-group input{
+    width:100%;
+    height:42px;
+    border:1px solid #e5ddd3;
+    padding:0 10px;
+    outline:none;
+}
+
+.btn-dourado{
+    background:#b58a48;
+    color:white;
+    border:0;
+    height:43px;
+    padding:0 18px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.7px;
+}
+
+.lista{
+    max-height:380px;
+    overflow-y:auto;
+}
+
+.item{
+    border-bottom:1px solid #eee7dd;
+    padding:14px 0;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.item:last-child{
+    border-bottom:0;
+}
+
+.item-principal{
+    font-size:12px;
+    font-weight:600;
+    color:#54131b;
+}
+
+.item-secundario{
+    font-size:10px;
+    color:#6b6060;
+    margin-top:4px;
+}
+
+.btn-remover{
+    border:0;
+    background:#f5e7e7;
+    color:#8b222c;
+    padding:7px 10px;
+    cursor:pointer;
+    font-size:9px;
+}
+
+.vazio{
+    font-size:11px;
+    color:#8a7d7d;
+    padding:15px 0;
+}
+
+@media(max-width:700px){
+
+    .interno{
+        padding:20px 15px;
+    }
+
+    .topo{
+        align-items:flex-start;
+    }
+
+    .titulo-pagina{
+        font-size:33px;
+    }
+
+    .presenca{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .painel-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-linha{
+        grid-template-columns:1fr;
+    }
+
+    .mini-texto{
+        display:none;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- =====================================================
+     TELA 1 - ACESSO GERAL
+===================================================== -->
 
-    <!-- =====================================================
-         TELA 1 — ESCOLHA DO PROFISSIONAL
-    ====================================================== -->
+<section id="telaAcessoGeral" class="tela ativa">
 
-    <section id="telaEscolha">
+    <div class="login-container">
 
-        <div class="escolha-container">
+        <div class="login-box">
 
-            <div class="logo-area">
+            <div class="logo">
+                <div class="logo-j​​n">JN</div>
+                <div class="logo-nome">JOSIANE NUNES</div>
+                <div class="logo-sub">ADVOCACIA</div>
+            </div>
 
-                <div class="logo-monogram">
-                    JN
+            <h1 class="login-titulo">Acesso administrativo</h1>
+
+            <p class="login-subtitulo">
+                Área exclusiva do escritório
+            </p>
+
+            <div id="erroGeral" class="erro"></div>
+
+            <form id="formAcessoGeral">
+
+                <div class="campo">
+                    <label>Usuário / e-mail</label>
+                    <input
+                        id="usuarioGeral"
+                        type="email"
+                        placeholder="Digite o usuário"
+                        autocomplete="username"
+                        required
+                    >
                 </div>
 
-                <div class="logo-line"></div>
+                <div class="campo">
 
-                <div class="logo-name">
+                    <label>Senha</label>
+
+                    <div class="input-senha">
+
+                        <input
+                            id="senhaGeral"
+                            type="password"
+                            placeholder="Digite a senha"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="olho"
+                            onclick="mostrarSenha('senhaGeral','olhoGeral')"
+                            id="olhoGeral"
+                        >👁</button>
+
+                    </div>
+
+                </div>
+
+                <button class="btn-principal" type="submit">
+                    ENTRAR
+                </button>
+
+            </form>
+
+            <span class="link" onclick="mostrarRecuperacao('geral')">
+                Esqueci minha senha
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TELA 2 - RECUPERAÇÃO
+===================================================== -->
+
+<section id="telaRecuperacao" class="tela">
+
+    <div class="login-container">
+
+        <div class="login-box">
+
+            <div class="logo">
+                <div class="logo-jn">JN</div>
+                <div class="logo-nome">JOSIANE NUNES</div>
+                <div class="logo-sub">ADVOCACIA</div>
+            </div>
+
+            <h1 class="login-titulo">Recuperar acesso</h1>
+
+            <p class="login-subtitulo">
+                Digite seu e-mail para receber o link de recuperação.
+            </p>
+
+            <div id="erroRecuperacao" class="erro"></div>
+            <div id="sucessoRecuperacao" class="sucesso"></div>
+
+            <div class="campo">
+
+                <label>E-mail</label>
+
+                <input
+                    id="emailRecuperacao"
+                    type="email"
+                    placeholder="seu@email.com"
+                >
+
+            </div>
+
+            <button
+                class="btn-principal"
+                onclick="enviarRecuperacao()"
+            >
+                ENVIAR LINK
+            </button>
+
+            <span
+                class="link"
+                onclick="voltarTelaAnterior()"
+            >
+                Voltar
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TELA 3 - ESCOLHA DOS ADVOGADOS
+===================================================== -->
+
+<section id="telaAdvogados" class="tela">
+
+    <div class="interno">
+
+        <div class="topo">
+
+            <div class="marca-topo">
+
+                <div class="mini-jn">JN</div>
+
+                <div class="mini-texto">
+
+                    <div class="mini-nome">
+                        JOSIANE NUNES
+                    </div>
+
+                    <div class="mini-adv">
+                        ADVOCACIA
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="btn-sair" onclick="sairGeral()">
+                SAIR
+            </button>
+
+        </div>
+
+        <div class="conteudo">
+
+            <h1 class="titulo-pagina">
+                Advogados
+            </h1>
+
+            <p class="descricao">
+                Selecione o profissional para acessar a área individual.
+            </p>
+
+            <div class="presenca">
+
+                <div>
+
+                    <div class="presenca-numero" id="numeroPresenca">
+                        0
+                    </div>
+
+                    <div class="presenca-texto">
+                        Advogados trabalhando agora
+                    </div>
+
+                    <div class="presenca-status">
+                        Atualização automática
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2 class="secao-titulo">
+                Profissionais
+            </h2>
+
+            <div
+                id="listaAdvogados"
+                class="advogados-grid"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TELA 4 - LOGIN DO ADVOGADO
+===================================================== -->
+
+<section id="telaLoginAdvogado" class="tela">
+
+    <div class="login-container">
+
+        <div class="login-box">
+
+            <div class="logo">
+
+                <div class="logo-jn">JN</div>
+
+                <div class="logo-nome">
                     JOSIANE NUNES
                 </div>
 
-                <div class="logo-subtitle">
+                <div class="logo-sub">
                     ADVOCACIA
                 </div>
 
             </div>
 
-
-            <h1 class="escolha-titulo">
-                Área profissional
+            <h1
+                id="tituloLoginAdvogado"
+                class="login-titulo"
+            >
+                Acesso
             </h1>
 
-
-            <p class="escolha-subtitulo">
-                Selecione o profissional para acessar sua área administrativa.
+            <p class="login-subtitulo">
+                Área individual do profissional
             </p>
 
+            <div id="erroAdvogado" class="erro"></div>
 
-            <div class="advogados">
-
-
-                <!-- DRA. JOSIANE -->
-
-                <div
-                    class="advogado-card"
-                    onclick="abrirLogin()"
-                >
-
-                    <div class="advogado-icone">
-
-                        <i data-lucide="scale"></i>
-
-                    </div>
-
-
-                    <h2>
-                        Dra. Josiane
-                    </h2>
-
-
-                    <p>
-                        Área administrativa
-                    </p>
-
-                </div>
-
-
-                <!-- FUTURO ADVOGADO -->
-
-                <div
-                    class="advogado-card adicionar-card"
-                    onclick="adicionarAdvogado()"
-                >
-
-                    <div class="advogado-icone">
-
-                        <i data-lucide="plus"></i>
-
-                    </div>
-
-
-                    <h2>
-                        Adicionar advogado
-                    </h2>
-
-
-                    <p>
-                        Adicionar futuramente
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         TELA 2 — LOGIN
-    ====================================================== -->
-
-    <section id="telaLogin">
-
-        <div class="login-container">
-
-
-            <button
-                class="voltar"
-                onclick="voltarEscolha()"
-            >
-
-                <i data-lucide="arrow-left"></i>
-
-                Voltar
-
-            </button>
-
-
-            <div class="login-box">
-
-
-                <div class="login-logo">
-
-                    <div class="logo-monogram">
-                        JN
-                    </div>
-
-                    <div class="logo-line"></div>
-
-                    <div class="logo-name">
-                        JOSIANE NUNES
-                    </div>
-
-                    <div class="logo-subtitle">
-                        ADVOCACIA
-                    </div>
-
-                </div>
-
-
-                <h1>
-                    Dra. Josiane
-                </h1>
-
-
-                <p class="login-descricao">
-                    Acesso exclusivo à área administrativa
-                </p>
-
-
-                <form id="loginForm">
-
-
-                    <!-- EMAIL -->
-
-                    <div class="campo">
-
-                        <label for="email">
-                            Nome de usuário
-                        </label>
-
-
-                        <div class="campo-input">
-
-                            <i data-lucide="user"></i>
-
-
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="Digite seu e-mail"
-                                autocomplete="username"
-                                required
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SENHA -->
-
-                    <div class="campo">
-
-                        <label for="senha">
-                            Senha
-                        </label>
-
-
-                        <div class="campo-input">
-
-                            <i data-lucide="lock"></i>
-
-
-                            <input
-                                type="password"
-                                id="senha"
-                                placeholder="Digite sua senha"
-                                autocomplete="current-password"
-                                required
-                            >
-
-
-                            <button
-                                type="button"
-                                class="olho-senha"
-                                onclick="mostrarSenha()"
-                                aria-label="Mostrar senha"
-                            >
-
-                                <i data-lucide="eye" id="iconeOlho"></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- ESQUECI SENHA -->
-
-                    <a
-                        href="#"
-                        class="esqueci-senha"
-                        onclick="abrirRecuperacao(event)"
-                    >
-                        Esqueci minha senha
-                    </a>
-
-
-                    <!-- ENTRAR -->
-
-                    <button
-                        type="submit"
-                        class="btn-entrar"
-                        id="btnEntrar"
-                    >
-                        Entrar
-                    </button>
-
-
-                    <div
-                        class="mensagem-login"
-                        id="mensagemLogin"
-                    ></div>
-
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         TELA 3 — RECUPERAÇÃO DE SENHA
-    ====================================================== -->
-
-    <section id="telaRecuperacao">
-
-        <div class="recuperacao-container">
-
-
-            <button
-                class="voltar"
-                onclick="voltarLogin()"
-            >
-
-                <i data-lucide="arrow-left"></i>
-
-                Voltar para o login
-
-            </button>
-
-
-            <div class="recuperacao-box">
-
-
-                <div class="login-logo">
-
-                    <div class="logo-monogram">
-                        JN
-                    </div>
-
-                    <div class="logo-line"></div>
-
-                    <div class="logo-name">
-                        JOSIANE NUNES
-                    </div>
-
-                    <div class="logo-subtitle">
-                        ADVOCACIA
-                    </div>
-
-                </div>
-
-
-                <h1>
-                    Recuperar senha
-                </h1>
-
-
-                <p>
-                    Digite o e-mail cadastrado.
-                    Enviaremos para ele as instruções
-                    para criar uma nova senha.
-                </p>
-
+            <form id="formLoginAdvogado">
 
                 <div class="campo">
 
-                    <label for="emailRecuperacao">
-                        E-mail
-                    </label>
+                    <label>E-mail</label>
 
+                    <input
+                        id="emailAdvogado"
+                        type="email"
+                        autocomplete="username"
+                        required
+                    >
 
-                    <div class="campo-input">
+                </div>
 
-                        <i data-lucide="mail"></i>
+                <div class="campo">
 
+                    <label>Senha</label>
+
+                    <div class="input-senha">
 
                         <input
-                            type="email"
-                            id="emailRecuperacao"
-                            placeholder="Digite seu e-mail"
+                            id="senhaAdvogado"
+                            type="password"
+                            autocomplete="current-password"
                             required
                         >
 
+                        <button
+                            type="button"
+                            class="olho"
+                            onclick="mostrarSenha('senhaAdvogado','olhoAdvogado')"
+                            id="olhoAdvogado"
+                        >
+                            👁
+                        </button>
+
                     </div>
 
                 </div>
 
-
                 <button
-                    class="btn-recuperar"
-                    onclick="recuperarSenha()"
-                    id="btnRecuperar"
+                    class="btn-principal"
+                    type="submit"
                 >
-                    Enviar recuperação
+                    ENTRAR
                 </button>
 
+            </form>
 
-                <div
-                    class="mensagem-login"
-                    id="mensagemRecuperacao"
-                ></div>
+            <span
+                class="link"
+                onclick="mostrarRecuperacao('advogado')"
+            >
+                Esqueci minha senha
+            </span>
 
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PAINEL ADMINISTRATIVO
-    ====================================================== -->
-
-    <section id="painel">
-
-
-        <div class="topbar">
-
-            <div class="topbar-item">
-
-                <i data-lucide="shield-check"></i>
-
-                Área administrativa protegida
-
-            </div>
-
-
-            <div class="topbar-item">
-
-                <i data-lucide="clock-3"></i>
-
-                Gestão de atendimento
-
-            </div>
+            <span
+                class="link"
+                onclick="voltarParaAdvogados()"
+            >
+                ← Voltar para advogados
+            </span>
 
         </div>
 
+    </div>
+
+</section>
 
 
-        <nav class="navbar">
+<!-- =====================================================
+     TELA 5 - DASHBOARD
+===================================================== -->
 
+<section id="telaDashboard" class="tela">
 
-            <div class="nav-logo">
+    <div class="interno">
 
-                <div class="logo-monogram">
-                    JN
-                </div>
+        <div class="topo">
 
+            <div class="marca-topo">
 
-                <div class="nav-divider"></div>
+                <div class="mini-jn">JN</div>
 
+                <div class="mini-texto">
 
-                <div class="nav-logo-text">
-
-                    <div class="logo-name">
+                    <div class="mini-nome">
                         JOSIANE NUNES
                     </div>
 
-                    <div class="logo-subtitle">
+                    <div class="mini-adv">
                         ADVOCACIA
                     </div>
 
@@ -1330,1326 +940,1190 @@
 
             </div>
 
-
-            <button
-                class="btn-sair"
-                onclick="sair()"
-            >
-
-                <i data-lucide="log-out"></i>
-
-                Sair
-
+            <button class="btn-sair" onclick="sairAdvogado()">
+                SAIR
             </button>
-
-        </nav>
-
-
-
-        <div class="painel-hero">
-
-            <small>
-                Área exclusiva
-            </small>
-
-
-            <h1>
-                Gestão da agenda
-            </h1>
-
-
-            <p>
-                Organize os horários disponíveis e acompanhe os agendamentos.
-            </p>
 
         </div>
 
+        <div class="conteudo">
 
+            <h1
+                id="nomeDashboard"
+                class="titulo-pagina"
+            >
+                Painel
+            </h1>
 
-        <main class="conteudo">
+            <p class="descricao">
+                Área exclusiva do profissional.
+            </p>
 
+            <div class="presenca">
 
-            <div
-                class="mensagem"
-                id="mensagem"
-            ></div>
+                <div>
 
-
-            <!-- RESUMO -->
-
-            <div class="cards-resumo">
-
-
-                <div class="resumo-card">
-
-                    <div class="icone">
-                        <i data-lucide="calendar-days"></i>
+                    <div
+                        class="presenca-numero"
+                        id="numeroPresencaDashboard"
+                    >
+                        0
                     </div>
 
-                    <span>
-                        Horários cadastrados
-                    </span>
+                    <div class="presenca-texto">
+                        Advogados trabalhando agora
+                    </div>
 
-                    <strong id="totalHorarios">
-                        0
-                    </strong>
+                    <div class="presenca-status">
+                        Atualização automática
+                    </div>
 
                 </div>
 
+            </div>
 
-                <div class="resumo-card">
+            <div class="cards">
 
-                    <div class="icone">
-                        <i data-lucide="calendar-check"></i>
-                    </div>
+                <div class="card">
 
-                    <span>
+                    <div class="card-titulo">
                         Horários disponíveis
-                    </span>
+                    </div>
 
-                    <strong id="horariosDisponiveis">
+                    <div
+                        class="card-numero"
+                        id="totalHorarios"
+                    >
                         0
-                    </strong>
+                    </div>
 
                 </div>
 
+                <div class="card">
 
-                <div class="resumo-card">
-
-                    <div class="icone">
-                        <i data-lucide="users"></i>
+                    <div class="card-titulo">
+                        Agendamentos
                     </div>
 
-                    <span>
-                        Agendamentos
-                    </span>
-
-                    <strong id="totalAgendamentos">
+                    <div
+                        class="card-numero"
+                        id="totalAgendamentos"
+                    >
                         0
-                    </strong>
+                    </div>
 
                 </div>
 
             </div>
 
 
+            <div class="painel-grid">
 
-            <!-- ADICIONAR HORÁRIO -->
+                <!-- HORÁRIOS -->
 
-            <section class="secao">
+                <div>
 
+                    <div class="caixa">
 
-                <div class="secao-titulo">
+                        <h3>
+                            Adicionar horário
+                        </h3>
 
-                    <h2>
-                        Adicionar horário
-                    </h2>
+                        <div class="form-linha">
 
-                </div>
+                            <div class="form-group">
 
+                                <label>Data</label>
 
-                <div class="form-horario">
+                                <input
+                                    id="novaData"
+                                    type="date"
+                                >
 
+                            </div>
 
-                    <div>
+                            <div class="form-group">
 
-                        <label for="dataHorario">
-                            Data
-                        </label>
+                                <label>Horário</label>
 
-                        <input
-                            type="date"
-                            id="dataHorario"
+                                <input
+                                    id="novoHorario"
+                                    type="time"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="btn-dourado"
+                            onclick="adicionarHorario()"
                         >
+                            ADICIONAR HORÁRIO
+                        </button>
 
                     </div>
 
 
-                    <div>
+                    <div class="caixa">
 
-                        <label for="horaHorario">
-                            Horário
-                        </label>
+                        <h3>
+                            Horários cadastrados
+                        </h3>
 
-                        <input
-                            type="time"
-                            id="horaHorario"
-                        >
+                        <div
+                            id="listaHorarios"
+                            class="lista"
+                        ></div>
 
                     </div>
 
-
-                    <button
-                        class="btn-principal"
-                        onclick="adicionarHorario()"
-                    >
-                        Adicionar horário
-                    </button>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- HORÁRIOS -->
-
-            <section class="secao">
-
-
-                <div class="secao-titulo">
-
-                    <h2>
-                        Horários cadastrados
-                    </h2>
-
                 </div>
 
 
-                <div
-                    class="horarios-grid"
-                    id="listaHorarios"
-                ></div>
+                <!-- AGENDAMENTOS -->
 
-            </section>
+                <div>
 
+                    <div class="caixa">
 
+                        <h3>
+                            Agendamentos
+                        </h3>
 
-            <!-- AGENDAMENTOS -->
+                        <div
+                            id="listaAgendamentos"
+                            class="lista"
+                        ></div>
 
-            <section class="secao">
-
-
-                <div class="secao-titulo">
-
-                    <h2>
-                        Agendamentos
-                    </h2>
+                    </div>
 
                 </div>
 
+            </div>
 
-                <div class="tabela-wrapper">
+        </div>
 
-                    <table>
+    </div>
 
-                        <thead>
+</section>
 
-                            <tr>
 
-                                <th>
-                                    Cliente
-                                </th>
+<script>
 
-                                <th>
-                                    Telefone
-                                </th>
+/* =====================================================
+   SUPABASE
+===================================================== */
 
-                                <th>
-                                    E-mail
-                                </th>
+const SUPABASE_URL = "COLE_AQUI_A_SUPABASE_URL";
 
-                                <th>
-                                    Atendimento
-                                </th>
+const SUPABASE_KEY = "COLE_AQUI_A_PUBLISHABLE_KEY";
 
-                                <th>
-                                    Data
-                                </th>
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-                                <th>
-                                    Horário
-                                </th>
 
-                            </tr>
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
 
-                        </thead>
+let advogadoSelecionado = null;
 
+let modoRecuperacao = "geral";
 
-                        <tbody id="listaAgendamentos"></tbody>
+let telaAnteriorRecuperacao = "telaAcessoGeral";
 
-                    </table>
+let intervaloPresenca = null;
 
-                </div>
+const TEMPO_PRESENCA = 2 * 60 * 1000;
 
-            </section>
 
+/* =====================================================
+   UTILITÁRIOS
+===================================================== */
 
-        </main>
+function trocarTela(id){
 
-    </section>
+    document.querySelectorAll(".tela").forEach(tela => {
+        tela.classList.remove("ativa");
+    });
 
+    document.getElementById(id).classList.add("ativa");
+}
 
 
-    <script>
+function mostrarSenha(inputId, botaoId){
 
-        /* =====================================================
-           CONFIGURAÇÃO SUPABASE
-        ====================================================== */
+    const input = document.getElementById(inputId);
+    const botao = document.getElementById(botaoId);
 
-        const SUPABASE_URL = "https://ovogpczsnxwqmefpbydi.supabase.co/rest/v1/";
+    if(input.type === "password"){
 
-        const SUPABASE_KEY = "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+        input.type = "text";
+        botao.textContent = "🙈";
 
+    }else{
 
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
+        input.type = "password";
+        botao.textContent = "👁";
 
+    }
 
+}
 
-        /* =====================================================
-           ELEMENTOS
-        ====================================================== */
 
-        const telaEscolha =
-            document.getElementById("telaEscolha");
+function mostrarErro(id,mensagem){
 
-        const telaLogin =
-            document.getElementById("telaLogin");
+    const elemento = document.getElementById(id);
 
-        const telaRecuperacao =
-            document.getElementById("telaRecuperacao");
+    elemento.textContent = mensagem;
+    elemento.style.display = "block";
 
-        const painel =
-            document.getElementById("painel");
+}
 
-        const loginForm =
-            document.getElementById("loginForm");
 
-        const erroLogin =
-            document.getElementById("mensagemLogin");
+function esconderErro(id){
 
+    const elemento = document.getElementById(id);
 
+    elemento.style.display = "none";
 
-        /* =====================================================
-           INICIAR
-        ====================================================== */
+}
 
-        lucide.createIcons();
 
-        verificarSessao();
+/* =====================================================
+   LOGIN GERAL
+===================================================== */
 
+document
+.getElementById("formAcessoGeral")
+.addEventListener("submit",async function(event){
 
+    event.preventDefault();
 
-        /* =====================================================
-           VERIFICAR SESSÃO
-        ====================================================== */
+    esconderErro("erroGeral");
 
-        async function verificarSessao() {
+    const email =
+        document
+        .getElementById("usuarioGeral")
+        .value
+        .trim();
 
-            const {
-                data: {
-                    session
-                }
-            } =
-                await supabaseClient.auth.getSession();
+    const senha =
+        document
+        .getElementById("senhaGeral")
+        .value;
 
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
 
-            if (session) {
+            email:email,
+            password:senha
 
-                mostrarPainel();
+        });
 
-            } else {
+    if(error){
 
-                mostrarEscolha();
-
-            }
-
-        }
-
-
-
-        /* =====================================================
-           MOSTRAR ESCOLHA
-        ====================================================== */
-
-        function mostrarEscolha() {
-
-            telaEscolha.style.display = "flex";
-
-            telaLogin.style.display = "none";
-
-            telaRecuperacao.style.display = "none";
-
-            painel.style.display = "none";
-
-        }
-
-
-
-        /* =====================================================
-           LOGIN
-        ====================================================== */
-
-        function abrirLogin() {
-
-            telaEscolha.style.display = "none";
-
-            telaLogin.style.display = "flex";
-
-            telaRecuperacao.style.display = "none";
-
-            painel.style.display = "none";
-
-            erroLogin.style.display = "none";
-
-            setTimeout(() => {
-
-                document
-                    .getElementById("email")
-                    .focus();
-
-            }, 100);
-
-        }
-
-
-
-        /* =====================================================
-           VOLTAR PARA ESCOLHA
-        ====================================================== */
-
-        function voltarEscolha() {
-
-            telaLogin.style.display = "none";
-
-            telaEscolha.style.display = "flex";
-
-            erroLogin.style.display = "none";
-
-        }
-
-
-
-        /* =====================================================
-           MOSTRAR / OCULTAR SENHA
-        ====================================================== */
-
-        function mostrarSenha() {
-
-            const campo =
-                document.getElementById("senha");
-
-            const icone =
-                document.getElementById("iconeOlho");
-
-
-            if (campo.type === "password") {
-
-                campo.type = "text";
-
-                icone.setAttribute(
-                    "data-lucide",
-                    "eye-off"
-                );
-
-            } else {
-
-                campo.type = "password";
-
-                icone.setAttribute(
-                    "data-lucide",
-                    "eye"
-                );
-
-            }
-
-
-            icone.outerHTML =
-                `<i data-lucide="${
-                    campo.type === "password"
-                        ? "eye"
-                        : "eye-off"
-                }" id="iconeOlho"></i>`;
-
-
-            lucide.createIcons();
-
-        }
-
-
-
-        /* =====================================================
-           LOGIN COM SUPABASE
-        ====================================================== */
-
-        loginForm.addEventListener(
-            "submit",
-            async function(event) {
-
-                event.preventDefault();
-
-
-                const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
-
-
-                const senha =
-                    document
-                        .getElementById("senha")
-                        .value;
-
-
-                const btn =
-                    document
-                        .getElementById("btnEntrar");
-
-
-                erroLogin.style.display =
-                    "none";
-
-
-                btn.disabled = true;
-
-                btn.textContent =
-                    "Entrando...";
-
-
-                const {
-                    data,
-                    error
-                } =
-                    await supabaseClient.auth
-                        .signInWithPassword({
-                            email: email,
-                            password: senha
-                        });
-
-
-                if (error) {
-
-                    erroLogin.textContent =
-                        "E-mail ou senha incorretos.";
-
-                    erroLogin.className =
-                        "mensagem-login erro";
-
-                    erroLogin.style.display =
-                        "block";
-
-
-                    btn.disabled = false;
-
-                    btn.textContent =
-                        "Entrar";
-
-                    return;
-
-                }
-
-
-                btn.disabled = false;
-
-                btn.textContent =
-                    "Entrar";
-
-
-                mostrarPainel();
-
-            }
+        mostrarErro(
+            "erroGeral",
+            "Usuário ou senha incorretos."
         );
 
+        return;
+    }
 
+    const usuario = data.user;
 
-        /* =====================================================
-           RECUPERAÇÃO
-        ====================================================== */
+    const { data: perfil, error: erroPerfil } =
+        await supabaseClient
+        .from("advogados")
+        .select("*")
+        .eq("id",usuario.id)
+        .maybeSingle();
 
-        function abrirRecuperacao(event) {
+    if(erroPerfil || !perfil || perfil.role !== "admin"){
 
-            event.preventDefault();
+        await supabaseClient.auth.signOut();
 
+        mostrarErro(
+            "erroGeral",
+            "Este usuário não possui acesso administrativo."
+        );
 
-            telaLogin.style.display = "none";
+        return;
+    }
 
-            telaEscolha.style.display = "none";
+    await carregarAdvogados();
 
-            painel.style.display = "none";
+    trocarTela("telaAdvogados");
 
-            telaRecuperacao.style.display = "flex";
+    iniciarAtualizacaoPresenca();
 
+});
 
-            const emailLogin =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
 
+/* =====================================================
+   CARREGAR ADVOGADOS
+===================================================== */
 
-            if (emailLogin) {
+async function carregarAdvogados(){
 
-                document
-                    .getElementById(
-                        "emailRecuperacao"
-                    )
-                    .value = emailLogin;
+    const { data, error } =
+        await supabaseClient
+        .from("advogados")
+        .select("id,nome,email,role,ativo")
+        .eq("ativo",true)
+        .eq("role","advogado")
+        .order("nome");
 
-            }
+    const lista =
+        document.getElementById("listaAdvogados");
 
-        }
+    lista.innerHTML = "";
 
+    if(error){
 
+        lista.innerHTML =
+            '<div class="vazio">Não foi possível carregar os profissionais.</div>';
 
-        /* =====================================================
-           VOLTAR PARA LOGIN
-        ====================================================== */
+        return;
+    }
 
-        function voltarLogin() {
+    if(!data || data.length === 0){
 
-            telaRecuperacao.style.display =
-                "none";
+        lista.innerHTML =
+            '<div class="vazio">Nenhum advogado cadastrado ainda.</div>';
 
-            telaLogin.style.display =
-                "flex";
+    }else{
 
-            document
-                .getElementById(
-                    "mensagemRecuperacao"
-                )
-                .style.display = "none";
+        data.forEach(advogado => {
 
-        }
+            const card =
+                document.createElement("div");
 
+            card.className = "advogado-card";
 
+            card.onclick = function(){
 
-        /* =====================================================
-           ENVIAR RECUPERAÇÃO
-        ====================================================== */
+                abrirLoginAdvogado(advogado);
 
-        async function recuperarSenha() {
+            };
 
-            const email =
-                document
-                    .getElementById(
-                        "emailRecuperacao"
-                    )
-                    .value
-                    .trim();
+            card.innerHTML = `
 
+                <div class="advogado-icon">
+                    ⚖
+                </div>
 
-            const mensagem =
-                document
-                    .getElementById(
-                        "mensagemRecuperacao"
-                    );
+                <div class="advogado-nome">
+                    ${escapeHtml(advogado.nome)}
+                </div>
 
+                <div class="advogado-email">
+                    ${escapeHtml(advogado.email || "")}
+                </div>
 
-            const btn =
-                document
-                    .getElementById(
-                        "btnRecuperar"
-                    );
+                <div
+                    id="presenca-${advogado.id}"
+                    class="ausente"
+                >
+                    ● Não está trabalhando agora
+                </div>
 
+            `;
 
-            if (!email) {
+            lista.appendChild(card);
 
-                mensagem.textContent =
-                    "Digite seu e-mail.";
+        });
 
-                mensagem.className =
-                    "mensagem-login erro";
+    }
 
-                mensagem.style.display =
-                    "block";
+    const adicionar =
+        document.createElement("button");
 
-                return;
+    adicionar.className = "btn-adicionar";
 
-            }
+    adicionar.innerHTML = `
 
+        <span class="mais">+</span>
 
-            btn.disabled = true;
+        <span>
+            ADICIONAR ADVOGADO
+        </span>
 
-            btn.textContent =
-                "Enviando...";
+    `;
 
+    adicionar.onclick = adicionarAdvogado;
 
-            const redirectUrl =
-                window.location.origin +
-                window.location.pathname;
+    lista.appendChild(adicionar);
 
+    atualizarPresenca();
 
-            const {
-                error
-            } =
-                await supabaseClient.auth
-                    .resetPasswordForEmail(
-                        email,
-                        {
-                            redirectTo:
-                                redirectUrl
-                        }
-                    );
+}
 
 
-            if (error) {
+/* =====================================================
+   ADICIONAR ADVOGADO
+===================================================== */
 
-                console.error(error);
+function adicionarAdvogado(){
 
-                mensagem.textContent =
-                    "Não foi possível enviar a recuperação. Verifique o e-mail.";
+    alert(
+        "A criação de uma nova conta de advogado precisa ser feita pelo administrador no Supabase ou por uma função segura do servidor. O botão está reservado para essa função."
+    );
 
-                mensagem.className =
-                    "mensagem-login erro";
+}
 
-                mensagem.style.display =
-                    "block";
 
+/* =====================================================
+   LOGIN DO ADVOGADO
+===================================================== */
 
-                btn.disabled = false;
+function abrirLoginAdvogado(advogado){
 
-                btn.textContent =
-                    "Enviar recuperação";
+    advogadoSelecionado = advogado;
 
-                return;
+    document.getElementById("tituloLoginAdvogado")
+        .textContent = advogado.nome;
 
-            }
+    document.getElementById("emailAdvogado")
+        .value = advogado.email || "";
 
+    document.getElementById("senhaAdvogado")
+        .value = "";
 
-            mensagem.textContent =
-                "Enviamos as instruções de recuperação para o seu e-mail.";
+    esconderErro("erroAdvogado");
 
-            mensagem.className =
-                "mensagem-login sucesso";
+    trocarTela("telaLoginAdvogado");
 
-            mensagem.style.display =
-                "block";
+}
 
 
-            btn.disabled = false;
+document
+.getElementById("formLoginAdvogado")
+.addEventListener("submit",async function(event){
 
-            btn.textContent =
-                "Enviar recuperação";
+    event.preventDefault();
 
-        }
+    esconderErro("erroAdvogado");
 
+    const email =
+        document
+        .getElementById("emailAdvogado")
+        .value
+        .trim();
 
+    const senha =
+        document
+        .getElementById("senhaAdvogado")
+        .value;
 
-        /* =====================================================
-           MOSTRAR PAINEL
-        ====================================================== */
+    const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
 
-        function mostrarPainel() {
+            email:email,
+            password:senha
 
-            telaEscolha.style.display =
-                "none";
+        });
 
-            telaLogin.style.display =
-                "none";
+    if(error){
 
-            telaRecuperacao.style.display =
-                "none";
+        mostrarErro(
+            "erroAdvogado",
+            "E-mail ou senha incorretos."
+        );
 
-            painel.style.display =
-                "block";
+        return;
+    }
 
+    const usuario = data.user;
 
-            carregarTudo();
+    const { data: perfil, error: erroPerfil } =
+        await supabaseClient
+        .from("advogados")
+        .select("*")
+        .eq("id",usuario.id)
+        .maybeSingle();
 
+    if(
+        erroPerfil ||
+        !perfil ||
+        perfil.role !== "advogado" ||
+        perfil.ativo !== true
+    ){
 
-            lucide.createIcons();
+        await supabaseClient.auth.signOut();
 
-        }
+        mostrarErro(
+            "erroAdvogado",
+            "Esta conta não possui acesso de advogado."
+        );
 
+        return;
+    }
 
+    advogadoSelecionado = perfil;
 
-        /* =====================================================
-           SAIR
-        ====================================================== */
+    document.getElementById("nomeDashboard")
+        .textContent = perfil.nome;
 
-        async function sair() {
+    trocarTela("telaDashboard");
 
-            await supabaseClient.auth.signOut();
+    iniciarAtualizacaoPresenca();
 
+    carregarDashboard();
 
-            document
-                .getElementById("email")
-                .value = "";
+});
 
 
-            document
-                .getElementById("senha")
-                .value = "";
+/* =====================================================
+   DASHBOARD
+===================================================== */
 
+async function carregarDashboard(){
 
-            mostrarEscolha();
+    await carregarHorarios();
 
-        }
+    await carregarAgendamentos();
 
+    await atualizarPresenca();
 
+}
 
-        /* =====================================================
-           ADICIONAR ADVOGADO
-        ====================================================== */
 
-        function adicionarAdvogado() {
+/* =====================================================
+   HORÁRIOS
+===================================================== */
 
-            alert(
-                "Essa função será configurada quando houver outro advogado cadastrado."
+async function adicionarHorario(){
+
+    const data =
+        document
+        .getElementById("novaData")
+        .value;
+
+    const horario =
+        document
+        .getElementById("novoHorario")
+        .value;
+
+    if(!data || !horario){
+
+        alert("Escolha a data e o horário.");
+
+        return;
+    }
+
+    if(!advogadoSelecionado){
+
+        alert("Advogado não identificado.");
+
+        return;
+    }
+
+    const { error } =
+        await supabaseClient
+        .from("horarios")
+        .insert({
+
+            data:data,
+            horario:horario,
+            disponivel:true,
+            advogado_id:advogadoSelecionado.id
+
+        });
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Não foi possível adicionar o horário. Verifique a configuração da tabela."
+        );
+
+        return;
+    }
+
+    document.getElementById("novaData").value = "";
+    document.getElementById("novoHorario").value = "";
+
+    await carregarHorarios();
+
+}
+
+
+async function carregarHorarios(){
+
+    const lista =
+        document.getElementById("listaHorarios");
+
+    lista.innerHTML =
+        '<div class="vazio">Carregando...</div>';
+
+    if(!advogadoSelecionado){
+
+        lista.innerHTML =
+            '<div class="vazio">Nenhum advogado selecionado.</div>';
+
+        return;
+    }
+
+    const { data, error } =
+        await supabaseClient
+        .from("horarios")
+        .select("*")
+        .eq("advogado_id",advogadoSelecionado.id)
+        .order("data")
+        .order("horario");
+
+    if(error){
+
+        console.error(error);
+
+        lista.innerHTML =
+            '<div class="vazio">Não foi possível carregar os horários.</div>';
+
+        return;
+    }
+
+    document.getElementById("totalHorarios")
+        .textContent = data ? data.length : 0;
+
+    lista.innerHTML = "";
+
+    if(!data || data.length === 0){
+
+        lista.innerHTML =
+            '<div class="vazio">Nenhum horário cadastrado.</div>';
+
+        return;
+    }
+
+    data.forEach(item => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "item";
+
+        div.innerHTML = `
+
+            <div>
+
+                <div class="item-principal">
+                    ${formatarData(item.data)} — ${String(item.horario).substring(0,5)}
+                </div>
+
+                <div class="item-secundario">
+                    ${item.disponivel ? "Disponível" : "Indisponível"}
+                </div>
+
+            </div>
+
+            <button
+                class="btn-remover"
+                onclick="removerHorario('${item.id}')"
+            >
+                REMOVER
+            </button>
+
+        `;
+
+        lista.appendChild(div);
+
+    });
+
+}
+
+
+async function removerHorario(id){
+
+    if(!confirm("Deseja realmente remover este horário?")){
+        return;
+    }
+
+    const { error } =
+        await supabaseClient
+        .from("horarios")
+        .delete()
+        .eq("id",id)
+        .eq("advogado_id",advogadoSelecionado.id);
+
+    if(error){
+
+        console.error(error);
+
+        alert("Não foi possível remover.");
+
+        return;
+    }
+
+    await carregarHorarios();
+
+}
+
+
+/* =====================================================
+   AGENDAMENTOS
+===================================================== */
+
+async function carregarAgendamentos(){
+
+    const lista =
+        document.getElementById("listaAgendamentos");
+
+    lista.innerHTML =
+        '<div class="vazio">Carregando...</div>';
+
+    if(!advogadoSelecionado){
+
+        return;
+    }
+
+    const { data, error } =
+        await supabaseClient
+        .from("agendamentos")
+        .select("*")
+        .eq("advogado_id",advogadoSelecionado.id)
+        .order("data")
+        .order("horario");
+
+    if(error){
+
+        console.error(error);
+
+        lista.innerHTML =
+            '<div class="vazio">Não foi possível carregar os agendamentos.</div>';
+
+        return;
+    }
+
+    document.getElementById("totalAgendamentos")
+        .textContent = data ? data.length : 0;
+
+    lista.innerHTML = "";
+
+    if(!data || data.length === 0){
+
+        lista.innerHTML =
+            '<div class="vazio">Nenhum agendamento encontrado.</div>';
+
+        return;
+    }
+
+    data.forEach(item => {
+
+        const nome =
+            item.nome ||
+            item.cliente_nome ||
+            "Cliente";
+
+        const telefone =
+            item.telefone ||
+            "";
+
+        const email =
+            item.email ||
+            "";
+
+        const dataAgendamento =
+            item.data ||
+            "";
+
+        const horario =
+            item.horario ||
+            "";
+
+        const div =
+            document.createElement("div");
+
+        div.className = "item";
+
+        div.innerHTML = `
+
+            <div>
+
+                <div class="item-principal">
+                    ${escapeHtml(nome)}
+                </div>
+
+                <div class="item-secundario">
+                    ${formatarData(dataAgendamento)}
+                    ${horario ? " — " + String(horario).substring(0,5) : ""}
+                </div>
+
+                ${
+                    telefone
+                    ? `<div class="item-secundario">${escapeHtml(telefone)}</div>`
+                    : ""
+                }
+
+                ${
+                    email
+                    ? `<div class="item-secundario">${escapeHtml(email)}</div>`
+                    : ""
+                }
+
+            </div>
+
+        `;
+
+        lista.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================================
+   PRESENÇA
+===================================================== */
+
+async function registrarPresenca(){
+
+    if(!advogadoSelecionado){
+
+        return;
+    }
+
+    const agora =
+        new Date().toISOString();
+
+    const { error } =
+        await supabaseClient
+        .from("presenca_advogados")
+        .upsert({
+
+            advogado_id:advogadoSelecionado.id,
+            ultima_atividade:agora
+
+        },{
+            onConflict:"advogado_id"
+        });
+
+    if(error){
+
+        console.error(
+            "Erro ao registrar presença:",
+            error
+        );
+
+    }
+
+}
+
+
+async function atualizarPresenca(){
+
+    const limite =
+        new Date(
+            Date.now() - TEMPO_PRESENCA
+        ).toISOString();
+
+    const { data, error } =
+        await supabaseClient
+        .from("presenca_advogados")
+        .select("advogado_id,ultima_atividade")
+        .gte("ultima_atividade",limite);
+
+    if(error){
+
+        console.error(error);
+
+        return;
+    }
+
+    const quantidade =
+        data ? data.length : 0;
+
+    document.getElementById("numeroPresenca")
+        .textContent = quantidade;
+
+    document.getElementById("numeroPresencaDashboard")
+        .textContent = quantidade;
+
+    document
+    .querySelectorAll("[id^='presenca-']")
+    .forEach(elemento => {
+
+        const id =
+            elemento.id.replace("presenca-","");
+
+        const presente =
+            data &&
+            data.some(
+                item => item.advogado_id === id
             );
 
-        }
+        if(presente){
 
-
-
-        /* =====================================================
-           MENSAGEM DO PAINEL
-        ====================================================== */
-
-        function mostrarMensagem(
-            texto,
-            tipo = "sucesso"
-        ) {
-
-            const elemento =
-                document.getElementById(
-                    "mensagem"
-                );
-
-
+            elemento.className = "presente";
             elemento.textContent =
-                texto;
+                "● Trabalhando agora";
 
+        }else{
 
-            elemento.className =
-                "mensagem " + tipo;
-
-
-            elemento.style.display =
-                "block";
-
-
-            setTimeout(() => {
-
-                elemento.style.display =
-                    "none";
-
-            }, 4000);
+            elemento.className = "ausente";
+            elemento.textContent =
+                "● Não está trabalhando agora";
 
         }
 
+    });
+
+}
 
 
-        /* =====================================================
-           CARREGAR TUDO
-        ====================================================== */
+function iniciarAtualizacaoPresenca(){
 
-        async function carregarTudo() {
+    if(intervaloPresenca){
 
-            await carregarHorarios();
+        clearInterval(intervaloPresenca);
 
-            await carregarAgendamentos();
+    }
 
+    registrarPresenca();
+
+    atualizarPresenca();
+
+    intervaloPresenca =
+        setInterval(async function(){
+
+            await registrarPresenca();
+
+            await atualizarPresenca();
+
+        },30000);
+
+}
+
+
+function pararAtualizacaoPresenca(){
+
+    if(intervaloPresenca){
+
+        clearInterval(intervaloPresenca);
+
+        intervaloPresenca = null;
+
+    }
+
+}
+
+
+/* =====================================================
+   RECUPERAÇÃO
+===================================================== */
+
+function mostrarRecuperacao(modo){
+
+    modoRecuperacao = modo;
+
+    if(modo === "geral"){
+
+        telaAnteriorRecuperacao =
+            "telaAcessoGeral";
+
+    }else{
+
+        telaAnteriorRecuperacao =
+            "telaLoginAdvogado";
+
+    }
+
+    document.getElementById("emailRecuperacao")
+        .value = "";
+
+    document.getElementById("erroRecuperacao")
+        .style.display = "none";
+
+    document.getElementById("sucessoRecuperacao")
+        .style.display = "none";
+
+    trocarTela("telaRecuperacao");
+
+}
+
+
+async function enviarRecuperacao(){
+
+    const email =
+        document
+        .getElementById("emailRecuperacao")
+        .value
+        .trim();
+
+    if(!email){
+
+        document.getElementById("erroRecuperacao")
+            .textContent =
+            "Digite seu e-mail.";
+
+        document.getElementById("erroRecuperacao")
+            .style.display = "block";
+
+        return;
+    }
+
+    const { error } =
+        await supabaseClient.auth
+        .resetPasswordForEmail(email,{
+            redirectTo:
+                window.location.origin +
+                window.location.pathname
+        });
+
+    if(error){
+
+        document.getElementById("erroRecuperacao")
+            .textContent =
+            "Não foi possível enviar o e-mail.";
+
+        document.getElementById("erroRecuperacao")
+            .style.display = "block";
+
+        return;
+    }
+
+    document.getElementById("sucessoRecuperacao")
+        .textContent =
+        "Se esse e-mail estiver cadastrado, você receberá o link de recuperação.";
+
+    document.getElementById("sucessoRecuperacao")
+        .style.display = "block";
+
+}
+
+
+function voltarTelaAnterior(){
+
+    trocarTela(telaAnteriorRecuperacao);
+
+}
+
+
+function voltarParaAdvogados(){
+
+    advogadoSelecionado = null;
+
+    trocarTela("telaAdvogados");
+
+    carregarAdvogados();
+
+}
+
+
+/* =====================================================
+   SAIR
+===================================================== */
+
+async function sairGeral(){
+
+    pararAtualizacaoPresenca();
+
+    await supabaseClient.auth.signOut();
+
+    advogadoSelecionado = null;
+
+    trocarTela("telaAcessoGeral");
+
+}
+
+
+async function sairAdvogado(){
+
+    pararAtualizacaoPresenca();
+
+    await supabaseClient.auth.signOut();
+
+    advogadoSelecionado = null;
+
+    trocarTela("telaAcessoGeral");
+
+}
+
+
+/* =====================================================
+   FORMATAÇÃO
+===================================================== */
+
+function formatarData(data){
+
+    if(!data){
+        return "";
+    }
+
+    const partes =
+        String(data).split("-");
+
+    if(partes.length !== 3){
+        return data;
+    }
+
+    return partes[2] + "/" +
+           partes[1] + "/" +
+           partes[0];
+
+}
+
+
+function escapeHtml(text){
+
+    return String(text ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+async function iniciar(){
+
+    const {
+        data:{
+            session
+        }
+    } =
+        await supabaseClient.auth.getSession();
+
+    if(session){
+
+        const { data: perfil } =
+            await supabaseClient
+            .from("advogados")
+            .select("*")
+            .eq("id",session.user.id)
+            .maybeSingle();
+
+        if(perfil && perfil.role === "admin"){
+
+            await carregarAdvogados();
+
+            trocarTela("telaAdvogados");
+
+            iniciarAtualizacaoPresenca();
+
+            return;
         }
 
+    }
 
+    trocarTela("telaAcessoGeral");
 
-        /* =====================================================
-           CARREGAR HORÁRIOS
-        ====================================================== */
+}
 
-        async function carregarHorarios() {
 
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                    .from("horarios")
-                    .select("*")
-                    .order(
-                        "data",
-                        {
-                            ascending: true
-                        }
-                    )
-                    .order(
-                        "horario",
-                        {
-                            ascending: true
-                        }
-                    );
+iniciar();
 
-
-            if (error) {
-
-                console.error(error);
-
-                mostrarMensagem(
-                    "Não foi possível carregar os horários.",
-                    "erro"
-                );
-
-                return;
-
-            }
-
-
-            const lista =
-                document.getElementById(
-                    "listaHorarios"
-                );
-
-
-            lista.innerHTML = "";
-
-
-            const disponiveis =
-                data.filter(
-                    horario =>
-                        horario.disponivel === true
-                );
-
-
-            document
-                .getElementById(
-                    "totalHorarios"
-                )
-                .textContent =
-                data.length;
-
-
-            document
-                .getElementById(
-                    "horariosDisponiveis"
-                )
-                .textContent =
-                disponiveis.length;
-
-
-            if (!data.length) {
-
-                lista.innerHTML =
-                    '<div class="vazio">Nenhum horário cadastrado.</div>';
-
-                return;
-
-            }
-
-
-            data.forEach(horario => {
-
-                const card =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                card.className =
-                    "horario-card";
-
-
-                const dataFormatada =
-                    formatarData(
-                        horario.data
-                    );
-
-
-                const horaFormatada =
-                    horario.horario
-                        ? horario.horario
-                            .substring(0, 5)
-                        : "--";
-
-
-                card.innerHTML = `
-
-                    <div class="data">
-                        ${dataFormatada}
-                    </div>
-
-                    <div class="hora">
-                        ${horaFormatada}
-                    </div>
-
-                    <div class="horario-status">
-                        ${
-                            horario.disponivel
-                                ? "● Disponível"
-                                : "● Indisponível"
-                        }
-                    </div>
-
-                    <button
-                        class="btn-remover"
-                        onclick="removerHorario(${horario.id})"
-                    >
-                        Remover
-                    </button>
-
-                `;
-
-
-                lista.appendChild(card);
-
-            });
-
-        }
-
-
-
-        /* =====================================================
-           ADICIONAR HORÁRIO
-        ====================================================== */
-
-        async function adicionarHorario() {
-
-            const data =
-                document
-                    .getElementById(
-                        "dataHorario"
-                    )
-                    .value;
-
-
-            const horario =
-                document
-                    .getElementById(
-                        "horaHorario"
-                    )
-                    .value;
-
-
-            if (!data || !horario) {
-
-                mostrarMensagem(
-                    "Escolha a data e o horário.",
-                    "erro"
-                );
-
-                return;
-
-            }
-
-
-            const {
-                error
-            } =
-                await supabaseClient
-                    .from("horarios")
-                    .insert([
-                        {
-                            data: data,
-                            horario: horario,
-                            disponivel: true
-                        }
-                    ]);
-
-
-            if (error) {
-
-                console.error(error);
-
-                mostrarMensagem(
-                    "Não foi possível adicionar o horário.",
-                    "erro"
-                );
-
-                return;
-
-            }
-
-
-            document
-                .getElementById(
-                    "dataHorario"
-                )
-                .value = "";
-
-
-            document
-                .getElementById(
-                    "horaHorario"
-                )
-                .value = "";
-
-
-            mostrarMensagem(
-                "Horário adicionado com sucesso!"
-            );
-
-
-            carregarHorarios();
-
-        }
-
-
-
-        /* =====================================================
-           REMOVER HORÁRIO
-        ====================================================== */
-
-        async function removerHorario(id) {
-
-            const confirmar =
-                confirm(
-                    "Deseja realmente remover este horário?"
-                );
-
-
-            if (!confirmar) return;
-
-
-            const {
-                error
-            } =
-                await supabaseClient
-                    .from("horarios")
-                    .delete()
-                    .eq("id", id);
-
-
-            if (error) {
-
-                console.error(error);
-
-                mostrarMensagem(
-                    "Não foi possível remover o horário.",
-                    "erro"
-                );
-
-                return;
-
-            }
-
-
-            mostrarMensagem(
-                "Horário removido."
-            );
-
-
-            carregarHorarios();
-
-        }
-
-
-
-        /* =====================================================
-           AGENDAMENTOS
-        ====================================================== */
-
-        async function carregarAgendamentos() {
-
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                    .from("agendamentos")
-                    .select("*")
-                    .order(
-                        "data",
-                        {
-                            ascending: true
-                        }
-                    )
-                    .order(
-                        "horario",
-                        {
-                            ascending: true
-                        }
-                    );
-
-
-            if (error) {
-
-                console.error(error);
-
-                mostrarMensagem(
-                    "Não foi possível carregar os agendamentos.",
-                    "erro"
-                );
-
-                return;
-
-            }
-
-
-            const tbody =
-                document.getElementById(
-                    "listaAgendamentos"
-                );
-
-
-            tbody.innerHTML = "";
-
-
-            document
-                .getElementById(
-                    "totalAgendamentos"
-                )
-                .textContent =
-                data.length;
-
-
-            if (!data.length) {
-
-                tbody.innerHTML = `
-
-                    <tr>
-
-                        <td
-                            colspan="6"
-                            class="vazio"
-                        >
-                            Nenhum agendamento realizado.
-                        </td>
-
-                    </tr>
-
-                `;
-
-                return;
-
-            }
-
-
-            data.forEach(agendamento => {
-
-                const tr =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                const nome =
-                    agendamento.nome || "-";
-
-
-                const telefone =
-                    agendamento.telefone || "-";
-
-
-                const email =
-                    agendamento.email || "-";
-
-
-                const tipo =
-                    agendamento.tipo_atendimento ||
-                    agendamento.tipo ||
-                    "-";
-
-
-                const data =
-                    agendamento.data
-                        ? formatarData(
-                            agendamento.data
-                        )
-                        : "-";
-
-
-                const horario =
-                    agendamento.horario
-                        ? agendamento.horario
-                            .substring(0, 5)
-                        : "-";
-
-
-                tr.innerHTML = `
-
-                    <td>
-                        ${escaparHTML(nome)}
-                    </td>
-
-                    <td>
-                        ${escaparHTML(telefone)}
-                    </td>
-
-                    <td>
-                        ${escaparHTML(email)}
-                    </td>
-
-                    <td>
-                        ${escaparHTML(tipo)}
-                    </td>
-
-                    <td>
-                        ${escaparHTML(data)}
-                    </td>
-
-                    <td>
-                        ${escaparHTML(horario)}
-                    </td>
-
-                `;
-
-
-                tbody.appendChild(tr);
-
-            });
-
-        }
-
-
-
-        /* =====================================================
-           FORMATAR DATA
-        ====================================================== */
-
-        function formatarData(data) {
-
-            if (!data) return "-";
-
-
-            const partes =
-                data.split("-");
-
-
-            if (partes.length !== 3) {
-
-                return data;
-
-            }
-
-
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
-
-        }
-
-
-
-        /* =====================================================
-           SEGURANÇA DE TEXTO
-        ====================================================== */
-
-        function escaparHTML(valor) {
-
-            return String(valor)
-
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
-
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
-
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
-
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
-
-                .replace(
-                    /'/g,
-                    "&#039;"
-                );
-
-        }
-
-    </script>
+</script>
 
 </body>
-
 </html>
