@@ -8,6 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -18,12 +19,8 @@
             --wine-dark: #2b080d;
             --wine-medium: #6b2029;
             --gold: #b58a48;
-            --gold-light: #d7b976;
-
             --cream: #f8f5f0;
-            --cream-dark: #eee7dd;
             --white: #ffffff;
-
             --text: #2d1719;
             --gray: #6b6060;
             --border: #e5ddd3;
@@ -47,9 +44,7 @@
             font-family: inherit;
         }
 
-        /* =========================
-           TELA DE LOGIN
-        ========================= */
+        /* LOGIN */
 
         .login-page {
             min-height: 100vh;
@@ -63,7 +58,7 @@
         .login-card {
             width: 100%;
             max-width: 450px;
-            background: #ffffff;
+            background: white;
             border: 1px solid var(--border);
             border-radius: 18px;
             padding: 42px 36px;
@@ -72,15 +67,17 @@
 
         .brand {
             text-align: center;
-            margin-bottom: 34px;
+            margin-bottom: 32px;
         }
 
         .brand-monogram {
             width: 70px;
             height: 70px;
             margin: 0 auto 15px;
+
             border: 2px solid var(--gold);
             border-radius: 50%;
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -137,23 +134,23 @@
 
         .password-wrapper {
             position: relative;
+            width: 100%;
         }
 
         .form-input {
             width: 100%;
             height: 48px;
+
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 0 52px 0 14px;
-            outline: none;
-            background: #fff;
-            color: var(--text);
-            font-size: 14px;
-            transition: 0.2s;
-        }
 
-        .form-input:not(.password-input) {
-            padding-right: 14px;
+            padding: 0 52px 0 14px;
+
+            outline: none;
+            background: white;
+            color: var(--text);
+
+            font-size: 14px;
         }
 
         .form-input:focus {
@@ -161,12 +158,13 @@
             box-shadow: 0 0 0 3px rgba(181, 138, 72, 0.10);
         }
 
-        /* OLHO DA SENHA */
+        /* OLHINHO */
 
         .eye {
             position: absolute;
             right: 0;
             top: 0;
+
             width: 48px;
             height: 48px;
 
@@ -174,14 +172,18 @@
             background: transparent;
 
             color: #54131b;
-            font-size: 19px;
+
+            font-size: 20px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             cursor: pointer;
-            z-index: 10;
+
+            z-index: 20;
+
+            padding: 0;
         }
 
         .eye:hover {
@@ -191,10 +193,14 @@
         .forgot {
             display: block;
             margin-top: 8px;
+
             text-align: right;
+
             color: var(--wine);
+
             font-size: 12px;
             text-decoration: none;
+
             cursor: pointer;
         }
 
@@ -205,6 +211,7 @@
         .primary-button {
             width: 100%;
             height: 50px;
+
             margin-top: 8px;
 
             border: none;
@@ -215,10 +222,8 @@
 
             font-size: 13px;
             font-weight: 700;
-            letter-spacing: 0.5px;
 
             cursor: pointer;
-            transition: 0.2s;
         }
 
         .primary-button:hover {
@@ -232,10 +237,14 @@
 
         .message {
             display: none;
+
             margin-top: 16px;
             padding: 12px;
+
             border-radius: 8px;
+
             text-align: center;
+
             font-size: 12px;
             line-height: 1.5;
         }
@@ -254,9 +263,7 @@
             border: 1px solid #cde2cf;
         }
 
-        /* =========================
-           SELEÇÃO DE ADVOGADO
-        ========================= */
+        /* OUTRAS TELAS */
 
         .selection-page,
         .dashboard-page {
@@ -268,7 +275,9 @@
         .topbar {
             background: white;
             border-bottom: 1px solid var(--border);
+
             padding: 17px 25px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -296,15 +305,15 @@
             border: 1px solid var(--border);
             background: white;
             color: var(--wine);
+
             border-radius: 7px;
+
             padding: 9px 13px;
+
             cursor: pointer;
+
             font-size: 12px;
             font-weight: 600;
-        }
-
-        .logout-button:hover {
-            border-color: var(--gold);
         }
 
         .selection-content {
@@ -336,11 +345,15 @@
 
         .lawyer-card {
             background: white;
+
             border: 1px solid var(--border);
             border-radius: 13px;
+
             padding: 28px 22px;
+
             cursor: pointer;
             transition: 0.2s;
+
             text-align: center;
         }
 
@@ -353,6 +366,7 @@
         .lawyer-icon {
             width: 58px;
             height: 58px;
+
             margin: 0 auto 14px;
 
             border-radius: 50%;
@@ -378,35 +392,6 @@
             font-size: 11px;
             margin-top: 4px;
         }
-
-        .add-lawyer {
-            border: 1px dashed var(--gold);
-            background: transparent;
-        }
-
-        /* =========================
-           LOGIN DA ADVOGADA
-        ========================= */
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: none;
-            background: transparent;
-            color: var(--wine);
-            cursor: pointer;
-            font-size: 12px;
-            margin-bottom: 20px;
-        }
-
-        .back-button:hover {
-            color: var(--gold);
-        }
-
-        /* =========================
-           DASHBOARD
-        ========================= */
 
         .dashboard-content {
             max-width: 1100px;
@@ -477,7 +462,17 @@
             margin-top: 4px;
         }
 
+        .back-button {
+            border: none;
+            background: transparent;
+            color: var(--wine);
+            cursor: pointer;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
         @media (max-width: 700px) {
+
             .login-card {
                 padding: 34px 22px;
             }
@@ -490,10 +485,6 @@
                 padding: 15px;
             }
 
-            .topbar-right {
-                gap: 8px;
-            }
-
             .lawyers-count {
                 display: none;
             }
@@ -503,16 +494,17 @@
 
 <body>
 
-    <!-- =========================
-         LOGIN GERAL
-    ========================== -->
+    <!-- LOGIN ADMINISTRATIVO -->
 
     <section id="generalLoginPage" class="login-page">
 
         <div class="login-card">
 
             <div class="brand">
-                <div class="brand-monogram">JN</div>
+
+                <div class="brand-monogram">
+                    JN
+                </div>
 
                 <div class="brand-name">
                     JOSIANE NUNES
@@ -521,6 +513,7 @@
                 <div class="brand-subtitle">
                     ADVOCACIA
                 </div>
+
             </div>
 
             <h1 class="login-title">
@@ -535,6 +528,7 @@
             <form id="generalLoginForm">
 
                 <div class="form-group">
+
                     <label for="generalEmail">
                         Usuário ou e-mail
                     </label>
@@ -547,6 +541,7 @@
                         placeholder="Digite seu e-mail"
                         required
                     >
+
                 </div>
 
                 <div class="form-group">
@@ -559,7 +554,7 @@
 
                         <input
                             id="generalPassword"
-                            class="form-input password-input"
+                            class="form-input"
                             type="password"
                             autocomplete="current-password"
                             placeholder="Digite sua senha"
@@ -570,8 +565,8 @@
                             type="button"
                             class="eye"
                             id="generalEye"
+                            onclick="mostrarSenha('generalPassword', this)"
                             aria-label="Mostrar senha"
-                            title="Mostrar senha"
                         >
                             👁️
                         </button>
@@ -608,11 +603,12 @@
     </section>
 
 
-    <!-- =========================
-         SELEÇÃO DE ADVOGADA
-    ========================== -->
+    <!-- ESCOLHA DA ADVOGADA -->
 
-    <section id="selectionPage" class="selection-page">
+    <section
+        id="selectionPage"
+        class="selection-page"
+    >
 
         <header class="topbar">
 
@@ -626,7 +622,7 @@
                     id="lawyersCount"
                     class="lawyers-count"
                 >
-                    0 advogados
+                    0 advogadas
                 </span>
 
                 <button
@@ -669,11 +665,12 @@
     </section>
 
 
-    <!-- =========================
-         LOGIN DA ADVOGADA
-    ========================== -->
+    <!-- LOGIN DA ADVOGADA -->
 
-    <section id="lawyerLoginPage" class="login-page">
+    <section
+        id="lawyerLoginPage"
+        class="login-page"
+    >
 
         <div class="login-card">
 
@@ -744,7 +741,7 @@
 
                         <input
                             id="lawyerPassword"
-                            class="form-input password-input"
+                            class="form-input"
                             type="password"
                             autocomplete="current-password"
                             placeholder="Digite sua senha"
@@ -755,8 +752,8 @@
                             type="button"
                             class="eye"
                             id="lawyerEye"
+                            onclick="mostrarSenha('lawyerPassword', this)"
                             aria-label="Mostrar senha"
-                            title="Mostrar senha"
                         >
                             👁️
                         </button>
@@ -793,11 +790,12 @@
     </section>
 
 
-    <!-- =========================
-         DASHBOARD
-    ========================== -->
+    <!-- DASHBOARD -->
 
-    <section id="dashboardPage" class="dashboard-page">
+    <section
+        id="dashboardPage"
+        class="dashboard-page"
+    >
 
         <header class="topbar">
 
@@ -811,7 +809,7 @@
                     id="dashboardLawyersCount"
                     class="lawyers-count"
                 >
-                    0 advogados
+                    0 advogadas
                 </span>
 
                 <button
@@ -885,13 +883,15 @@
 
     <script>
 
-        /* =========================================
-           CONFIGURAÇÃO SUPABASE
-        ========================================== */
+        /* =====================================================
+           SUPABASE
+        ===================================================== */
 
-        const SUPABASE_URL = "https://ovogpczsnxwqmefpbydi.supabase.co/rest/v1/";
+        const SUPABASE_URL =
+            "COLE_AQUI_A_SUPABASE_URL";
 
-        const SUPABASE_KEY = "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+        const SUPABASE_KEY =
+            "COLE_AQUI_A_PUBLISHABLE_KEY";
 
 
         const supabaseClient =
@@ -901,47 +901,104 @@
             );
 
 
-        /* =========================================
-           ELEMENTOS
-        ========================================== */
+        /* =====================================================
+           VARIÁVEIS
+        ===================================================== */
 
-        const generalLoginPage =
-            document.getElementById("generalLoginPage");
-
-        const selectionPage =
-            document.getElementById("selectionPage");
-
-        const lawyerLoginPage =
-            document.getElementById("lawyerLoginPage");
-
-        const dashboardPage =
-            document.getElementById("dashboardPage");
-
-
-        let selectedLawyer = null;
         let currentUser = null;
+        let selectedLawyer = null;
 
 
-        /* =========================================
-           FUNÇÕES DE TELA
-        ========================================== */
+        /* =====================================================
+           FUNÇÃO DO OLHINHO
+        ===================================================== */
 
-        function mostrarTela(tela) {
+        function mostrarSenha(inputId, botao) {
 
-            generalLoginPage.style.display = "none";
-            selectionPage.style.display = "none";
-            lawyerLoginPage.style.display = "none";
-            dashboardPage.style.display = "none";
+            const input =
+                document.getElementById(inputId);
 
-            tela.style.display =
-                tela === generalLoginPage ||
-                tela === lawyerLoginPage
-                    ? "flex"
-                    : "block";
+            if (!input) {
+                return;
+            }
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                botao.textContent = "🙈";
+
+                botao.setAttribute(
+                    "aria-label",
+                    "Ocultar senha"
+                );
+
+                botao.setAttribute(
+                    "title",
+                    "Ocultar senha"
+                );
+
+            } else {
+
+                input.type = "password";
+
+                botao.textContent = "👁️";
+
+                botao.setAttribute(
+                    "aria-label",
+                    "Mostrar senha"
+                );
+
+                botao.setAttribute(
+                    "title",
+                    "Mostrar senha"
+                );
+            }
         }
 
 
-        function mostrarMensagem(elemento, texto, tipo) {
+        /* =====================================================
+           TELAS
+        ===================================================== */
+
+        function mostrarTela(tela) {
+
+            document.getElementById(
+                "generalLoginPage"
+            ).style.display = "none";
+
+            document.getElementById(
+                "selectionPage"
+            ).style.display = "none";
+
+            document.getElementById(
+                "lawyerLoginPage"
+            ).style.display = "none";
+
+            document.getElementById(
+                "dashboardPage"
+            ).style.display = "none";
+
+
+            if (
+                tela.id === "generalLoginPage" ||
+                tela.id === "lawyerLoginPage"
+            ) {
+
+                tela.style.display = "flex";
+
+            } else {
+
+                tela.style.display = "block";
+            }
+        }
+
+
+        function mostrarMensagem(
+            elemento,
+            texto,
+            tipo
+        ) {
 
             elemento.textContent = texto;
 
@@ -953,198 +1010,181 @@
         function limparMensagem(elemento) {
 
             elemento.textContent = "";
+
             elemento.className = "message";
         }
 
 
-        /* =========================================
-           OLHO DA SENHA
-        ========================================== */
-
-        function configurarOlho(botaoId, inputId) {
-
-            const botao =
-                document.getElementById(botaoId);
-
-            const input =
-                document.getElementById(inputId);
-
-            if (!botao || !input) {
-                return;
-            }
-
-            botao.addEventListener("click", function () {
-
-                if (input.type === "password") {
-
-                    input.type = "text";
-
-                    botao.textContent = "🙈";
-                    botao.setAttribute(
-                        "aria-label",
-                        "Ocultar senha"
-                    );
-                    botao.setAttribute(
-                        "title",
-                        "Ocultar senha"
-                    );
-
-                } else {
-
-                    input.type = "password";
-
-                    botao.textContent = "👁️";
-                    botao.setAttribute(
-                        "aria-label",
-                        "Mostrar senha"
-                    );
-                    botao.setAttribute(
-                        "title",
-                        "Mostrar senha"
-                    );
-
-                }
-
-            });
-        }
-
-
-        configurarOlho(
-            "generalEye",
-            "generalPassword"
-        );
-
-        configurarOlho(
-            "lawyerEye",
-            "lawyerPassword"
-        );
-
-
-        /* =========================================
-           LOGIN GERAL / ADMIN
-        ========================================== */
+        /* =====================================================
+           LOGIN ADMINISTRATIVO
+        ===================================================== */
 
         document
             .getElementById("generalLoginForm")
-            .addEventListener("submit", async function(event) {
+            .addEventListener(
+                "submit",
+                async function(event) {
 
-                event.preventDefault();
-
-                const email =
-                    document
-                        .getElementById("generalEmail")
-                        .value
-                        .trim();
-
-                const password =
-                    document
-                        .getElementById("generalPassword")
-                        .value;
-
-                const button =
-                    document
-                        .getElementById("generalLoginButton");
-
-                const message =
-                    document
-                        .getElementById("generalMessage");
+                    event.preventDefault();
 
 
-                limparMensagem(message);
-
-                button.disabled = true;
-                button.textContent = "ENTRANDO...";
-
-
-                const { data, error } =
-                    await supabaseClient.auth.signInWithPassword({
-                        email: email,
-                        password: password
-                    });
+                    const email =
+                        document
+                            .getElementById(
+                                "generalEmail"
+                            )
+                            .value
+                            .trim();
 
 
-                if (error) {
+                    const password =
+                        document
+                            .getElementById(
+                                "generalPassword"
+                            )
+                            .value;
 
-                    document
-                        .getElementById("generalPassword")
-                        .value = "";
 
-                    mostrarMensagem(
-                        message,
-                        "Usuário ou senha incorretos.",
-                        "error"
+                    const button =
+                        document
+                            .getElementById(
+                                "generalLoginButton"
+                            );
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "generalMessage"
+                            );
+
+
+                    limparMensagem(message);
+
+
+                    button.disabled = true;
+
+                    button.textContent =
+                        "ENTRANDO...";
+
+
+                    const resultado =
+                        await supabaseClient.auth
+                            .signInWithPassword({
+                                email: email,
+                                password: password
+                            });
+
+
+                    if (resultado.error) {
+
+                        document
+                            .getElementById(
+                                "generalPassword"
+                            )
+                            .value = "";
+
+
+                        mostrarMensagem(
+                            message,
+                            "Usuário ou senha incorretos.",
+                            "error"
+                        );
+
+
+                        button.disabled = false;
+
+                        button.textContent =
+                            "ENTRAR";
+
+                        return;
+                    }
+
+
+                    const user =
+                        resultado.data.user;
+
+
+                    const perfil =
+                        await supabaseClient
+                            .from("advogados")
+                            .select("*")
+                            .eq("id", user.id)
+                            .single();
+
+
+                    if (
+                        perfil.error ||
+                        !perfil.data ||
+                        perfil.data.role !== "admin" ||
+                        perfil.data.ativo !== true
+                    ) {
+
+                        await supabaseClient.auth
+                            .signOut();
+
+
+                        document
+                            .getElementById(
+                                "generalPassword"
+                            )
+                            .value = "";
+
+
+                        mostrarMensagem(
+                            message,
+                            "Usuário ou senha incorretos.",
+                            "error"
+                        );
+
+
+                        button.disabled = false;
+
+                        button.textContent =
+                            "ENTRAR";
+
+                        return;
+                    }
+
+
+                    currentUser = user;
+
+
+                    await carregarAdvogados();
+
+
+                    mostrarTela(
+                        document.getElementById(
+                            "selectionPage"
+                        )
                     );
 
-                    button.disabled = false;
-                    button.textContent = "ENTRAR";
-
-                    return;
-                }
-
-
-                const user =
-                    data.user;
-
-
-                const { data: profile, error: profileError } =
-                    await supabaseClient
-                        .from("advogados")
-                        .select("*")
-                        .eq("id", user.id)
-                        .single();
-
-
-                if (
-                    profileError ||
-                    !profile ||
-                    profile.role !== "admin" ||
-                    profile.ativo !== true
-                ) {
-
-                    await supabaseClient.auth.signOut();
-
-                    document
-                        .getElementById("generalPassword")
-                        .value = "";
-
-                    mostrarMensagem(
-                        message,
-                        "Usuário ou senha incorretos.",
-                        "error"
-                    );
 
                     button.disabled = false;
-                    button.textContent = "ENTRAR";
 
-                    return;
+                    button.textContent =
+                        "ENTRAR";
                 }
+            );
 
 
-                currentUser = user;
-
-                await carregarAdvogados();
-
-                mostrarTela(selectionPage);
-
-                button.disabled = false;
-                button.textContent = "ENTRAR";
-            });
-
-
-        /* =========================================
-           CARREGAR ADVOGADOS
-        ========================================== */
+        /* =====================================================
+           ADVOGADOS
+        ===================================================== */
 
         async function carregarAdvogados() {
 
             const grid =
-                document.getElementById("lawyersGrid");
+                document.getElementById(
+                    "lawyersGrid"
+                );
+
 
             grid.innerHTML =
                 '<div class="empty">Carregando...</div>';
 
 
-            const { data, error } =
+            const resultado =
                 await supabaseClient
                     .from("advogados")
                     .select("*")
@@ -1153,69 +1193,81 @@
                     .order("nome");
 
 
-            if (error) {
+            if (resultado.error) {
 
                 grid.innerHTML =
-                    '<div class="empty">Não foi possível carregar os advogados.</div>';
+                    '<div class="empty">Não foi possível carregar as advogadas.</div>';
 
                 return;
             }
 
 
+            const advogados =
+                resultado.data || [];
+
+
             grid.innerHTML = "";
 
 
-            if (!data || data.length === 0) {
+            if (advogados.length === 0) {
 
-                grid.innerHTML = `
-                    <div class="empty">
-                        Nenhuma advogada cadastrada.
-                    </div>
-                `;
+                grid.innerHTML =
+                    '<div class="empty">Nenhuma advogada cadastrada.</div>';
 
             } else {
 
-                data.forEach(function(advogado) {
+                advogados.forEach(
+                    function(advogado) {
 
-                    const card =
-                        document.createElement("div");
-
-                    card.className =
-                        "lawyer-card";
-
-                    card.innerHTML = `
-                        <div class="lawyer-icon">
-                            ⚖
-                        </div>
-
-                        <div class="lawyer-name">
-                            ${escaparHTML(advogado.nome)}
-                        </div>
-
-                        <div class="lawyer-role">
-                            Advogada
-                        </div>
-                    `;
-
-                    card.addEventListener(
-                        "click",
-                        function() {
-
-                            selecionarAdvogada(
-                                advogado
+                        const card =
+                            document.createElement(
+                                "div"
                             );
 
-                        }
-                    );
 
-                    grid.appendChild(card);
+                        card.className =
+                            "lawyer-card";
 
-                });
+
+                        card.innerHTML = `
+
+                            <div class="lawyer-icon">
+                                ⚖
+                            </div>
+
+                            <div class="lawyer-name">
+                                ${escaparHTML(
+                                    advogado.nome
+                                )}
+                            </div>
+
+                            <div class="lawyer-role">
+                                Advogada
+                            </div>
+
+                        `;
+
+
+                        card.addEventListener(
+                            "click",
+                            function() {
+
+                                selecionarAdvogada(
+                                    advogado
+                                );
+
+                            }
+                        );
+
+
+                        grid.appendChild(card);
+                    }
+                );
             }
 
 
             const quantidade =
-                data ? data.length : 0;
+                advogados.length;
 
 
             document.getElementById(
@@ -1230,18 +1282,19 @@
         }
 
 
-        /* =========================================
-           ESCOLHER ADVOGADA
-        ========================================== */
+        function selecionarAdvogada(
+            advogado
+        ) {
 
-        function selecionarAdvogada(advogado) {
+            selectedLawyer =
+                advogado;
 
-            selectedLawyer = advogado;
 
             document.getElementById(
                 "lawyerLoginTitle"
             ).textContent =
                 "Acesso da advogada";
+
 
             document.getElementById(
                 "lawyerLoginDescription"
@@ -1268,161 +1321,220 @@
             );
 
 
-            mostrarTela(lawyerLoginPage);
+            mostrarTela(
+                document.getElementById(
+                    "lawyerLoginPage"
+                )
+            );
         }
 
 
-        /* =========================================
+        /* =====================================================
            LOGIN DA ADVOGADA
-        ========================================== */
+        ===================================================== */
 
         document
             .getElementById("lawyerLoginForm")
-            .addEventListener("submit", async function(event) {
+            .addEventListener(
+                "submit",
+                async function(event) {
 
-                event.preventDefault();
-
-                const email =
-                    document
-                        .getElementById("lawyerEmail")
-                        .value
-                        .trim();
-
-                const password =
-                    document
-                        .getElementById("lawyerPassword")
-                        .value;
-
-                const button =
-                    document
-                        .getElementById("lawyerLoginButton");
-
-                const message =
-                    document
-                        .getElementById("lawyerMessage");
+                    event.preventDefault();
 
 
-                limparMensagem(message);
-
-                button.disabled = true;
-                button.textContent = "ENTRANDO...";
-
-
-                const { data, error } =
-                    await supabaseClient.auth.signInWithPassword({
-                        email: email,
-                        password: password
-                    });
+                    const email =
+                        document
+                            .getElementById(
+                                "lawyerEmail"
+                            )
+                            .value
+                            .trim();
 
 
-                if (error) {
+                    const password =
+                        document
+                            .getElementById(
+                                "lawyerPassword"
+                            )
+                            .value;
 
-                    document
-                        .getElementById("lawyerPassword")
-                        .value = "";
 
-                    mostrarMensagem(
-                        message,
-                        "E-mail ou senha incorretos.",
-                        "error"
+                    const button =
+                        document
+                            .getElementById(
+                                "lawyerLoginButton"
+                            );
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "lawyerMessage"
+                            );
+
+
+                    limparMensagem(message);
+
+
+                    button.disabled = true;
+
+                    button.textContent =
+                        "ENTRANDO...";
+
+
+                    const resultado =
+                        await supabaseClient.auth
+                            .signInWithPassword({
+                                email: email,
+                                password: password
+                            });
+
+
+                    if (resultado.error) {
+
+                        document
+                            .getElementById(
+                                "lawyerPassword"
+                            )
+                            .value = "";
+
+
+                        mostrarMensagem(
+                            message,
+                            "E-mail ou senha incorretos.",
+                            "error"
+                        );
+
+
+                        button.disabled = false;
+
+                        button.textContent =
+                            "ENTRAR";
+
+                        return;
+                    }
+
+
+                    const user =
+                        resultado.data.user;
+
+
+                    const perfil =
+                        await supabaseClient
+                            .from("advogados")
+                            .select("*")
+                            .eq("id", user.id)
+                            .single();
+
+
+                    if (
+                        perfil.error ||
+                        !perfil.data ||
+                        perfil.data.role !== "advogado" ||
+                        perfil.data.ativo !== true
+                    ) {
+
+                        await supabaseClient.auth
+                            .signOut();
+
+
+                        document
+                            .getElementById(
+                                "lawyerPassword"
+                            )
+                            .value = "";
+
+
+                        mostrarMensagem(
+                            message,
+                            "E-mail ou senha incorretos.",
+                            "error"
+                        );
+
+
+                        button.disabled = false;
+
+                        button.textContent =
+                            "ENTRAR";
+
+                        return;
+                    }
+
+
+                    currentUser = user;
+
+
+                    await registrarPresenca(
+                        user.id
                     );
 
-                    button.disabled = false;
-                    button.textContent = "ENTRAR";
 
-                    return;
-                }
-
-
-                const user =
-                    data.user;
-
-
-                const { data: profile, error: profileError } =
-                    await supabaseClient
-                        .from("advogados")
-                        .select("*")
-                        .eq("id", user.id)
-                        .single();
-
-
-                if (
-                    profileError ||
-                    !profile ||
-                    profile.role !== "advogado" ||
-                    profile.ativo !== true
-                ) {
-
-                    await supabaseClient.auth.signOut();
-
-                    document
-                        .getElementById("lawyerPassword")
-                        .value = "";
-
-                    mostrarMensagem(
-                        message,
-                        "E-mail ou senha incorretos.",
-                        "error"
+                    await carregarDashboard(
+                        perfil.data
                     );
 
+
+                    mostrarTela(
+                        document.getElementById(
+                            "dashboardPage"
+                        )
+                    );
+
+
                     button.disabled = false;
-                    button.textContent = "ENTRAR";
 
-                    return;
+                    button.textContent =
+                        "ENTRAR";
                 }
+            );
 
 
-                currentUser = user;
-
-                await registrarPresenca(user.id);
-
-                await carregarDashboard(profile);
-
-                mostrarTela(dashboardPage);
-
-                button.disabled = false;
-                button.textContent = "ENTRAR";
-            });
-
-
-        /* =========================================
+        /* =====================================================
            PRESENÇA
-        ========================================== */
+        ===================================================== */
 
-        async function registrarPresenca(advogadoId) {
+        async function registrarPresenca(
+            advogadoId
+        ) {
 
             await supabaseClient
                 .from("presenca_advogados")
                 .upsert({
                     advogado_id: advogadoId,
-                    ultima_atividade: new Date().toISOString()
+                    ultima_atividade:
+                        new Date().toISOString()
                 });
         }
 
 
-        setInterval(async function() {
+        setInterval(
+            async function() {
 
-            if (currentUser) {
+                if (currentUser) {
 
-                await registrarPresenca(
-                    currentUser.id
-                );
+                    await registrarPresenca(
+                        currentUser.id
+                    );
+                }
 
-            }
+            },
+            30000
+        );
 
-        }, 30000);
 
-
-        /* =========================================
+        /* =====================================================
            DASHBOARD
-        ========================================== */
+        ===================================================== */
 
-        async function carregarDashboard(profile) {
+        async function carregarDashboard(
+            perfil
+        ) {
 
             document.getElementById(
                 "dashboardTitle"
             ).textContent =
-                "Olá, " + profile.nome;
+                "Olá, " + perfil.nome;
+
 
             document.getElementById(
                 "dashboardSubtitle"
@@ -1432,15 +1544,19 @@
 
             await carregarQuantidadeAdvogados();
 
-            await carregarHorarios(profile.id);
+            await carregarHorarios(
+                perfil.id
+            );
 
-            await carregarAgendamentos(profile.id);
+            await carregarAgendamentos(
+                perfil.id
+            );
         }
 
 
         async function carregarQuantidadeAdvogados() {
 
-            const { data } =
+            const resultado =
                 await supabaseClient
                     .from("advogados")
                     .select("id")
@@ -1449,7 +1565,9 @@
 
 
             const quantidade =
-                data ? data.length : 0;
+                resultado.data
+                    ? resultado.data.length
+                    : 0;
 
 
             document.getElementById(
@@ -1464,11 +1582,13 @@
         }
 
 
-        /* =========================================
+        /* =====================================================
            HORÁRIOS
-        ========================================== */
+        ===================================================== */
 
-        async function carregarHorarios(advogadoId) {
+        async function carregarHorarios(
+            advogadoId
+        ) {
 
             const lista =
                 document.getElementById(
@@ -1476,7 +1596,7 @@
                 );
 
 
-            const { data, error } =
+            const resultado =
                 await supabaseClient
                     .from("horarios")
                     .select("*")
@@ -1485,7 +1605,7 @@
                     .order("horario");
 
 
-            if (error) {
+            if (resultado.error) {
 
                 lista.innerHTML =
                     '<div class="empty">Não foi possível carregar os horários.</div>';
@@ -1494,10 +1614,14 @@
             }
 
 
+            const horarios =
+                resultado.data || [];
+
+
             lista.innerHTML = "";
 
 
-            if (!data || data.length === 0) {
+            if (horarios.length === 0) {
 
                 lista.innerHTML =
                     '<div class="empty">Nenhum horário cadastrado.</div>';
@@ -1506,42 +1630,56 @@
             }
 
 
-            data.forEach(function(horario) {
+            horarios.forEach(
+                function(horario) {
 
-                const item =
-                    document.createElement("div");
-
-                item.className = "item";
-
-
-                item.innerHTML = `
-                    <strong>
-                        ${formatarData(horario.data)}
-                    </strong>
-
-                    <span>
-                        ${String(horario.horario).slice(0, 5)}
-                        —
-                        ${
-                            horario.disponivel
-                                ? "Disponível"
-                                : "Indisponível"
-                        }
-                    </span>
-                `;
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
 
 
-                lista.appendChild(item);
+                    item.className = "item";
 
-            });
+
+                    item.innerHTML = `
+
+                        <strong>
+                            ${formatarData(
+                                horario.data
+                            )}
+                        </strong>
+
+                        <span>
+                            ${String(
+                                horario.horario
+                            ).slice(0, 5)}
+
+                            —
+
+                            ${
+                                horario.disponivel
+                                    ? "Disponível"
+                                    : "Indisponível"
+                            }
+                        </span>
+
+                    `;
+
+
+                    lista.appendChild(item);
+                }
+            );
         }
 
 
-        /* =========================================
+        /* =====================================================
            AGENDAMENTOS
-        ========================================== */
+        ===================================================== */
 
-        async function carregarAgendamentos(advogadoId) {
+        async function carregarAgendamentos(
+            advogadoId
+        ) {
 
             const lista =
                 document.getElementById(
@@ -1549,7 +1687,7 @@
                 );
 
 
-            const { data, error } =
+            const resultado =
                 await supabaseClient
                     .from("agendamentos")
                     .select("*")
@@ -1558,7 +1696,7 @@
                     .order("horario");
 
 
-            if (error) {
+            if (resultado.error) {
 
                 lista.innerHTML =
                     '<div class="empty">Não foi possível carregar os agendamentos.</div>';
@@ -1567,10 +1705,14 @@
             }
 
 
+            const agendamentos =
+                resultado.data || [];
+
+
             lista.innerHTML = "";
 
 
-            if (!data || data.length === 0) {
+            if (agendamentos.length === 0) {
 
                 lista.innerHTML =
                     '<div class="empty">Nenhum agendamento encontrado.</div>';
@@ -1579,250 +1721,302 @@
             }
 
 
-            data.forEach(function(agendamento) {
+            agendamentos.forEach(
+                function(agendamento) {
 
-                const item =
-                    document.createElement("div");
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
 
-                item.className = "item";
+
+                    item.className = "item";
 
 
-                item.innerHTML = `
-                    <strong>
-                        ${escaparHTML(
-                            agendamento.nome || "Cliente"
-                        )}
-                    </strong>
+                    item.innerHTML = `
 
-                    <span>
-                        ${agendamento.data
-                            ? formatarData(agendamento.data)
-                            : ""
-                        }
+                        <strong>
+                            ${escaparHTML(
+                                agendamento.nome ||
+                                "Cliente"
+                            )}
+                        </strong>
+
+                        <span>
+                            ${
+                                agendamento.data
+                                    ? formatarData(
+                                        agendamento.data
+                                    )
+                                    : ""
+                            }
+
+                            ${
+                                agendamento.horario
+                                    ? " — " +
+                                      String(
+                                          agendamento.horario
+                                      ).slice(0, 5)
+                                    : ""
+                            }
+                        </span>
 
                         ${
-                            agendamento.horario
-                                ? " — " +
-                                  String(
-                                      agendamento.horario
-                                  ).slice(0, 5)
+                            agendamento.telefone
+                                ? `
+                                    <span>
+                                        ${escaparHTML(
+                                            agendamento.telefone
+                                        )}
+                                    </span>
+                                  `
                                 : ""
                         }
-                    </span>
 
-                    ${
-                        agendamento.telefone
-                            ? `
-                                <span>
-                                    ${escaparHTML(
-                                        agendamento.telefone
-                                    )}
-                                </span>
-                              `
-                            : ""
-                    }
-                `;
+                    `;
 
 
-                lista.appendChild(item);
-
-            });
+                    lista.appendChild(item);
+                }
+            );
         }
 
 
-        /* =========================================
-           ESQUECI A SENHA — ADMIN
-        ========================================== */
+        /* =====================================================
+           RECUPERAÇÃO DE SENHA
+        ===================================================== */
 
         document
             .getElementById("generalForgot")
-            .addEventListener("click", async function(event) {
+            .addEventListener(
+                "click",
+                async function(event) {
 
-                event.preventDefault();
-
-                const email =
-                    document
-                        .getElementById("generalEmail")
-                        .value
-                        .trim();
-
-                const message =
-                    document
-                        .getElementById("generalMessage");
+                    event.preventDefault();
 
 
-                if (!email) {
+                    const email =
+                        document
+                            .getElementById(
+                                "generalEmail"
+                            )
+                            .value
+                            .trim();
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "generalMessage"
+                            );
+
+
+                    if (!email) {
+
+                        mostrarMensagem(
+                            message,
+                            "Digite seu e-mail primeiro.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const resultado =
+                        await supabaseClient.auth
+                            .resetPasswordForEmail(
+                                email,
+                                {
+                                    redirectTo:
+                                        window.location.href
+                                }
+                            );
+
+
+                    if (resultado.error) {
+
+                        mostrarMensagem(
+                            message,
+                            "Não foi possível enviar o e-mail de recuperação.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
 
                     mostrarMensagem(
                         message,
-                        "Digite seu e-mail primeiro.",
-                        "error"
+                        "Se esse e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.",
+                        "success"
                     );
-
-                    return;
                 }
+            );
 
-
-                const { error } =
-                    await supabaseClient.auth.resetPasswordForEmail(
-                        email,
-                        {
-                            redirectTo:
-                                window.location.origin +
-                                window.location.pathname
-                        }
-                    );
-
-
-                if (error) {
-
-                    mostrarMensagem(
-                        message,
-                        "Não foi possível enviar o e-mail de recuperação.",
-                        "error"
-                    );
-
-                    return;
-                }
-
-
-                mostrarMensagem(
-                    message,
-                    "Se esse e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.",
-                    "success"
-                );
-            });
-
-
-        /* =========================================
-           ESQUECI A SENHA — ADVOGADA
-        ========================================== */
 
         document
             .getElementById("lawyerForgot")
-            .addEventListener("click", async function(event) {
+            .addEventListener(
+                "click",
+                async function(event) {
 
-                event.preventDefault();
-
-                const email =
-                    document
-                        .getElementById("lawyerEmail")
-                        .value
-                        .trim();
-
-                const message =
-                    document
-                        .getElementById("lawyerMessage");
+                    event.preventDefault();
 
 
-                if (!email) {
+                    const email =
+                        document
+                            .getElementById(
+                                "lawyerEmail"
+                            )
+                            .value
+                            .trim();
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "lawyerMessage"
+                            );
+
+
+                    if (!email) {
+
+                        mostrarMensagem(
+                            message,
+                            "Digite seu e-mail primeiro.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    const resultado =
+                        await supabaseClient.auth
+                            .resetPasswordForEmail(
+                                email,
+                                {
+                                    redirectTo:
+                                        window.location.href
+                                }
+                            );
+
+
+                    if (resultado.error) {
+
+                        mostrarMensagem(
+                            message,
+                            "Não foi possível enviar o e-mail de recuperação.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
 
                     mostrarMensagem(
                         message,
-                        "Digite seu e-mail primeiro.",
-                        "error"
+                        "Se esse e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.",
+                        "success"
                     );
-
-                    return;
                 }
+            );
 
 
-                const { error } =
-                    await supabaseClient.auth.resetPasswordForEmail(
-                        email,
-                        {
-                            redirectTo:
-                                window.location.origin +
-                                window.location.pathname
-                        }
-                    );
-
-
-                if (error) {
-
-                    mostrarMensagem(
-                        message,
-                        "Não foi possível enviar o e-mail de recuperação.",
-                        "error"
-                    );
-
-                    return;
-                }
-
-
-                mostrarMensagem(
-                    message,
-                    "Se esse e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.",
-                    "success"
-                );
-            });
-
-
-        /* =========================================
-           BOTÕES VOLTAR
-        ========================================== */
+        /* =====================================================
+           BOTÕES
+        ===================================================== */
 
         document
             .getElementById("selectionBack")
-            .addEventListener("click", async function() {
+            .addEventListener(
+                "click",
+                async function() {
 
-                await supabaseClient.auth.signOut();
+                    await supabaseClient.auth
+                        .signOut();
 
-                currentUser = null;
-                selectedLawyer = null;
+                    currentUser = null;
+                    selectedLawyer = null;
 
-                mostrarTela(generalLoginPage);
-            });
+                    mostrarTela(
+                        document.getElementById(
+                            "generalLoginPage"
+                        )
+                    );
+                }
+            );
 
 
         document
             .getElementById("lawyerBack")
-            .addEventListener("click", async function() {
+            .addEventListener(
+                "click",
+                async function() {
 
-                await supabaseClient.auth.signOut();
+                    await supabaseClient.auth
+                        .signOut();
 
-                currentUser = null;
-                selectedLawyer = null;
+                    currentUser = null;
+                    selectedLawyer = null;
 
-                mostrarTela(selectionPage);
+                    await carregarAdvogados();
 
-                await carregarAdvogados();
-            });
+                    mostrarTela(
+                        document.getElementById(
+                            "selectionPage"
+                        )
+                    );
+                }
+            );
 
-
-        /* =========================================
-           LOGOUT
-        ========================================== */
 
         document
             .getElementById("selectionLogout")
-            .addEventListener("click", async function() {
+            .addEventListener(
+                "click",
+                async function() {
 
-                await supabaseClient.auth.signOut();
+                    await supabaseClient.auth
+                        .signOut();
 
-                currentUser = null;
-                selectedLawyer = null;
+                    currentUser = null;
+                    selectedLawyer = null;
 
-                mostrarTela(generalLoginPage);
-            });
+                    mostrarTela(
+                        document.getElementById(
+                            "generalLoginPage"
+                        )
+                    );
+                }
+            );
 
 
         document
             .getElementById("dashboardLogout")
-            .addEventListener("click", async function() {
+            .addEventListener(
+                "click",
+                async function() {
 
-                await supabaseClient.auth.signOut();
+                    await supabaseClient.auth
+                        .signOut();
 
-                currentUser = null;
-                selectedLawyer = null;
+                    currentUser = null;
+                    selectedLawyer = null;
 
-                mostrarTela(generalLoginPage);
-            });
+                    mostrarTela(
+                        document.getElementById(
+                            "generalLoginPage"
+                        )
+                    );
+                }
+            );
 
 
-        /* =========================================
-           FORMATAÇÃO
-        ========================================== */
+        /* =====================================================
+           FUNÇÕES AUXILIARES
+        ===================================================== */
 
         function formatarData(data) {
 
@@ -1830,12 +2024,15 @@
                 return "";
             }
 
+
             const partes =
                 data.split("-");
+
 
             if (partes.length !== 3) {
                 return data;
             }
+
 
             return (
                 partes[2] +
@@ -1858,11 +2055,15 @@
         }
 
 
-        /* =========================================
-           INÍCIO
-        ========================================== */
+        /* =====================================================
+           COMEÇAR NA TELA DE LOGIN
+        ===================================================== */
 
-        mostrarTela(generalLoginPage);
+        mostrarTela(
+            document.getElementById(
+                "generalLoginPage"
+            )
+        );
 
     </script>
 
