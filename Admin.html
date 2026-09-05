@@ -2,1449 +2,1663 @@
 <html lang="pt-BR">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Painel Administrativo | Josiane Nunes Advocacia</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-    --vinho:#54131b;
-    --vinho-escuro:#2b080d;
-    --vinho-medio:#6b2029;
-    --dourado:#b58a48;
-    --dourado-claro:#d7b976;
-    --creme:#f8f5f0;
-    --creme-escuro:#eee7dd;
-    --branco:#fff;
-    --texto:#2d1719;
-    --cinza:#6b6060;
-    --borda:#e5ddd3;
-    --verde:#3f7652;
-    --vermelho:#9b3943;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Montserrat',sans-serif;
-    background:var(--creme);
-    color:var(--texto);
-    min-height:100vh;
-}
-
-button,
-input,
-select{
-    font-family:inherit;
-}
-
-/* TOPO */
-
-.top-bar{
-    background:var(--vinho);
-    color:white;
-    min-height:38px;
-    padding:8px 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    font-size:11px;
-}
-
-.top-left{
-    display:flex;
-    gap:25px;
-}
-
-.top-item{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.top-item i{
-    width:14px;
-    height:14px;
-}
-
-/* NAVEGAÇÃO */
-
-nav{
-    height:88px;
-    padding:0 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:rgba(255,255,255,.97);
-    box-shadow:0 5px 25px rgba(0,0,0,.06);
-    position:sticky;
-    top:0;
-    z-index:1000;
-    backdrop-filter:blur(10px);
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-    color:var(--texto);
-}
-
-.logo-monogram{
-    font-family:'Cormorant Garamond',serif;
-    font-size:42px;
-    line-height:1;
-    font-weight:600;
-    color:var(--vinho);
-}
-
-.logo-divider{
-    width:1px;
-    height:42px;
-    background:var(--dourado);
-}
-
-.logo-name{
-    font-family:'Cormorant Garamond',serif;
-    font-size:22px;
-    font-weight:600;
-    letter-spacing:1px;
-}
-
-.logo-subtitle{
-    display:block;
-    margin-top:2px;
-    font-size:8px;
-    letter-spacing:3px;
-    color:var(--dourado);
-}
-
-/* CABEÇALHO */
-
-.hero{
-    background:var(--vinho-escuro);
-    color:white;
-    padding:65px 6%;
-}
-
-.hero-content{
-    max-width:1150px;
-    margin:auto;
-}
-
-.hero-label{
-    color:var(--dourado-claro);
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:3px;
-    margin-bottom:15px;
-}
-
-.hero h1{
-    font-family:'Cormorant Garamond',serif;
-    font-size:58px;
-    line-height:1;
-    font-weight:600;
-    margin-bottom:18px;
-}
-
-.hero p{
-    max-width:650px;
-    color:rgba(255,255,255,.75);
-    font-size:13px;
-    line-height:1.8;
-}
-
-/* CONTEÚDO */
-
-.container{
-    max-width:1150px;
-    margin:auto;
-    padding:65px 6%;
-}
-
-/* RESUMO */
-
-.summary-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-bottom:25px;
-}
-
-.summary{
-    background:white;
-    border:1px solid var(--borda);
-    padding:28px 20px;
-    text-align:center;
-    box-shadow:0 8px 25px rgba(84,19,27,.04);
-}
-
-.summary-icon{
-    color:var(--dourado);
-    margin-bottom:8px;
-}
-
-.summary-icon i{
-    width:27px;
-    height:27px;
-}
-
-.summary-number{
-    font-family:'Cormorant Garamond',serif;
-    font-size:40px;
-    color:var(--vinho);
-    font-weight:600;
-}
-
-.summary-label{
-    font-size:9px;
-    letter-spacing:1.5px;
-    color:var(--cinza);
-    text-transform:uppercase;
-}
-
-/* CARD */
-
-.card{
-    background:white;
-    border:1px solid var(--borda);
-    padding:35px;
-    margin-bottom:25px;
-    box-shadow:0 10px 35px rgba(84,19,27,.05);
-}
-
-.card-title{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:25px;
-}
-
-.card-title i{
-    width:25px;
-    height:25px;
-    color:var(--dourado);
-}
-
-.card-title h2{
-    font-family:'Cormorant Garamond',serif;
-    font-size:32px;
-    font-weight:600;
-}
-
-/* FORMULÁRIO */
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:18px;
-}
-
-.form-group{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.form-group label{
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:1px;
-    color:var(--cinza);
-    text-transform:uppercase;
-}
-
-.form-group input,
-.form-group select{
-    width:100%;
-    height:48px;
-    padding:0 14px;
-    border:1px solid var(--borda);
-    background:var(--creme);
-    color:var(--texto);
-    outline:none;
-    border-radius:3px;
-    font-size:12px;
-}
-
-.form-group input:focus,
-.form-group select:focus{
-    border-color:var(--dourado);
-}
-
-.button{
-    min-height:48px;
-    padding:0 22px;
-    border:none;
-    border-radius:3px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    font-size:11px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.button i{
-    width:16px;
-    height:16px;
-}
-
-.button-primary{
-    background:var(--vinho);
-    color:white;
-}
-
-.button-primary:hover{
-    background:var(--vinho-escuro);
-    transform:translateY(-2px);
-}
-
-.button-danger{
-    background:white;
-    color:var(--vermelho);
-    border:1px solid #d8b8bc;
-}
-
-.button-danger:hover{
-    background:#f8e9eb;
-}
-
-.button-success{
-    background:white;
-    color:var(--verde);
-    border:1px solid #c8dfcd;
-}
-
-.form-button{
-    margin-top:22px;
-}
-
-/* MENSAGENS */
-
-.status{
-    display:none;
-    padding:13px 15px;
-    margin-top:18px;
-    font-size:11px;
-    border-radius:3px;
-}
-
-.status.success{
-    display:block;
-    background:#edf6ef;
-    color:var(--verde);
-    border:1px solid #c8dfcd;
-}
-
-.status.error{
-    display:block;
-    background:#f9ebed;
-    color:var(--vermelho);
-    border:1px solid #e3c2c6;
-}
-
-/* HORÁRIOS */
-
-.horarios-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
-}
-
-.horario-card{
-    border:1px solid var(--borda);
-    background:white;
-    padding:20px;
-}
-
-.horario-data{
-    color:var(--dourado);
-    font-size:10px;
-    font-weight:700;
-    margin-bottom:7px;
-}
-
-.horario-hora{
-    font-family:'Cormorant Garamond',serif;
-    color:var(--vinho);
-    font-size:30px;
-    font-weight:600;
-    margin-bottom:10px;
-}
-
-.disponivel{
-    color:var(--verde);
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:15px;
-}
-
-.indisponivel{
-    color:var(--vermelho);
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    margin-bottom:15px;
-}
-
-/* TABELA */
-
-.table-wrapper{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:750px;
-}
-
-th{
-    background:var(--vinho);
-    color:white;
-    text-align:left;
-    padding:14px;
-    font-size:9px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-}
-
-td{
-    padding:15px 14px;
-    border-bottom:1px solid var(--borda);
-    font-size:11px;
-}
-
-tr:hover td{
-    background:#fffdfa;
-}
-
-.empty{
-    text-align:center;
-    padding:35px;
-    color:var(--cinza);
-    font-size:12px;
-}
-
-/* RODAPÉ */
-
-footer{
-    background:#210609;
-    color:white;
-    text-align:center;
-    padding:45px 6%;
-}
-
-.footer-name{
-    font-family:'Cormorant Garamond',serif;
-    font-size:28px;
-    letter-spacing:1px;
-    margin-bottom:8px;
-}
-
-.footer-subtitle{
-    color:var(--dourado-claro);
-    font-size:9px;
-    letter-spacing:3px;
-    margin-bottom:15px;
-}
-
-footer p{
-    color:rgba(255,255,255,.65);
-    font-size:10px;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:950px){
-
-    .top-bar{
-        display:none;
-    }
-
-    nav{
-        height:76px;
-        padding:0 22px;
-    }
-
-    .hero{
-        padding:50px 22px;
-    }
-
-    .hero h1{
-        font-size:47px;
-    }
-
-    .container{
-        padding:55px 22px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .horarios-grid{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-@media(max-width:550px){
-
-    .logo-monogram{
-        font-size:34px;
-    }
-
-    .logo-divider{
-        height:35px;
-    }
-
-    .logo-name{
-        font-size:18px;
-    }
-
-    .logo-subtitle{
-        font-size:6px;
-        letter-spacing:2px;
-    }
-
-    .hero h1{
-        font-size:40px;
-    }
-
-    .card{
-        padding:25px 20px;
-    }
-
-    .card-title h2{
-        font-size:28px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .summary-grid{
-        grid-template-columns:1fr;
-    }
-
-    .horarios-grid{
-        grid-template-columns:1fr;
-    }
-
-    .button{
-        width:100%;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Área Administrativa | Josiane Nunes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f5f0;
+            color: #2d1719;
+            min-height: 100vh;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        :root {
+            --vinho: #54131b;
+            --vinho-escuro: #2b080d;
+            --vinho-medio: #6b2029;
+            --dourado: #b58a48;
+            --dourado-claro: #d7b976;
+            --creme: #f8f5f0;
+            --creme-escuro: #eee7dd;
+            --branco: #fff;
+            --texto: #2d1719;
+            --cinza: #6b6060;
+            --borda: #e5ddd3;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo-monogram,
+        .logo-name {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ================================
+           TELA DE ESCOLHA
+        ================================= */
+
+        #telaEscolha {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            background:
+                radial-gradient(circle at top right, rgba(181, 138, 72, 0.10), transparent 30%),
+                #f8f5f0;
+        }
+
+        .escolha-container {
+            width: 100%;
+            max-width: 850px;
+            text-align: center;
+        }
+
+        .logo-area {
+            margin-bottom: 55px;
+        }
+
+        .logo-monogram {
+            font-size: 62px;
+            font-weight: 600;
+            color: var(--vinho);
+            line-height: .8;
+        }
+
+        .logo-line {
+            width: 60px;
+            height: 2px;
+            background: var(--dourado);
+            margin: 16px auto;
+        }
+
+        .logo-name {
+            font-size: 25px;
+            letter-spacing: 2px;
+            color: var(--vinho);
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--dourado);
+            margin-top: 7px;
+            font-weight: 600;
+        }
+
+        .escolha-titulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: var(--vinho-escuro);
+            margin-bottom: 10px;
+        }
+
+        .escolha-subtitulo {
+            color: var(--cinza);
+            font-size: 13px;
+            margin-bottom: 38px;
+        }
+
+        .advogados {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .advogado-card {
+            width: 260px;
+            min-height: 190px;
+            background: white;
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 10px 30px rgba(43, 8, 13, .05);
+        }
+
+        .advogado-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--dourado);
+            box-shadow: 0 18px 40px rgba(43, 8, 13, .10);
+        }
+
+        .advogado-icone {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--vinho);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .advogado-card h2 {
+            color: var(--vinho);
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .advogado-card p {
+            color: var(--cinza);
+            font-size: 11px;
+        }
+
+        .adicionar-card {
+            border: 1px dashed var(--dourado);
+            background: rgba(255,255,255,.45);
+        }
+
+        .adicionar-card .advogado-icone {
+            background: transparent;
+            border: 1px solid var(--dourado);
+            color: var(--dourado);
+        }
+
+        /* ================================
+           LOGIN
+        ================================= */
+
+        #telaLogin {
+            display: none;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            background: var(--creme);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .voltar {
+            background: none;
+            border: none;
+            color: var(--vinho);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .login-box {
+            background: white;
+            border: 1px solid var(--borda);
+            padding: 42px 38px;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(43, 8, 13, .08);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo .logo-monogram {
+            font-size: 48px;
+        }
+
+        .login-logo .logo-name {
+            font-size: 21px;
+        }
+
+        .login-box h1 {
+            text-align: center;
+            color: var(--vinho);
+            font-size: 31px;
+            margin-bottom: 8px;
+        }
+
+        .login-descricao {
+            text-align: center;
+            color: var(--cinza);
+            font-size: 11px;
+            margin-bottom: 28px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            color: var(--texto);
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .campo-input {
+            position: relative;
+        }
+
+        .campo-input i {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dourado);
+            width: 17px;
+        }
+
+        .campo input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid var(--borda);
+            border-radius: 5px;
+            padding: 0 14px 0 42px;
+            outline: none;
+            color: var(--texto);
+            background: #fff;
+        }
+
+        .campo input:focus {
+            border-color: var(--dourado);
+        }
+
+        .btn-entrar {
+            width: 100%;
+            height: 49px;
+            border: none;
+            border-radius: 5px;
+            background: var(--vinho);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .25s;
+            margin-top: 5px;
+        }
+
+        .btn-entrar:hover {
+            background: var(--vinho-escuro);
+        }
+
+        .erro-login {
+            display: none;
+            margin-top: 15px;
+            padding: 11px;
+            border-radius: 5px;
+            background: #f8e8e8;
+            color: #8b2020;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* ================================
+           PAINEL
+        ================================= */
+
+        #painel {
+            display: none;
+        }
+
+        .topbar {
+            min-height: 38px;
+            background: var(--vinho);
+            color: white;
+            padding: 8px 6%;
+            font-size: 10px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .topbar-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .navbar {
+            min-height: 88px;
+            background: rgba(255,255,255,.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 6%;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo .logo-monogram {
+            font-size: 39px;
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 42px;
+            background: var(--dourado);
+        }
+
+        .nav-logo-text .logo-name {
+            font-size: 20px;
+        }
+
+        .nav-logo-text .logo-subtitle {
+            font-size: 8px;
+            letter-spacing: 3px;
+        }
+
+        .btn-sair {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            border: 1px solid var(--vinho);
+            background: transparent;
+            color: var(--vinho);
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .btn-sair:hover {
+            background: var(--vinho);
+            color: white;
+        }
+
+        .painel-hero {
+            background: var(--creme);
+            padding: 65px 6% 55px;
+        }
+
+        .painel-hero small {
+            color: var(--dourado);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .painel-hero h1 {
+            font-size: 52px;
+            color: var(--vinho-escuro);
+            margin: 8px 0 10px;
+        }
+
+        .painel-hero p {
+            color: var(--cinza);
+            font-size: 12px;
+        }
+
+        .conteudo {
+            padding: 40px 6% 70px;
+        }
+
+        .cards-resumo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .resumo-card {
+            background: white;
+            border: 1px solid var(--borda);
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .resumo-card .icone {
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+
+        .resumo-card span {
+            display: block;
+            color: var(--cinza);
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        .resumo-card strong {
+            color: var(--vinho);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 35px;
+        }
+
+        .secao {
+            background: white;
+            border: 1px solid var(--borda);
+            border-radius: 6px;
+            margin-bottom: 25px;
+            padding: 30px;
+        }
+
+        .secao-titulo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .secao-titulo h2 {
+            color: var(--vinho);
+            font-size: 28px;
+        }
+
+        .form-horario {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 14px;
+            align-items: end;
+        }
+
+        .form-horario label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .form-horario input,
+        .form-horario select {
+            width: 100%;
+            height: 45px;
+            border: 1px solid var(--borda);
+            border-radius: 4px;
+            padding: 0 12px;
+            background: white;
+            outline: none;
+        }
+
+        .btn-principal {
+            height: 45px;
+            border: none;
+            background: var(--vinho);
+            color: white;
+            padding: 0 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .btn-principal:hover {
+            background: var(--vinho-escuro);
+        }
+
+        .horarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 14px;
+        }
+
+        .horario-card {
+            border: 1px solid var(--borda);
+            padding: 18px;
+            border-radius: 5px;
+            background: var(--creme);
+        }
+
+        .horario-card .data {
+            color: var(--vinho);
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .horario-card .hora {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--dourado);
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .horario-status {
+            font-size: 9px;
+            margin-top: 8px;
+            color: #387044;
+        }
+
+        .btn-remover {
+            margin-top: 13px;
+            background: transparent;
+            border: 1px solid #c9a7a7;
+            color: #8b3030;
+            padding: 7px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 9px;
+        }
+
+        .tabela-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            text-align: left;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dourado);
+            border-bottom: 1px solid var(--borda);
+            padding: 12px 8px;
+        }
+
+        td {
+            padding: 14px 8px;
+            border-bottom: 1px solid var(--borda);
+            font-size: 10px;
+            color: var(--texto);
+        }
+
+        .vazio {
+            color: var(--cinza);
+            font-size: 11px;
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+        .mensagem {
+            display: none;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
+        .mensagem.sucesso {
+            background: #e8f4ea;
+            color: #32633b;
+        }
+
+        .mensagem.erro {
+            background: #f8e8e8;
+            color: #8b2020;
+        }
+
+        @media(max-width: 800px) {
+            .cards-resumo {
+                grid-template-columns: 1fr;
+            }
+
+            .form-horario {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+            }
+
+            .painel-hero h1 {
+                font-size: 40px;
+            }
+
+            .navbar {
+                padding: 15px 4%;
+            }
+
+            .conteudo,
+            .painel-hero {
+                padding-left: 4%;
+                padding-right: 4%;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .login-box {
+                padding: 32px 22px;
+            }
+
+            .escolha-titulo {
+                font-size: 34px;
+            }
+
+            .nav-logo-text {
+                display: none;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="top-bar">
+    <!-- =====================================================
+         TELA 1 — ESCOLHA DO ADVOGADO
+    ====================================================== -->
 
-    <div class="top-left">
+    <section id="telaEscolha">
 
-        <div class="top-item">
-            <i data-lucide="shield-check"></i>
-            Área administrativa
-        </div>
+        <div class="escolha-container">
 
-        <div class="top-item">
-            <i data-lucide="calendar-check"></i>
-            Controle de agenda
-        </div>
-
-    </div>
-
-    <div>
-        Josiane Nunes Advocacia
-    </div>
-
-</div>
-
-<nav>
-
-    <a href="./index.html" class="logo">
-
-        <div class="logo-monogram">
-            JN
-        </div>
-
-        <div class="logo-divider"></div>
-
-        <div>
-
-            <div class="logo-name">
-                JOSIANE NUNES
+            <div class="logo-area">
+                <div class="logo-monogram">JN</div>
+                <div class="logo-line"></div>
+                <div class="logo-name">JOSIANE NUNES</div>
+                <div class="logo-subtitle">ADVOCACIA</div>
             </div>
 
-            <span class="logo-subtitle">
-                ADVOCACIA
-            </span>
+            <h1 class="escolha-titulo">Área profissional</h1>
 
-        </div>
+            <p class="escolha-subtitulo">
+                Selecione o profissional para acessar sua área administrativa.
+            </p>
 
-    </a>
+            <div class="advogados">
 
-</nav>
+                <div class="advogado-card" onclick="abrirLogin()">
+                    <div class="advogado-icone">
+                        <i data-lucide="scale"></i>
+                    </div>
 
-<section class="hero">
+                    <h2>Dra. Josiane</h2>
 
-    <div class="hero-content">
+                    <p>Área administrativa</p>
+                </div>
 
-        <div class="hero-label">
-            PAINEL ADMINISTRATIVO
-        </div>
+                <div class="advogado-card adicionar-card" onclick="adicionarAdvogado()">
+                    <div class="advogado-icone">
+                        <i data-lucide="plus"></i>
+                    </div>
 
-        <h1>
-            Gestão da agenda
-        </h1>
+                    <h2>Adicionar advogado</h2>
 
-        <p>
-            Gerencie os horários disponíveis para atendimento
-            e acompanhe os agendamentos realizados pelos clientes.
-        </p>
+                    <p>Adicionar futuramente</p>
+                </div>
 
-    </div>
-
-</section>
-
-<main class="container">
-
-    <!-- RESUMO -->
-
-    <div class="summary-grid">
-
-        <div class="summary">
-
-            <div class="summary-icon">
-                <i data-lucide="calendar-days"></i>
-            </div>
-
-            <div
-                class="summary-number"
-                id="totalHorarios"
-            >
-                0
-            </div>
-
-            <div class="summary-label">
-                Horários cadastrados
             </div>
 
         </div>
 
-        <div class="summary">
+    </section>
 
-            <div class="summary-icon">
+
+    <!-- =====================================================
+         TELA 2 — LOGIN
+    ====================================================== -->
+
+    <section id="telaLogin">
+
+        <div class="login-container">
+
+            <button class="voltar" onclick="voltarEscolha()">
+                <i data-lucide="arrow-left"></i>
+                Voltar
+            </button>
+
+            <div class="login-box">
+
+                <div class="login-logo">
+                    <div class="logo-monogram">JN</div>
+                    <div class="logo-line"></div>
+                    <div class="logo-name">JOSIANE NUNES</div>
+                    <div class="logo-subtitle">ADVOCACIA</div>
+                </div>
+
+                <h1>Dra. Josiane</h1>
+
+                <p class="login-descricao">
+                    Acesso exclusivo à área administrativa
+                </p>
+
+                <form id="loginForm">
+
+                    <div class="campo">
+
+                        <label for="email">
+                            Nome de usuário
+                        </label>
+
+                        <div class="campo-input">
+                            <i data-lucide="user"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Digite seu e-mail"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label for="senha">
+                            Senha
+                        </label>
+
+                        <div class="campo-input">
+                            <i data-lucide="lock"></i>
+
+                            <input
+                                type="password"
+                                id="senha"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <button class="btn-entrar" type="submit" id="btnEntrar">
+                        Entrar
+                    </button>
+
+                    <div class="erro-login" id="erroLogin"></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TELA 3 — PAINEL ADMINISTRATIVO
+    ====================================================== -->
+
+    <section id="painel">
+
+        <div class="topbar">
+
+            <div class="topbar-item">
+                <i data-lucide="shield-check"></i>
+                Área administrativa protegida
+            </div>
+
+            <div class="topbar-item">
                 <i data-lucide="clock-3"></i>
-            </div>
-
-            <div
-                class="summary-number"
-                id="totalDisponiveis"
-            >
-                0
-            </div>
-
-            <div class="summary-label">
-                Horários disponíveis
+                Gestão de atendimento
             </div>
 
         </div>
 
-        <div class="summary">
 
-            <div class="summary-icon">
-                <i data-lucide="users"></i>
+        <nav class="navbar">
+
+            <div class="nav-logo">
+
+                <div class="logo-monogram">
+                    JN
+                </div>
+
+                <div class="nav-divider"></div>
+
+                <div class="nav-logo-text">
+
+                    <div class="logo-name">
+                        JOSIANE NUNES
+                    </div>
+
+                    <div class="logo-subtitle">
+                        ADVOCACIA
+                    </div>
+
+                </div>
+
             </div>
 
-            <div
-                class="summary-number"
-                id="totalAgendamentos"
-            >
-                0
-            </div>
+            <button class="btn-sair" onclick="sair()">
+                <i data-lucide="log-out"></i>
+                Sair
+            </button>
 
-            <div class="summary-label">
-                Agendamentos
-            </div>
+        </nav>
+
+
+        <div class="painel-hero">
+
+            <small>Área exclusiva</small>
+
+            <h1>Gestão da agenda</h1>
+
+            <p>
+                Organize os horários disponíveis e acompanhe os agendamentos.
+            </p>
 
         </div>
 
-    </div>
+
+        <main class="conteudo">
+
+            <div class="mensagem" id="mensagem"></div>
 
 
-    <!-- CADASTRAR HORÁRIO -->
+            <div class="cards-resumo">
 
-    <section class="card">
+                <div class="resumo-card">
 
-        <div class="card-title">
+                    <div class="icone">
+                        <i data-lucide="calendar-days"></i>
+                    </div>
 
-            <i data-lucide="plus-circle"></i>
+                    <span>Horários cadastrados</span>
 
-            <h2>
-                Cadastrar horário
-            </h2>
+                    <strong id="totalHorarios">0</strong>
 
-        </div>
+                </div>
 
-        <div class="form-grid">
 
-            <div class="form-group">
+                <div class="resumo-card">
 
-                <label for="data">
-                    Data
-                </label>
+                    <div class="icone">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
 
-                <input
-                    type="date"
-                    id="data"
-                >
+                    <span>Horários disponíveis</span>
 
-            </div>
+                    <strong id="horariosDisponiveis">0</strong>
 
-            <div class="form-group">
+                </div>
 
-                <label for="horario">
-                    Horário
-                </label>
 
-                <input
-                    type="time"
-                    id="horario"
-                >
+                <div class="resumo-card">
 
-            </div>
+                    <div class="icone">
+                        <i data-lucide="users"></i>
+                    </div>
 
-            <div class="form-group">
+                    <span>Agendamentos</span>
 
-                <label for="disponivel">
-                    Disponibilidade
-                </label>
+                    <strong id="totalAgendamentos">0</strong>
 
-                <select id="disponivel">
-
-                    <option value="true">
-                        Disponível
-                    </option>
-
-                    <option value="false">
-                        Indisponível
-                    </option>
-
-                </select>
+                </div>
 
             </div>
 
-        </div>
 
-        <button
-            class="button button-primary form-button"
-            id="btnAdicionar"
-        >
+            <!-- ADICIONAR HORÁRIO -->
 
-            <i data-lucide="plus"></i>
+            <section class="secao">
 
-            Adicionar horário
+                <div class="secao-titulo">
 
-        </button>
+                    <h2>Adicionar horário</h2>
 
-        <div
-            class="status"
-            id="statusHorario"
-        ></div>
+                </div>
+
+                <div class="form-horario">
+
+                    <div>
+
+                        <label for="dataHorario">
+                            Data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dataHorario"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="horaHorario">
+                            Horário
+                        </label>
+
+                        <input
+                            type="time"
+                            id="horaHorario"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="btn-principal"
+                        onclick="adicionarHorario()"
+                    >
+                        Adicionar horário
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- HORÁRIOS -->
+
+            <section class="secao">
+
+                <div class="secao-titulo">
+
+                    <h2>Horários cadastrados</h2>
+
+                </div>
+
+                <div
+                    class="horarios-grid"
+                    id="listaHorarios"
+                ></div>
+
+            </section>
+
+
+            <!-- AGENDAMENTOS -->
+
+            <section class="secao">
+
+                <div class="secao-titulo">
+
+                    <h2>Agendamentos</h2>
+
+                </div>
+
+                <div class="tabela-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Telefone</th>
+                                <th>E-mail</th>
+                                <th>Atendimento</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="listaAgendamentos"></tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
 
     </section>
 
 
-    <!-- HORÁRIOS -->
+    <script>
 
-    <section class="card">
+        /* =====================================================
+           SUPABASE
+        ====================================================== */
 
-        <div class="card-title">
+        const SUPABASE_URL = "COLE_AQUI_A_SUPABASE_URL";
 
-            <i data-lucide="clock"></i>
+        const SUPABASE_KEY = "COLE_AQUI_A_PUBLISHABLE_KEY";
 
-            <h2>
-                Horários cadastrados
-            </h2>
-
-        </div>
-
-        <div
-            class="horarios-grid"
-            id="listaHorarios"
-        ></div>
-
-    </section>
-
-
-    <!-- AGENDAMENTOS -->
-
-    <section class="card">
-
-        <div class="card-title">
-
-            <i data-lucide="users"></i>
-
-            <h2>
-                Agendamentos
-            </h2>
-
-        </div>
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Cliente</th>
-
-                        <th>Telefone</th>
-
-                        <th>E-mail</th>
-
-                        <th>Atendimento</th>
-
-                        <th>Data</th>
-
-                        <th>Horário</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="listaAgendamentos">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div class="footer-name">
-        JOSIANE NUNES
-    </div>
-
-    <div class="footer-subtitle">
-        ADVOCACIA
-    </div>
-
-    <p>
-        Painel administrativo da agenda.
-    </p>
-
-</footer>
-
-
-<script>
-
-/* =====================================================
-   SUPABASE
-   =====================================================
-
-   COLE AQUI AS MESMAS INFORMAÇÕES
-   QUE JÁ ESTÃO NO SEU AGENDAMENTO.HTML
-
-   NÃO ENVIE ESSAS INFORMAÇÕES PARA MIM.
-===================================================== */
-
-const SUPABASE_URL =
-    "https://ovogpczsnxwqmefpbydi.supabase.co/rest/v1/";
-
-const SUPABASE_KEY =
-    "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
-
-
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
-
-
-/* ELEMENTOS */
-
-const dataInput =
-    document.getElementById("data");
-
-const horarioInput =
-    document.getElementById("horario");
-
-const disponibilidadeInput =
-    document.getElementById("disponivel");
-
-const btnAdicionar =
-    document.getElementById("btnAdicionar");
-
-const statusHorario =
-    document.getElementById("statusHorario");
-
-const listaHorarios =
-    document.getElementById("listaHorarios");
-
-const listaAgendamentos =
-    document.getElementById("listaAgendamentos");
-
-const totalHorarios =
-    document.getElementById("totalHorarios");
-
-const totalDisponiveis =
-    document.getElementById("totalDisponiveis");
-
-const totalAgendamentos =
-    document.getElementById("totalAgendamentos");
-
-
-/* DATA MÍNIMA = HOJE */
-
-function dataHoje(){
-
-    const agora = new Date();
-
-    const ano =
-        agora.getFullYear();
-
-    const mes =
-        String(
-            agora.getMonth() + 1
-        ).padStart(2,"0");
-
-    const dia =
-        String(
-            agora.getDate()
-        ).padStart(2,"0");
-
-    return `${ano}-${mes}-${dia}`;
-
-}
-
-dataInput.min = dataHoje();
-
-
-/* MENSAGEM */
-
-function mostrarStatus(
-    mensagem,
-    tipo
-){
-
-    statusHorario.textContent =
-        mensagem;
-
-    statusHorario.className =
-        "status " + tipo;
-
-}
-
-
-/* ADICIONAR HORÁRIO */
-
-btnAdicionar.addEventListener(
-    "click",
-    async function(){
-
-        const data =
-            dataInput.value;
-
-        const horario =
-            horarioInput.value;
-
-        const disponivel =
-            disponibilidadeInput.value === "true";
-
-
-        if(!data || !horario){
-
-            mostrarStatus(
-                "Preencha a data e o horário.",
-                "error"
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
             );
 
-            return;
-        }
+
+        /* =====================================================
+           ELEMENTOS
+        ====================================================== */
+
+        const telaEscolha =
+            document.getElementById("telaEscolha");
+
+        const telaLogin =
+            document.getElementById("telaLogin");
+
+        const painel =
+            document.getElementById("painel");
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const erroLogin =
+            document.getElementById("erroLogin");
 
 
-        btnAdicionar.disabled = true;
-
-        btnAdicionar.innerHTML =
-            '<i data-lucide="loader-circle"></i> Salvando...';
+        /* =====================================================
+           INICIALIZAÇÃO
+        ====================================================== */
 
         lucide.createIcons();
 
+        verificarSessao();
 
-        /* VERIFICA SE JÁ EXISTE */
 
-        const { data: existente, error: erroBusca } =
-            await supabaseClient
+        /* =====================================================
+           VERIFICAR SE JÁ ESTÁ LOGADO
+        ====================================================== */
+
+        async function verificarSessao() {
+
+            const {
+                data: {
+                    session
+                }
+            } = await supabaseClient.auth.getSession();
+
+            if (session) {
+
+                mostrarPainel();
+
+            } else {
+
+                mostrarEscolha();
+
+            }
+
+        }
+
+
+        /* =====================================================
+           TELA DE ESCOLHA
+        ====================================================== */
+
+        function mostrarEscolha() {
+
+            telaEscolha.style.display = "flex";
+            telaLogin.style.display = "none";
+            painel.style.display = "none";
+
+        }
+
+
+        /* =====================================================
+           ABRIR LOGIN
+        ====================================================== */
+
+        function abrirLogin() {
+
+            telaEscolha.style.display = "none";
+            telaLogin.style.display = "flex";
+            painel.style.display = "none";
+
+            document.getElementById("email").focus();
+
+        }
+
+
+        /* =====================================================
+           VOLTAR
+        ====================================================== */
+
+        function voltarEscolha() {
+
+            erroLogin.style.display = "none";
+
+            telaLogin.style.display = "none";
+            telaEscolha.style.display = "flex";
+
+        }
+
+
+        /* =====================================================
+           LOGIN
+        ====================================================== */
+
+        loginForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const senha =
+                document.getElementById("senha").value;
+
+            const btn =
+                document.getElementById("btnEntrar");
+
+            erroLogin.style.display = "none";
+
+            btn.disabled = true;
+            btn.textContent = "Entrando...";
+
+
+            const {
+                data,
+                error
+            } = await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: senha
+            });
+
+
+            if (error) {
+
+                erroLogin.textContent =
+                    "Usuário ou senha incorretos.";
+
+                erroLogin.style.display = "block";
+
+                btn.disabled = false;
+                btn.textContent = "Entrar";
+
+                return;
+
+            }
+
+
+            btn.disabled = false;
+            btn.textContent = "Entrar";
+
+            mostrarPainel();
+
+        });
+
+
+        /* =====================================================
+           MOSTRAR PAINEL
+        ====================================================== */
+
+        function mostrarPainel() {
+
+            telaEscolha.style.display = "none";
+            telaLogin.style.display = "none";
+            painel.style.display = "block";
+
+            carregarTudo();
+
+            lucide.createIcons();
+
+        }
+
+
+        /* =====================================================
+           SAIR
+        ====================================================== */
+
+        async function sair() {
+
+            await supabaseClient.auth.signOut();
+
+            document.getElementById("email").value = "";
+            document.getElementById("senha").value = "";
+
+            mostrarEscolha();
+
+        }
+
+
+        /* =====================================================
+           ADICIONAR FUTURO ADVOGADO
+        ====================================================== */
+
+        function adicionarAdvogado() {
+
+            alert(
+                "Essa função ficará disponível quando houver outro advogado cadastrado."
+            );
+
+        }
+
+
+        /* =====================================================
+           MENSAGEM
+        ====================================================== */
+
+        function mostrarMensagem(texto, tipo = "sucesso") {
+
+            const elemento =
+                document.getElementById("mensagem");
+
+            elemento.textContent = texto;
+
+            elemento.className =
+                "mensagem " + tipo;
+
+            elemento.style.display = "block";
+
+            setTimeout(() => {
+
+                elemento.style.display = "none";
+
+            }, 4000);
+
+        }
+
+
+        /* =====================================================
+           CARREGAR TUDO
+        ====================================================== */
+
+        async function carregarTudo() {
+
+            await carregarHorarios();
+
+            await carregarAgendamentos();
+
+        }
+
+
+        /* =====================================================
+           HORÁRIOS
+        ====================================================== */
+
+        async function carregarHorarios() {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
                 .from("horarios")
-                .select("id")
-                .eq("data",data)
-                .eq("horario",horario)
-                .limit(1);
+                .select("*")
+                .order("data", {
+                    ascending: true
+                })
+                .order("horario", {
+                    ascending: true
+                });
 
 
-        if(erroBusca){
+            if (error) {
 
-            console.error(erroBusca);
+                console.error(error);
 
-            mostrarStatus(
-                "Não foi possível verificar o horário.",
-                "error"
-            );
+                mostrarMensagem(
+                    "Não foi possível carregar os horários.",
+                    "erro"
+                );
 
-            btnAdicionar.disabled = false;
+                return;
 
-            btnAdicionar.innerHTML =
-                '<i data-lucide="plus"></i> Adicionar horário';
+            }
 
-            lucide.createIcons();
 
-            return;
+            const lista =
+                document.getElementById("listaHorarios");
+
+            lista.innerHTML = "";
+
+
+            const disponiveis =
+                data.filter(
+                    horario => horario.disponivel === true
+                );
+
+
+            document.getElementById("totalHorarios")
+                .textContent = data.length;
+
+
+            document.getElementById("horariosDisponiveis")
+                .textContent = disponiveis.length;
+
+
+            if (!data.length) {
+
+                lista.innerHTML =
+                    '<div class="vazio">Nenhum horário cadastrado.</div>';
+
+                return;
+
+            }
+
+
+            data.forEach(horario => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "horario-card";
+
+
+                const dataFormatada =
+                    formatarData(horario.data);
+
+
+                const horaFormatada =
+                    horario.horario
+                        ? horario.horario.substring(0, 5)
+                        : "--";
+
+
+                card.innerHTML = `
+
+                    <div class="data">
+                        ${dataFormatada}
+                    </div>
+
+                    <div class="hora">
+                        ${horaFormatada}
+                    </div>
+
+                    <div class="horario-status">
+                        ${horario.disponivel
+                            ? "● Disponível"
+                            : "● Indisponível"}
+                    </div>
+
+                    <button
+                        class="btn-remover"
+                        onclick="removerHorario(${horario.id})"
+                    >
+                        Remover
+                    </button>
+
+                `;
+
+
+                lista.appendChild(card);
+
+            });
+
         }
 
 
-        if(existente && existente.length > 0){
+        /* =====================================================
+           ADICIONAR HORÁRIO
+        ====================================================== */
 
-            mostrarStatus(
-                "Esse horário já está cadastrado.",
-                "error"
-            );
+        async function adicionarHorario() {
 
-            btnAdicionar.disabled = false;
+            const data =
+                document.getElementById("dataHorario").value;
 
-            btnAdicionar.innerHTML =
-                '<i data-lucide="plus"></i> Adicionar horário';
-
-            lucide.createIcons();
-
-            return;
-        }
+            const horario =
+                document.getElementById("horaHorario").value;
 
 
-        /* INSERE */
+            if (!data || !horario) {
 
-        const { error } =
-            await supabaseClient
+                mostrarMensagem(
+                    "Escolha a data e o horário.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            const {
+                error
+            } = await supabaseClient
                 .from("horarios")
                 .insert([
                     {
-                        data:data,
-                        horario:horario,
-                        disponivel:disponivel
+                        data: data,
+                        horario: horario,
+                        disponivel: true
                     }
                 ]);
 
 
-        btnAdicionar.disabled = false;
+            if (error) {
 
-        btnAdicionar.innerHTML =
-            '<i data-lucide="plus"></i> Adicionar horário';
+                console.error(error);
 
-        lucide.createIcons();
+                mostrarMensagem(
+                    "Não foi possível adicionar o horário.",
+                    "erro"
+                );
+
+                return;
+
+            }
 
 
-        if(error){
+            document.getElementById("dataHorario").value = "";
+            document.getElementById("horaHorario").value = "";
 
-            console.error(error);
 
-            mostrarStatus(
-                "Não foi possível cadastrar o horário.",
-                "error"
+            mostrarMensagem(
+                "Horário adicionado com sucesso!"
             );
 
-            return;
+
+            carregarHorarios();
+
         }
 
 
-        mostrarStatus(
-            "Horário cadastrado com sucesso.",
-            "success"
-        );
+        /* =====================================================
+           REMOVER HORÁRIO
+        ====================================================== */
+
+        async function removerHorario(id) {
+
+            const confirmar =
+                confirm("Deseja realmente remover este horário?");
 
 
-        dataInput.value = "";
-        horarioInput.value = "";
+            if (!confirmar) return;
 
 
-        carregarHorarios();
+            const {
+                error
+            } = await supabaseClient
+                .from("horarios")
+                .delete()
+                .eq("id", id);
 
-    }
-);
+
+            if (error) {
+
+                console.error(error);
+
+                mostrarMensagem(
+                    "Não foi possível remover o horário.",
+                    "erro"
+                );
+
+                return;
+
+            }
 
 
-/* CARREGAR HORÁRIOS */
+            mostrarMensagem(
+                "Horário removido."
+            );
 
-async function carregarHorarios(){
 
-    const { data, error } =
-        await supabaseClient
-            .from("horarios")
-            .select("*")
-            .order("data",{
-                ascending:true
-            })
-            .order("horario",{
-                ascending:true
+            carregarHorarios();
+
+        }
+
+
+        /* =====================================================
+           AGENDAMENTOS
+        ====================================================== */
+
+        async function carregarAgendamentos() {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("agendamentos")
+                .select("*")
+                .order("data", {
+                    ascending: true
+                })
+                .order("horario", {
+                    ascending: true
+                });
+
+
+            if (error) {
+
+                console.error(error);
+
+                mostrarMensagem(
+                    "Não foi possível carregar os agendamentos.",
+                    "erro"
+                );
+
+                return;
+
+            }
+
+
+            const tbody =
+                document.getElementById("listaAgendamentos");
+
+            tbody.innerHTML = "";
+
+
+            document.getElementById("totalAgendamentos")
+                .textContent = data.length;
+
+
+            if (!data.length) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="vazio">
+                            Nenhum agendamento realizado.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            data.forEach(agendamento => {
+
+                const tr =
+                    document.createElement("tr");
+
+
+                const nome =
+                    agendamento.nome || "-";
+
+                const telefone =
+                    agendamento.telefone || "-";
+
+                const email =
+                    agendamento.email || "-";
+
+                const tipo =
+                    agendamento.tipo_atendimento ||
+                    agendamento.tipo ||
+                    "-";
+
+                const data =
+                    agendamento.data
+                        ? formatarData(agendamento.data)
+                        : "-";
+
+                const horario =
+                    agendamento.horario
+                        ? agendamento.horario.substring(0, 5)
+                        : "-";
+
+
+                tr.innerHTML = `
+
+                    <td>${escaparHTML(nome)}</td>
+
+                    <td>${escaparHTML(telefone)}</td>
+
+                    <td>${escaparHTML(email)}</td>
+
+                    <td>${escaparHTML(tipo)}</td>
+
+                    <td>${escaparHTML(data)}</td>
+
+                    <td>${escaparHTML(horario)}</td>
+
+                `;
+
+
+                tbody.appendChild(tr);
+
             });
 
+        }
 
-    if(error){
 
-        console.error(error);
+        /* =====================================================
+           FORMATAR DATA
+        ====================================================== */
 
-        listaHorarios.innerHTML =
-            '<div class="empty">Não foi possível carregar os horários.</div>';
+        function formatarData(data) {
 
-        return;
-    }
+            if (!data) return "-";
 
 
-    totalHorarios.textContent =
-        data.length;
+            const partes =
+                data.split("-");
 
 
-    totalDisponiveis.textContent =
-        data.filter(
-            item =>
-                item.disponivel === true
-        ).length;
+            if (partes.length !== 3) {
+                return data;
+            }
 
 
-    if(data.length === 0){
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
 
-        listaHorarios.innerHTML =
-            '<div class="empty">Nenhum horário cadastrado.</div>';
+        }
 
-        return;
-    }
 
+        /* =====================================================
+           PROTEÇÃO CONTRA HTML
+        ====================================================== */
 
-    listaHorarios.innerHTML = "";
+        function escaparHTML(valor) {
 
+            return String(valor)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
 
-    data.forEach(function(item){
+        }
 
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "horario-card";
-
-
-        const status =
-            item.disponivel === true
-
-            ? `
-                <div class="disponivel">
-                    ● Disponível
-                </div>
-              `
-
-            : `
-                <div class="indisponivel">
-                    ● Indisponível
-                </div>
-              `;
-
-
-        card.innerHTML = `
-
-            <div class="horario-data">
-                ${formatarData(item.data)}
-            </div>
-
-            <div class="horario-hora">
-                ${item.horario}
-            </div>
-
-            ${status}
-
-            <button
-                class="button button-danger"
-                onclick="removerHorario(${item.id})"
-            >
-
-                <i data-lucide="trash-2"></i>
-
-                Remover
-
-            </button>
-
-        `;
-
-
-        listaHorarios.appendChild(card);
-
-    });
-
-
-    lucide.createIcons();
-
-}
-
-
-/* REMOVER HORÁRIO */
-
-async function removerHorario(id){
-
-    const confirmar =
-        confirm(
-            "Deseja realmente remover este horário?"
-        );
-
-
-    if(!confirmar){
-        return;
-    }
-
-
-    const { error } =
-        await supabaseClient
-            .from("horarios")
-            .delete()
-            .eq("id",id);
-
-
-    if(error){
-
-        console.error(error);
-
-        alert(
-            "Não foi possível remover o horário."
-        );
-
-        return;
-    }
-
-
-    carregarHorarios();
-
-}
-
-
-/* CARREGAR AGENDAMENTOS */
-
-async function carregarAgendamentos(){
-
-    const { data, error } =
-        await supabaseClient
-            .from("agendamentos")
-            .select("*");
-
-
-    if(error){
-
-        console.error(error);
-
-        listaAgendamentos.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="6"
-                    class="empty"
-                >
-
-                    Não foi possível carregar os agendamentos.
-
-                </td>
-
-            </tr>
-
-        `;
-
-        return;
-    }
-
-
-    totalAgendamentos.textContent =
-        data.length;
-
-
-    if(data.length === 0){
-
-        listaAgendamentos.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="6"
-                    class="empty"
-                >
-
-                    Nenhum agendamento realizado.
-
-                </td>
-
-            </tr>
-
-        `;
-
-        return;
-    }
-
-
-    listaAgendamentos.innerHTML = "";
-
-
-    data.forEach(function(item){
-
-        const row =
-            document.createElement("tr");
-
-
-        const nome =
-            item.nome ||
-            item.name ||
-            "-";
-
-
-        const telefone =
-            item.telefone ||
-            item.phone ||
-            "-";
-
-
-        const email =
-            item.email ||
-            "-";
-
-
-        const tipo =
-            item.tipo_atendimento ||
-            item.tipo ||
-            "-";
-
-
-        const data =
-            item.data ||
-            "-";
-
-
-        const horario =
-            item.horario ||
-            "-";
-
-
-        row.innerHTML = `
-
-            <td>
-                ${escapar(nome)}
-            </td>
-
-            <td>
-                ${escapar(telefone)}
-            </td>
-
-            <td>
-                ${escapar(email)}
-            </td>
-
-            <td>
-                ${escapar(tipo)}
-            </td>
-
-            <td>
-                ${formatarData(data)}
-            </td>
-
-            <td>
-                ${escapar(horario)}
-            </td>
-
-        `;
-
-
-        listaAgendamentos.appendChild(row);
-
-    });
-
-}
-
-
-/* FORMATAR DATA */
-
-function formatarData(data){
-
-    if(!data){
-        return "-";
-    }
-
-
-    const partes =
-        String(data).split("-");
-
-
-    if(partes.length !== 3){
-        return data;
-    }
-
-
-    return `${partes[2]}/${partes[1]}/${partes[0]}`;
-
-}
-
-
-/* PROTEGER TEXTO */
-
-function escapar(texto){
-
-    return String(texto)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* INICIAR */
-
-lucide.createIcons();
-
-carregarHorarios();
-
-carregarAgendamentos();
-
-</script>
+    </script>
 
 </body>
+
 </html>
