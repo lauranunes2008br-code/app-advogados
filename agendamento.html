@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -289,23 +290,36 @@
 <body>
 
 <header>
+
     <div class="logo">
-        <div class="logo-symbol">JN</div>
+
+        <div class="logo-symbol">
+            JN
+        </div>
 
         <div class="logo-text">
             <h1>JOSIANE NUNES</h1>
             <span>ADVOCACIA</span>
         </div>
+
     </div>
 
-    <a href="index.html" class="voltar">← Voltar ao início</a>
+    <a href="index.html" class="voltar">
+        ← Voltar ao início
+    </a>
+
 </header>
 
 <main>
 
     <div class="titulo">
+
         <h2>Agende sua consulta</h2>
-        <p>Preencha os dados abaixo para solicitar seu atendimento.</p>
+
+        <p>
+            Preencha os dados abaixo para solicitar seu atendimento.
+        </p>
+
     </div>
 
     <div class="formulario" id="formulario">
@@ -322,7 +336,11 @@
             <div class="linha">
 
                 <div class="campo">
-                    <label for="nome">Nome completo</label>
+
+                    <label for="nome">
+                        Nome completo
+                    </label>
+
                     <input
                         type="text"
                         id="nome"
@@ -330,10 +348,15 @@
                         placeholder="Digite seu nome"
                         required
                     >
+
                 </div>
 
                 <div class="campo">
-                    <label for="telefone">Telefone / WhatsApp</label>
+
+                    <label for="telefone">
+                        Telefone / WhatsApp
+                    </label>
+
                     <input
                         type="tel"
                         id="telefone"
@@ -341,6 +364,7 @@
                         placeholder="(00) 00000-0000"
                         required
                     >
+
                 </div>
 
             </div>
@@ -348,7 +372,11 @@
             <div class="linha">
 
                 <div class="campo">
-                    <label for="email">E-mail</label>
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
                     <input
                         type="email"
                         id="email"
@@ -356,85 +384,153 @@
                         placeholder="seuemail@email.com"
                         required
                     >
+
                 </div>
 
                 <div class="campo">
-                    <label for="tipo">Tipo de atendimento</label>
+
+                    <label for="tipo">
+                        Tipo de atendimento
+                    </label>
 
                     <select id="tipo" name="tipo" required>
-                        <option value="">Selecione</option>
-                        <option value="Presencial">Presencial</option>
-                        <option value="Online">Online</option>
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Presencial">
+                            Presencial
+                        </option>
+
+                        <option value="Online">
+                            Online
+                        </option>
+
                     </select>
+
                 </div>
 
             </div>
 
             <div class="campo-full campo">
-                <label for="area">Área jurídica</label>
+
+                <label for="area">
+                    Área jurídica
+                </label>
 
                 <select id="area" name="area" required>
-                    <option value="">Selecione a área</option>
-                    <option value="Direito Criminal">Direito Criminal</option>
-                    <option value="Direito Previdenciário">Direito Previdenciário</option>
-                    <option value="Direito Trabalhista">Direito Trabalhista</option>
+
+                    <option value="">
+                        Selecione a área
+                    </option>
+
+                    <option value="Direito Criminal">
+                        Direito Criminal
+                    </option>
+
+                    <option value="Direito Previdenciário">
+                        Direito Previdenciário
+                    </option>
+
+                    <option value="Direito Trabalhista">
+                        Direito Trabalhista
+                    </option>
+
                 </select>
+
             </div>
 
             <div class="linha">
 
                 <div class="campo">
-                    <label for="data">Data</label>
+
+                    <label for="data">
+                        Data
+                    </label>
+
                     <input
                         type="date"
                         id="data"
                         name="data"
                         required
                     >
+
                 </div>
 
                 <div class="campo">
-                    <label for="horario">Horário disponível</label>
 
-                    <select id="horario" name="horario" required disabled>
-                        <option value="">Primeiro selecione uma data</option>
+                    <label for="horario">
+                        Horário disponível
+                    </label>
+
+                    <select
+                        id="horario"
+                        name="horario"
+                        required
+                        disabled
+                    >
+
+                        <option value="">
+                            Primeiro selecione uma data
+                        </option>
+
                     </select>
+
                 </div>
 
             </div>
 
             <div class="campo-full campo">
-                <label for="assunto">Assunto</label>
+
+                <label for="assunto">
+                    Assunto
+                </label>
 
                 <textarea
                     id="assunto"
                     name="assunto"
                     placeholder="Conte brevemente o motivo do atendimento."
                 ></textarea>
+
             </div>
 
             <label class="checkbox">
-                <input type="checkbox" id="confirmacao" required>
+
+                <input
+                    type="checkbox"
+                    id="confirmacao"
+                    required
+                >
 
                 <span>
                     Confirmo que as informações fornecidas estão corretas e
                     estou ciente de que o preenchimento do formulário não
                     significa confirmação automática do atendimento.
                 </span>
+
             </label>
 
-            <button type="submit" id="btnEnviar">
+            <button
+                type="submit"
+                id="btnEnviar"
+            >
                 Solicitar agendamento
             </button>
 
         </form>
+
     </div>
 
     <div class="formulario mensagem" id="sucesso">
 
-        <div class="icone">✓</div>
+        <div class="icone">
+            ✓
+        </div>
 
-        <h2>Solicitação enviada!</h2>
+        <h2>
+            Solicitação enviada!
+        </h2>
 
         <p>
             Recebemos seus dados de agendamento.
@@ -456,90 +552,98 @@
 </main>
 
 <script>
-    /* ============================================================
-       SUPABASE
-       ============================================================ */
 
-    const SUPABASE_URL =
-        "https://ovogpczsnxwqmefpbydi.supabase.co";
+const SUPABASE_URL =
+    "https://ovogpczsnxwqmefpbydi.supabase.co";
 
-    /*
-       COLE A SUA PUBLISHABLE KEY AQUI.
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
 
-       Apague apenas:
-       COLE_SUA_PUBLISHABLE_KEY_AQUI
+const WHATSAPP =
+    "5587991699046";
 
-       e coloque a sua Publishable Key no lugar.
-    */
+const dataInput =
+    document.getElementById("data");
 
-    const SUPABASE_PUBLISHABLE_KEY =
-        "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+const horarioSelect =
+    document.getElementById("horario");
 
+const form =
+    document.getElementById("agendamentoForm");
 
-    /* ============================================================
-       CONFIGURAÇÕES
-       ============================================================ */
+const erro =
+    document.getElementById("erro");
 
-    const dataInput = document.getElementById("data");
-    const horarioSelect = document.getElementById("horario");
-    const form = document.getElementById("agendamentoForm");
-    const erro = document.getElementById("erro");
-    const btnEnviar = document.getElementById("btnEnviar");
+const btnEnviar =
+    document.getElementById("btnEnviar");
 
-    const formulario = document.getElementById("formulario");
-    const sucesso = document.getElementById("sucesso");
-    const whatsappBtn = document.getElementById("whatsappBtn");
+const formulario =
+    document.getElementById("formulario");
 
+const sucesso =
+    document.getElementById("sucesso");
 
-    /*
-       Número do WhatsApp da advocacia.
-       Mantido no formato internacional.
-    */
-
-    const WHATSAPP =
-        "5587991699046";
+const whatsappBtn =
+    document.getElementById("whatsappBtn");
 
 
-    /* ============================================================
-       DATA MÍNIMA
-       ============================================================ */
+function headersPublicos() {
 
-    const hoje = new Date();
+    return {
+        "apikey": SUPABASE_PUBLISHABLE_KEY,
+        "Authorization":
+            `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+    };
 
-    const ano = hoje.getFullYear();
-    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-    const dia = String(hoje.getDate()).padStart(2, "0");
-
-    dataInput.min = `${ano}-${mes}-${dia}`;
+}
 
 
-    /* ============================================================
-       BUSCAR HORÁRIOS
-       ============================================================ */
+const agora =
+    new Date();
 
-    dataInput.addEventListener("change", async function () {
+const ano =
+    agora.getFullYear();
 
-        const data = dataInput.value;
+const mes =
+    String(agora.getMonth() + 1)
+        .padStart(2, "0");
+
+const dia =
+    String(agora.getDate())
+        .padStart(2, "0");
+
+dataInput.min =
+    `${ano}-${mes}-${dia}`;
+
+
+dataInput.addEventListener(
+    "change",
+    async function () {
+
+        const data =
+            dataInput.value;
 
         horarioSelect.innerHTML =
             '<option value="">Carregando horários...</option>';
 
-        horarioSelect.disabled = true;
+        horarioSelect.disabled =
+            true;
 
-        erro.style.display = "none";
+        erro.style.display =
+            "none";
 
         if (!data) {
+
             horarioSelect.innerHTML =
                 '<option value="">Primeiro selecione uma data</option>';
 
             return;
         }
 
-        const dataObj = new Date(data + "T00:00:00");
 
-        /*
-           0 = domingo
-        */
+        const dataObj =
+            new Date(data + "T00:00:00");
+
 
         if (dataObj.getDay() === 0) {
 
@@ -549,29 +653,37 @@
             return;
         }
 
+
         try {
 
-            const resposta = await fetch(
-                `${SUPABASE_URL}/rest/v1/horarios?data=eq.${data}&disponivel=eq.true&order=horario.asc`,
-                {
-                    headers: {
-                        "apikey": SUPABASE_PUBLISHABLE_KEY,
-                        "Authorization":
-                            `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+            const resposta =
+                await fetch(
+                    `${SUPABASE_URL}/rest/v1/horarios?data=eq.${encodeURIComponent(data)}&disponivel=eq.true&order=horario.asc`,
+                    {
+                        headers:
+                            headersPublicos()
                     }
-                }
-            );
+                );
+
 
             if (!resposta.ok) {
-                throw new Error("Não foi possível carregar os horários.");
+
+                throw new Error(
+                    "Não foi possível carregar os horários."
+                );
+
             }
 
-            const horarios = await resposta.json();
+
+            const horarios =
+                await resposta.json();
+
 
             horarioSelect.innerHTML =
                 '<option value="">Selecione um horário</option>';
 
-            if (horarios.length === 0) {
+
+            if (!horarios.length) {
 
                 horarioSelect.innerHTML =
                     '<option value="">Nenhum horário disponível nesta data</option>';
@@ -579,20 +691,30 @@
                 return;
             }
 
-            horarios.forEach(item => {
 
-                const option = document.createElement("option");
+            horarios.forEach(
+                item => {
 
-                option.value = item.horario;
+                    const option =
+                        document.createElement("option");
 
-                option.textContent =
-                    item.horario.substring(0, 5);
+                    option.value =
+                        item.horario;
 
-                horarioSelect.appendChild(option);
+                    option.textContent =
+                        String(item.horario)
+                            .substring(0, 5);
 
-            });
+                    horarioSelect.appendChild(
+                        option
+                    );
 
-            horarioSelect.disabled = false;
+                }
+            );
+
+
+            horarioSelect.disabled =
+                false;
 
         } catch (error) {
 
@@ -602,89 +724,115 @@
                 '<option value="">Erro ao carregar horários</option>';
 
             erro.textContent =
-                "Não foi possível carregar os horários. Verifique a configuração do Supabase.";
+                error.message;
 
-            erro.style.display = "block";
+            erro.style.display =
+                "block";
         }
-    });
+
+    }
+);
 
 
-    /* ============================================================
-       ENVIO DO FORMULÁRIO
-       ============================================================ */
-
-    form.addEventListener("submit", async function (event) {
+form.addEventListener(
+    "submit",
+    async function (event) {
 
         event.preventDefault();
 
-        erro.style.display = "none";
+        erro.style.display =
+            "none";
 
-        btnEnviar.disabled = true;
+        btnEnviar.disabled =
+            true;
 
         btnEnviar.textContent =
             "Enviando...";
 
+
         const nome =
-            document.getElementById("nome").value.trim();
+            document.getElementById("nome")
+                .value.trim();
 
         const telefone =
-            document.getElementById("telefone").value.trim();
+            document.getElementById("telefone")
+                .value.trim();
 
         const email =
-            document.getElementById("email").value.trim();
+            document.getElementById("email")
+                .value.trim();
 
         const tipo =
-            document.getElementById("tipo").value;
+            document.getElementById("tipo")
+                .value;
 
         const area =
-            document.getElementById("area").value;
+            document.getElementById("area")
+                .value;
 
         const data =
-            document.getElementById("data").value;
+            document.getElementById("data")
+                .value;
 
         const horario =
-            document.getElementById("horario").value;
+            document.getElementById("horario")
+                .value;
 
         const assunto =
-            document.getElementById("assunto").value.trim();
+            document.getElementById("assunto")
+                .value.trim();
+
+
+        if (!data || !horario) {
+
+            throw new Error(
+                "Selecione a data e o horário."
+            );
+
+        }
 
 
         try {
 
             /*
-               Verifica novamente se o horário ainda está disponível.
-            */
+             * Confere novamente o horário.
+             */
 
             const verificacao =
                 await fetch(
-                    `${SUPABASE_URL}/rest/v1/horarios?data=eq.${data}&horario=eq.${horario}&disponivel=eq.true`,
+                    `${SUPABASE_URL}/rest/v1/horarios?data=eq.${encodeURIComponent(data)}&horario=eq.${encodeURIComponent(horario)}&disponivel=eq.true`,
                     {
-                        headers: {
-                            "apikey": SUPABASE_PUBLISHABLE_KEY,
-                            "Authorization":
-                                `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
-                        }
+                        headers:
+                            headersPublicos()
                     }
                 );
 
+
             if (!verificacao.ok) {
-                throw new Error("Não foi possível verificar o horário.");
+
+                throw new Error(
+                    "Não foi possível verificar o horário."
+                );
+
             }
+
 
             const horariosDisponiveis =
                 await verificacao.json();
 
-            if (horariosDisponiveis.length === 0) {
+
+            if (!horariosDisponiveis.length) {
 
                 throw new Error(
                     "Esse horário não está mais disponível. Escolha outro horário."
                 );
+
             }
 
 
             /*
-               Salva o agendamento.
-            */
+             * Cria o agendamento.
+             */
 
             const resposta =
                 await fetch(
@@ -693,24 +841,38 @@
                         method: "POST",
 
                         headers: {
-                            "Content-Type": "application/json",
-                            "apikey": SUPABASE_PUBLISHABLE_KEY,
-                            "Authorization":
-                                `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-                            "Prefer": "return=minimal"
+                            ...headersPublicos(),
+                            "Content-Type":
+                                "application/json",
+
+                            "Prefer":
+                                "return=minimal"
                         },
 
-                        body: JSON.stringify({
-                            nome: nome,
-                            telefone: telefone,
-                            email: email,
-                            tipo_atendimento: tipo,
-                            area: area,
-                            data: data,
-                            horario: horario,
-                            assunto: assunto,
-                            status: "pendente"
-                        })
+                        body:
+                            JSON.stringify({
+
+                                nome,
+
+                                telefone,
+
+                                email,
+
+                                tipo_atendimento:
+                                    tipo,
+
+                                area,
+
+                                data,
+
+                                horario,
+
+                                assunto,
+
+                                status:
+                                    "pendente"
+
+                            })
                     }
                 );
 
@@ -725,41 +887,39 @@
                 throw new Error(
                     "Não foi possível salvar o agendamento."
                 );
+
             }
 
 
-            /*
-               Formata a data para o WhatsApp.
-            */
-
             const dataFormatada =
-                new Date(data + "T00:00:00")
-                    .toLocaleDateString("pt-BR");
+                new Date(
+                    data + "T00:00:00"
+                )
+                .toLocaleDateString("pt-BR");
 
 
             const mensagem =
-                `Olá, Dra. Josiane! Gostaria de confirmar uma solicitação de agendamento.%0A%0A` +
-                `Nome: ${encodeURIComponent(nome)}%0A` +
-                `Telefone: ${encodeURIComponent(telefone)}%0A` +
-                `E-mail: ${encodeURIComponent(email)}%0A` +
-                `Atendimento: ${encodeURIComponent(tipo)}%0A` +
-                `Área: ${encodeURIComponent(area)}%0A` +
-                `Data: ${encodeURIComponent(dataFormatada)}%0A` +
-                `Horário: ${encodeURIComponent(horario.substring(0, 5))}%0A` +
-                `Assunto: ${encodeURIComponent(assunto)}`;
+                "Olá, Dra. Josiane! Gostaria de confirmar uma solicitação de agendamento.\n\n" +
+                `Nome: ${nome}\n` +
+                `Telefone: ${telefone}\n` +
+                `E-mail: ${email}\n` +
+                `Atendimento: ${tipo}\n` +
+                `Área: ${area}\n` +
+                `Data: ${dataFormatada}\n` +
+                `Horário: ${String(horario).substring(0,5)}\n` +
+                `Assunto: ${assunto}`;
 
 
             whatsappBtn.href =
-                `https://wa.me/${WHATSAPP}?text=${mensagem}`;
+                `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
 
 
-            /*
-               Mostra sucesso.
-            */
+            formulario.style.display =
+                "none";
 
-            formulario.style.display = "none";
+            sucesso.style.display =
+                "block";
 
-            sucesso.style.display = "block";
 
         } catch (error) {
 
@@ -769,15 +929,19 @@
                 error.message ||
                 "Ocorreu um erro ao enviar. Tente novamente.";
 
-            erro.style.display = "block";
+            erro.style.display =
+                "block";
 
-            btnEnviar.disabled = false;
+            btnEnviar.disabled =
+                false;
 
             btnEnviar.textContent =
                 "Solicitar agendamento";
+
         }
 
-    });
+    }
+);
 
 </script>
 
