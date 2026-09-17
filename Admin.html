@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JN Advocacia — Acesso Administrativo</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>
+        Painel Administrativo | Josiane Nunes
+    </title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
-        :root {
-            --wine: #54131b;
-            --wine-dark: #2b080d;
-            --wine-medium: #6b2029;
-            --gold: #b58a48;
-            --cream: #f8f5f0;
-            --white: #ffffff;
-            --text: #2d1719;
-            --gray: #6b6060;
-            --border: #e5ddd3;
-        }
 
         * {
             box-sizing: border-box;
@@ -33,757 +39,682 @@
         }
 
         body {
-            font-family: "Montserrat", sans-serif;
-            background: var(--cream);
-            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f3eb;
+            color: #3d2528;
             min-height: 100vh;
         }
 
         button,
-        input {
-            font-family: inherit;
+        input,
+        select {
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* LOGIN */
-
-        .login-page {
-            min-height: 100vh;
-            background: #f8f5f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
-        }
-
-        .login-card {
-            width: 100%;
-            max-width: 450px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 42px 36px;
-            box-shadow: 0 15px 45px rgba(43, 8, 13, 0.10);
-        }
-
-        .brand {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .brand-monogram {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 15px;
-
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-family: "Cormorant Garamond", serif;
-            font-size: 30px;
-            font-weight: 700;
-            color: var(--wine);
-        }
-
-        .brand-name {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 29px;
-            font-weight: 700;
-            color: var(--wine);
-            letter-spacing: 1px;
-        }
-
-        .brand-subtitle {
-            margin-top: 3px;
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 3px;
-        }
-
-        .login-title {
-            text-align: center;
-            font-family: "Cormorant Garamond", serif;
-            font-size: 31px;
-            color: var(--wine);
-            margin-bottom: 8px;
-        }
-
-        .login-description {
-            text-align: center;
-            color: var(--gray);
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text);
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .password-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .form-input {
-            width: 100%;
-            height: 48px;
-
-            border: 1px solid var(--border);
-            border-radius: 8px;
-
-            padding: 0 52px 0 14px;
-
-            outline: none;
-            background: white;
-            color: var(--text);
-
-            font-size: 14px;
-        }
-
-        .form-input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(181, 138, 72, 0.10);
-        }
-
-        /* OLHINHO */
-
-        .eye {
-            position: absolute;
-            right: 0;
-            top: 0;
-
-            width: 48px;
-            height: 48px;
-
-            border: none;
-            background: transparent;
-
-            color: #54131b;
-
-            font-size: 20px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            cursor: pointer;
-
-            z-index: 20;
-
-            padding: 0;
-        }
-
-        .eye:hover {
-            color: var(--gold);
-        }
-
-        .forgot {
-            display: block;
-            margin-top: 8px;
-
-            text-align: right;
-
-            color: var(--wine);
-
-            font-size: 12px;
-            text-decoration: none;
-
-            cursor: pointer;
-        }
-
-        .forgot:hover {
-            color: var(--gold);
-        }
-
-        .primary-button {
-            width: 100%;
-            height: 50px;
-
-            margin-top: 8px;
-
-            border: none;
-            border-radius: 8px;
-
-            background: var(--wine);
+        .topo {
+            background: #4b2028;
             color: white;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-        .primary-button:hover {
-            background: var(--wine-medium);
-        }
-
-        .primary-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .message {
-            display: none;
-
-            margin-top: 16px;
-            padding: 12px;
-
-            border-radius: 8px;
-
-            text-align: center;
-
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .message.error {
-            display: block;
-            background: #f8e9eb;
-            color: var(--wine);
-            border: 1px solid #e8c6cb;
-        }
-
-        .message.success {
-            display: block;
-            background: #edf6ed;
-            color: #315d35;
-            border: 1px solid #cde2cf;
-        }
-
-        /* OUTRAS TELAS */
-
-        .selection-page,
-        .dashboard-page {
-            display: none;
-            min-height: 100vh;
-            background: var(--cream);
-        }
-
-        .topbar {
-            background: white;
-            border-bottom: 1px solid var(--border);
-
-            padding: 17px 25px;
-
+            padding: 18px 6%;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
         }
 
-        .topbar-brand {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 25px;
-            font-weight: 700;
-            color: var(--wine);
-        }
-
-        .topbar-right {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 13px;
         }
 
-        .lawyers-count {
-            font-size: 12px;
-            color: var(--gray);
-        }
-
-        .logout-button {
-            border: 1px solid var(--border);
-            background: white;
-            color: var(--wine);
-
-            border-radius: 7px;
-
-            padding: 9px 13px;
-
-            cursor: pointer;
-
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .selection-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 55px 20px;
-        }
-
-        .section-title {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 39px;
-            color: var(--wine);
-            text-align: center;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
-            margin-top: 8px;
-            margin-bottom: 38px;
-            font-size: 13px;
-        }
-
-        .lawyers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-        }
-
-        .lawyer-card {
-            background: white;
-
-            border: 1px solid var(--border);
-            border-radius: 13px;
-
-            padding: 28px 22px;
-
-            cursor: pointer;
-            transition: 0.2s;
-
-            text-align: center;
-        }
-
-        .lawyer-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(43, 8, 13, 0.08);
-        }
-
-        .lawyer-icon {
-            width: 58px;
-            height: 58px;
-
-            margin: 0 auto 14px;
-
+        .logo-symbol {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #c9a66b;
             border-radius: 50%;
-            border: 1px solid var(--gold);
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            color: var(--wine);
+            color: #c9a66b;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 21px;
         }
 
-        .lawyer-name {
-            font-family: "Cormorant Garamond", serif;
-            color: var(--wine);
-            font-size: 24px;
-            font-weight: 700;
+        .logo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 23px;
+            letter-spacing: 1px;
         }
 
-        .lawyer-role {
-            color: var(--gray);
+        .logo span {
+            display: block;
+            color: #d7bd8b;
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        .btn-sair {
+            border: 1px solid #c9a66b;
+            background: transparent;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 5px;
+            cursor: pointer;
             font-size: 11px;
-            margin-top: 4px;
         }
 
-        .dashboard-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .btn-sair:hover {
+            background: #642d37;
+        }
+
+        main {
+            max-width: 1250px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .login-container {
+            max-width: 430px;
+            margin: 80px auto;
+        }
+
+        .box {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 35px rgba(75, 32, 40, .08);
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .titulo h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4b2028;
+            font-size: 40px;
+        }
+
+        .titulo p {
+            color: #756568;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #4b2028;
+            margin-bottom: 7px;
+        }
+
+        .campo input,
+        .campo select {
+            width: 100%;
+            border: 1px solid #ddd2c8;
+            background: #fffdf9;
+            padding: 13px;
+            border-radius: 7px;
+            outline: none;
+            color: #3d2528;
+        }
+
+        .campo input:focus,
+        .campo select:focus {
+            border-color: #a78355;
+        }
+
+        .btn-principal {
+            width: 100%;
+            border: none;
+            background: #4b2028;
+            color: white;
+            padding: 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-principal:hover {
+            background: #642d37;
+        }
+
+        .btn-principal:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .link-esqueci {
+            display: block;
+            text-align: center;
+            margin-top: 17px;
+            color: #8b6c48;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        .erro {
+            display: none;
+            background: #f8dddd;
+            color: #7d2525;
+            padding: 12px;
+            border-radius: 7px;
+            margin-bottom: 18px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .sucesso {
+            display: none;
+            background: #e8f2e9;
+            color: #35633b;
+            padding: 12px;
+            border-radius: 7px;
+            margin-bottom: 18px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .oculto {
+            display: none !important;
+        }
+
+        .selecao {
+            max-width: 700px;
+            margin: 70px auto;
+        }
+
+        .advogados-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .advogado-card {
+            background: white;
+            border: 1px solid #eadfd4;
+            border-radius: 10px;
+            padding: 24px;
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .advogado-card:hover {
+            border-color: #c9a66b;
+            transform: translateY(-2px);
+        }
+
+        .advogado-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4b2028;
+            font-size: 28px;
+        }
+
+        .advogado-card p {
+            color: #756568;
+            font-size: 11px;
+            margin-top: 5px;
         }
 
         .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 28px;
+            gap: 15px;
         }
 
-        .dashboard-title {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 40px;
-            color: var(--wine);
+        .dashboard-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4b2028;
+            font-size: 42px;
         }
 
-        .dashboard-subtitle {
-            color: var(--gray);
-            font-size: 13px;
-            margin-top: 4px;
+        .dashboard-header p {
+            color: #756568;
+            font-size: 12px;
+        }
+
+        .btn-secundario {
+            background: transparent;
+            border: 1px solid #a78355;
+            color: #4b2028;
+            padding: 11px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .btn-secundario:hover {
+            background: #4b2028;
+            color: white;
         }
 
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 22px;
         }
 
-        .dashboard-card {
+        .painel {
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 13px;
+            border-radius: 12px;
             padding: 25px;
+            box-shadow: 0 8px 35px rgba(75, 32, 40, .06);
         }
 
-        .dashboard-card h3 {
-            font-family: "Cormorant Garamond", serif;
-            color: var(--wine);
-            font-size: 25px;
-            margin-bottom: 16px;
+        .painel-titulo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #eee5dc;
         }
 
-        .empty {
-            color: var(--gray);
-            font-size: 13px;
-            padding: 15px 0;
+        .painel-titulo h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4b2028;
+            font-size: 30px;
+        }
+
+        .lista {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 650px;
+            overflow-y: auto;
         }
 
         .item {
-            border-top: 1px solid var(--border);
-            padding: 14px 0;
+            border: 1px solid #e8ded5;
+            border-radius: 8px;
+            padding: 16px;
         }
 
-        .item:first-child {
-            border-top: none;
+        .item-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
         }
 
-        .item strong {
-            color: var(--wine);
+        .item h4 {
+            color: #4b2028;
             font-size: 14px;
         }
 
-        .item span {
-            display: block;
-            color: var(--gray);
-            font-size: 12px;
-            margin-top: 4px;
+        .item-data {
+            color: #8b6c48;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 6px;
         }
 
-        .back-button {
+        .item-info {
+            color: #756568;
+            font-size: 11px;
+            line-height: 1.7;
+            margin-top: 8px;
+        }
+
+        .status {
+            padding: 5px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-pendente {
+            background: #fff2d6;
+            color: #8b6728;
+        }
+
+        .status-confirmado {
+            background: #e5f1e7;
+            color: #35633b;
+        }
+
+        .status-cancelado {
+            background: #f8dddd;
+            color: #7d2525;
+        }
+
+        .acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 14px;
+        }
+
+        .btn-acao {
             border: none;
-            background: transparent;
-            color: var(--wine);
+            padding: 8px 11px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 12px;
-            margin-bottom: 20px;
+            font-size: 9px;
+            font-weight: 600;
         }
 
-        @media (max-width: 700px) {
+        .btn-confirmar {
+            background: #e5f1e7;
+            color: #35633b;
+        }
 
-            .login-card {
-                padding: 34px 22px;
-            }
+        .btn-cancelar {
+            background: #f8dddd;
+            color: #7d2525;
+        }
+
+        .btn-remarcar {
+            background: #4b2028;
+            color: white;
+        }
+
+        .btn-remarcar:hover {
+            background: #642d37;
+        }
+
+        .vazio {
+            text-align: center;
+            padding: 35px 15px;
+            color: #9a8b8e;
+            font-size: 12px;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(35, 15, 19, .65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 3000;
+        }
+
+        .modal.aberto {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+
+        .modal-header h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #4b2028;
+        }
+
+        .fechar {
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: #f8f3eb;
+            color: #4b2028;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cliente-atual {
+            background: #f8f3eb;
+            border-left: 3px solid #c9a66b;
+            padding: 13px;
+            margin-bottom: 20px;
+            font-size: 11px;
+            line-height: 1.7;
+            color: #66565a;
+        }
+
+        .modal-botoes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-fechar {
+            border: 1px solid #c9a66b;
+            background: white;
+            color: #4b2028;
+            padding: 13px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-salvar {
+            border: none;
+            background: #4b2028;
+            color: white;
+            padding: 13px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-salvar:disabled {
+            opacity: .6;
+        }
+
+        .carregando {
+            text-align: center;
+            color: #756568;
+            padding: 20px;
+            font-size: 11px;
+        }
+
+        @media(max-width:850px) {
 
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
 
-            .topbar {
-                padding: 15px;
+            .advogados-grid {
+                grid-template-columns: 1fr;
             }
 
-            .lawyers-count {
-                display: none;
-            }
         }
+
+        @media(max-width:600px) {
+
+            .topo {
+                padding: 15px 5%;
+            }
+
+            .logo h1 {
+                font-size: 19px;
+            }
+
+            main {
+                padding: 0 14px;
+            }
+
+            .box,
+            .painel {
+                padding: 20px;
+            }
+
+            .dashboard-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .dashboard-header h2 {
+                font-size: 35px;
+            }
+
+            .modal-box {
+                padding: 22px;
+            }
+
+        }
+
     </style>
+
 </head>
 
 <body>
 
-    <!-- LOGIN ADMINISTRATIVO -->
+<header class="topo">
 
-    <section id="generalLoginPage" class="login-page">
+    <div class="logo">
 
-        <div class="login-card">
-
-            <div class="brand">
-
-                <div class="brand-monogram">
-                    JN
-                </div>
-
-                <div class="brand-name">
-                    JOSIANE NUNES
-                </div>
-
-                <div class="brand-subtitle">
-                    ADVOCACIA
-                </div>
-
-            </div>
-
-            <h1 class="login-title">
-                Acesso administrativo
-            </h1>
-
-            <p class="login-description">
-                Entre com o usuário e a senha administrativa
-                para acessar o sistema.
-            </p>
-
-            <form id="generalLoginForm">
-
-                <div class="form-group">
-
-                    <label for="generalEmail">
-                        Usuário ou e-mail
-                    </label>
-
-                    <input
-                        id="generalEmail"
-                        class="form-input"
-                        type="email"
-                        autocomplete="username"
-                        placeholder="Digite seu e-mail"
-                        required
-                    >
-
-                </div>
-
-                <div class="form-group">
-
-                    <label for="generalPassword">
-                        Senha
-                    </label>
-
-                    <div class="password-wrapper">
-
-                        <input
-                            id="generalPassword"
-                            class="form-input"
-                            type="password"
-                            autocomplete="current-password"
-                            placeholder="Digite sua senha"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            class="eye"
-                            id="generalEye"
-                            onclick="mostrarSenha('generalPassword', this)"
-                            aria-label="Mostrar senha"
-                        >
-                            👁️
-                        </button>
-
-                    </div>
-
-                    <a
-                        href="#"
-                        class="forgot"
-                        id="generalForgot"
-                    >
-                        Esqueci minha senha
-                    </a>
-
-                </div>
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                    id="generalLoginButton"
-                >
-                    ENTRAR
-                </button>
-
-                <div
-                    id="generalMessage"
-                    class="message"
-                ></div>
-
-            </form>
-
+        <div class="logo-symbol">
+            JN
         </div>
 
-    </section>
+        <div>
+            <h1>JOSIANE NUNES</h1>
+            <span>ADVOCACIA</span>
+        </div>
+
+    </div>
+
+    <button
+        class="btn-sair oculto"
+        id="btnSair"
+    >
+        Sair
+    </button>
+
+</header>
 
 
-    <!-- ESCOLHA DA ADVOGADA -->
+<main>
+
+    <!-- LOGIN -->
 
     <section
-        id="selectionPage"
-        class="selection-page"
+        id="loginPagina"
+        class="login-container"
     >
 
-        <header class="topbar">
+        <div class="box">
 
-            <div class="topbar-brand">
-                JN Advocacia
-            </div>
+            <div class="titulo">
 
-            <div class="topbar-right">
+                <h2>
+                    Acesso
+                </h2>
 
-                <span
-                    id="lawyersCount"
-                    class="lawyers-count"
-                >
-                    0 advogadas
-                </span>
-
-                <button
-                    type="button"
-                    class="logout-button"
-                    id="selectionLogout"
-                >
-                    Sair
-                </button>
+                <p>
+                    Painel administrativo
+                </p>
 
             </div>
-
-        </header>
-
-        <div class="selection-content">
-
-            <button
-                type="button"
-                class="back-button"
-                id="selectionBack"
-            >
-                ← Voltar
-            </button>
-
-            <h1 class="section-title">
-                Escolha o acesso
-            </h1>
-
-            <p class="section-subtitle">
-                Selecione a advogada que deseja acessar.
-            </p>
 
             <div
-                id="lawyersGrid"
-                class="lawyers-grid"
+                class="erro"
+                id="erroLogin"
             ></div>
 
-        </div>
+            <form id="loginForm">
 
-    </section>
+                <div class="campo">
 
-
-    <!-- LOGIN DA ADVOGADA -->
-
-    <section
-        id="lawyerLoginPage"
-        class="login-page"
-    >
-
-        <div class="login-card">
-
-            <button
-                type="button"
-                class="back-button"
-                id="lawyerBack"
-            >
-                ← Voltar
-            </button>
-
-            <div class="brand">
-
-                <div class="brand-monogram">
-                    JN
-                </div>
-
-                <div class="brand-name">
-                    JOSIANE NUNES
-                </div>
-
-                <div class="brand-subtitle">
-                    ADVOCACIA
-                </div>
-
-            </div>
-
-            <h1
-                class="login-title"
-                id="lawyerLoginTitle"
-            >
-                Acesso da advogada
-            </h1>
-
-            <p
-                class="login-description"
-                id="lawyerLoginDescription"
-            >
-                Entre com suas credenciais.
-            </p>
-
-            <form id="lawyerLoginForm">
-
-                <div class="form-group">
-
-                    <label for="lawyerEmail">
+                    <label>
                         E-mail
                     </label>
 
                     <input
-                        id="lawyerEmail"
-                        class="form-input"
                         type="email"
-                        autocomplete="username"
-                        placeholder="Digite seu e-mail"
+                        id="emailLogin"
                         required
                     >
 
                 </div>
 
-                <div class="form-group">
+                <div class="campo">
 
-                    <label for="lawyerPassword">
+                    <label>
                         Senha
                     </label>
 
-                    <div class="password-wrapper">
-
-                        <input
-                            id="lawyerPassword"
-                            class="form-input"
-                            type="password"
-                            autocomplete="current-password"
-                            placeholder="Digite sua senha"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            class="eye"
-                            id="lawyerEye"
-                            onclick="mostrarSenha('lawyerPassword', this)"
-                            aria-label="Mostrar senha"
-                        >
-                            👁️
-                        </button>
-
-                    </div>
-
-                    <a
-                        href="#"
-                        class="forgot"
-                        id="lawyerForgot"
+                    <input
+                        type="password"
+                        id="senhaLogin"
+                        required
                     >
-                        Esqueci minha senha
-                    </a>
 
                 </div>
 
                 <button
+                    class="btn-principal"
+                    id="btnLogin"
                     type="submit"
-                    class="primary-button"
-                    id="lawyerLoginButton"
                 >
-                    ENTRAR
+                    Entrar
                 </button>
 
-                <div
-                    id="lawyerMessage"
-                    class="message"
-                ></div>
-
             </form>
+
+            <a
+                href="#"
+                class="link-esqueci"
+                id="esqueciSenha"
+            >
+                Esqueci minha senha
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SELEÇÃO DO ADVOGADO -->
+
+    <section
+        id="selecaoPagina"
+        class="selecao oculto"
+    >
+
+        <div class="box">
+
+            <div class="titulo">
+
+                <h2>
+                    Selecionar advogado
+                </h2>
+
+                <p>
+                    Escolha o profissional para acessar o painel.
+                </p>
+
+            </div>
+
+            <div
+                class="erro"
+                id="erroSelecao"
+            ></div>
+
+            <div
+                id="advogadosLista"
+                class="advogados-grid"
+            ></div>
 
         </div>
 
@@ -793,1279 +724,1798 @@
     <!-- DASHBOARD -->
 
     <section
-        id="dashboardPage"
-        class="dashboard-page"
+        id="dashboardPagina"
+        class="oculto"
     >
 
-        <header class="topbar">
+        <div class="dashboard-header">
 
-            <div class="topbar-brand">
-                JN Advocacia
-            </div>
+            <div>
 
-            <div class="topbar-right">
+                <h2>
+                    Painel de atendimento
+                </h2>
 
-                <span
-                    id="dashboardLawyersCount"
-                    class="lawyers-count"
-                >
-                    0 advogadas
-                </span>
-
-                <button
-                    type="button"
-                    class="logout-button"
-                    id="dashboardLogout"
-                >
-                    Sair
-                </button>
+                <p id="nomeAdvogado"></p>
 
             </div>
 
-        </header>
+            <button
+                class="btn-secundario"
+                id="btnVoltarSelecao"
+            >
+                Trocar advogado
+            </button>
 
-        <div class="dashboard-content">
+        </div>
 
-            <div class="dashboard-header">
 
-                <h1
-                    id="dashboardTitle"
-                    class="dashboard-title"
-                >
-                    Área administrativa
-                </h1>
+        <div
+            class="erro"
+            id="erroDashboard"
+        ></div>
 
-                <p
-                    id="dashboardSubtitle"
-                    class="dashboard-subtitle"
-                >
-                    Bem-vinda ao painel administrativo.
-                </p>
+        <div
+            class="sucesso"
+            id="sucessoDashboard"
+        ></div>
 
-            </div>
 
-            <div class="dashboard-grid">
+        <div class="dashboard-grid">
 
-                <div class="dashboard-card">
+
+            <!-- HORÁRIOS -->
+
+            <div class="painel">
+
+                <div class="painel-titulo">
 
                     <h3>
-                        Horários disponíveis
+                        Horários
                     </h3>
 
-                    <div id="scheduleList">
-                        <div class="empty">
-                            Carregando horários...
-                        </div>
-                    </div>
+                    <button
+                        class="btn-secundario"
+                        id="btnAtualizarHorarios"
+                    >
+                        Atualizar
+                    </button>
 
                 </div>
 
-                <div class="dashboard-card">
+                <div
+                    id="horariosLista"
+                    class="lista"
+                ></div>
+
+            </div>
+
+
+            <!-- AGENDAMENTOS -->
+
+            <div class="painel">
+
+                <div class="painel-titulo">
 
                     <h3>
                         Agendamentos
                     </h3>
 
-                    <div id="appointmentsList">
-                        <div class="empty">
-                            Carregando agendamentos...
-                        </div>
-                    </div>
+                    <button
+                        class="btn-secundario"
+                        id="btnAtualizarAgendamentos"
+                    >
+                        Atualizar
+                    </button>
 
                 </div>
 
+                <div
+                    id="agendamentosLista"
+                    class="lista"
+                ></div>
+
             </div>
+
 
         </div>
 
     </section>
 
-
-    <script>
-
-        /* =====================================================
-           SUPABASE
-        ===================================================== */
-
-        const SUPABASE_URL =
-            "const SUPABASE_URL = "https://ovogpczsnxwqmefpbydi.supabase.co";";
-
-        const SUPABASE_KEY =
-            "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+</main>
 
 
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
+<!-- MODAL REMARCAÇÃO -->
+
+<div
+    class="modal"
+    id="modalRemarcacao"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h3>
+                Remarcar atendimento
+            </h3>
+
+            <button
+                class="fechar"
+                id="fecharModal"
+            >
+                ×
+            </button>
+
+        </div>
 
 
-        /* =====================================================
-           VARIÁVEIS
-        ===================================================== */
-
-        let currentUser = null;
-        let selectedLawyer = null;
+        <div
+            class="cliente-atual"
+            id="clienteAtual"
+        ></div>
 
 
-        /* =====================================================
-           FUNÇÃO DO OLHINHO
-        ===================================================== */
+        <div
+            class="erro"
+            id="erroRemarcacao"
+        ></div>
 
-        function mostrarSenha(inputId, botao) {
 
-            const input =
-                document.getElementById(inputId);
+        <div class="campo">
 
-            if (!input) {
-                return;
-            }
+            <label>
+                Nova data
+            </label>
 
-            if (input.type === "password") {
+            <input
+                type="date"
+                id="novaData"
+            >
 
-                input.type = "text";
+        </div>
 
-                botao.textContent = "🙈";
 
-                botao.setAttribute(
-                    "aria-label",
-                    "Ocultar senha"
+        <div class="campo">
+
+            <label>
+                Novo horário
+            </label>
+
+            <select
+                id="novoHorario"
+                disabled
+            >
+
+                <option value="">
+                    Primeiro selecione uma data
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="modal-botoes">
+
+            <button
+                class="btn-fechar"
+                id="btnCancelarModal"
+            >
+                Cancelar
+            </button>
+
+            <button
+                class="btn-salvar"
+                id="btnSalvarRemarcacao"
+            >
+                Salvar remarcação
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://ovogpczsnxwqmefpbydi.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+let usuarioAtual =
+    null;
+
+let advogadoSelecionado =
+    null;
+
+let agendamentoSelecionado =
+    null;
+
+
+/* ELEMENTOS */
+
+const loginPagina =
+    document.getElementById("loginPagina");
+
+const selecaoPagina =
+    document.getElementById("selecaoPagina");
+
+const dashboardPagina =
+    document.getElementById("dashboardPagina");
+
+const btnSair =
+    document.getElementById("btnSair");
+
+
+/* ERRO */
+
+function mostrarErro(elemento, mensagem) {
+
+    elemento.textContent =
+        mensagem;
+
+    elemento.style.display =
+        "block";
+
+}
+
+
+function esconderErro(elemento) {
+
+    elemento.style.display =
+        "none";
+
+}
+
+
+/* SUCESSO */
+
+function mostrarSucesso(mensagem) {
+
+    const elemento =
+        document.getElementById(
+            "sucessoDashboard"
+        );
+
+    elemento.textContent =
+        mensagem;
+
+    elemento.style.display =
+        "block";
+
+    setTimeout(
+        () => {
+            elemento.style.display =
+                "none";
+        },
+        5000
+    );
+
+}
+
+
+/* DATA */
+
+function formatarData(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const partes =
+        data.split("-");
+
+    if (partes.length !== 3) {
+        return data;
+    }
+
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+}
+
+
+/* STATUS */
+
+function classeStatus(status) {
+
+    const valor =
+        String(status || "")
+            .toLowerCase();
+
+    if (
+        valor === "confirmado" ||
+        valor === "aceito"
+    ) {
+
+        return "status-confirmado";
+
+    }
+
+    if (
+        valor === "cancelado" ||
+        valor === "recusado"
+    ) {
+
+        return "status-cancelado";
+
+    }
+
+    return "status-pendente";
+
+}
+
+
+function textoStatus(status) {
+
+    if (!status) {
+        return "Pendente";
+    }
+
+    const valor =
+        String(status).toLowerCase();
+
+    if (valor === "confirmado") {
+        return "Confirmado";
+    }
+
+    if (valor === "aceito") {
+        return "Confirmado";
+    }
+
+    if (valor === "cancelado") {
+        return "Cancelado";
+    }
+
+    if (valor === "recusado") {
+        return "Recusado";
+    }
+
+    return "Pendente";
+
+}
+
+
+/* LOGIN */
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+            const erro =
+                document.getElementById(
+                    "erroLogin"
                 );
 
-                botao.setAttribute(
-                    "title",
-                    "Ocultar senha"
-                );
+            esconderErro(erro);
 
-            } else {
+            const email =
+                document
+                    .getElementById("emailLogin")
+                    .value
+                    .trim();
 
-                input.type = "password";
+            const senha =
+                document
+                    .getElementById("senhaLogin")
+                    .value;
 
-                botao.textContent = "👁️";
+            const botao =
+                document
+                    .getElementById("btnLogin");
 
-                botao.setAttribute(
-                    "aria-label",
-                    "Mostrar senha"
-                );
+            botao.disabled =
+                true;
 
-                botao.setAttribute(
-                    "title",
-                    "Mostrar senha"
-                );
-            }
-        }
+            botao.textContent =
+                "Entrando...";
 
 
-        /* =====================================================
-           TELAS
-        ===================================================== */
+            try {
 
-        function mostrarTela(tela) {
+                const resultado =
+                    await supabaseClient.auth
+                        .signInWithPassword({
+                            email,
+                            password: senha
+                        });
 
-            document.getElementById(
-                "generalLoginPage"
-            ).style.display = "none";
 
-            document.getElementById(
-                "selectionPage"
-            ).style.display = "none";
-
-            document.getElementById(
-                "lawyerLoginPage"
-            ).style.display = "none";
-
-            document.getElementById(
-                "dashboardPage"
-            ).style.display = "none";
-
-
-            if (
-                tela.id === "generalLoginPage" ||
-                tela.id === "lawyerLoginPage"
-            ) {
-
-                tela.style.display = "flex";
-
-            } else {
-
-                tela.style.display = "block";
-            }
-        }
-
-
-        function mostrarMensagem(
-            elemento,
-            texto,
-            tipo
-        ) {
-
-            elemento.textContent = texto;
-
-            elemento.className =
-                "message " + tipo;
-        }
-
-
-        function limparMensagem(elemento) {
-
-            elemento.textContent = "";
-
-            elemento.className = "message";
-        }
-
-
-        /* =====================================================
-           LOGIN ADMINISTRATIVO
-        ===================================================== */
-
-        document
-            .getElementById("generalLoginForm")
-            .addEventListener(
-                "submit",
-                async function(event) {
-
-                    event.preventDefault();
-
-
-                    const email =
-                        document
-                            .getElementById(
-                                "generalEmail"
-                            )
-                            .value
-                            .trim();
-
-
-                    const password =
-                        document
-                            .getElementById(
-                                "generalPassword"
-                            )
-                            .value;
-
-
-                    const button =
-                        document
-                            .getElementById(
-                                "generalLoginButton"
-                            );
-
-
-                    const message =
-                        document
-                            .getElementById(
-                                "generalMessage"
-                            );
-
-
-                    limparMensagem(message);
-
-
-                    button.disabled = true;
-
-                    button.textContent =
-                        "ENTRANDO...";
-
-
-                    const resultado =
-                        await supabaseClient.auth
-                            .signInWithPassword({
-                                email: email,
-                                password: password
-                            });
-
-
-                    if (resultado.error) {
-
-                        document
-                            .getElementById(
-                                "generalPassword"
-                            )
-                            .value = "";
-
-
-                        mostrarMensagem(
-                            message,
-                            "Usuário ou senha incorretos.",
-                            "error"
-                        );
-
-
-                        button.disabled = false;
-
-                        button.textContent =
-                            "ENTRAR";
-
-                        return;
-                    }
-
-
-                    const user =
-                        resultado.data.user;
-
-
-                    const perfil =
-                        await supabaseClient
-                            .from("advogados")
-                            .select("*")
-                            .eq("id", user.id)
-                            .single();
-
-
-                    if (
-                        perfil.error ||
-                        !perfil.data ||
-                        perfil.data.role !== "admin" ||
-                        perfil.data.ativo !== true
-                    ) {
-
-                        await supabaseClient.auth
-                            .signOut();
-
-
-                        document
-                            .getElementById(
-                                "generalPassword"
-                            )
-                            .value = "";
-
-
-                        mostrarMensagem(
-                            message,
-                            "Usuário ou senha incorretos.",
-                            "error"
-                        );
-
-
-                        button.disabled = false;
-
-                        button.textContent =
-                            "ENTRAR";
-
-                        return;
-                    }
-
-
-                    currentUser = user;
-
-
-                    await carregarAdvogados();
-
-
-                    mostrarTela(
-                        document.getElementById(
-                            "selectionPage"
-                        )
-                    );
-
-
-                    button.disabled = false;
-
-                    button.textContent =
-                        "ENTRAR";
+                if (resultado.error) {
+                    throw resultado.error;
                 }
-            );
 
 
-        /* =====================================================
-           ADVOGADOS
-        ===================================================== */
+                usuarioAtual =
+                    resultado.data.user;
 
-        async function carregarAdvogados() {
 
-            const grid =
-                document.getElementById(
-                    "lawyersGrid"
+                await carregarAdvogados();
+
+
+                loginPagina
+                    .classList
+                    .add("oculto");
+
+                selecaoPagina
+                    .classList
+                    .remove("oculto");
+
+                btnSair
+                    .classList
+                    .remove("oculto");
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                mostrarErro(
+                    erro,
+                    error.message ||
+                    "Não foi possível entrar."
                 );
 
+            } finally {
 
-            grid.innerHTML =
-                '<div class="empty">Carregando...</div>';
+                botao.disabled =
+                    false;
 
+                botao.textContent =
+                    "Entrar";
 
-            const resultado =
-                await supabaseClient
-                    .from("advogados")
-                    .select("*")
-                    .eq("role", "advogado")
-                    .eq("ativo", true)
-                    .order("nome");
-
-
-            if (resultado.error) {
-
-                grid.innerHTML =
-                    '<div class="empty">Não foi possível carregar as advogadas.</div>';
-
-                return;
             }
 
-
-            const advogados =
-                resultado.data || [];
-
-
-            grid.innerHTML = "";
-
-
-            if (advogados.length === 0) {
-
-                grid.innerHTML =
-                    '<div class="empty">Nenhuma advogada cadastrada.</div>';
-
-            } else {
-
-                advogados.forEach(
-                    function(advogado) {
-
-                        const card =
-                            document.createElement(
-                                "div"
-                            );
-
-
-                        card.className =
-                            "lawyer-card";
-
-
-                        card.innerHTML = `
-
-                            <div class="lawyer-icon">
-                                ⚖
-                            </div>
-
-                            <div class="lawyer-name">
-                                ${escaparHTML(
-                                    advogado.nome
-                                )}
-                            </div>
-
-                            <div class="lawyer-role">
-                                Advogada
-                            </div>
-
-                        `;
-
-
-                        card.addEventListener(
-                            "click",
-                            function() {
-
-                                selecionarAdvogada(
-                                    advogado
-                                );
-
-                            }
-                        );
-
-
-                        grid.appendChild(card);
-                    }
-                );
-            }
-
-
-            const quantidade =
-                advogados.length;
-
-
-            document.getElementById(
-                "lawyersCount"
-            ).textContent =
-                quantidade +
-                (
-                    quantidade === 1
-                        ? " advogada"
-                        : " advogadas"
-                );
         }
+    );
 
 
-        function selecionarAdvogada(
-            advogado
-        ) {
+/* ADVOGADOS */
 
-            selectedLawyer =
-                advogado;
+async function carregarAdvogados() {
 
+    const lista =
+        document.getElementById(
+            "advogadosLista"
+        );
 
-            document.getElementById(
-                "lawyerLoginTitle"
-            ).textContent =
-                "Acesso da advogada";
+    const erro =
+        document.getElementById(
+            "erroSelecao"
+        );
 
+    esconderErro(erro);
 
-            document.getElementById(
-                "lawyerLoginDescription"
-            ).textContent =
-                "Entre com as credenciais de " +
-                advogado.nome + ".";
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
 
 
-            document.getElementById(
-                "lawyerEmail"
-            ).value =
-                advogado.email || "";
+    try {
 
-
-            document.getElementById(
-                "lawyerPassword"
-            ).value = "";
-
-
-            limparMensagem(
-                document.getElementById(
-                    "lawyerMessage"
-                )
-            );
-
-
-            mostrarTela(
-                document.getElementById(
-                    "lawyerLoginPage"
-                )
-            );
-        }
-
-
-        /* =====================================================
-           LOGIN DA ADVOGADA
-        ===================================================== */
-
-        document
-            .getElementById("lawyerLoginForm")
-            .addEventListener(
-                "submit",
-                async function(event) {
-
-                    event.preventDefault();
-
-
-                    const email =
-                        document
-                            .getElementById(
-                                "lawyerEmail"
-                            )
-                            .value
-                            .trim();
-
-
-                    const password =
-                        document
-                            .getElementById(
-                                "lawyerPassword"
-                            )
-                            .value;
-
-
-                    const button =
-                        document
-                            .getElementById(
-                                "lawyerLoginButton"
-                            );
-
-
-                    const message =
-                        document
-                            .getElementById(
-                                "lawyerMessage"
-                            );
-
-
-                    limparMensagem(message);
-
-
-                    button.disabled = true;
-
-                    button.textContent =
-                        "ENTRANDO...";
-
-
-                    const resultado =
-                        await supabaseClient.auth
-                            .signInWithPassword({
-                                email: email,
-                                password: password
-                            });
-
-
-                    if (resultado.error) {
-
-                        document
-                            .getElementById(
-                                "lawyerPassword"
-                            )
-                            .value = "";
-
-
-                        mostrarMensagem(
-                            message,
-                            "E-mail ou senha incorretos.",
-                            "error"
-                        );
-
-
-                        button.disabled = false;
-
-                        button.textContent =
-                            "ENTRAR";
-
-                        return;
-                    }
-
-
-                    const user =
-                        resultado.data.user;
-
-
-                    const perfil =
-                        await supabaseClient
-                            .from("advogados")
-                            .select("*")
-                            .eq("id", user.id)
-                            .single();
-
-
-                    if (
-                        perfil.error ||
-                        !perfil.data ||
-                        perfil.data.role !== "advogado" ||
-                        perfil.data.ativo !== true
-                    ) {
-
-                        await supabaseClient.auth
-                            .signOut();
-
-
-                        document
-                            .getElementById(
-                                "lawyerPassword"
-                            )
-                            .value = "";
-
-
-                        mostrarMensagem(
-                            message,
-                            "E-mail ou senha incorretos.",
-                            "error"
-                        );
-
-
-                        button.disabled = false;
-
-                        button.textContent =
-                            "ENTRAR";
-
-                        return;
-                    }
-
-
-                    currentUser = user;
-
-
-                    await registrarPresenca(
-                        user.id
-                    );
-
-
-                    await carregarDashboard(
-                        perfil.data
-                    );
-
-
-                    mostrarTela(
-                        document.getElementById(
-                            "dashboardPage"
-                        )
-                    );
-
-
-                    button.disabled = false;
-
-                    button.textContent =
-                        "ENTRAR";
-                }
-            );
-
-
-        /* =====================================================
-           PRESENÇA
-        ===================================================== */
-
-        async function registrarPresenca(
-            advogadoId
-        ) {
-
+        const { data, error } =
             await supabaseClient
-                .from("presenca_advogados")
-                .upsert({
-                    advogado_id: advogadoId,
-                    ultima_atividade:
-                        new Date().toISOString()
-                });
+                .from("advogados")
+                .select("*")
+                .eq("ativo", true)
+                .order("nome");
+
+
+        if (error) {
+            throw error;
         }
 
 
-        setInterval(
-            async function() {
+        if (!data || data.length === 0) {
 
-                if (currentUser) {
+            lista.innerHTML =
+                '<div class="vazio">Nenhum advogado disponível.</div>';
 
-                    await registrarPresenca(
-                        currentUser.id
-                    );
-                }
+            return;
+        }
 
-            },
-            30000
+
+        lista.innerHTML = "";
+
+
+        data.forEach(
+            advogado => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "advogado-card";
+
+                card.innerHTML = `
+                    <h3>${escaparHTML(advogado.nome || "Advogado")}</h3>
+                    <p>Acessar painel de atendimento</p>
+                `;
+
+                card.addEventListener(
+                    "click",
+                    () => selecionarAdvogado(advogado)
+                );
+
+                lista.appendChild(card);
+
+            }
         );
 
 
-        /* =====================================================
-           DASHBOARD
-        ===================================================== */
+    } catch (error) {
 
-        async function carregarDashboard(
-            perfil
-        ) {
+        console.error(error);
 
-            document.getElementById(
-                "dashboardTitle"
-            ).textContent =
-                "Olá, " + perfil.nome;
+        mostrarErro(
+            erro,
+            "Não foi possível carregar os advogados."
+        );
 
+        lista.innerHTML = "";
 
-            document.getElementById(
-                "dashboardSubtitle"
-            ).textContent =
-                "Área administrativa da advogada.";
+    }
+
+}
 
 
-            await carregarQuantidadeAdvogados();
+/* SELECIONAR ADVOGADO */
 
-            await carregarHorarios(
-                perfil.id
-            );
+async function selecionarAdvogado(advogado) {
 
-            await carregarAgendamentos(
-                perfil.id
-            );
+    advogadoSelecionado =
+        advogado;
+
+    selecaoPagina
+        .classList
+        .add("oculto");
+
+    dashboardPagina
+        .classList
+        .remove("oculto");
+
+    document
+        .getElementById("nomeAdvogado")
+        .textContent =
+        advogado.nome || "";
+
+
+    await carregarDashboard();
+
+}
+
+
+/* DASHBOARD */
+
+async function carregarDashboard() {
+
+    await Promise.all([
+        carregarHorarios(),
+        carregarAgendamentos()
+    ]);
+
+}
+
+
+/* HORÁRIOS */
+
+async function carregarHorarios() {
+
+    const lista =
+        document.getElementById(
+            "horariosLista"
+        );
+
+    lista.innerHTML =
+        '<div class="carregando">Carregando horários...</div>';
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("horarios")
+                .select("*")
+                .eq(
+                    "advogado_id",
+                    advogadoSelecionado.id
+                )
+                .order("data")
+                .order("horario");
+
+
+        if (error) {
+            throw error;
         }
 
 
-        async function carregarQuantidadeAdvogados() {
+        if (!data || data.length === 0) {
 
-            const resultado =
-                await supabaseClient
-                    .from("advogados")
-                    .select("id")
-                    .eq("role", "advogado")
-                    .eq("ativo", true);
+            lista.innerHTML =
+                '<div class="vazio">Nenhum horário cadastrado.</div>';
 
-
-            const quantidade =
-                resultado.data
-                    ? resultado.data.length
-                    : 0;
-
-
-            document.getElementById(
-                "dashboardLawyersCount"
-            ).textContent =
-                quantidade +
-                (
-                    quantidade === 1
-                        ? " advogada"
-                        : " advogadas"
-                );
+            return;
         }
 
 
-        /* =====================================================
-           HORÁRIOS
-        ===================================================== */
-
-        async function carregarHorarios(
-            advogadoId
-        ) {
-
-            const lista =
-                document.getElementById(
-                    "scheduleList"
-                );
+        lista.innerHTML = "";
 
 
-            const resultado =
-                await supabaseClient
-                    .from("horarios")
-                    .select("*")
-                    .eq("advogado_id", advogadoId)
-                    .order("data")
-                    .order("horario");
+        data.forEach(
+            horario => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "item";
+
+                const disponivel =
+                    horario.disponivel === true;
 
 
-            if (resultado.error) {
+                item.innerHTML = `
 
-                lista.innerHTML =
-                    '<div class="empty">Não foi possível carregar os horários.</div>';
+                    <div class="item-topo">
 
-                return;
-            }
+                        <div>
 
+                            <h4>
+                                ${formatarData(horario.data)}
+                            </h4>
 
-            const horarios =
-                resultado.data || [];
+                            <div class="item-data">
+                                ${String(horario.horario || "").substring(0,5)}
+                            </div>
 
+                        </div>
 
-            lista.innerHTML = "";
-
-
-            if (horarios.length === 0) {
-
-                lista.innerHTML =
-                    '<div class="empty">Nenhum horário cadastrado.</div>';
-
-                return;
-            }
-
-
-            horarios.forEach(
-                function(horario) {
-
-                    const item =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    item.className = "item";
-
-
-                    item.innerHTML = `
-
-                        <strong>
-                            ${formatarData(
-                                horario.data
-                            )}
-                        </strong>
-
-                        <span>
-                            ${String(
-                                horario.horario
-                            ).slice(0, 5)}
-
-                            —
+                        <span class="status ${
+                            disponivel
+                            ? "status-confirmado"
+                            : "status-cancelado"
+                        }">
 
                             ${
-                                horario.disponivel
-                                    ? "Disponível"
-                                    : "Indisponível"
+                                disponivel
+                                ? "Disponível"
+                                : "Ocupado"
                             }
+
                         </span>
+
+                    </div>
+
+                `;
+
+                lista.appendChild(item);
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        lista.innerHTML =
+            '<div class="vazio">Erro ao carregar horários.</div>';
+
+    }
+
+}
+
+
+/* AGENDAMENTOS */
+
+async function carregarAgendamentos() {
+
+    const lista =
+        document.getElementById(
+            "agendamentosLista"
+        );
+
+    lista.innerHTML =
+        '<div class="carregando">Carregando agendamentos...</div>';
+
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("agendamentos")
+                .select("*")
+                .eq(
+                    "advogado_id",
+                    advogadoSelecionado.id
+                )
+                .order("data")
+                .order("horario");
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data || data.length === 0) {
+
+            lista.innerHTML =
+                '<div class="vazio">Nenhum agendamento encontrado.</div>';
+
+            return;
+        }
+
+
+        lista.innerHTML = "";
+
+
+        data.forEach(
+            agendamento => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "item";
+
+
+                const status =
+                    agendamento.status ||
+                    "pendente";
+
+
+                const podeRemarcar =
+                    status !== "cancelado" &&
+                    status !== "recusado";
+
+
+                let botoes = "";
+
+
+                if (
+                    status === "pendente"
+                ) {
+
+                    botoes += `
+
+                        <button
+                            class="btn-acao btn-confirmar"
+                            onclick="alterarStatus('${agendamento.id}', 'confirmado')"
+                        >
+                            ACEITAR
+                        </button>
+
+                        <button
+                            class="btn-acao btn-cancelar"
+                            onclick="alterarStatus('${agendamento.id}', 'cancelado')"
+                        >
+                            RECUSAR
+                        </button>
 
                     `;
 
-
-                    lista.appendChild(item);
                 }
-            );
-        }
 
 
-        /* =====================================================
-           AGENDAMENTOS
-        ===================================================== */
+                if (podeRemarcar) {
 
-        async function carregarAgendamentos(
-            advogadoId
-        ) {
+                    botoes += `
 
-            const lista =
-                document.getElementById(
-                    "appointmentsList"
-                );
+                        <button
+                            class="btn-acao btn-remarcar"
+                            onclick="abrirRemarcacao('${agendamento.id}')"
+                        >
+                            REMARCAR
+                        </button>
 
+                    `;
 
-            const resultado =
-                await supabaseClient
-                    .from("agendamentos")
-                    .select("*")
-                    .eq("advogado_id", advogadoId)
-                    .order("data")
-                    .order("horario");
+                }
 
 
-            if (resultado.error) {
+                item.innerHTML = `
 
-                lista.innerHTML =
-                    '<div class="empty">Não foi possível carregar os agendamentos.</div>';
+                    <div class="item-topo">
 
-                return;
-            }
+                        <div>
 
+                            <h4>
+                                ${escaparHTML(
+                                    agendamento.nome ||
+                                    "Cliente"
+                                )}
+                            </h4>
 
-            const agendamentos =
-                resultado.data || [];
+                            <div class="item-data">
 
+                                ${formatarData(
+                                    agendamento.data
+                                )}
 
-            lista.innerHTML = "";
+                                às
 
+                                ${String(
+                                    agendamento.horario || ""
+                                ).substring(0,5)}
 
-            if (agendamentos.length === 0) {
+                            </div>
 
-                lista.innerHTML =
-                    '<div class="empty">Nenhum agendamento encontrado.</div>';
+                        </div>
 
-                return;
-            }
+                        <span class="status ${
+                            classeStatus(status)
+                        }">
 
+                            ${textoStatus(status)}
 
-            agendamentos.forEach(
-                function(agendamento) {
-
-                    const item =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    item.className = "item";
-
-
-                    item.innerHTML = `
-
-                        <strong>
-                            ${escaparHTML(
-                                agendamento.nome ||
-                                "Cliente"
-                            )}
-                        </strong>
-
-                        <span>
-                            ${
-                                agendamento.data
-                                    ? formatarData(
-                                        agendamento.data
-                                    )
-                                    : ""
-                            }
-
-                            ${
-                                agendamento.horario
-                                    ? " — " +
-                                      String(
-                                          agendamento.horario
-                                      ).slice(0, 5)
-                                    : ""
-                            }
                         </span>
+
+                    </div>
+
+
+                    <div class="item-info">
+
+                        <strong>Telefone:</strong>
+                        ${escaparHTML(
+                            agendamento.telefone || "-"
+                        )}
+
+                        <br>
+
+                        <strong>E-mail:</strong>
+                        ${escaparHTML(
+                            agendamento.email || "-"
+                        )}
+
+                        <br>
+
+                        <strong>Atendimento:</strong>
+                        ${escaparHTML(
+                            agendamento.tipo_atendimento || "-"
+                        )}
+
+                        <br>
+
+                        <strong>Área:</strong>
+                        ${escaparHTML(
+                            agendamento.area || "-"
+                        )}
 
                         ${
-                            agendamento.telefone
-                                ? `
-                                    <span>
-                                        ${escaparHTML(
-                                            agendamento.telefone
-                                        )}
-                                    </span>
-                                  `
-                                : ""
+                            agendamento.assunto
+                            ? `
+                                <br>
+                                <strong>Assunto:</strong>
+                                ${escaparHTML(
+                                    agendamento.assunto
+                                )}
+                              `
+                            : ""
                         }
 
-                    `;
+                    </div>
 
 
-                    lista.appendChild(item);
-                }
-            );
-        }
+                    <div class="acoes">
 
+                        ${botoes}
 
-        /* =====================================================
-           RECUPERAÇÃO DE SENHA
-        ===================================================== */
+                    </div>
 
-        document
-            .getElementById("generalForgot")
-            .addEventListener(
-                "click",
-                async function(event) {
+                `;
 
-                    event.preventDefault();
 
+                lista.appendChild(item);
 
-                    const email =
-                        document
-                            .getElementById(
-                                "generalEmail"
-                            )
-                            .value
-                            .trim();
-
-
-                    const message =
-                        document
-                            .getElementById(
-                                "generalMessage"
-                            );
-
-
-                    if (!email) {
-
-                        mostrarMensagem(
-                            message,
-                            "Digite seu e-mail primeiro.",
-                            "error"
-                        );
-
-                        return;
-                    }
-
-
-                    const resultado =
-                        await supabaseClient.auth
-                            .resetPasswordForEmail(
-                                email,
-                                {
-                                    redirectTo:
-                                        window.location.href
-                                }
-                            );
-
-
-                    if (resultado.error) {
-
-                        mostrarMensagem(
-                            message,
-                            "Não foi possível enviar o e-mail de recuperação.",
-                            "error"
-                        );
-
-                        return;
-                    }
-
-
-                    mostrarMensagem(
-                        message,
-                        "Se esse e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.",
-                        "success"
-                    );
-                }
-            );
-
-
-        document
-            .getElementById("lawyerForgot")
-            .addEventListener(
-                "click",
-                async function(event) {
-
-                    event.preventDefault();
-
-
-                    const email =
-                        document
-                            .getElementById(
-                                "lawyerEmail"
-                            )
-                            .value
-                            .trim();
-
-
-                    const message =
-                        document
-                            .getElementById(
-                                "lawyerMessage"
-                            );
-
-
-                    if (!email) {
-
-                        mostrarMensagem(
-                            message,
-                            "Digite seu e-mail primeiro.",
-                            "error"
-                        );
-
-                        return;
-                    }
-
-
-                    const resultado =
-                        await supabaseClient.auth
-                            .resetPasswordForEmail(
-                                email,
-                                {
-                                    redirectTo:
-                                        window.location.href
-                                }
-                            );
-
-
-                    if (resultado.error) {
-
-                        mostrarMensagem(
-                            message,
-                            "Não foi possível enviar o e-mail de recuperação.",
-                            "error"
-                        );
-
-                        return;
-                    }
-
-
-                    mostrarMensagem(
-                        message,
-                        "Se esse e-mail estiver cadastrado, você receberá as instruções para redefinir a senha.",
-                        "success"
-                    );
-                }
-            );
-
-
-        /* =====================================================
-           BOTÕES
-        ===================================================== */
-
-        document
-            .getElementById("selectionBack")
-            .addEventListener(
-                "click",
-                async function() {
-
-                    await supabaseClient.auth
-                        .signOut();
-
-                    currentUser = null;
-                    selectedLawyer = null;
-
-                    mostrarTela(
-                        document.getElementById(
-                            "generalLoginPage"
-                        )
-                    );
-                }
-            );
-
-
-        document
-            .getElementById("lawyerBack")
-            .addEventListener(
-                "click",
-                async function() {
-
-                    await supabaseClient.auth
-                        .signOut();
-
-                    currentUser = null;
-                    selectedLawyer = null;
-
-                    await carregarAdvogados();
-
-                    mostrarTela(
-                        document.getElementById(
-                            "selectionPage"
-                        )
-                    );
-                }
-            );
-
-
-        document
-            .getElementById("selectionLogout")
-            .addEventListener(
-                "click",
-                async function() {
-
-                    await supabaseClient.auth
-                        .signOut();
-
-                    currentUser = null;
-                    selectedLawyer = null;
-
-                    mostrarTela(
-                        document.getElementById(
-                            "generalLoginPage"
-                        )
-                    );
-                }
-            );
-
-
-        document
-            .getElementById("dashboardLogout")
-            .addEventListener(
-                "click",
-                async function() {
-
-                    await supabaseClient.auth
-                        .signOut();
-
-                    currentUser = null;
-                    selectedLawyer = null;
-
-                    mostrarTela(
-                        document.getElementById(
-                            "generalLoginPage"
-                        )
-                    );
-                }
-            );
-
-
-        /* =====================================================
-           FUNÇÕES AUXILIARES
-        ===================================================== */
-
-        function formatarData(data) {
-
-            if (!data) {
-                return "";
             }
+        );
 
 
-            const partes =
-                data.split("-");
+    } catch (error) {
+
+        console.error(error);
+
+        lista.innerHTML =
+            '<div class="vazio">Erro ao carregar agendamentos.</div>';
+
+    }
+
+}
 
 
-            if (partes.length !== 3) {
-                return data;
-            }
+/* ALTERAR STATUS */
+
+async function alterarStatus(
+    id,
+    novoStatus
+) {
+
+    const confirmar =
+        novoStatus === "confirmado"
+        ? "Deseja confirmar este agendamento?"
+        : "Deseja recusar este agendamento?";
 
 
-            return (
-                partes[2] +
-                "/" +
-                partes[1] +
-                "/" +
-                partes[0]
-            );
+    if (!window.confirm(confirmar)) {
+        return;
+    }
+
+
+    try {
+
+        const { error } =
+            await supabaseClient
+                .from("agendamentos")
+                .update({
+                    status: novoStatus
+                })
+                .eq("id", id)
+                .eq(
+                    "advogado_id",
+                    advogadoSelecionado.id
+                );
+
+
+        if (error) {
+            throw error;
         }
 
 
-        function escaparHTML(valor) {
-
-            return String(valor)
-                .replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                .replaceAll('"', "&quot;")
-                .replaceAll("'", "&#039;");
-        }
+        mostrarSucesso(
+            novoStatus === "confirmado"
+            ? "Agendamento confirmado."
+            : "Agendamento recusado."
+        );
 
 
-        /* =====================================================
-           COMEÇAR NA TELA DE LOGIN
-        ===================================================== */
+        await carregarAgendamentos();
 
-        mostrarTela(
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarErro(
             document.getElementById(
-                "generalLoginPage"
+                "erroDashboard"
+            ),
+            error.message ||
+            "Não foi possível alterar o agendamento."
+        );
+
+    }
+
+}
+
+
+/* ABRIR REMARCAÇÃO */
+
+async function abrirRemarcacao(id) {
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("agendamentos")
+                .select("*")
+                .eq("id", id)
+                .eq(
+                    "advogado_id",
+                    advogadoSelecionado.id
+                )
+                .single();
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        agendamentoSelecionado =
+            data;
+
+
+        document
+            .getElementById("clienteAtual")
+            .innerHTML = `
+
+                <strong>
+                    Cliente:
+                </strong>
+
+                ${escaparHTML(
+                    data.nome || "-"
+                )}
+
+                <br>
+
+                <strong>
+                    Data atual:
+                </strong>
+
+                ${formatarData(
+                    data.data
+                )}
+
+                às
+
+                ${String(
+                    data.horario || ""
+                ).substring(0,5)}
+
+            `;
+
+
+        const novaData =
+            document.getElementById(
+                "novaData"
+            );
+
+
+        const hoje =
+            new Date();
+
+        const ano =
+            hoje.getFullYear();
+
+        const mes =
+            String(
+                hoje.getMonth() + 1
+            ).padStart(2, "0");
+
+        const dia =
+            String(
+                hoje.getDate()
+            ).padStart(2, "0");
+
+
+        novaData.min =
+            `${ano}-${mes}-${dia}`;
+
+
+        novaData.value = "";
+
+
+        document
+            .getElementById("novoHorario")
+            .innerHTML =
+            '<option value="">Primeiro selecione uma data</option>';
+
+
+        document
+            .getElementById("novoHorario")
+            .disabled =
+            true;
+
+
+        esconderErro(
+            document.getElementById(
+                "erroRemarcacao"
             )
         );
 
-    </script>
+
+        document
+            .getElementById("modalRemarcacao")
+            .classList
+            .add("aberto");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarErro(
+            document.getElementById(
+                "erroDashboard"
+            ),
+            "Não foi possível abrir a remarcação."
+        );
+
+    }
+
+}
+
+
+/* BUSCAR NOVOS HORÁRIOS */
+
+document
+    .getElementById("novaData")
+    .addEventListener(
+        "change",
+        async function() {
+
+            const data =
+                this.value;
+
+            const select =
+                document.getElementById(
+                    "novoHorario"
+                );
+
+            const erro =
+                document.getElementById(
+                    "erroRemarcacao"
+                );
+
+
+            esconderErro(erro);
+
+
+            select.innerHTML =
+                '<option value="">Carregando horários...</option>';
+
+            select.disabled =
+                true;
+
+
+            if (!data) {
+
+                select.innerHTML =
+                    '<option value="">Primeiro selecione uma data</option>';
+
+                return;
+
+            }
+
+
+            const dataObj =
+                new Date(
+                    data + "T00:00:00"
+                );
+
+
+            if (dataObj.getDay() === 0) {
+
+                select.innerHTML =
+                    '<option value="">Não atendemos aos domingos</option>';
+
+                return;
+
+            }
+
+
+            try {
+
+                const { data: horarios, error } =
+                    await supabaseClient
+                        .from("horarios")
+                        .select("*")
+                        .eq(
+                            "advogado_id",
+                            advogadoSelecionado.id
+                        )
+                        .eq(
+                            "data",
+                            data
+                        )
+                        .eq(
+                            "disponivel",
+                            true
+                        )
+                        .order("horario");
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                select.innerHTML =
+                    '<option value="">Selecione o novo horário</option>';
+
+
+                if (!horarios || horarios.length === 0) {
+
+                    select.innerHTML =
+                        '<option value="">Nenhum horário disponível</option>';
+
+                    return;
+
+                }
+
+
+                horarios.forEach(
+                    horario => {
+
+                        /*
+                         * Se for a mesma data do agendamento,
+                         * não oferecemos o horário atual como
+                         * "novo" horário.
+                         */
+
+                        if (
+                            data ===
+                            agendamentoSelecionado.data &&
+                            horario.horario ===
+                            agendamentoSelecionado.horario
+                        ) {
+                            return;
+                        }
+
+
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+                        option.value =
+                            horario.horario;
+
+                        option.textContent =
+                            String(
+                                horario.horario
+                            ).substring(0,5);
+
+                        select.appendChild(
+                            option
+                        );
+
+                    }
+                );
+
+
+                if (select.options.length <= 1) {
+
+                    select.innerHTML =
+                        '<option value="">Nenhum outro horário disponível</option>';
+
+                    return;
+
+                }
+
+
+                select.disabled =
+                    false;
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                mostrarErro(
+                    erro,
+                    "Não foi possível carregar os novos horários."
+                );
+
+                select.innerHTML =
+                    '<option value="">Erro ao carregar horários</option>';
+
+            }
+
+        }
+    );
+
+
+/* SALVAR REMARCAÇÃO */
+
+document
+    .getElementById("btnSalvarRemarcacao")
+    .addEventListener(
+        "click",
+        async function() {
+
+            const erro =
+                document.getElementById(
+                    "erroRemarcacao"
+                );
+
+            esconderErro(erro);
+
+
+            if (!agendamentoSelecionado) {
+
+                mostrarErro(
+                    erro,
+                    "Nenhum agendamento selecionado."
+                );
+
+                return;
+
+            }
+
+
+            const novaData =
+                document
+                    .getElementById("novaData")
+                    .value;
+
+
+            const novoHorario =
+                document
+                    .getElementById("novoHorario")
+                    .value;
+
+
+            if (!novaData || !novoHorario) {
+
+                mostrarErro(
+                    erro,
+                    "Escolha a nova data e o novo horário."
+                );
+
+                return;
+
+            }
+
+
+            const botao =
+                document.getElementById(
+                    "btnSalvarRemarcacao"
+                );
+
+
+            botao.disabled =
+                true;
+
+            botao.textContent =
+                "Salvando...";
+
+
+            try {
+
+                /*
+                 * Verificação final.
+                 */
+
+                const { data: disponiveis, error: erroBusca } =
+                    await supabaseClient
+                        .from("horarios")
+                        .select("*")
+                        .eq(
+                            "advogado_id",
+                            advogadoSelecionado.id
+                        )
+                        .eq(
+                            "data",
+                            novaData
+                        )
+                        .eq(
+                            "horario",
+                            novoHorario
+                        )
+                        .eq(
+                            "disponivel",
+                            true
+                        );
+
+
+                if (erroBusca) {
+                    throw erroBusca;
+                }
+
+
+                if (
+                    !disponiveis ||
+                    disponiveis.length === 0
+                ) {
+
+                    throw new Error(
+                        "Esse novo horário acabou de ser ocupado. Escolha outro."
+                    );
+
+                }
+
+
+                /*
+                 * Atualiza o agendamento.
+                 */
+
+                const { error: erroAgendamento } =
+                    await supabaseClient
+                        .from("agendamentos")
+                        .update({
+
+                            data:
+                                novaData,
+
+                            horario:
+                                novoHorario
+
+                        })
+                        .eq(
+                            "id",
+                            agendamentoSelecionado.id
+                        )
+                        .eq(
+                            "advogado_id",
+                            advogadoSelecionado.id
+                        );
+
+
+                if (erroAgendamento) {
+                    throw erroAgendamento;
+                }
+
+
+                /*
+                 * Libera o horário antigo.
+                 */
+
+                const { error: erroHorarioAntigo } =
+                    await supabaseClient
+                        .from("horarios")
+                        .update({
+                            disponivel: true
+                        })
+                        .eq(
+                            "advogado_id",
+                            advogadoSelecionado.advogado_id ||
+                            advogadoSelecionado.id
+                        )
+                        .eq(
+                            "data",
+                            agendamentoSelecionado.data
+                        )
+                        .eq(
+                            "horario",
+                            agendamentoSelecionado.horario
+                        );
+
+
+                if (erroHorarioAntigo) {
+
+                    console.error(
+                        "Erro ao liberar horário antigo:",
+                        erroHorarioAntigo
+                    );
+
+                }
+
+
+                /*
+                 * Ocupa o novo horário.
+                 */
+
+                const { error: erroNovoHorario } =
+                    await supabaseClient
+                        .from("horarios")
+                        .update({
+                            disponivel: false
+                        })
+                        .eq(
+                            "advogado_id",
+                            advogadoSelecionado.id
+                        )
+                        .eq(
+                            "data",
+                            novaData
+                        )
+                        .eq(
+                            "horario",
+                            novoHorario
+                        );
+
+
+                if (erroNovoHorario) {
+                    throw erroNovoHorario;
+                }
+
+
+                fecharModal();
+
+
+                mostrarSucesso(
+                    "Agendamento remarcado com sucesso."
+                );
+
+
+                await carregarDashboard();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                mostrarErro(
+                    erro,
+                    error.message ||
+                    "Não foi possível remarcar o atendimento."
+                );
+
+            } finally {
+
+                botao.disabled =
+                    false;
+
+                botao.textContent =
+                    "Salvar remarcação";
+
+            }
+
+        }
+    );
+
+
+/* FECHAR MODAL */
+
+function fecharModal() {
+
+    document
+        .getElementById("modalRemarcacao")
+        .classList
+        .remove("aberto");
+
+    agendamentoSelecionado =
+        null;
+
+}
+
+
+document
+    .getElementById("fecharModal")
+    .addEventListener(
+        "click",
+        fecharModal
+    );
+
+
+document
+    .getElementById("btnCancelarModal")
+    .addEventListener(
+        "click",
+        fecharModal
+    );
+
+
+document
+    .getElementById("modalRemarcacao")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+                fecharModal();
+            }
+
+        }
+    );
+
+
+/* ATUALIZAR */
+
+document
+    .getElementById("btnAtualizarHorarios")
+    .addEventListener(
+        "click",
+        carregarHorarios
+    );
+
+
+document
+    .getElementById("btnAtualizarAgendamentos")
+    .addEventListener(
+        "click",
+        carregarAgendamentos
+    );
+
+
+/* TROCAR ADVOGADO */
+
+document
+    .getElementById("btnVoltarSelecao")
+    .addEventListener(
+        "click",
+        function() {
+
+            advogadoSelecionado =
+                null;
+
+            dashboardPagina
+                .classList
+                .add("oculto");
+
+            selecaoPagina
+                .classList
+                .remove("oculto");
+
+            carregarAdvogados();
+
+        }
+    );
+
+
+/* SAIR */
+
+btnSair.addEventListener(
+    "click",
+    async function() {
+
+        await supabaseClient.auth.signOut();
+
+        usuarioAtual =
+            null;
+
+        advogadoSelecionado =
+            null;
+
+        dashboardPagina
+            .classList
+            .add("oculto");
+
+        selecaoPagina
+            .classList
+            .add("oculto");
+
+        loginPagina
+            .classList
+            .remove("oculto");
+
+        btnSair
+            .classList
+            .add("oculto");
+
+    }
+);
+
+
+/* RECUPERAR SENHA */
+
+document
+    .getElementById("esqueciSenha")
+    .addEventListener(
+        "click",
+        async function(event) {
+
+            event.preventDefault();
+
+            const email =
+                document
+                    .getElementById("emailLogin")
+                    .value
+                    .trim();
+
+            const erro =
+                document.getElementById(
+                    "erroLogin"
+                );
+
+
+            if (!email) {
+
+                mostrarErro(
+                    erro,
+                    "Digite seu e-mail primeiro."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                const { error } =
+                    await supabaseClient.auth
+                        .resetPasswordForEmail(
+                            email,
+                            {
+                                redirectTo:
+                                    window.location.href
+                            }
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                mostrarErro(
+                    erro,
+                    "Se o e-mail estiver cadastrado, você receberá as instruções para redefinir a senha."
+                );
+
+            } catch (error) {
+
+                mostrarErro(
+                    erro,
+                    error.message ||
+                    "Não foi possível solicitar a recuperação."
+                );
+
+            }
+
+        }
+    );
+
+
+/* SEGURANÇA */
+
+function escaparHTML(valor) {
+
+    return String(valor ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* VERIFICAR SESSÃO */
+
+(async function() {
+
+    try {
+
+        const {
+            data
+        } =
+            await supabaseClient.auth
+                .getSession();
+
+
+        if (
+            data &&
+            data.session &&
+            data.session.user
+        ) {
+
+            usuarioAtual =
+                data.session.user;
+
+            await carregarAdvogados();
+
+            loginPagina
+                .classList
+                .add("oculto");
+
+            selecaoPagina
+                .classList
+                .remove("oculto");
+
+            btnSair
+                .classList
+                .remove("oculto");
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+})();
+
+</script>
 
 </body>
 </html>
