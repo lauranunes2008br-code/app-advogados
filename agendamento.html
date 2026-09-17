@@ -1,964 +1,1280 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Agendamento | Josiane Nunes Advocacia</title>
+    <title>Agendamento | Josiane Nunes Advocacia</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f8f3eb;
+            color: #3d2528;
+            min-height: 100vh;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        header {
+            background: #4b2028;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #f8f3eb;
-      color: #3d2528;
-      min-height: 100vh;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+        .logo-symbol {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #c9a66b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9a66b;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+        }
 
-    .container {
-      width: min(1050px, 92%);
-      margin: auto;
-    }
+        .logo-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
 
-    header {
-      background: #4b2028;
-      color: #f8f3eb;
-      padding: 22px 0;
-    }
+        .logo-text span {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #d7bd8b;
+        }
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .voltar {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
 
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      color: #d7bd8b;
-      font-size: 30px;
-      font-weight: 600;
-    }
+        .voltar:hover {
+            color: #d7bd8b;
+        }
 
-    .back {
-      font-size: 13px;
-      color: #f8f3eb;
-    }
+        main {
+            max-width: 850px;
+            margin: 55px auto;
+            padding: 0 20px;
+        }
 
-    .back:hover {
-      color: #d7bd8b;
-    }
+        .titulo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
-    main {
-      padding: 65px 0 90px;
-    }
+        .titulo h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: #4b2028;
+            margin-bottom: 8px;
+        }
 
-    .intro {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        .titulo p {
+            color: #756568;
+            font-size: 14px;
+        }
 
-    .eyebrow {
-      color: #c9a66b;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
+        .formulario {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 35px rgba(75, 32, 40, 0.08);
+        }
 
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      color: #4b2028;
-      font-size: 52px;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
+        .linha {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-    .intro p {
-      color: #756568;
-      font-size: 14px;
-    }
+        .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-    .card {
-      max-width: 760px;
-      margin: auto;
-      background: #fffaf4;
-      border: 1px solid #eadfce;
-      padding: 42px;
-      box-shadow: 0 15px 40px rgba(75,32,40,.08);
-    }
+        .campo label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #4b2028;
+        }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
+        .campo input,
+        .campo select,
+        .campo textarea {
+            width: 100%;
+            border: 1px solid #ddd2c8;
+            border-radius: 7px;
+            padding: 13px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            background: #fffdf9;
+            color: #3d2528;
+            outline: none;
+        }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+        .campo input:focus,
+        .campo select:focus,
+        .campo textarea:focus {
+            border-color: #a78355;
+        }
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
+        .campo input:invalid:not(:placeholder-shown) {
+            border-color: #c97b7b;
+        }
 
-    label {
-      color: #4b2028;
-      font-size: 12px;
-      font-weight: 600;
-    }
+        .campo input:valid:not(:placeholder-shown) {
+            border-color: #ddd2c8;
+        }
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid #d8cbbc;
-      background: #fdf9f3;
-      color: #3d2528;
-      border-radius: 3px;
-      padding: 13px 14px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      outline: none;
-      transition: .2s;
-    }
+        .campo textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #c9a66b;
-      box-shadow: 0 0 0 2px rgba(201,166,107,.12);
-    }
+        .campo-full {
+            margin-bottom: 20px;
+        }
 
-    input:disabled,
-    select:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
+        .aviso {
+            background: #f8f3eb;
+            border-left: 3px solid #c9a66b;
+            padding: 14px;
+            margin-bottom: 22px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #66565a;
+        }
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 12px;
+            color: #66565a;
+            line-height: 1.5;
+        }
 
-    .phone-help {
-      font-size: 11px;
-      color: #756568;
-      margin-top: -3px;
-    }
+        .checkbox input {
+            margin-top: 3px;
+        }
 
-    .phone-error {
-      display: none;
-      color: #9b3030;
-      font-size: 11px;
-    }
+        button {
+            width: 100%;
+            border: none;
+            background: #4b2028;
+            color: white;
+            padding: 16px;
+            border-radius: 7px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    .phone-error.show {
-      display: block;
-    }
+        button:hover {
+            background: #642d37;
+        }
 
-    .availability {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #756568;
-    }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
-    .availability.ok {
-      color: #356b48;
-    }
+        .mensagem {
+            display: none;
+            text-align: center;
+            padding: 45px 20px;
+        }
 
-    .availability.error {
-      color: #9b3030;
-    }
+        .mensagem .icone {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 2px solid #c9a66b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #4b2028;
+            font-size: 30px;
+        }
 
-    .check {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin-top: 4px;
-    }
+        .mensagem h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 35px;
+            color: #4b2028;
+            margin-bottom: 10px;
+        }
 
-    .check input {
-      width: auto;
-      margin-top: 3px;
-      accent-color: #4b2028;
-    }
+        .mensagem p {
+            font-size: 13px;
+            color: #66565a;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
 
-    .check label {
-      font-weight: 400;
-      line-height: 1.5;
-      color: #66565a;
-    }
+        .whatsapp {
+            display: inline-block;
+            text-decoration: none;
+            background: #4b2028;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+        }
 
-    .submit-area {
-      margin-top: 30px;
-      text-align: center;
-    }
+        .erro {
+            display: none;
+            background: #f8dddd;
+            color: #7d2525;
+            padding: 12px;
+            border-radius: 7px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 14px 28px;
-      background: #c9a66b;
-      color: #4b2028;
-      border: 0;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: .25s;
-    }
+        @media (max-width: 650px) {
+            header {
+                padding: 18px 5%;
+            }
 
-    .btn:hover {
-      background: #d7bd8b;
-    }
+            .logo-text h1 {
+                font-size: 20px;
+            }
 
-    .btn:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
+            .voltar {
+                font-size: 11px;
+            }
 
-    .message {
-      display: none;
-      margin-bottom: 25px;
-      padding: 14px 16px;
-      border-radius: 3px;
-      font-size: 13px;
-    }
+            main {
+                margin: 35px auto;
+            }
 
-    .message.show {
-      display: block;
-    }
+            .titulo h2 {
+                font-size: 35px;
+            }
 
-    .message.error {
-      background: #f8e4e4;
-      color: #8d3030;
-      border: 1px solid #e4bebe;
-    }
+            .formulario {
+                padding: 25px 20px;
+            }
 
-    .success {
-      display: none;
-      text-align: center;
-      padding: 30px 10px;
-    }
-
-    .success.show {
-      display: block;
-    }
-
-    .success-icon {
-      width: 65px;
-      height: 65px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: #4b2028;
-      color: #d7bd8b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .success h2 {
-      font-family: 'Cormorant Garamond', serif;
-      color: #4b2028;
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .success p {
-      color: #756568;
-      font-size: 13px;
-      max-width: 550px;
-      margin: auto;
-    }
-
-    .success-buttons {
-      margin-top: 25px;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 700px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .card {
-        padding: 25px;
-      }
-
-      h1 {
-        font-size: 43px;
-      }
-    }
-  </style>
+            .linha {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
-    <a href="index.html" class="logo">Josiane Nunes</a>
-    <a href="index.html" class="back">← Voltar ao início</a>
-  </div>
+    <div class="logo">
+        <div class="logo-symbol">JN</div>
+
+        <div class="logo-text">
+            <h1>JOSIANE NUNES</h1>
+            <span>ADVOCACIA</span>
+        </div>
+    </div>
+
+    <a href="index.html" class="voltar">← Voltar ao início</a>
 </header>
 
 <main>
-  <div class="container">
 
-    <div class="intro">
-      <div class="eyebrow">Atendimento jurídico</div>
-      <h1>Agende seu atendimento</h1>
-      <p>
-        Preencha os dados abaixo para solicitar um horário.
-      </p>
+    <div class="titulo">
+        <h2>Agende sua consulta</h2>
+        <p>Preencha os dados abaixo para solicitar seu atendimento.</p>
     </div>
 
-    <div class="card">
+    <div class="formulario" id="formulario">
 
-      <div id="errorMessage" class="message error"></div>
+        <div class="aviso">
+            O preenchimento deste formulário é uma solicitação de agendamento.
+            O horário será confirmado após a análise da disponibilidade.
+        </div>
 
-      <form id="agendamentoForm">
+        <div class="erro" id="erro"></div>
 
-        <div class="grid">
+        <form id="agendamentoForm" novalidate>
 
-          <div class="field">
-            <label for="nome">Nome completo *</label>
-            <input
-              id="nome"
-              name="nome"
-              type="text"
-              maxlength="120"
-              autocomplete="name"
-              required
-              placeholder="Digite seu nome completo"
-            >
-          </div>
+            <div class="linha">
 
-          <div class="field">
-            <label for="telefone">Telefone / WhatsApp *</label>
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
 
-            <input
-              id="telefone"
-              name="telefone"
-              type="tel"
-              inputmode="numeric"
-              autocomplete="tel"
-              maxlength="15"
-              required
-              placeholder="(87) 99999-9999"
-            >
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
 
-            <span class="phone-help">
-              Digite um celular ou telefone brasileiro válido.
-            </span>
+                <div class="campo">
+                    <label for="telefone">Telefone / WhatsApp</label>
 
-            <span id="phoneError" class="phone-error"></span>
-          </div>
+                    <input
+                        type="tel"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="(00) 00000-0000"
+                        autocomplete="tel"
+                        inputmode="numeric"
+                        maxlength="15"
+                        required
+                    >
+                </div>
 
-          <div class="field">
-            <label for="email">E-mail *</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              maxlength="150"
-              autocomplete="email"
-              required
-              placeholder="seuemail@email.com"
-            >
-          </div>
-
-          <div class="field">
-            <label for="tipo">Tipo de atendimento *</label>
-
-            <select id="tipo" name="tipo" required>
-              <option value="">Selecione</option>
-              <option value="Presencial">Presencial</option>
-              <option value="Online">Online</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="area">Área jurídica *</label>
-
-            <select id="area" name="area" required>
-              <option value="">Selecione</option>
-              <option value="Criminal">Direito Criminal</option>
-              <option value="Previdenciário">Direito Previdenciário</option>
-              <option value="Trabalhista">Direito Trabalhista</option>
-              <option value="Não sei / Não tenho certeza">
-                Não sei / Não tenho certeza
-              </option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="data">Data *</label>
-
-            <input
-              id="data"
-              name="data"
-              type="date"
-              required
-            >
-          </div>
-
-          <div class="field">
-            <label for="horario">Horário *</label>
-
-            <select id="horario" name="horario" required disabled>
-              <option value="">Primeiro selecione uma data</option>
-            </select>
-
-            <div id="availability" class="availability"></div>
-          </div>
-
-          <div class="field full">
-            <label for="assunto">Conte brevemente o motivo do atendimento *</label>
-
-            <textarea
-              id="assunto"
-              name="assunto"
-              maxlength="1000"
-              required
-              placeholder="Explique brevemente o que você precisa..."
-            ></textarea>
-          </div>
-
-          <div class="field full">
-            <div class="check">
-              <input
-                id="confirmacao"
-                type="checkbox"
-                required
-              >
-
-              <label for="confirmacao">
-                Confirmo que as informações fornecidas são verdadeiras
-                e estou solicitando um horário de atendimento.
-              </label>
             </div>
-          </div>
 
-        </div>
+            <div class="linha">
 
-        <div class="submit-area">
-          <button
-            type="submit"
-            id="submitButton"
-            class="btn"
-          >
-            <i data-lucide="calendar-check"></i>
-            Solicitar agendamento
-          </button>
-        </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
 
-      </form>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="seuemail@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
 
-      <div id="success" class="success">
+                <div class="campo">
+                    <label for="tipo">Tipo de atendimento</label>
 
-        <div class="success-icon">
-          <i data-lucide="check"></i>
-        </div>
+                    <select id="tipo" name="tipo" required>
+                        <option value="">Selecione</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Online">Online</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="campo-full campo">
+                <label for="area">Área jurídica</label>
+
+                <select id="area" name="area" required>
+                    <option value="">Selecione a área</option>
+                    <option value="Direito Criminal">Direito Criminal</option>
+                    <option value="Direito Previdenciário">Direito Previdenciário</option>
+                    <option value="Direito Trabalhista">Direito Trabalhista</option>
+                    <option value="Não sei / Não tenho certeza">Não sei / Não tenho certeza</option>
+                </select>
+            </div>
+
+            <div class="linha">
+
+                <div class="campo">
+                    <label for="data">Data</label>
+
+                    <input
+                        type="date"
+                        id="data"
+                        name="data"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="horario">Horário disponível</label>
+
+                    <select id="horario" name="horario" required disabled>
+                        <option value="">Primeiro selecione uma data</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="campo-full campo">
+                <label for="assunto">Assunto</label>
+
+                <textarea
+                    id="assunto"
+                    name="assunto"
+                    placeholder="Conte brevemente o motivo do atendimento."
+                ></textarea>
+            </div>
+
+            <label class="checkbox">
+                <input type="checkbox" id="confirmacao" required>
+
+                <span>
+                    Confirmo que as informações fornecidas estão corretas e
+                    estou ciente de que o preenchimento do formulário não
+                    significa confirmação automática do atendimento.
+                </span>
+            </label>
+
+            <button type="submit" id="btnEnviar">
+                Solicitar agendamento
+            </button>
+
+        </form>
+    </div>
+
+    <div class="formulario mensagem" id="sucesso">
+
+        <div class="icone">✓</div>
 
         <h2>Solicitação enviada!</h2>
 
         <p>
-          Seu pedido de agendamento foi enviado com sucesso.
-          Aguarde a confirmação do escritório.
+            Recebemos seus dados de agendamento.
+            Para facilitar a confirmação, você também pode entrar em contato
+            pelo WhatsApp.
         </p>
 
-        <div class="success-buttons">
-
-          <a
+        <a
+            class="whatsapp"
             id="whatsappBtn"
             href="#"
             target="_blank"
-            class="btn"
-          >
-            <i data-lucide="message-circle"></i>
-            Avisar pelo WhatsApp
-          </a>
-
-          <a href="index.html" class="btn">
-            Voltar ao site
-          </a>
-
-        </div>
-
-      </div>
+            rel="noopener noreferrer"
+        >
+            Confirmar pelo WhatsApp
+        </a>
 
     </div>
-  </div>
+
 </main>
 
 <script>
-  const SUPABASE_URL =
-    "https://ovogpczsnxwqmefpbydi.supabase.co";
+    /* ============================================================
+       SUPABASE
+       ============================================================ */
 
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
+    const SUPABASE_URL =
+        "https://ovogpczsnxwqmefpbydi.supabase.co";
 
-  const WHATSAPP = "5587991699046";
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
 
-  const form = document.getElementById("agendamentoForm");
-  const dataInput = document.getElementById("data");
-  const horarioSelect = document.getElementById("horario");
-  const availability = document.getElementById("availability");
-  const errorMessage = document.getElementById("errorMessage");
-  const submitButton = document.getElementById("submitButton");
+    /* ============================================================
+       CONFIGURAÇÕES
+       ============================================================ */
 
-  const telefoneInput = document.getElementById("telefone");
-  const phoneError = document.getElementById("phoneError");
+    const dataInput = document.getElementById("data");
+    const horarioSelect = document.getElementById("horario");
+    const form = document.getElementById("agendamentoForm");
+    const erro = document.getElementById("erro");
+    const btnEnviar = document.getElementById("btnEnviar");
 
-  const success = document.getElementById("success");
-  const whatsappBtn = document.getElementById("whatsappBtn");
+    const formulario = document.getElementById("formulario");
+    const sucesso = document.getElementById("sucesso");
+    const whatsappBtn = document.getElementById("whatsappBtn");
 
-  let horariosDisponiveis = [];
+    const telefoneInput = document.getElementById("telefone");
+    const nomeInput = document.getElementById("nome");
+    const emailInput = document.getElementById("email");
+    const tipoInput = document.getElementById("tipo");
+    const areaInput = document.getElementById("area");
+    const assuntoInput = document.getElementById("assunto");
+    const confirmacaoInput = document.getElementById("confirmacao");
 
-  function hojeLocal() {
-    const agora = new Date();
 
-    const ano = agora.getFullYear();
-    const mes = String(agora.getMonth() + 1).padStart(2, "0");
-    const dia = String(agora.getDate()).padStart(2, "0");
+    /* ============================================================
+       WHATSAPP DA ADVOCACIA
+       ============================================================ */
 
-    return `${ano}-${mes}-${dia}`;
-  }
+    const WHATSAPP = "5587991699046";
 
-  dataInput.min = hojeLocal();
 
-  function mostrarErro(texto) {
-    errorMessage.textContent = texto;
-    errorMessage.classList.add("show");
+    /* ============================================================
+       FUNÇÕES AUXILIARES
+       ============================================================ */
 
-    window.scrollTo({
-      top: errorMessage.offsetTop - 100,
-      behavior: "smooth"
-    });
-  }
+    function mostrarErro(mensagem) {
+        erro.textContent = mensagem;
+        erro.style.display = "block";
 
-  function esconderErro() {
-    errorMessage.classList.remove("show");
-    errorMessage.textContent = "";
-  }
-
-  function limparTelefone(valor) {
-    return valor.replace(/\D/g, "");
-  }
-
-  function formatarTelefone(valor) {
-    let numero = limparTelefone(valor);
-
-    if (numero.length > 11) {
-      numero = numero.substring(0, 11);
+        erro.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
     }
 
-    if (numero.length <= 2) {
-      return numero;
+    function esconderErro() {
+        erro.textContent = "";
+        erro.style.display = "none";
     }
 
-    if (numero.length <= 6) {
-      return `(${numero.substring(0, 2)}) ${numero.substring(2)}`;
+    function limparDigitos(valor) {
+        return valor.replace(/\D/g, "");
     }
 
-    if (numero.length <= 10) {
-      return `(${numero.substring(0, 2)}) ${numero.substring(2, 6)}-${numero.substring(6)}`;
-    }
 
-    return `(${numero.substring(0, 2)}) ${numero.substring(2, 7)}-${numero.substring(7)}`;
-  }
+    /* ============================================================
+       MÁSCARA E VALIDAÇÃO DO TELEFONE
+       ============================================================ */
 
-  function telefoneValido(numero) {
-    const somenteNumeros = limparTelefone(numero);
+    telefoneInput.addEventListener("input", function () {
 
-    if (![10, 11].includes(somenteNumeros.length)) {
-      return false;
-    }
-
-    const ddd = Number(somenteNumeros.substring(0, 2));
-
-    if (ddd < 11 || ddd > 99) {
-      return false;
-    }
-
-    // Impede números compostos pelo mesmo dígito.
-    if (/^(\d)\1+$/.test(somenteNumeros)) {
-      return false;
-    }
-
-    // Celular brasileiro: terceiro dígito 9.
-    if (somenteNumeros.length === 11) {
-      if (somenteNumeros.charAt(2) !== "9") {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  telefoneInput.addEventListener("input", function() {
-    this.value = formatarTelefone(this.value);
-
-    if (telefoneValido(this.value)) {
-      phoneError.classList.remove("show");
-    }
-  });
-
-  telefoneInput.addEventListener("blur", function() {
-    if (!telefoneValido(this.value)) {
-      phoneError.textContent =
-        "Digite um telefone brasileiro válido com DDD.";
-      phoneError.classList.add("show");
-    } else {
-      phoneError.classList.remove("show");
-    }
-  });
-
-  async function buscarAgendamentosDoDia(data) {
-    const { data: agendamentos, error } =
-      await supabaseClient
-        .from("agendamentos")
-        .select("id, horario, status, advogado_id")
-        .eq("data", data);
-
-    if (error) {
-      console.error(error);
-      throw new Error("Não foi possível verificar os horários ocupados.");
-    }
-
-    return (agendamentos || []).filter(
-      item => String(item.status || "").toLowerCase() !== "cancelado"
-    );
-  }
-
-  async function carregarHorarios() {
-    const data = dataInput.value;
-
-    horarioSelect.innerHTML = "";
-    horarioSelect.disabled = true;
-    availability.textContent = "";
-    availability.className = "availability";
-
-    horariosDisponiveis = [];
-
-    if (!data) {
-      horarioSelect.innerHTML =
-        '<option value="">Primeiro selecione uma data</option>';
-      return;
-    }
-
-    horarioSelect.innerHTML =
-      '<option value="">Carregando horários...</option>';
-
-    try {
-      const { data: horarios, error } =
-        await supabaseClient
-          .from("horarios")
-          .select("*")
-          .eq("data", data)
-          .eq("disponivel", true)
-          .order("horario", { ascending: true });
-
-      if (error) {
-        console.error(error);
-        throw new Error("Erro ao carregar os horários disponíveis.");
-      }
-
-      const agendamentos = await buscarAgendamentosDoDia(data);
-
-      const ocupados = new Set(
-        agendamentos.map(item => String(item.horario))
-      );
-
-      horariosDisponiveis = (horarios || []).filter(
-        horario => !ocupados.has(String(horario.horario))
-      );
-
-      horarioSelect.innerHTML = "";
-
-      if (!horariosDisponiveis.length) {
-        horarioSelect.innerHTML =
-          '<option value="">Nenhum horário disponível nesta data</option>';
-
-        availability.textContent =
-          "Não há horários disponíveis para esta data.";
-
-        availability.className = "availability error";
-
-        return;
-      }
-
-      horarioSelect.innerHTML =
-        '<option value="">Selecione um horário</option>';
-
-      horariosDisponiveis.forEach(horario => {
-        const option = document.createElement("option");
-
-        option.value = horario.horario;
-        option.textContent = String(horario.horario).substring(0, 5);
-
-        horarioSelect.appendChild(option);
-      });
-
-      horarioSelect.disabled = false;
-
-      availability.textContent =
-        `${horariosDisponiveis.length} horário(s) disponível(is).`;
-
-      availability.className = "availability ok";
-
-    } catch (erro) {
-
-      console.error(erro);
-
-      horarioSelect.innerHTML =
-        '<option value="">Erro ao carregar horários</option>';
-
-      availability.textContent = erro.message;
-      availability.className = "availability error";
-    }
-  }
-
-  dataInput.addEventListener("change", carregarHorarios);
-
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault();
-
-    esconderErro();
-
-    const telefone = telefoneInput.value;
-    const telefoneNumeros = limparTelefone(telefone);
-
-    if (!telefoneValido(telefone)) {
-      phoneError.textContent =
-        "Informe um telefone brasileiro válido com DDD.";
-      phoneError.classList.add("show");
-
-      telefoneInput.focus();
-
-      return;
-    }
-
-    if (!horarioSelect.value) {
-      mostrarErro("Selecione um horário disponível.");
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.innerHTML =
-      '<i data-lucide="loader-circle"></i> Enviando...';
-
-    lucide.createIcons();
-
-    try {
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const tipo = document.getElementById("tipo").value;
-      const area = document.getElementById("area").value;
-      const data = dataInput.value;
-      const horario = horarioSelect.value;
-      const assunto = document.getElementById("assunto").value.trim();
-
-      /*
-       * Buscamos novamente o horário no banco antes de gravar.
-       * Isso evita confiar apenas no que estava aparecendo na tela.
-       */
-      const { data: horarioBanco, error: horarioError } =
-        await supabaseClient
-          .from("horarios")
-          .select("*")
-          .eq("data", data)
-          .eq("horario", horario)
-          .eq("disponivel", true)
-          .limit(1)
-          .maybeSingle();
-
-      if (horarioError) {
-        console.error(horarioError);
-        throw new Error("Não foi possível confirmar esse horário.");
-      }
-
-      if (!horarioBanco) {
-        throw new Error(
-          "Esse horário acabou de ficar indisponível. Escolha outro horário."
-        );
-      }
-
-      /*
-       * Segunda proteção contra agendamento duplicado.
-       */
-      const { data: ocupado, error: ocupadoError } =
-        await supabaseClient
-          .from("agendamentos")
-          .select("id, horario, status")
-          .eq("data", data)
-          .eq("horario", horario);
-
-      if (ocupadoError) {
-        console.error(ocupadoError);
-        throw new Error(
-          "Não foi possível verificar se o horário está ocupado."
-        );
-      }
-
-      const existeAgendamento = (ocupado || []).some(
-        item =>
-          String(item.status || "").toLowerCase() !== "cancelado"
-      );
-
-      if (existeAgendamento) {
-        await carregarHorarios();
-
-        throw new Error(
-          "Esse horário acabou de ser reservado por outra pessoa. Escolha outro."
-        );
-      }
-
-      /*
-       * O advogado_id vem do próprio horário.
-       * Assim não precisamos deixar o cliente escolher a advogada.
-       */
-      const novoAgendamento = {
-        nome,
-        telefone: telefoneNumeros,
-        email,
-        tipo_atendimento: tipo,
-        area,
-        data,
-        horario,
-        assunto,
-        status: "pendente",
-        advogado_id: horarioBanco.advogado_id
-      };
-
-      const { data: agendamentoCriado, error: insertError } =
-        await supabaseClient
-          .from("agendamentos")
-          .insert(novoAgendamento)
-          .select()
-          .single();
-
-      if (insertError) {
-        console.error(insertError);
-        throw new Error(
-          "Não foi possível criar o agendamento. Tente novamente."
-        );
-      }
-
-      /*
-       * Depois de criar o agendamento, o horário deixa de aparecer
-       * como disponível.
-       */
-      let updateHorario;
-
-      if (horarioBanco.id) {
-        updateHorario = await supabaseClient
-          .from("horarios")
-          .update({ disponivel: false })
-          .eq("id", horarioBanco.id);
-      } else {
-        updateHorario = await supabaseClient
-          .from("horarios")
-          .update({ disponivel: false })
-          .eq("data", data)
-          .eq("horario", horario)
-          .eq("advogado_id", horarioBanco.advogado_id);
-      }
-
-      if (updateHorario.error) {
-        console.error(updateHorario.error);
+        let numeros = limparDigitos(this.value);
 
         /*
-         * Tentativa de desfazer o agendamento se o horário
-         * não pôde ser bloqueado.
-         */
-        if (agendamentoCriado?.id) {
-          await supabaseClient
-            .from("agendamentos")
-            .delete()
-            .eq("id", agendamentoCriado.id);
+           Limita a entrada a 11 dígitos:
+           DDD + 9 dígitos do celular.
+        */
+        numeros = numeros.substring(0, 11);
+
+        if (numeros.length <= 10) {
+
+            if (numeros.length > 2) {
+                numeros =
+                    "(" +
+                    numeros.substring(0, 2) +
+                    ") " +
+                    numeros.substring(2);
+            }
+
+            if (numeros.length > 9) {
+                numeros =
+                    numeros.substring(0, 9) +
+                    "-" +
+                    numeros.substring(9);
+            }
+
+        } else {
+
+            numeros =
+                "(" +
+                numeros.substring(0, 2) +
+                ") " +
+                numeros.substring(2, 7) +
+                "-" +
+                numeros.substring(7, 11);
         }
 
-        throw new Error(
-          "Não foi possível reservar o horário. Tente novamente."
-        );
-      }
+        this.value = numeros;
+    });
 
-      const dataFormatada = new Date(
-        `${data}T12:00:00`
-      ).toLocaleDateString("pt-BR");
 
-      const mensagem =
-        `Olá! Acabei de solicitar um agendamento na Josiane Nunes Advocacia.%0A%0A` +
-        `Nome: ${encodeURIComponent(nome)}%0A` +
-        `Data: ${encodeURIComponent(dataFormatada)}%0A` +
-        `Horário: ${encodeURIComponent(String(horario).substring(0, 5))}%0A` +
-        `Área: ${encodeURIComponent(area)}%0A%0A` +
-        `Aguardo a confirmação do atendimento.`;
+    function telefoneValido(valor) {
 
-      whatsappBtn.href =
-        `https://wa.me/${WHATSAPP}?text=${mensagem}`;
+        const numeros = limparDigitos(valor);
 
-      form.style.display = "none";
-      success.classList.add("show");
+        /*
+           Aceita somente:
+           10 dígitos = telefone fixo
+           11 dígitos = celular
+        */
+        if (numeros.length !== 10 && numeros.length !== 11) {
+            return false;
+        }
 
-      lucide.createIcons();
+        /*
+           DDD brasileiro:
+           primeiro dígito de 11 a 99.
+        */
+        const ddd = Number(numeros.substring(0, 2));
 
-    } catch (erro) {
+        if (ddd < 11 || ddd > 99) {
+            return false;
+        }
 
-      console.error(erro);
+        /*
+           Celular brasileiro precisa começar com 9
+           depois do DDD.
+        */
+        if (numeros.length === 11) {
 
-      mostrarErro(
-        erro.message ||
-        "Não foi possível realizar o agendamento."
-      );
+            if (numeros.charAt(2) !== "9") {
+                return false;
+            }
+        }
 
-      submitButton.disabled = false;
-
-      submitButton.innerHTML =
-        '<i data-lucide="calendar-check"></i> Solicitar agendamento';
-
-      lucide.createIcons();
+        return true;
     }
-  });
 
-  lucide.createIcons();
+
+    /* ============================================================
+       DATA MÍNIMA
+       ============================================================ */
+
+    function obterDataHoje() {
+
+        const hoje = new Date();
+
+        const ano = hoje.getFullYear();
+        const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+        const dia = String(hoje.getDate()).padStart(2, "0");
+
+        return `${ano}-${mes}-${dia}`;
+    }
+
+    dataInput.min = obterDataHoje();
+
+
+    /* ============================================================
+       BUSCAR HORÁRIOS
+       ============================================================ */
+
+    dataInput.addEventListener("change", async function () {
+
+        const data = dataInput.value;
+
+        esconderErro();
+
+        horarioSelect.innerHTML =
+            '<option value="">Carregando horários...</option>';
+
+        horarioSelect.disabled = true;
+
+        if (!data) {
+
+            horarioSelect.innerHTML =
+                '<option value="">Primeiro selecione uma data</option>';
+
+            return;
+        }
+
+
+        /* Impede datas anteriores ao dia atual */
+
+        if (data < obterDataHoje()) {
+
+            horarioSelect.innerHTML =
+                '<option value="">Data inválida</option>';
+
+            mostrarErro(
+                "A data escolhida já passou. Selecione uma data a partir de hoje."
+            );
+
+            return;
+        }
+
+
+        /* Domingo */
+
+        const dataObj = new Date(data + "T00:00:00");
+
+        if (dataObj.getDay() === 0) {
+
+            horarioSelect.innerHTML =
+                '<option value="">Não atendemos aos domingos</option>';
+
+            return;
+        }
+
+
+        try {
+
+            const url =
+                `${SUPABASE_URL}/rest/v1/horarios` +
+                `?data=eq.${encodeURIComponent(data)}` +
+                `&disponivel=eq.true` +
+                `&order=horario.asc`;
+
+
+            const resposta = await fetch(url, {
+
+                method: "GET",
+
+                headers: {
+                    "apikey": SUPABASE_PUBLISHABLE_KEY,
+                    "Authorization":
+                        `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+                    "Accept": "application/json"
+                }
+            });
+
+
+            if (!resposta.ok) {
+
+                const texto = await resposta.text();
+
+                console.error(
+                    "Erro ao buscar horários:",
+                    texto
+                );
+
+                throw new Error(
+                    "Não foi possível carregar os horários."
+                );
+            }
+
+
+            const horarios = await resposta.json();
+
+
+            horarioSelect.innerHTML =
+                '<option value="">Selecione um horário</option>';
+
+
+            if (!Array.isArray(horarios) || horarios.length === 0) {
+
+                horarioSelect.innerHTML =
+                    '<option value="">Nenhum horário disponível nesta data</option>';
+
+                return;
+            }
+
+
+            horarios.forEach(item => {
+
+                if (!item.horario) {
+                    return;
+                }
+
+                const option =
+                    document.createElement("option");
+
+                option.value = item.horario;
+
+                option.textContent =
+                    String(item.horario).substring(0, 5);
+
+                /*
+                   Guardamos o ID do horário para conseguir
+                   reservar exatamente aquele horário depois.
+                */
+                if (item.id !== undefined && item.id !== null) {
+                    option.dataset.id = item.id;
+                }
+
+                horarioSelect.appendChild(option);
+            });
+
+
+            if (horarioSelect.options.length > 1) {
+                horarioSelect.disabled = false;
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            horarioSelect.innerHTML =
+                '<option value="">Erro ao carregar horários</option>';
+
+            mostrarErro(
+                "Não foi possível carregar os horários. Verifique a configuração do Supabase."
+            );
+        }
+    });
+
+
+    /* ============================================================
+       ENVIO DO FORMULÁRIO
+       ============================================================ */
+
+    form.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+        esconderErro();
+
+
+        /* ========================================================
+           VALIDAÇÕES
+           ======================================================== */
+
+        const nome =
+            nomeInput.value.trim();
+
+        const telefone =
+            telefoneInput.value.trim();
+
+        const telefoneNumeros =
+            limparDigitos(telefone);
+
+        const email =
+            emailInput.value.trim();
+
+        const tipo =
+            tipoInput.value;
+
+        const area =
+            areaInput.value;
+
+        const data =
+            dataInput.value;
+
+        const horario =
+            horarioSelect.value;
+
+        const assunto =
+            assuntoInput.value.trim();
+
+
+        if (nome.length < 3) {
+
+            mostrarErro(
+                "Digite seu nome completo."
+            );
+
+            nomeInput.focus();
+
+            return;
+        }
+
+
+        if (!telefoneValido(telefone)) {
+
+            mostrarErro(
+                "Digite um telefone ou WhatsApp válido com DDD. Exemplo: (87) 99999-9999."
+            );
+
+            telefoneInput.focus();
+
+            return;
+        }
+
+
+        if (!emailInput.checkValidity()) {
+
+            mostrarErro(
+                "Digite um endereço de e-mail válido."
+            );
+
+            emailInput.focus();
+
+            return;
+        }
+
+
+        if (!tipo) {
+
+            mostrarErro(
+                "Selecione o tipo de atendimento."
+            );
+
+            tipoInput.focus();
+
+            return;
+        }
+
+
+        if (!area) {
+
+            mostrarErro(
+                "Selecione a área jurídica. Caso não saiba, escolha “Não sei / Não tenho certeza”."
+            );
+
+            areaInput.focus();
+
+            return;
+        }
+
+
+        if (!data) {
+
+            mostrarErro(
+                "Selecione uma data para o atendimento."
+            );
+
+            dataInput.focus();
+
+            return;
+        }
+
+
+        if (data < obterDataHoje()) {
+
+            mostrarErro(
+                "A data escolhida já passou. Selecione uma data válida."
+            );
+
+            dataInput.focus();
+
+            return;
+        }
+
+
+        if (!horario) {
+
+            mostrarErro(
+                "Selecione um horário disponível."
+            );
+
+            horarioSelect.focus();
+
+            return;
+        }
+
+
+        if (!confirmacaoInput.checked) {
+
+            mostrarErro(
+                "É necessário confirmar que as informações fornecidas estão corretas."
+            );
+
+            confirmacaoInput.focus();
+
+            return;
+        }
+
+
+        /* ========================================================
+           BLOQUEIA O BOTÃO
+           ======================================================== */
+
+        btnEnviar.disabled = true;
+
+        btnEnviar.textContent =
+            "Enviando...";
+
+
+        let horarioReservado = null;
+        let agendamentoCriado = null;
+
+
+        try {
+
+            /* ====================================================
+               1. VERIFICA NOVAMENTE O HORÁRIO
+               ==================================================== */
+
+            const verificacaoUrl =
+                `${SUPABASE_URL}/rest/v1/horarios` +
+                `?data=eq.${encodeURIComponent(data)}` +
+                `&horario=eq.${encodeURIComponent(horario)}` +
+                `&disponivel=eq.true` +
+                `&limit=1`;
+
+
+            const verificacao =
+                await fetch(verificacaoUrl, {
+
+                    method: "GET",
+
+                    headers: {
+                        "apikey": SUPABASE_PUBLISHABLE_KEY,
+                        "Authorization":
+                            `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+                        "Accept": "application/json"
+                    }
+                });
+
+
+            if (!verificacao.ok) {
+
+                throw new Error(
+                    "Não foi possível verificar a disponibilidade do horário."
+                );
+            }
+
+
+            const horariosDisponiveis =
+                await verificacao.json();
+
+
+            if (
+                !Array.isArray(horariosDisponiveis) ||
+                horariosDisponiveis.length === 0
+            ) {
+
+                throw new Error(
+                    "Esse horário acabou de ser ocupado. Escolha outro horário."
+                );
+            }
+
+
+            horarioReservado =
+                horariosDisponiveis[0];
+
+
+            /* ====================================================
+               2. RESERVA O HORÁRIO
+               ==================================================== */
+
+            /*
+               O horário fica indisponível antes de criar
+               o agendamento para evitar que outra pessoa
+               veja o mesmo horário como disponível.
+            */
+
+            if (
+                horarioReservado.id === undefined ||
+                horarioReservado.id === null
+            ) {
+
+                throw new Error(
+                    "O horário disponível não possui um identificador válido."
+                );
+            }
+
+
+            const reservaUrl =
+                `${SUPABASE_URL}/rest/v1/horarios` +
+                `?id=eq.${encodeURIComponent(horarioReservado.id)}` +
+                `&disponivel=eq.true`;
+
+
+            const reserva =
+                await fetch(reservaUrl, {
+
+                    method: "PATCH",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        "apikey": SUPABASE_PUBLISHABLE_KEY,
+                        "Authorization":
+                            `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+                        "Prefer": "return=representation"
+                    },
+
+                    body: JSON.stringify({
+                        disponivel: false
+                    })
+                });
+
+
+            if (!reserva.ok) {
+
+                const texto =
+                    await reserva.text();
+
+                console.error(
+                    "Erro ao reservar horário:",
+                    texto
+                );
+
+                throw new Error(
+                    "Esse horário não pôde ser reservado. Escolha outro horário."
+                );
+            }
+
+
+            const horariosReservados =
+                await reserva.json();
+
+
+            /*
+               Se nenhuma linha foi alterada, outra pessoa
+               provavelmente reservou o horário antes.
+            */
+
+            if (
+                !Array.isArray(horariosReservados) ||
+                horariosReservados.length === 0
+            ) {
+
+                throw new Error(
+                    "Esse horário acabou de ser ocupado. Escolha outro horário."
+                );
+            }
+
+
+            /* ====================================================
+               3. SALVA O AGENDAMENTO
+               ==================================================== */
+
+            const resposta =
+                await fetch(
+                    `${SUPABASE_URL}/rest/v1/agendamentos`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json",
+                            "apikey": SUPABASE_PUBLISHABLE_KEY,
+                            "Authorization":
+                                `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+                            "Prefer": "return=representation"
+                        },
+
+                        body: JSON.stringify({
+
+                            nome: nome,
+
+                            telefone: telefoneNumeros,
+
+                            email: email,
+
+                            tipo_atendimento: tipo,
+
+                            area: area,
+
+                            data: data,
+
+                            horario: horario,
+
+                            assunto: assunto,
+
+                            status: "pendente"
+                        })
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                const texto =
+                    await resposta.text();
+
+                console.error(
+                    "Erro ao salvar agendamento:",
+                    texto
+                );
+
+                throw new Error(
+                    "Não foi possível salvar o agendamento."
+                );
+            }
+
+
+            const resultado =
+                await resposta.json();
+
+            agendamentoCriado =
+                Array.isArray(resultado)
+                    ? resultado[0]
+                    : resultado;
+
+
+            /* ====================================================
+               4. FORMATA DATA
+               ==================================================== */
+
+            const dataFormatada =
+                new Date(data + "T00:00:00")
+                    .toLocaleDateString("pt-BR");
+
+
+            const horarioFormatado =
+                String(horario).substring(0, 5);
+
+
+            /* ====================================================
+               5. MONTA MENSAGEM DO WHATSAPP
+               ==================================================== */
+
+            const mensagemTexto =
+                "Olá, Dra. Josiane! Gostaria de confirmar uma solicitação de agendamento.\n\n" +
+
+                `Nome: ${nome}\n` +
+
+                `Telefone: ${telefone}\n` +
+
+                `E-mail: ${email}\n` +
+
+                `Atendimento: ${tipo}\n` +
+
+                `Área: ${area}\n` +
+
+                `Data: ${dataFormatada}\n` +
+
+                `Horário: ${horarioFormatado}\n` +
+
+                `Assunto: ${assunto || "Não informado"}`;
+
+
+            whatsappBtn.href =
+                `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagemTexto)}`;
+
+
+            /* ====================================================
+               6. MOSTRA SUCESSO
+               ==================================================== */
+
+            formulario.style.display = "none";
+
+            sucesso.style.display = "block";
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            /* ====================================================
+               TENTA DEVOLVER O HORÁRIO CASO O AGENDAMENTO
+               NÃO TENHA SIDO SALVO.
+               ==================================================== */
+
+            if (
+                horarioReservado &&
+                horarioReservado.id !== undefined &&
+                !agendamentoCriado
+            ) {
+
+                try {
+
+                    await fetch(
+                        `${SUPABASE_URL}/rest/v1/horarios?id=eq.${encodeURIComponent(horarioReservado.id)}`,
+                        {
+                            method: "PATCH",
+
+                            headers: {
+                                "Content-Type": "application/json",
+                                "apikey": SUPABASE_PUBLISHABLE_KEY,
+                                "Authorization":
+                                    `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+                            },
+
+                            body: JSON.stringify({
+                                disponivel: true
+                            })
+                        }
+                    );
+
+                } catch (rollbackError) {
+
+                    console.error(
+                        "Não foi possível liberar o horário novamente:",
+                        rollbackError
+                    );
+                }
+            }
+
+
+            mostrarErro(
+                error.message ||
+                "Ocorreu um erro ao enviar. Tente novamente."
+            );
+
+
+            btnEnviar.disabled = false;
+
+            btnEnviar.textContent =
+                "Solicitar agendamento";
+        }
+
+    });
 </script>
 
 </body>
