@@ -1,2519 +1,2592 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Painel Administrativo | Josiane Nunes
-    </title>
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f8f3eb;
-            color: #3d2528;
-            min-height: 100vh;
-        }
-
-        button,
-        input,
-        select {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .topo {
-            background: #4b2028;
-            color: white;
-            padding: 18px 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-        }
-
-        .logo-symbol {
-            width: 45px;
-            height: 45px;
-            border: 1px solid #c9a66b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c9a66b;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 21px;
-        }
-
-        .logo h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 23px;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            display: block;
-            color: #d7bd8b;
-            font-size: 9px;
-            letter-spacing: 3px;
-        }
-
-        .btn-sair {
-            border: 1px solid #c9a66b;
-            background: transparent;
-            color: white;
-            padding: 9px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-
-        .btn-sair:hover {
-            background: #642d37;
-        }
-
-        main {
-            max-width: 1250px;
-            margin: 35px auto;
-            padding: 0 20px;
-        }
-
-        .login-container {
-            max-width: 430px;
-            margin: 80px auto;
-        }
-
-        .box {
-            background: white;
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 8px 35px rgba(75, 32, 40, .08);
-        }
-
-        .titulo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .titulo h2 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #4b2028;
-            font-size: 40px;
-        }
-
-        .titulo p {
-            color: #756568;
-            font-size: 12px;
-            margin-top: 6px;
-        }
-
-        .campo {
-            margin-bottom: 18px;
-        }
-
-        .campo label {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            color: #4b2028;
-            margin-bottom: 7px;
-        }
-
-        .campo input,
-        .campo select {
-            width: 100%;
-            border: 1px solid #ddd2c8;
-            background: #fffdf9;
-            padding: 13px;
-            border-radius: 7px;
-            outline: none;
-            color: #3d2528;
-        }
-
-        .campo input:focus,
-        .campo select:focus {
-            border-color: #a78355;
-        }
-
-        .btn-principal {
-            width: 100%;
-            border: none;
-            background: #4b2028;
-            color: white;
-            padding: 14px;
-            border-radius: 7px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-principal:hover {
-            background: #642d37;
-        }
-
-        .btn-principal:disabled {
-            opacity: .6;
-            cursor: not-allowed;
-        }
-
-        .link-esqueci {
-            display: block;
-            text-align: center;
-            margin-top: 17px;
-            color: #8b6c48;
-            font-size: 11px;
-            text-decoration: none;
-        }
-
-        .erro {
-            display: none;
-            background: #f8dddd;
-            color: #7d2525;
-            padding: 12px;
-            border-radius: 7px;
-            margin-bottom: 18px;
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        .sucesso {
-            display: none;
-            background: #e8f2e9;
-            color: #35633b;
-            padding: 12px;
-            border-radius: 7px;
-            margin-bottom: 18px;
-            font-size: 11px;
-            line-height: 1.5;
-        }
-
-        .oculto {
-            display: none !important;
-        }
-
-        .selecao {
-            max-width: 700px;
-            margin: 70px auto;
-        }
-
-        .advogados-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .advogado-card {
-            background: white;
-            border: 1px solid #eadfd4;
-            border-radius: 10px;
-            padding: 24px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .advogado-card:hover {
-            border-color: #c9a66b;
-            transform: translateY(-2px);
-        }
-
-        .advogado-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #4b2028;
-            font-size: 28px;
-        }
-
-        .advogado-card p {
-            color: #756568;
-            font-size: 11px;
-            margin-top: 5px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 28px;
-            gap: 15px;
-        }
-
-        .dashboard-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #4b2028;
-            font-size: 42px;
-        }
-
-        .dashboard-header p {
-            color: #756568;
-            font-size: 12px;
-        }
-
-        .btn-secundario {
-            background: transparent;
-            border: 1px solid #a78355;
-            color: #4b2028;
-            padding: 11px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .btn-secundario:hover {
-            background: #4b2028;
-            color: white;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-        }
-
-        .painel {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 35px rgba(75, 32, 40, .06);
-        }
-
-        .painel-titulo {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid #eee5dc;
-        }
-
-        .painel-titulo h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #4b2028;
-            font-size: 30px;
-        }
-
-        .lista {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-height: 650px;
-            overflow-y: auto;
-        }
-
-        .item {
-            border: 1px solid #e8ded5;
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .item-topo {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .item h4 {
-            color: #4b2028;
-            font-size: 14px;
-        }
-
-        .item-data {
-            color: #8b6c48;
-            font-size: 11px;
-            font-weight: 600;
-            margin-top: 6px;
-        }
-
-        .item-info {
-            color: #756568;
-            font-size: 11px;
-            line-height: 1.7;
-            margin-top: 8px;
-        }
-
-        .status {
-            padding: 5px 8px;
-            border-radius: 20px;
-            font-size: 9px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .status-pendente {
-            background: #fff2d6;
-            color: #8b6728;
-        }
-
-        .status-confirmado {
-            background: #e5f1e7;
-            color: #35633b;
-        }
-
-        .status-cancelado {
-            background: #f8dddd;
-            color: #7d2525;
-        }
-
-        .acoes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 14px;
-        }
-
-        .btn-acao {
-            border: none;
-            padding: 8px 11px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 9px;
-            font-weight: 600;
-        }
-
-        .btn-confirmar {
-            background: #e5f1e7;
-            color: #35633b;
-        }
-
-        .btn-cancelar {
-            background: #f8dddd;
-            color: #7d2525;
-        }
-
-        .btn-remarcar {
-            background: #4b2028;
-            color: white;
-        }
-
-        .btn-remarcar:hover {
-            background: #642d37;
-        }
-
-        .vazio {
-            text-align: center;
-            padding: 35px 15px;
-            color: #9a8b8e;
-            font-size: 12px;
-        }
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(35, 15, 19, .65);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 3000;
-        }
-
-        .modal.aberto {
-            display: flex;
-        }
-
-        .modal-box {
-            width: 100%;
-            max-width: 480px;
-            max-height: 90vh;
-            overflow-y: auto;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,.25);
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 22px;
-        }
-
-        .modal-header h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            color: #4b2028;
-        }
-
-        .fechar {
-            width: 35px;
-            height: 35px;
-            border: none;
-            background: #f8f3eb;
-            color: #4b2028;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .cliente-atual {
-            background: #f8f3eb;
-            border-left: 3px solid #c9a66b;
-            padding: 13px;
-            margin-bottom: 20px;
-            font-size: 11px;
-            line-height: 1.7;
-            color: #66565a;
-        }
-
-        .modal-botoes {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-fechar {
-            border: 1px solid #c9a66b;
-            background: white;
-            color: #4b2028;
-            padding: 13px;
-            border-radius: 7px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-salvar {
-            border: none;
-            background: #4b2028;
-            color: white;
-            padding: 13px;
-            border-radius: 7px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-salvar:disabled {
-            opacity: .6;
-        }
-
-        .carregando {
-            text-align: center;
-            color: #756568;
-            padding: 20px;
-            font-size: 11px;
-        }
-
-        @media(max-width:850px) {
-
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .advogados-grid {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-        @media(max-width:600px) {
-
-            .topo {
-                padding: 15px 5%;
-            }
-
-            .logo h1 {
-                font-size: 19px;
-            }
-
-            main {
-                padding: 0 14px;
-            }
-
-            .box,
-            .painel {
-                padding: 20px;
-            }
-
-            .dashboard-header {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .dashboard-header h2 {
-                font-size: 35px;
-            }
-
-            .modal-box {
-                padding: 22px;
-            }
-
-        }
-
-    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Área Exclusiva | Josiane Nunes Advocacia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f8f3eb;
+      color: #3d2528;
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .login-screen {
+      min-height: 100vh;
+      background: #4b2028;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .login-card {
+      width: min(430px, 100%);
+      background: #fffaf4;
+      padding: 45px;
+      border-radius: 3px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+
+    .login-logo {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      color: #4b2028;
+      margin-bottom: 5px;
+    }
+
+    .login-subtitle {
+      text-align: center;
+      color: #756568;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      color: #4b2028;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap input {
+      padding-right: 45px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #d8cbbc;
+      background: #fdf9f3;
+      color: #3d2528;
+      border-radius: 3px;
+      padding: 13px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #c9a66b;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      color: #756568;
+      cursor: pointer;
+    }
+
+    .btn {
+      width: 100%;
+      border: 0;
+      border-radius: 4px;
+      padding: 14px 20px;
+      background: #c9a66b;
+      color: #4b2028;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: #d7bd8b;
+    }
+
+    .btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .login-error {
+      display: none;
+      background: #f8e4e4;
+      border: 1px solid #e4bebe;
+      color: #8d3030;
+      padding: 12px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      border-radius: 3px;
+    }
+
+    .login-error.show {
+      display: block;
+    }
+
+    .forgot {
+      display: block;
+      text-align: center;
+      color: #756568;
+      font-size: 11px;
+      margin-top: 18px;
+      cursor: pointer;
+    }
+
+    .forgot:hover {
+      color: #4b2028;
+    }
+
+    header {
+      background: #4b2028;
+      color: #f8f3eb;
+      padding: 18px 0;
+    }
+
+    .header-inner {
+      width: min(1180px, 94%);
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      color: #d7bd8b;
+      font-size: 30px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .user-name {
+      color: #e9ded7;
+      font-size: 12px;
+    }
+
+    .logout {
+      background: transparent;
+      color: #f8f3eb;
+      border: 1px solid rgba(215,189,139,.5);
+      border-radius: 3px;
+      padding: 8px 13px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .dashboard {
+      width: min(1180px, 94%);
+      margin: auto;
+      padding: 40px 0 70px;
+    }
+
+    .welcome {
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      color: #c9a66b;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #4b2028;
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .stat {
+      background: #fffaf4;
+      border: 1px solid #eadfce;
+      padding: 22px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #756568;
+      margin-bottom: 6px;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      color: #4b2028;
+      font-size: 38px;
+    }
+
+    .section {
+      background: #fffaf4;
+      border: 1px solid #eadfce;
+      margin-bottom: 25px;
+    }
+
+    .section-head {
+      padding: 20px 23px;
+      border-bottom: 1px solid #eadfce;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #4b2028;
+      font-size: 30px;
+    }
+
+    .section-body {
+      padding: 20px;
+    }
+
+    .appointment {
+      border: 1px solid #e5d9cb;
+      padding: 20px;
+      margin-bottom: 14px;
+      background: #fdf9f3;
+    }
+
+    .appointment:last-child {
+      margin-bottom: 0;
+    }
+
+    .appointment-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .client-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: #4b2028;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 20px;
+      padding: 6px 11px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-pendente {
+      background: #f2e6cb;
+      color: #795d24;
+    }
+
+    .status-confirmado {
+      background: #dcecdf;
+      color: #356b48;
+    }
+
+    .status-cancelado {
+      background: #f3dddd;
+      color: #8d3030;
+    }
+
+    .status-realizado {
+      background: #dedfe9;
+      color: #4e5269;
+    }
+
+    .appointment-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 15px;
+    }
+
+    .info-label {
+      color: #9a898b;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      color: #4b2028;
+      font-size: 12px;
+      word-break: break-word;
+    }
+
+    .subject {
+      background: #f7efe6;
+      padding: 12px;
+      font-size: 12px;
+      color: #66565a;
+      margin-bottom: 15px;
+    }
+
+    .appointment-actions {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .small-btn {
+      border: 0;
+      padding: 9px 13px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .accept {
+      background: #dcecdf;
+      color: #356b48;
+    }
+
+    .cancel {
+      background: #f3dddd;
+      color: #8d3030;
+    }
+
+    .reschedule {
+      background: #e8dfd1;
+      color: #4b2028;
+    }
+
+    .area-btn {
+      background: #eee4d5;
+      color: #4b2028;
+    }
+
+    .empty {
+      text-align: center;
+      color: #756568;
+      padding: 30px 10px;
+      font-size: 13px;
+    }
+
+    .refresh {
+      border: 1px solid #d8cbbc;
+      background: transparent;
+      color: #4b2028;
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(61,37,40,.65);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(500px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #fffaf4;
+      padding: 30px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.3);
+    }
+
+    .modal h2 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #4b2028;
+      font-size: 34px;
+      margin-bottom: 5px;
+    }
+
+    .modal-description {
+      color: #756568;
+      font-size: 11px;
+      margin-bottom: 22px;
+    }
+
+    .current-appointment {
+      background: #f7efe6;
+      padding: 14px;
+      margin-bottom: 20px;
+      color: #66565a;
+      font-size: 12px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+    }
+
+    .btn-secondary {
+      background: #e9dfd4;
+      color: #4b2028;
+    }
+
+    .notification {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      max-width: 350px;
+      background: #4b2028;
+      color: #f8f3eb;
+      padding: 15px 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      z-index: 3000;
+      display: none;
+      font-size: 12px;
+    }
+
+    .notification.show {
+      display: block;
+    }
+
+    @media (max-width: 800px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .appointment-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .header-right .user-name {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .login-card {
+        padding: 30px 22px;
+      }
+
+      .appointment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .appointment-top {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="topo">
+<!-- LOGIN -->
 
-    <div class="logo">
+<div id="loginScreen" class="login-screen">
 
-        <div class="logo-symbol">
-            JN
-        </div>
+  <div class="login-card">
 
-        <div>
-            <h1>JOSIANE NUNES</h1>
-            <span>ADVOCACIA</span>
-        </div>
-
+    <div class="login-logo">
+      Josiane Nunes
     </div>
 
-    <button
-        class="btn-sair oculto"
-        id="btnSair"
-    >
-        Sair
-    </button>
-
-</header>
-
-
-<main>
-
-    <!-- LOGIN -->
-
-    <section
-        id="loginPagina"
-        class="login-container"
-    >
-
-        <div class="box">
-
-            <div class="titulo">
-
-                <h2>
-                    Acesso
-                </h2>
-
-                <p>
-                    Painel administrativo
-                </p>
-
-            </div>
-
-            <div
-                class="erro"
-                id="erroLogin"
-            ></div>
-
-            <form id="loginForm">
-
-                <div class="campo">
-
-                    <label>
-                        E-mail
-                    </label>
-
-                    <input
-                        type="email"
-                        id="emailLogin"
-                        required
-                    >
-
-                </div>
-
-                <div class="campo">
-
-                    <label>
-                        Senha
-                    </label>
-
-                    <input
-                        type="password"
-                        id="senhaLogin"
-                        required
-                    >
-
-                </div>
-
-                <button
-                    class="btn-principal"
-                    id="btnLogin"
-                    type="submit"
-                >
-                    Entrar
-                </button>
-
-            </form>
-
-            <a
-                href="#"
-                class="link-esqueci"
-                id="esqueciSenha"
-            >
-                Esqueci minha senha
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- SELEÇÃO DO ADVOGADO -->
-
-    <section
-        id="selecaoPagina"
-        class="selecao oculto"
-    >
-
-        <div class="box">
-
-            <div class="titulo">
-
-                <h2>
-                    Selecionar advogado
-                </h2>
-
-                <p>
-                    Escolha o profissional para acessar o painel.
-                </p>
-
-            </div>
-
-            <div
-                class="erro"
-                id="erroSelecao"
-            ></div>
-
-            <div
-                id="advogadosLista"
-                class="advogados-grid"
-            ></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DASHBOARD -->
-
-    <section
-        id="dashboardPagina"
-        class="oculto"
-    >
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <h2>
-                    Painel de atendimento
-                </h2>
-
-                <p id="nomeAdvogado"></p>
-
-            </div>
-
-            <button
-                class="btn-secundario"
-                id="btnVoltarSelecao"
-            >
-                Trocar advogado
-            </button>
-
-        </div>
-
-
-        <div
-            class="erro"
-            id="erroDashboard"
-        ></div>
-
-        <div
-            class="sucesso"
-            id="sucessoDashboard"
-        ></div>
-
-
-        <div class="dashboard-grid">
-
-
-            <!-- HORÁRIOS -->
-
-            <div class="painel">
-
-                <div class="painel-titulo">
-
-                    <h3>
-                        Horários
-                    </h3>
-
-                    <button
-                        class="btn-secundario"
-                        id="btnAtualizarHorarios"
-                    >
-                        Atualizar
-                    </button>
-
-                </div>
-
-                <div
-                    id="horariosLista"
-                    class="lista"
-                ></div>
-
-            </div>
-
-
-            <!-- AGENDAMENTOS -->
-
-            <div class="painel">
-
-                <div class="painel-titulo">
-
-                    <h3>
-                        Agendamentos
-                    </h3>
-
-                    <button
-                        class="btn-secundario"
-                        id="btnAtualizarAgendamentos"
-                    >
-                        Atualizar
-                    </button>
-
-                </div>
-
-                <div
-                    id="agendamentosLista"
-                    class="lista"
-                ></div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- MODAL REMARCAÇÃO -->
-
-<div
-    class="modal"
-    id="modalRemarcacao"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <h3>
-                Remarcar atendimento
-            </h3>
-
-            <button
-                class="fechar"
-                id="fecharModal"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div
-            class="cliente-atual"
-            id="clienteAtual"
-        ></div>
-
-
-        <div
-            class="erro"
-            id="erroRemarcacao"
-        ></div>
-
-
-        <div class="campo">
-
-            <label>
-                Nova data
-            </label>
-
-            <input
-                type="date"
-                id="novaData"
-            >
-
-        </div>
-
-
-        <div class="campo">
-
-            <label>
-                Novo horário
-            </label>
-
-            <select
-                id="novoHorario"
-                disabled
-            >
-
-                <option value="">
-                    Primeiro selecione uma data
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="modal-botoes">
-
-            <button
-                class="btn-fechar"
-                id="btnCancelarModal"
-            >
-                Cancelar
-            </button>
-
-            <button
-                class="btn-salvar"
-                id="btnSalvarRemarcacao"
-            >
-                Salvar remarcação
-            </button>
-
-        </div>
-
+    <div class="login-subtitle">
+      Área exclusiva
     </div>
+
+    <div id="loginError" class="login-error"></div>
+
+    <form id="loginForm">
+
+      <div class="field">
+        <label for="emailLogin">E-mail</label>
+
+        <input
+          id="emailLogin"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="Digite seu e-mail"
+        >
+      </div>
+
+      <div class="field">
+        <label for="senhaLogin">Senha</label>
+
+        <div class="input-wrap">
+
+          <input
+            id="senhaLogin"
+            type="password"
+            autocomplete="current-password"
+            required
+            placeholder="Digite sua senha"
+          >
+
+          <button
+            type="button"
+            id="togglePassword"
+            class="password-toggle"
+            aria-label="Mostrar senha"
+          >
+            <i data-lucide="eye"></i>
+          </button>
+
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        id="loginButton"
+        class="btn"
+      >
+        Entrar
+      </button>
+
+    </form>
+
+    <span
+      id="forgotPassword"
+      class="forgot"
+    >
+      Esqueci minha senha
+    </span>
+
+  </div>
 
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- PAINEL -->
+
+<div id="panel" class="hidden">
+
+  <header>
+
+    <div class="header-inner">
+
+      <div class="logo">
+        Josiane Nunes
+      </div>
+
+      <div class="header-right">
+
+        <span id="userName" class="user-name">
+          Área exclusiva
+        </span>
+
+        <button id="logoutButton" class="logout">
+          Sair
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main class="dashboard">
+
+    <div class="welcome">
+
+      <div class="eyebrow">
+        Painel administrativo
+      </div>
+
+      <h1>Agenda</h1>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Solicitações pendentes
+        </div>
+
+        <div
+          id="pendingCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Confirmados
+        </div>
+
+        <div
+          id="confirmedCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+      <div class="stat">
+
+        <div class="stat-label">
+          Total de atendimentos
+        </div>
+
+        <div
+          id="totalCount"
+          class="stat-number"
+        >
+          0
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <h2>Agendamentos</h2>
+
+        <button
+          id="refreshButton"
+          class="refresh"
+        >
+          Atualizar
+        </button>
+
+      </div>
+
+      <div
+        id="appointmentsList"
+        class="section-body"
+      >
+        <div class="empty">
+          Carregando agendamentos...
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- MODAL REAGENDAMENTO -->
+
+<div
+  id="rescheduleModal"
+  class="modal-backdrop"
+>
+
+  <div class="modal">
+
+    <h2>Reagendar atendimento</h2>
+
+    <p class="modal-description">
+      Escolha a nova data e depois um horário disponível.
+    </p>
+
+    <div
+      id="currentAppointment"
+      class="current-appointment"
+    ></div>
+
+    <div class="field">
+
+      <label for="newDate">
+        Nova data
+      </label>
+
+      <input
+        id="newDate"
+        type="date"
+      >
+
+    </div>
+
+    <div class="field">
+
+      <label for="newTime">
+        Novo horário
+      </label>
+
+      <select
+        id="newTime"
+        disabled
+      >
+
+        <option value="">
+          Primeiro selecione uma data
+        </option>
+
+      </select>
+
+    </div>
+
+    <div
+      id="rescheduleInfo"
+      class="notification"
+      style="position:static;display:none;margin:10px 0 0;max-width:none;"
+    ></div>
+
+    <div class="modal-actions">
+
+      <button
+        id="cancelReschedule"
+        class="small-btn btn-secondary"
+      >
+        Cancelar
+      </button>
+
+      <button
+        id="saveReschedule"
+        class="small-btn reschedule"
+      >
+        Salvar alteração
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MODAL ÁREA -->
+
+<div
+  id="areaModal"
+  class="modal-backdrop"
+>
+
+  <div class="modal">
+
+    <h2>Área jurídica</h2>
+
+    <p class="modal-description">
+      Você pode corrigir a área informada pelo cliente.
+    </p>
+
+    <div class="field">
+
+      <label for="newArea">
+        Área correta
+      </label>
+
+      <select id="newArea">
+
+        <option value="Criminal">
+          Direito Criminal
+        </option>
+
+        <option value="Previdenciário">
+          Direito Previdenciário
+        </option>
+
+        <option value="Trabalhista">
+          Direito Trabalhista
+        </option>
+
+        <option value="Não sei / Não tenho certeza">
+          Não sei / Não tenho certeza
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        id="cancelArea"
+        class="small-btn btn-secondary"
+      >
+        Cancelar
+      </button>
+
+      <button
+        id="saveArea"
+        class="small-btn area-btn"
+      >
+        Salvar área
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="notification"
+  class="notification"
+></div>
+
 
 <script>
 
-const SUPABASE_URL =
+  const SUPABASE_URL =
     "https://ovogpczsnxwqmefpbydi.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+  const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_BpWlUOmryWU2tSxMNg4fQQ_aCJbWpEN";
 
-
-const supabaseClient =
+  const supabaseClient =
     window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
     );
 
 
-let usuarioAtual =
-    null;
-
-let advogadoSelecionado =
-    null;
-
-let agendamentoSelecionado =
-    null;
+  let usuarioAtual = null;
+  let advogadoAtual = null;
+  let agendamentoSelecionado = null;
+  let agendamentoAreaSelecionado = null;
 
 
-/* ELEMENTOS */
+  const loginScreen =
+    document.getElementById("loginScreen");
 
-const loginPagina =
-    document.getElementById("loginPagina");
+  const panel =
+    document.getElementById("panel");
 
-const selecaoPagina =
-    document.getElementById("selecaoPagina");
+  const loginForm =
+    document.getElementById("loginForm");
 
-const dashboardPagina =
-    document.getElementById("dashboardPagina");
+  const loginError =
+    document.getElementById("loginError");
 
-const btnSair =
-    document.getElementById("btnSair");
-
-
-/* ERRO */
-
-function mostrarErro(elemento, mensagem) {
-
-    elemento.textContent =
-        mensagem;
-
-    elemento.style.display =
-        "block";
-
-}
+  const loginButton =
+    document.getElementById("loginButton");
 
 
-function esconderErro(elemento) {
+  function mostrarLoginErro(texto) {
 
-    elemento.style.display =
-        "none";
+    loginError.textContent = texto;
+    loginError.classList.add("show");
 
-}
-
-
-/* SUCESSO */
-
-function mostrarSucesso(mensagem) {
-
-    const elemento =
-        document.getElementById(
-            "sucessoDashboard"
-        );
-
-    elemento.textContent =
-        mensagem;
-
-    elemento.style.display =
-        "block";
-
-    setTimeout(
-        () => {
-            elemento.style.display =
-                "none";
-        },
-        5000
-    );
-
-}
+  }
 
 
-/* DATA */
+  function esconderLoginErro() {
 
-function formatarData(data) {
+    loginError.textContent = "";
+    loginError.classList.remove("show");
 
-    if (!data) {
-        return "";
+  }
+
+
+  function mostrarNotificacao(texto) {
+
+    const box =
+      document.getElementById("notification");
+
+    box.textContent = texto;
+    box.classList.add("show");
+
+    setTimeout(() => {
+      box.classList.remove("show");
+    }, 4000);
+
+  }
+
+
+  function formatarData(data) {
+
+    if (!data) return "-";
+
+    return new Date(
+      `${data}T12:00:00`
+    ).toLocaleDateString("pt-BR");
+
+  }
+
+
+  function formatarHorario(horario) {
+
+    if (!horario) return "-";
+
+    return String(horario).substring(0, 5);
+
+  }
+
+
+  function escaparHTML(texto) {
+
+    if (texto === null || texto === undefined) {
+      return "";
     }
 
-    const partes =
-        data.split("-");
+    return String(texto)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
-    if (partes.length !== 3) {
-        return data;
-    }
-
-    return `${partes[2]}/${partes[1]}/${partes[0]}`;
-
-}
+  }
 
 
-/* STATUS */
-
-function classeStatus(status) {
+  function classeStatus(status) {
 
     const valor =
-        String(status || "")
-            .toLowerCase();
+      String(status || "").toLowerCase();
 
-    if (
-        valor === "confirmado" ||
-        valor === "aceito"
-    ) {
-
-        return "status-confirmado";
-
+    if (valor === "confirmado" || valor === "aceito") {
+      return "status-confirmado";
     }
 
-    if (
-        valor === "cancelado" ||
-        valor === "recusado"
-    ) {
+    if (valor === "cancelado" || valor === "recusado") {
+      return "status-cancelado";
+    }
 
-        return "status-cancelado";
-
+    if (valor === "realizado") {
+      return "status-realizado";
     }
 
     return "status-pendente";
 
-}
+  }
 
 
-function textoStatus(status) {
-
-    if (!status) {
-        return "Pendente";
-    }
+  function textoStatus(status) {
 
     const valor =
-        String(status).toLowerCase();
+      String(status || "").toLowerCase();
 
-    if (valor === "confirmado") {
-        return "Confirmado";
+    if (valor === "confirmado" || valor === "aceito") {
+      return "Confirmado";
     }
 
-    if (valor === "aceito") {
-        return "Confirmado";
+    if (valor === "cancelado" || valor === "recusado") {
+      return "Cancelado";
     }
 
-    if (valor === "cancelado") {
-        return "Cancelado";
-    }
-
-    if (valor === "recusado") {
-        return "Recusado";
+    if (valor === "realizado") {
+      return "Realizado";
     }
 
     return "Pendente";
 
-}
+  }
 
 
-/* LOGIN */
+  async function buscarAdvogado() {
 
-document
-    .getElementById("loginForm")
-    .addEventListener(
-        "submit",
-        async function(event) {
+    if (!usuarioAtual) {
+      return null;
+    }
 
-            event.preventDefault();
+    /*
+     * Tenta localizar a advogada pelo e-mail
+     * usado no login.
+     */
 
-            const erro =
-                document.getElementById(
-                    "erroLogin"
-                );
+    const { data, error } =
+      await supabaseClient
+        .from("advogados")
+        .select("*")
+        .eq("email", usuarioAtual.email)
+        .limit(1)
+        .maybeSingle();
 
-            esconderErro(erro);
+    if (error) {
 
-            const email =
-                document
-                    .getElementById("emailLogin")
-                    .value
-                    .trim();
+      console.error(error);
 
-            const senha =
-                document
-                    .getElementById("senhaLogin")
-                    .value;
+      throw new Error(
+        "Não foi possível carregar os dados da advogada."
+      );
 
-            const botao =
-                document
-                    .getElementById("btnLogin");
+    }
 
-            botao.disabled =
-                true;
+    return data;
 
-            botao.textContent =
-                "Entrando...";
+  }
 
 
-            try {
+  async function carregarPainel() {
 
-                const resultado =
-                    await supabaseClient.auth
-                        .signInWithPassword({
-                            email,
-                            password: senha
-                        });
+    try {
 
+      advogadoAtual =
+        await buscarAdvogado();
 
-                if (resultado.error) {
-                    throw resultado.error;
-                }
+      /*
+       * Se existir cadastro na tabela advogados,
+       * usamos o nome dele.
+       */
 
+      if (advogadoAtual?.nome) {
 
-                usuarioAtual =
-                    resultado.data.user;
+        document.getElementById("userName")
+          .textContent =
+          advogadoAtual.nome;
 
+      } else {
 
-                await carregarAdvogados();
+        document.getElementById("userName")
+          .textContent =
+          usuarioAtual.email;
 
+      }
 
-                loginPagina
-                    .classList
-                    .add("oculto");
+      loginScreen.classList.add("hidden");
+      panel.classList.remove("hidden");
 
-                selecaoPagina
-                    .classList
-                    .remove("oculto");
+      await carregarAgendamentos();
 
-                btnSair
-                    .classList
-                    .remove("oculto");
+    } catch (erro) {
 
+      console.error(erro);
 
-            } catch (error) {
+      mostrarLoginErro(
+        erro.message ||
+        "Não foi possível abrir o painel."
+      );
 
-                console.error(error);
+      await supabaseClient.auth.signOut();
 
-                mostrarErro(
-                    erro,
-                    error.message ||
-                    "Não foi possível entrar."
-                );
+    }
 
-            } finally {
-
-                botao.disabled =
-                    false;
-
-                botao.textContent =
-                    "Entrar";
-
-            }
-
-        }
-    );
+  }
 
 
-/* ADVOGADOS */
-
-async function carregarAdvogados() {
+  async function carregarAgendamentos() {
 
     const lista =
-        document.getElementById(
-            "advogadosLista"
-        );
-
-    const erro =
-        document.getElementById(
-            "erroSelecao"
-        );
-
-    esconderErro(erro);
+      document.getElementById("appointmentsList");
 
     lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
+      '<div class="empty">Carregando agendamentos...</div>';
 
 
     try {
 
-        const { data, error } =
-            await supabaseClient
-                .from("advogados")
-                .select("*")
-                .eq("ativo", true)
-                .order("nome");
+      let query =
+        supabaseClient
+          .from("agendamentos")
+          .select("*")
+          .order("data", { ascending: true })
+          .order("horario", { ascending: true });
 
 
-        if (error) {
-            throw error;
-        }
+      /*
+       * Se encontramos o advogado, mostramos apenas
+       * os atendimentos dela.
+       */
+
+      if (advogadoAtual?.id) {
+
+        query =
+          query.eq(
+            "advogado_id",
+            advogadoAtual.id
+          );
+
+      }
 
 
-        if (!data || data.length === 0) {
-
-            lista.innerHTML =
-                '<div class="vazio">Nenhum advogado disponível.</div>';
-
-            return;
-        }
+      const { data: agendamentos, error } =
+        await query;
 
 
-        lista.innerHTML = "";
-
-
-        data.forEach(
-            advogado => {
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "advogado-card";
-
-                card.innerHTML = `
-                    <h3>${escaparHTML(advogado.nome || "Advogado")}</h3>
-                    <p>Acessar painel de atendimento</p>
-                `;
-
-                card.addEventListener(
-                    "click",
-                    () => selecionarAdvogado(advogado)
-                );
-
-                lista.appendChild(card);
-
-            }
-        );
-
-
-    } catch (error) {
+      if (error) {
 
         console.error(error);
 
-        mostrarErro(
-            erro,
-            "Não foi possível carregar os advogados."
+        throw new Error(
+          "Não foi possível carregar os agendamentos."
         );
 
-        lista.innerHTML = "";
+      }
+
+
+      atualizarEstatisticas(
+        agendamentos || []
+      );
+
+      renderizarAgendamentos(
+        agendamentos || []
+      );
+
+
+    } catch (erro) {
+
+      console.error(erro);
+
+      lista.innerHTML =
+        `<div class="empty">
+          ${escaparHTML(erro.message)}
+        </div>`;
 
     }
 
-}
+  }
 
 
-/* SELECIONAR ADVOGADO */
+  function atualizarEstatisticas(lista) {
 
-async function selecionarAdvogado(advogado) {
-
-    advogadoSelecionado =
-        advogado;
-
-    selecaoPagina
-        .classList
-        .add("oculto");
-
-    dashboardPagina
-        .classList
-        .remove("oculto");
-
-    document
-        .getElementById("nomeAdvogado")
-        .textContent =
-        advogado.nome || "";
+    const pendentes =
+      lista.filter(item =>
+        String(item.status || "")
+          .toLowerCase() === "pendente"
+      ).length;
 
 
-    await carregarDashboard();
+    const confirmados =
+      lista.filter(item => {
 
-}
+        const status =
+          String(item.status || "")
+            .toLowerCase();
 
-
-/* DASHBOARD */
-
-async function carregarDashboard() {
-
-    await Promise.all([
-        carregarHorarios(),
-        carregarAgendamentos()
-    ]);
-
-}
-
-
-/* HORÁRIOS */
-
-async function carregarHorarios() {
-
-    const lista =
-        document.getElementById(
-            "horariosLista"
+        return (
+          status === "confirmado" ||
+          status === "aceito"
         );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando horários...</div>';
+      }).length;
 
 
-    try {
+    document.getElementById("pendingCount")
+      .textContent = pendentes;
 
-        const { data, error } =
-            await supabaseClient
-                .from("horarios")
-                .select("*")
-                .eq(
-                    "advogado_id",
-                    advogadoSelecionado.id
-                )
-                .order("data")
-                .order("horario");
+    document.getElementById("confirmedCount")
+      .textContent = confirmados;
+
+    document.getElementById("totalCount")
+      .textContent = lista.length;
+
+  }
 
 
-        if (error) {
-            throw error;
-        }
+  function renderizarAgendamentos(lista) {
+
+    const container =
+      document.getElementById("appointmentsList");
 
 
-        if (!data || data.length === 0) {
+    if (!lista.length) {
 
-            lista.innerHTML =
-                '<div class="vazio">Nenhum horário cadastrado.</div>';
+      container.innerHTML =
+        `<div class="empty">
+          Nenhum agendamento encontrado.
+        </div>`;
 
-            return;
-        }
-
-
-        lista.innerHTML = "";
-
-
-        data.forEach(
-            horario => {
-
-                const item =
-                    document.createElement("div");
-
-                item.className =
-                    "item";
-
-                const disponivel =
-                    horario.disponivel === true;
-
-
-                item.innerHTML = `
-
-                    <div class="item-topo">
-
-                        <div>
-
-                            <h4>
-                                ${formatarData(horario.data)}
-                            </h4>
-
-                            <div class="item-data">
-                                ${String(horario.horario || "").substring(0,5)}
-                            </div>
-
-                        </div>
-
-                        <span class="status ${
-                            disponivel
-                            ? "status-confirmado"
-                            : "status-cancelado"
-                        }">
-
-                            ${
-                                disponivel
-                                ? "Disponível"
-                                : "Ocupado"
-                            }
-
-                        </span>
-
-                    </div>
-
-                `;
-
-                lista.appendChild(item);
-
-            }
-        );
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        lista.innerHTML =
-            '<div class="vazio">Erro ao carregar horários.</div>';
+      return;
 
     }
 
-}
 
+    container.innerHTML =
+      lista.map(item => {
 
-/* AGENDAMENTOS */
+        const status =
+          String(item.status || "")
+            .toLowerCase();
 
-async function carregarAgendamentos() {
+        const podeCancelar =
+          status !== "cancelado" &&
+          status !== "realizado";
 
-    const lista =
-        document.getElementById(
-            "agendamentosLista"
-        );
+        const podeAceitar =
+          status === "pendente";
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando agendamentos...</div>';
+        return `
 
+          <div
+            class="appointment"
+            data-id="${escaparHTML(item.id)}"
+          >
 
-    try {
+            <div class="appointment-top">
 
-        const { data, error } =
-            await supabaseClient
-                .from("agendamentos")
-                .select("*")
-                .eq(
-                    "advogado_id",
-                    advogadoSelecionado.id
-                )
-                .order("data")
-                .order("horario");
+              <div>
+                <div class="client-name">
+                  ${escaparHTML(item.nome)}
+                </div>
 
+                <div class="status ${classeStatus(item.status)}">
+                  ${textoStatus(item.status)}
+                </div>
+              </div>
 
-        if (error) {
-            throw error;
-        }
+            </div>
 
 
-        if (!data || data.length === 0) {
+            <div class="appointment-grid">
 
-            lista.innerHTML =
-                '<div class="vazio">Nenhum agendamento encontrado.</div>';
+              <div>
+                <div class="info-label">
+                  Data
+                </div>
 
-            return;
-        }
+                <div class="info-value">
+                  ${formatarData(item.data)}
+                </div>
+              </div>
 
 
-        lista.innerHTML = "";
+              <div>
+                <div class="info-label">
+                  Horário
+                </div>
 
+                <div class="info-value">
+                  ${formatarHorario(item.horario)}
+                </div>
+              </div>
 
-        data.forEach(
-            agendamento => {
 
-                const item =
-                    document.createElement("div");
+              <div>
+                <div class="info-label">
+                  Telefone
+                </div>
 
-                item.className =
-                    "item";
+                <div class="info-value">
+                  ${escaparHTML(item.telefone)}
+                </div>
+              </div>
 
 
-                const status =
-                    agendamento.status ||
-                    "pendente";
+              <div>
+                <div class="info-label">
+                  Tipo
+                </div>
 
+                <div class="info-value">
+                  ${escaparHTML(item.tipo_atendimento)}
+                </div>
+              </div>
 
-                const podeRemarcar =
-                    status !== "cancelado" &&
-                    status !== "recusado";
 
+              <div>
+                <div class="info-label">
+                  E-mail
+                </div>
 
-                let botoes = "";
+                <div class="info-value">
+                  ${escaparHTML(item.email)}
+                </div>
+              </div>
 
 
-                if (
-                    status === "pendente"
-                ) {
+              <div>
+                <div class="info-label">
+                  Área
+                </div>
 
-                    botoes += `
+                <div class="info-value">
+                  ${escaparHTML(item.area || "Não informado")}
+                </div>
+              </div>
 
-                        <button
-                            class="btn-acao btn-confirmar"
-                            onclick="alterarStatus('${agendamento.id}', 'confirmado')"
-                        >
-                            ACEITAR
-                        </button>
+            </div>
 
-                        <button
-                            class="btn-acao btn-cancelar"
-                            onclick="alterarStatus('${agendamento.id}', 'cancelado')"
-                        >
-                            RECUSAR
-                        </button>
 
-                    `;
+            <div class="subject">
+              <strong>Assunto:</strong>
+              ${escaparHTML(item.assunto || "Não informado")}
+            </div>
 
-                }
 
+            <div class="appointment-actions">
 
-                if (podeRemarcar) {
+              ${
+                podeAceitar
+                ?
+                `<button
+                  class="small-btn accept"
+                  onclick="alterarStatus('${escaparHTML(item.id)}','confirmado')"
+                >
+                  ✓ Aceitar
+                </button>`
+                :
+                ""
+              }
 
-                    botoes += `
 
-                        <button
-                            class="btn-acao btn-remarcar"
-                            onclick="abrirRemarcacao('${agendamento.id}')"
-                        >
-                            REMARCAR
-                        </button>
+              ${
+                podeCancelar
+                ?
+                `<button
+                  class="small-btn cancel"
+                  onclick="alterarStatus('${escaparHTML(item.id)}','cancelado')"
+                >
+                  Cancelar
+                </button>`
+                :
+                ""
+              }
 
-                    `;
 
-                }
+              ${
+                podeCancelar
+                ?
+                `<button
+                  class="small-btn reschedule"
+                  onclick="abrirReagendamento('${escaparHTML(item.id)}')"
+                >
+                  Reagendar
+                </button>`
+                :
+                ""
+              }
 
 
-                item.innerHTML = `
+              <button
+                class="small-btn area-btn"
+                onclick="abrirArea('${escaparHTML(item.id)}')"
+              >
+                Corrigir área
+              </button>
 
-                    <div class="item-topo">
+            </div>
 
-                        <div>
+          </div>
 
-                            <h4>
-                                ${escaparHTML(
-                                    agendamento.nome ||
-                                    "Cliente"
-                                )}
-                            </h4>
+        `;
 
-                            <div class="item-data">
+      }).join("");
 
-                                ${formatarData(
-                                    agendamento.data
-                                )}
+  }
 
-                                às
 
-                                ${String(
-                                    agendamento.horario || ""
-                                ).substring(0,5)}
+  window.alterarStatus =
+    async function(id, novoStatus) {
 
-                            </div>
-
-                        </div>
-
-                        <span class="status ${
-                            classeStatus(status)
-                        }">
-
-                            ${textoStatus(status)}
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="item-info">
-
-                        <strong>Telefone:</strong>
-                        ${escaparHTML(
-                            agendamento.telefone || "-"
-                        )}
-
-                        <br>
-
-                        <strong>E-mail:</strong>
-                        ${escaparHTML(
-                            agendamento.email || "-"
-                        )}
-
-                        <br>
-
-                        <strong>Atendimento:</strong>
-                        ${escaparHTML(
-                            agendamento.tipo_atendimento || "-"
-                        )}
-
-                        <br>
-
-                        <strong>Área:</strong>
-                        ${escaparHTML(
-                            agendamento.area || "-"
-                        )}
-
-                        ${
-                            agendamento.assunto
-                            ? `
-                                <br>
-                                <strong>Assunto:</strong>
-                                ${escaparHTML(
-                                    agendamento.assunto
-                                )}
-                              `
-                            : ""
-                        }
-
-                    </div>
-
-
-                    <div class="acoes">
-
-                        ${botoes}
-
-                    </div>
-
-                `;
-
-
-                lista.appendChild(item);
-
-            }
-        );
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        lista.innerHTML =
-            '<div class="vazio">Erro ao carregar agendamentos.</div>';
-
-    }
-
-}
-
-
-/* ALTERAR STATUS */
-
-async function alterarStatus(
-    id,
-    novoStatus
-) {
-
-    const confirmar =
-        novoStatus === "confirmado"
-        ? "Deseja confirmar este agendamento?"
-        : "Deseja recusar este agendamento?";
-
-
-    if (!window.confirm(confirmar)) {
-        return;
-    }
-
-
-    try {
+      try {
 
         const { error } =
-            await supabaseClient
-                .from("agendamentos")
-                .update({
-                    status: novoStatus
-                })
-                .eq("id", id)
-                .eq(
-                    "advogado_id",
-                    advogadoSelecionado.id
-                );
+          await supabaseClient
+            .from("agendamentos")
+            .update({
+              status: novoStatus
+            })
+            .eq("id", id);
 
 
         if (error) {
-            throw error;
+
+          console.error(error);
+
+          throw new Error(
+            "Não foi possível alterar o status."
+          );
+
         }
 
 
-        mostrarSucesso(
-            novoStatus === "confirmado"
+        mostrarNotificacao(
+          novoStatus === "confirmado"
             ? "Agendamento confirmado."
-            : "Agendamento recusado."
+            : "Agendamento cancelado."
         );
 
 
         await carregarAgendamentos();
 
+      } catch (erro) {
 
-    } catch (error) {
+        console.error(erro);
 
-        console.error(error);
-
-        mostrarErro(
-            document.getElementById(
-                "erroDashboard"
-            ),
-            error.message ||
-            "Não foi possível alterar o agendamento."
+        mostrarNotificacao(
+          erro.message
         );
 
-    }
+      }
 
-}
+    };
 
 
-/* ABRIR REMARCAÇÃO */
+  /*
+   * REAGENDAMENTO
+   */
 
-async function abrirRemarcacao(id) {
+  const rescheduleModal =
+    document.getElementById("rescheduleModal");
 
-    try {
+  const newDate =
+    document.getElementById("newDate");
+
+  const newTime =
+    document.getElementById("newTime");
+
+  const currentAppointment =
+    document.getElementById("currentAppointment");
+
+
+  window.abrirReagendamento =
+    async function(id) {
+
+      try {
 
         const { data, error } =
-            await supabaseClient
-                .from("agendamentos")
-                .select("*")
-                .eq("id", id)
-                .eq(
-                    "advogado_id",
-                    advogadoSelecionado.id
-                )
-                .single();
+          await supabaseClient
+            .from("agendamentos")
+            .select("*")
+            .eq("id", id)
+            .single();
 
 
-        if (error) {
-            throw error;
+        if (error || !data) {
+
+          throw new Error(
+            "Não foi possível encontrar o agendamento."
+          );
+
         }
 
 
-        agendamentoSelecionado =
-            data;
+        agendamentoSelecionado = data;
 
 
-        document
-            .getElementById("clienteAtual")
-            .innerHTML = `
-
-                <strong>
-                    Cliente:
-                </strong>
-
-                ${escaparHTML(
-                    data.nome || "-"
-                )}
-
-                <br>
-
-                <strong>
-                    Data atual:
-                </strong>
-
-                ${formatarData(
-                    data.data
-                )}
-
-                às
-
-                ${String(
-                    data.horario || ""
-                ).substring(0,5)}
-
-            `;
+        currentAppointment.innerHTML = `
+          <strong>${escaparHTML(data.nome)}</strong><br>
+          Atual: ${formatarData(data.data)}
+          às ${formatarHorario(data.horario)}
+        `;
 
 
-        const novaData =
-            document.getElementById(
-                "novaData"
-            );
+        const hoje = new Date();
 
-
-        const hoje =
-            new Date();
-
-        const ano =
-            hoje.getFullYear();
-
+        const ano = hoje.getFullYear();
         const mes =
-            String(
-                hoje.getMonth() + 1
-            ).padStart(2, "0");
-
+          String(hoje.getMonth() + 1).padStart(2, "0");
         const dia =
-            String(
-                hoje.getDate()
-            ).padStart(2, "0");
+          String(hoje.getDate()).padStart(2, "0");
+
+        newDate.min =
+          `${ano}-${mes}-${dia}`;
+
+        newDate.value =
+          data.data || "";
 
 
-        novaData.min =
-            `${ano}-${mes}-${dia}`;
+        newTime.innerHTML =
+          '<option value="">Carregando...</option>';
+
+        newTime.disabled = true;
+
+        rescheduleModal.classList.add("show");
+
+        await carregarNovosHorarios();
+
+      } catch (erro) {
+
+        console.error(erro);
+
+        mostrarNotificacao(
+          erro.message
+        );
+
+      }
+
+    };
 
 
-        novaData.value = "";
+  async function carregarNovosHorarios() {
+
+    const data = newDate.value;
+
+    newTime.innerHTML = "";
+    newTime.disabled = true;
 
 
-        document
-            .getElementById("novoHorario")
-            .innerHTML =
-            '<option value="">Primeiro selecione uma data</option>';
+    if (!data || !agendamentoSelecionado) {
+
+      newTime.innerHTML =
+        '<option value="">Selecione uma data</option>';
+
+      return;
+
+    }
 
 
-        document
-            .getElementById("novoHorario")
-            .disabled =
-            true;
+    newTime.innerHTML =
+      '<option value="">Carregando horários...</option>';
 
 
-        esconderErro(
-            document.getElementById(
-                "erroRemarcacao"
+    try {
+
+      let horarioQuery =
+        supabaseClient
+          .from("horarios")
+          .select("*")
+          .eq("data", data)
+          .eq("disponivel", true)
+          .order("horario", { ascending: true });
+
+
+      if (agendamentoSelecionado.advogado_id) {
+
+        horarioQuery =
+          horarioQuery.eq(
+            "advogado_id",
+            agendamentoSelecionado.advogado_id
+          );
+
+      }
+
+
+      const {
+        data: horarios,
+        error: horarioError
+      } = await horarioQuery;
+
+
+      if (horarioError) {
+
+        console.error(horarioError);
+
+        throw new Error(
+          "Não foi possível carregar os novos horários."
+        );
+
+      }
+
+
+      let agendamentoQuery =
+        supabaseClient
+          .from("agendamentos")
+          .select("id, horario, status")
+          .eq("data", data);
+
+
+      if (agendamentoSelecionado.advogado_id) {
+
+        agendamentoQuery =
+          agendamentoQuery.eq(
+            "advogado_id",
+            agendamentoSelecionado.advogado_id
+          );
+
+      }
+
+
+      const {
+        data: outrosAgendamentos,
+        error: agendamentoError
+      } = await agendamentoQuery;
+
+
+      if (agendamentoError) {
+
+        console.error(agendamentoError);
+
+        throw new Error(
+          "Não foi possível verificar os horários ocupados."
+        );
+
+      }
+
+
+      const ocupados =
+        new Set(
+          (outrosAgendamentos || [])
+            .filter(item => {
+
+              const cancelado =
+                String(item.status || "")
+                  .toLowerCase() === "cancelado";
+
+              return (
+                item.id !== agendamentoSelecionado.id &&
+                !cancelado
+              );
+
+            })
+            .map(item =>
+              String(item.horario)
             )
         );
 
 
-        document
-            .getElementById("modalRemarcacao")
-            .classList
-            .add("aberto");
+      const disponiveis =
+        (horarios || []).filter(item =>
+          !ocupados.has(
+            String(item.horario)
+          )
+        );
 
 
-    } catch (error) {
+      newTime.innerHTML =
+        '<option value="">Selecione um horário</option>';
+
+
+      if (!disponiveis.length) {
+
+        newTime.innerHTML =
+          '<option value="">Nenhum horário disponível</option>';
+
+        return;
+
+      }
+
+
+      disponiveis.forEach(item => {
+
+        const option =
+          document.createElement("option");
+
+        option.value =
+          item.horario;
+
+        option.textContent =
+          formatarHorario(item.horario);
+
+        /*
+         * Se for a mesma data e o horário atual ainda
+         * aparecer disponível, ele pode ser selecionado.
+         */
+        if (
+          data === agendamentoSelecionado.data &&
+          String(item.horario) ===
+          String(agendamentoSelecionado.horario)
+        ) {
+
+          option.selected = true;
+
+        }
+
+        newTime.appendChild(option);
+
+      });
+
+
+      newTime.disabled = false;
+
+    } catch (erro) {
+
+      console.error(erro);
+
+      newTime.innerHTML =
+        `<option value="">
+          ${escaparHTML(erro.message)}
+        </option>`;
+
+    }
+
+  }
+
+
+  newDate.addEventListener(
+    "change",
+    carregarNovosHorarios
+  );
+
+
+  document.getElementById("cancelReschedule")
+    .addEventListener("click", () => {
+
+      rescheduleModal.classList.remove("show");
+
+      agendamentoSelecionado = null;
+
+    });
+
+
+  document.getElementById("saveReschedule")
+    .addEventListener("click", async () => {
+
+      if (!agendamentoSelecionado) {
+        return;
+      }
+
+
+      const novaData =
+        newDate.value;
+
+      const novoHorario =
+        newTime.value;
+
+
+      if (!novaData || !novoHorario) {
+
+        mostrarNotificacao(
+          "Escolha a nova data e o novo horário."
+        );
+
+        return;
+
+      }
+
+
+      const saveButton =
+        document.getElementById("saveReschedule");
+
+      saveButton.disabled = true;
+      saveButton.textContent =
+        "Salvando...";
+
+
+      try {
+
+        /*
+         * Confirma novamente que o horário escolhido
+         * continua disponível.
+         */
+
+        let novoHorarioQuery =
+          supabaseClient
+            .from("horarios")
+            .select("*")
+            .eq("data", novaData)
+            .eq("horario", novoHorario)
+            .eq("disponivel", true)
+            .limit(1)
+            .maybeSingle();
+
+
+        if (agendamentoSelecionado.advogado_id) {
+
+          novoHorarioQuery =
+            supabaseClient
+              .from("horarios")
+              .select("*")
+              .eq("data", novaData)
+              .eq("horario", novoHorario)
+              .eq("advogado_id", agendamentoSelecionado.advogado_id)
+              .eq("disponivel", true)
+              .limit(1)
+              .maybeSingle();
+
+        }
+
+
+        const {
+          data: novoHorarioBanco,
+          error: novoHorarioError
+        } = await novoHorarioQuery;
+
+
+        if (novoHorarioError) {
+
+          console.error(novoHorarioError);
+
+          throw new Error(
+            "Não foi possível verificar o novo horário."
+          );
+
+        }
+
+
+        /*
+         * Permite usar o próprio horário atual quando
+         * a pessoa escolheu a mesma data/horário.
+         */
+
+        const mesmoHorario =
+          novaData === agendamentoSelecionado.data &&
+          String(novoHorario) ===
+          String(agendamentoSelecionado.horario);
+
+
+        if (!novoHorarioBanco && !mesmoHorario) {
+
+          throw new Error(
+            "Esse horário não está mais disponível."
+          );
+
+        }
+
+
+        /*
+         * Verificação final contra outro agendamento.
+         */
+
+        let conflitoQuery =
+          supabaseClient
+            .from("agendamentos")
+            .select("id, horario, status")
+            .eq("data", novaData)
+            .eq("horario", novoHorario);
+
+
+        if (agendamentoSelecionado.advogado_id) {
+
+          conflitoQuery =
+            conflitoQuery.eq(
+              "advogado_id",
+              agendamentoSelecionado.advogado_id
+            );
+
+        }
+
+
+        const {
+          data: conflitos,
+          error: conflitoError
+        } = await conflitoQuery;
+
+
+        if (conflitoError) {
+
+          console.error(conflitoError);
+
+          throw new Error(
+            "Não foi possível confirmar a disponibilidade."
+          );
+
+        }
+
+
+        const existeConflito =
+          (conflitos || []).some(item => {
+
+            const cancelado =
+              String(item.status || "")
+                .toLowerCase() === "cancelado";
+
+            return (
+              item.id !== agendamentoSelecionado.id &&
+              !cancelado
+            );
+
+          });
+
+
+        if (existeConflito) {
+
+          throw new Error(
+            "Esse horário já foi ocupado por outro cliente."
+          );
+
+        }
+
+
+        /*
+         * Primeiro alteramos o agendamento.
+         */
+
+        const { error: updateAppointmentError } =
+          await supabaseClient
+            .from("agendamentos")
+            .update({
+              data: novaData,
+              horario: novoHorario
+            })
+            .eq(
+              "id",
+              agendamentoSelecionado.id
+            );
+
+
+        if (updateAppointmentError) {
+
+          console.error(updateAppointmentError);
+
+          throw new Error(
+            "Não foi possível alterar o agendamento."
+          );
+
+        }
+
+
+        /*
+         * Libera o horário antigo.
+         */
+
+        let oldSlotQuery =
+          supabaseClient
+            .from("horarios")
+            .update({
+              disponivel: true
+            })
+            .eq(
+              "data",
+              agendamentoSelecionado.data
+            )
+            .eq(
+              "horario",
+              agendamentoSelecionado.horario
+            );
+
+
+        if (agendamentoSelecionado.advogado_id) {
+
+          oldSlotQuery =
+            oldSlotQuery.eq(
+              "advogado_id",
+              agendamentoSelecionado.advogado_id
+            );
+
+        }
+
+
+        const {
+          error: oldSlotError
+        } = await oldSlotQuery;
+
+
+        if (oldSlotError) {
+
+          console.error(oldSlotError);
+
+          /*
+           * Tenta voltar o agendamento para os dados antigos.
+           */
+
+          await supabaseClient
+            .from("agendamentos")
+            .update({
+              data: agendamentoSelecionado.data,
+              horario: agendamentoSelecionado.horario
+            })
+            .eq(
+              "id",
+              agendamentoSelecionado.id
+            );
+
+          throw new Error(
+            "Não foi possível liberar o horário antigo."
+          );
+
+        }
+
+
+        /*
+         * Ocupa o novo horário.
+         * Se for o mesmo horário, não precisa fazer nada.
+         */
+
+        if (!mesmoHorario && novoHorarioBanco) {
+
+          let newSlotQuery;
+
+          if (novoHorarioBanco.id) {
+
+            newSlotQuery =
+              supabaseClient
+                .from("horarios")
+                .update({
+                  disponivel: false
+                })
+                .eq(
+                  "id",
+                  novoHorarioBanco.id
+                );
+
+          } else {
+
+            newSlotQuery =
+              supabaseClient
+                .from("horarios")
+                .update({
+                  disponivel: false
+                })
+                .eq(
+                  "data",
+                  novaData
+                )
+                .eq(
+                  "horario",
+                  novoHorario
+                );
+
+            if (agendamentoSelecionado.advogado_id) {
+
+              newSlotQuery =
+                newSlotQuery.eq(
+                  "advogado_id",
+                  agendamentoSelecionado.advogado_id
+                );
+
+            }
+
+          }
+
+
+          const {
+            error: newSlotError
+          } = await newSlotQuery;
+
+
+          if (newSlotError) {
+
+            console.error(newSlotError);
+
+            /*
+             * Tenta desfazer tudo.
+             */
+
+            await supabaseClient
+              .from("agendamentos")
+              .update({
+                data: agendamentoSelecionado.data,
+                horario: agendamentoSelecionado.horario
+              })
+              .eq(
+                "id",
+                agendamentoSelecionado.id
+              );
+
+
+            let rollbackOld =
+              supabaseClient
+                .from("horarios")
+                .update({
+                  disponivel: false
+                })
+                .eq(
+                  "data",
+                  agendamentoSelecionado.data
+                )
+                .eq(
+                  "horario",
+                  agendamentoSelecionado.horario
+                );
+
+
+            if (agendamentoSelecionado.advogado_id) {
+
+              rollbackOld =
+                rollbackOld.eq(
+                  "advogado_id",
+                  agendamentoSelecionado.advogado_id
+                );
+
+            }
+
+
+            await rollbackOld;
+
+            throw new Error(
+              "Não foi possível reservar o novo horário."
+            );
+
+          }
+
+        }
+
+
+        /*
+         * Tudo certo.
+         */
+
+        rescheduleModal.classList.remove("show");
+
+        mostrarNotificacao(
+          "Agendamento reagendado com sucesso."
+        );
+
+        agendamentoSelecionado = null;
+
+        await carregarAgendamentos();
+
+
+      } catch (erro) {
+
+        console.error(erro);
+
+        mostrarNotificacao(
+          erro.message ||
+          "Não foi possível reagendar."
+        );
+
+      } finally {
+
+        saveButton.disabled = false;
+        saveButton.textContent =
+          "Salvar alteração";
+
+      }
+
+    });
+
+
+  /*
+   * CORREÇÃO DA ÁREA JURÍDICA
+   */
+
+  const areaModal =
+    document.getElementById("areaModal");
+
+  const newArea =
+    document.getElementById("newArea");
+
+
+  window.abrirArea =
+    async function(id) {
+
+      try {
+
+        const { data, error } =
+          await supabaseClient
+            .from("agendamentos")
+            .select("id, area, nome")
+            .eq("id", id)
+            .single();
+
+
+        if (error || !data) {
+
+          throw new Error(
+            "Não foi possível carregar o agendamento."
+          );
+
+        }
+
+
+        agendamentoAreaSelecionado = data;
+
+        newArea.value =
+          data.area ||
+          "Não sei / Não tenho certeza";
+
+        areaModal.classList.add("show");
+
+      } catch (erro) {
+
+        console.error(erro);
+
+        mostrarNotificacao(
+          erro.message
+        );
+
+      }
+
+    };
+
+
+  document.getElementById("cancelArea")
+    .addEventListener("click", () => {
+
+      areaModal.classList.remove("show");
+
+      agendamentoAreaSelecionado = null;
+
+    });
+
+
+  document.getElementById("saveArea")
+    .addEventListener("click", async () => {
+
+      if (!agendamentoAreaSelecionado) {
+        return;
+      }
+
+
+      const { error } =
+        await supabaseClient
+          .from("agendamentos")
+          .update({
+            area: newArea.value
+          })
+          .eq(
+            "id",
+            agendamentoAreaSelecionado.id
+          );
+
+
+      if (error) {
 
         console.error(error);
 
-        mostrarErro(
-            document.getElementById(
-                "erroDashboard"
-            ),
-            "Não foi possível abrir a remarcação."
+        mostrarNotificacao(
+          "Não foi possível alterar a área."
         );
 
-    }
+        return;
 
-}
+      }
 
 
-/* BUSCAR NOVOS HORÁRIOS */
+      areaModal.classList.remove("show");
 
-document
-    .getElementById("novaData")
-    .addEventListener(
-        "change",
-        async function() {
+      agendamentoAreaSelecionado = null;
 
-            const data =
-                this.value;
+      mostrarNotificacao(
+        "Área jurídica atualizada."
+      );
 
-            const select =
-                document.getElementById(
-                    "novoHorario"
-                );
+      await carregarAgendamentos();
 
-            const erro =
-                document.getElementById(
-                    "erroRemarcacao"
-                );
+    });
 
 
-            esconderErro(erro);
+  /*
+   * LOGIN
+   */
 
+  loginForm.addEventListener(
+    "submit",
+    async function(event) {
 
-            select.innerHTML =
-                '<option value="">Carregando horários...</option>';
+      event.preventDefault();
 
-            select.disabled =
-                true;
+      esconderLoginErro();
 
+      loginButton.disabled = true;
+      loginButton.textContent = "Entrando...";
 
-            if (!data) {
 
-                select.innerHTML =
-                    '<option value="">Primeiro selecione uma data</option>';
+      try {
 
-                return;
+        const email =
+          document.getElementById(
+            "emailLogin"
+          ).value.trim();
 
-            }
+        const senha =
+          document.getElementById(
+            "senhaLogin"
+          ).value;
 
-
-            const dataObj =
-                new Date(
-                    data + "T00:00:00"
-                );
-
-
-            if (dataObj.getDay() === 0) {
-
-                select.innerHTML =
-                    '<option value="">Não atendemos aos domingos</option>';
-
-                return;
-
-            }
-
-
-            try {
-
-                const { data: horarios, error } =
-                    await supabaseClient
-                        .from("horarios")
-                        .select("*")
-                        .eq(
-                            "advogado_id",
-                            advogadoSelecionado.id
-                        )
-                        .eq(
-                            "data",
-                            data
-                        )
-                        .eq(
-                            "disponivel",
-                            true
-                        )
-                        .order("horario");
-
-
-                if (error) {
-                    throw error;
-                }
-
-
-                select.innerHTML =
-                    '<option value="">Selecione o novo horário</option>';
-
-
-                if (!horarios || horarios.length === 0) {
-
-                    select.innerHTML =
-                        '<option value="">Nenhum horário disponível</option>';
-
-                    return;
-
-                }
-
-
-                horarios.forEach(
-                    horario => {
-
-                        /*
-                         * Se for a mesma data do agendamento,
-                         * não oferecemos o horário atual como
-                         * "novo" horário.
-                         */
-
-                        if (
-                            data ===
-                            agendamentoSelecionado.data &&
-                            horario.horario ===
-                            agendamentoSelecionado.horario
-                        ) {
-                            return;
-                        }
-
-
-                        const option =
-                            document.createElement(
-                                "option"
-                            );
-
-                        option.value =
-                            horario.horario;
-
-                        option.textContent =
-                            String(
-                                horario.horario
-                            ).substring(0,5);
-
-                        select.appendChild(
-                            option
-                        );
-
-                    }
-                );
-
-
-                if (select.options.length <= 1) {
-
-                    select.innerHTML =
-                        '<option value="">Nenhum outro horário disponível</option>';
-
-                    return;
-
-                }
-
-
-                select.disabled =
-                    false;
-
-
-            } catch (error) {
-
-                console.error(error);
-
-                mostrarErro(
-                    erro,
-                    "Não foi possível carregar os novos horários."
-                );
-
-                select.innerHTML =
-                    '<option value="">Erro ao carregar horários</option>';
-
-            }
-
-        }
-    );
-
-
-/* SALVAR REMARCAÇÃO */
-
-document
-    .getElementById("btnSalvarRemarcacao")
-    .addEventListener(
-        "click",
-        async function() {
-
-            const erro =
-                document.getElementById(
-                    "erroRemarcacao"
-                );
-
-            esconderErro(erro);
-
-
-            if (!agendamentoSelecionado) {
-
-                mostrarErro(
-                    erro,
-                    "Nenhum agendamento selecionado."
-                );
-
-                return;
-
-            }
-
-
-            const novaData =
-                document
-                    .getElementById("novaData")
-                    .value;
-
-
-            const novoHorario =
-                document
-                    .getElementById("novoHorario")
-                    .value;
-
-
-            if (!novaData || !novoHorario) {
-
-                mostrarErro(
-                    erro,
-                    "Escolha a nova data e o novo horário."
-                );
-
-                return;
-
-            }
-
-
-            const botao =
-                document.getElementById(
-                    "btnSalvarRemarcacao"
-                );
-
-
-            botao.disabled =
-                true;
-
-            botao.textContent =
-                "Salvando...";
-
-
-            try {
-
-                /*
-                 * Verificação final.
-                 */
-
-                const { data: disponiveis, error: erroBusca } =
-                    await supabaseClient
-                        .from("horarios")
-                        .select("*")
-                        .eq(
-                            "advogado_id",
-                            advogadoSelecionado.id
-                        )
-                        .eq(
-                            "data",
-                            novaData
-                        )
-                        .eq(
-                            "horario",
-                            novoHorario
-                        )
-                        .eq(
-                            "disponivel",
-                            true
-                        );
-
-
-                if (erroBusca) {
-                    throw erroBusca;
-                }
-
-
-                if (
-                    !disponiveis ||
-                    disponiveis.length === 0
-                ) {
-
-                    throw new Error(
-                        "Esse novo horário acabou de ser ocupado. Escolha outro."
-                    );
-
-                }
-
-
-                /*
-                 * Atualiza o agendamento.
-                 */
-
-                const { error: erroAgendamento } =
-                    await supabaseClient
-                        .from("agendamentos")
-                        .update({
-
-                            data:
-                                novaData,
-
-                            horario:
-                                novoHorario
-
-                        })
-                        .eq(
-                            "id",
-                            agendamentoSelecionado.id
-                        )
-                        .eq(
-                            "advogado_id",
-                            advogadoSelecionado.id
-                        );
-
-
-                if (erroAgendamento) {
-                    throw erroAgendamento;
-                }
-
-
-                /*
-                 * Libera o horário antigo.
-                 */
-
-                const { error: erroHorarioAntigo } =
-                    await supabaseClient
-                        .from("horarios")
-                        .update({
-                            disponivel: true
-                        })
-                        .eq(
-                            "advogado_id",
-                            advogadoSelecionado.advogado_id ||
-                            advogadoSelecionado.id
-                        )
-                        .eq(
-                            "data",
-                            agendamentoSelecionado.data
-                        )
-                        .eq(
-                            "horario",
-                            agendamentoSelecionado.horario
-                        );
-
-
-                if (erroHorarioAntigo) {
-
-                    console.error(
-                        "Erro ao liberar horário antigo:",
-                        erroHorarioAntigo
-                    );
-
-                }
-
-
-                /*
-                 * Ocupa o novo horário.
-                 */
-
-                const { error: erroNovoHorario } =
-                    await supabaseClient
-                        .from("horarios")
-                        .update({
-                            disponivel: false
-                        })
-                        .eq(
-                            "advogado_id",
-                            advogadoSelecionado.id
-                        )
-                        .eq(
-                            "data",
-                            novaData
-                        )
-                        .eq(
-                            "horario",
-                            novoHorario
-                        );
-
-
-                if (erroNovoHorario) {
-                    throw erroNovoHorario;
-                }
-
-
-                fecharModal();
-
-
-                mostrarSucesso(
-                    "Agendamento remarcado com sucesso."
-                );
-
-
-                await carregarDashboard();
-
-
-            } catch (error) {
-
-                console.error(error);
-
-                mostrarErro(
-                    erro,
-                    error.message ||
-                    "Não foi possível remarcar o atendimento."
-                );
-
-            } finally {
-
-                botao.disabled =
-                    false;
-
-                botao.textContent =
-                    "Salvar remarcação";
-
-            }
-
-        }
-    );
-
-
-/* FECHAR MODAL */
-
-function fecharModal() {
-
-    document
-        .getElementById("modalRemarcacao")
-        .classList
-        .remove("aberto");
-
-    agendamentoSelecionado =
-        null;
-
-}
-
-
-document
-    .getElementById("fecharModal")
-    .addEventListener(
-        "click",
-        fecharModal
-    );
-
-
-document
-    .getElementById("btnCancelarModal")
-    .addEventListener(
-        "click",
-        fecharModal
-    );
-
-
-document
-    .getElementById("modalRemarcacao")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-                fecharModal();
-            }
-
-        }
-    );
-
-
-/* ATUALIZAR */
-
-document
-    .getElementById("btnAtualizarHorarios")
-    .addEventListener(
-        "click",
-        carregarHorarios
-    );
-
-
-document
-    .getElementById("btnAtualizarAgendamentos")
-    .addEventListener(
-        "click",
-        carregarAgendamentos
-    );
-
-
-/* TROCAR ADVOGADO */
-
-document
-    .getElementById("btnVoltarSelecao")
-    .addEventListener(
-        "click",
-        function() {
-
-            advogadoSelecionado =
-                null;
-
-            dashboardPagina
-                .classList
-                .add("oculto");
-
-            selecaoPagina
-                .classList
-                .remove("oculto");
-
-            carregarAdvogados();
-
-        }
-    );
-
-
-/* SAIR */
-
-btnSair.addEventListener(
-    "click",
-    async function() {
-
-        await supabaseClient.auth.signOut();
-
-        usuarioAtual =
-            null;
-
-        advogadoSelecionado =
-            null;
-
-        dashboardPagina
-            .classList
-            .add("oculto");
-
-        selecaoPagina
-            .classList
-            .add("oculto");
-
-        loginPagina
-            .classList
-            .remove("oculto");
-
-        btnSair
-            .classList
-            .add("oculto");
-
-    }
-);
-
-
-/* RECUPERAR SENHA */
-
-document
-    .getElementById("esqueciSenha")
-    .addEventListener(
-        "click",
-        async function(event) {
-
-            event.preventDefault();
-
-            const email =
-                document
-                    .getElementById("emailLogin")
-                    .value
-                    .trim();
-
-            const erro =
-                document.getElementById(
-                    "erroLogin"
-                );
-
-
-            if (!email) {
-
-                mostrarErro(
-                    erro,
-                    "Digite seu e-mail primeiro."
-                );
-
-                return;
-
-            }
-
-
-            try {
-
-                const { error } =
-                    await supabaseClient.auth
-                        .resetPasswordForEmail(
-                            email,
-                            {
-                                redirectTo:
-                                    window.location.href
-                            }
-                        );
-
-
-                if (error) {
-                    throw error;
-                }
-
-
-                mostrarErro(
-                    erro,
-                    "Se o e-mail estiver cadastrado, você receberá as instruções para redefinir a senha."
-                );
-
-            } catch (error) {
-
-                mostrarErro(
-                    erro,
-                    error.message ||
-                    "Não foi possível solicitar a recuperação."
-                );
-
-            }
-
-        }
-    );
-
-
-/* SEGURANÇA */
-
-function escaparHTML(valor) {
-
-    return String(valor ?? "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* VERIFICAR SESSÃO */
-
-(async function() {
-
-    try {
 
         const {
-            data
+          data,
+          error
         } =
-            await supabaseClient.auth
-                .getSession();
+          await supabaseClient.auth.signInWithPassword({
+            email,
+            password: senha
+          });
+
+
+        if (error) {
+
+          console.error(error);
+
+          throw new Error(
+            "E-mail ou senha incorretos."
+          );
+
+        }
+
+
+        usuarioAtual =
+          data.user;
+
+
+        /*
+         * Se existir cadastro na tabela advogados,
+         * conferimos se a conta está ativa.
+         */
+
+        const {
+          data: advogado,
+          error: advogadoError
+        } =
+          await supabaseClient
+            .from("advogados")
+            .select("*")
+            .eq("email", usuarioAtual.email)
+            .limit(1)
+            .maybeSingle();
 
 
         if (
-            data &&
-            data.session &&
-            data.session.user
+          advogadoError &&
+          advogadoError.code !== "PGRST116"
         ) {
 
-            usuarioAtual =
-                data.session.user;
-
-            await carregarAdvogados();
-
-            loginPagina
-                .classList
-                .add("oculto");
-
-            selecaoPagina
-                .classList
-                .remove("oculto");
-
-            btnSair
-                .classList
-                .remove("oculto");
+          console.error(advogadoError);
 
         }
 
-    } catch (error) {
 
-        console.error(error);
+        if (
+          advogado &&
+          advogado.active === false
+        ) {
+
+          await supabaseClient.auth.signOut();
+
+          throw new Error(
+            "Esta conta está desativada."
+          );
+
+        }
+
+
+        if (
+          advogado &&
+          advogado.role &&
+          advogado.role !== "advogado" &&
+          advogado.role !== "admin"
+        ) {
+
+          await supabaseClient.auth.signOut();
+
+          throw new Error(
+            "Esta conta não possui acesso ao painel."
+          );
+
+        }
+
+
+        advogadoAtual =
+          advogado;
+
+
+        await carregarPainel();
+
+
+      } catch (erro) {
+
+        console.error(erro);
+
+        mostrarLoginErro(
+          erro.message ||
+          "Não foi possível entrar."
+        );
+
+      } finally {
+
+        loginButton.disabled = false;
+        loginButton.textContent = "Entrar";
+
+      }
+
+    }
+  );
+
+
+  /*
+   * MOSTRAR / OCULTAR SENHA
+   */
+
+  document.getElementById("togglePassword")
+    .addEventListener("click", () => {
+
+      const input =
+        document.getElementById("senhaLogin");
+
+      const button =
+        document.getElementById("togglePassword");
+
+
+      if (input.type === "password") {
+
+        input.type = "text";
+
+        button.innerHTML =
+          '<i data-lucide="eye-off"></i>';
+
+      } else {
+
+        input.type = "password";
+
+        button.innerHTML =
+          '<i data-lucide="eye"></i>';
+
+      }
+
+      lucide.createIcons();
+
+    });
+
+
+  /*
+   * ESQUECI A SENHA
+   */
+
+  document.getElementById("forgotPassword")
+    .addEventListener("click", async () => {
+
+      const email =
+        document.getElementById(
+          "emailLogin"
+        ).value.trim();
+
+
+      if (!email) {
+
+        mostrarLoginErro(
+          "Digite seu e-mail primeiro."
+        );
+
+        return;
+
+      }
+
+
+      try {
+
+        const { error } =
+          await supabaseClient.auth
+            .resetPasswordForEmail(
+              email,
+              {
+                redirectTo:
+                  window.location.origin +
+                  window.location.pathname
+              }
+            );
+
+
+        if (error) {
+
+          throw error;
+
+        }
+
+
+        mostrarNotificacao(
+          "Se esse e-mail estiver cadastrado, o link para redefinir a senha será enviado."
+        );
+
+
+      } catch (erro) {
+
+        console.error(erro);
+
+        mostrarLoginErro(
+          "Não foi possível solicitar a redefinição da senha."
+        );
+
+      }
+
+    });
+
+
+  /*
+   * SAIR
+   */
+
+  document.getElementById("logoutButton")
+    .addEventListener("click", async () => {
+
+      await supabaseClient.auth.signOut();
+
+      usuarioAtual = null;
+      advogadoAtual = null;
+
+      panel.classList.add("hidden");
+      loginScreen.classList.remove("hidden");
+
+      document.getElementById("loginForm").reset();
+
+    });
+
+
+  /*
+   * ATUALIZAR
+   */
+
+  document.getElementById("refreshButton")
+    .addEventListener(
+      "click",
+      carregarAgendamentos
+    );
+
+
+  /*
+   * VERIFICA LOGIN JÁ EXISTENTE
+   */
+
+  async function iniciar() {
+
+    const {
+      data
+    } =
+      await supabaseClient.auth.getSession();
+
+
+    if (data.session?.user) {
+
+      usuarioAtual =
+        data.session.user;
+
+      await carregarPainel();
 
     }
 
-})();
+    lucide.createIcons();
+
+  }
+
+
+  supabaseClient.auth.onAuthStateChange(
+    async (event, session) => {
+
+      if (
+        event === "SIGNED_OUT"
+      ) {
+
+        usuarioAtual = null;
+        advogadoAtual = null;
+
+        panel.classList.add("hidden");
+        loginScreen.classList.remove("hidden");
+
+      }
+
+    }
+  );
+
+
+  iniciar();
 
 </script>
 
